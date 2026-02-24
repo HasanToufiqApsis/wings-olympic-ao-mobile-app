@@ -1,0 +1,4 @@
+enum SelectionNav {
+  forward,
+  backWord
+}
