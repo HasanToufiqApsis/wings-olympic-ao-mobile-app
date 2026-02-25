@@ -145,6 +145,8 @@ class Links {
   static final String resetSaleUrl = '$baseUrl/app-api/sales/save-sales-reset-log';
 
   static final String flashServerDataUrl = '$baseUrl/app-api/sales/sync-file-data-flash';
+
+  static final String individualSurveySubmitUrl = '$baseUrl/app-api/sales/survey-submit';
 }
 
 String getActivity({required String activity}){

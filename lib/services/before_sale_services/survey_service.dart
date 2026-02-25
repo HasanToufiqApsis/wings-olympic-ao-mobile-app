@@ -12,11 +12,13 @@ import '../../constants/constant_keys.dart';
 import '../../constants/constant_variables.dart';
 import '../../constants/enum.dart';
 import '../../constants/sync_global.dart';
+import '../../models/outlet_model.dart';
 import '../../models/returned_data_model.dart';
 import '../../models/sr_info_model.dart';
 import '../../models/survey/question_model.dart';
 import '../digital_learning_searvice.dart';
 import '../ff_services.dart';
+import '../helper.dart';
 import '../outlet_services.dart';
 import '../sales_service.dart';
 import '../sync_read_service.dart';
@@ -28,6 +30,8 @@ class SurveyService {
   factory SurveyService() {
     return _surveyService;
   }
+  final SyncReadService _syncReadService = SyncReadService();
+  final outletService = OutletServices();
 
   SurveyService._internal();
 
@@ -226,8 +230,37 @@ class SurveyService {
       syncObj[surveyDataKey][retailerId.toString()][surveyId.toString()] = answer;
 
       await SyncService().writeSync(jsonEncode(syncObj));
+      sendSurveyDataToServer(retailerId: retailerId);
     } catch (e, s) {
       print('Survey Service submitSurvey catch block $e');
+    }
+  }
+
+  Future sendSurveyDataToServer({required int retailerId}) async {
+    try {
+      final retailer = await outletService.getOutletBuId(retailerId);
+      if (retailer != null) {
+        final surveyData = await getSurveyDataForARetailer(retailer);
+        SrInfoModel srInfo = await _syncReadService.getSrInfo();
+
+        final surveyPayload = { "survey": surveyData};
+
+        print("-------->> come to here ${jsonEncode(surveyPayload)}");
+
+        ReturnedDataModel? returnedDataModel = await GlobalHttp(
+            httpType: HttpType.post,
+            uri: Links.individualSurveySubmitUrl,
+            accessToken: srInfo.accessToken,
+            refreshToken: srInfo.refreshToken,
+            body: jsonEncode(surveyPayload))
+            .fetch();
+        if (returnedDataModel.status == ReturnedStatus.success) {
+          print("--------->> ${returnedDataModel.data}");
+        }
+      }
+    } catch (e, t) {
+      debugPrint(e.toString());
+      debugPrint(t.toString());
     }
   }
 
@@ -247,7 +280,6 @@ class SurveyService {
 
       await SyncService().writeSync(jsonEncode(syncObj));
 
-      SyncReadService _syncReadService = SyncReadService();
       SrInfoModel srInfo = await _syncReadService.getSrInfo();
 
       List<Map> val = [];
@@ -388,5 +420,59 @@ class SurveyService {
       debugPrint('error-> ${e.toString()} ${t.toString()}');
     }
     return surveyModel;
+  }
+
+
+  //get survey data for sending to api
+  Future<List> getSurveyDataForARetailer(OutletModel retailer) async {
+    List surveyData = [];
+    try {
+      // bool surveySynced = await _syncDataWithServerServices.checkIfDataSyncedToServerForSpecificRetailerAndSpecificTask(retailer.id, surveySyncKey);
+      // if (!surveySynced) {
+      SrInfoModel srInfo = await _syncReadService.getSrInfo();
+      String salesDate = await _syncReadService.getSalesDate();
+      if (syncObj.containsKey(surveyDataKey)) {
+        if (syncObj[surveyDataKey].containsKey(retailer.id.toString())) {
+          Map retailerWiseSurvey =
+          syncObj[surveyDataKey][retailer.id.toString()];
+          if (retailerWiseSurvey.isNotEmpty) {
+            retailerWiseSurvey.forEach((surveyId, surveyAnswers) {
+              if (surveyAnswers.isNotEmpty) {
+                surveyAnswers.forEach((questionId, answer) {
+                  if (answer[surveyAnswerKey].toString().isNotEmpty) {
+                    Map surveyAnswerMap = {
+                      "sbu_id": srInfo.sbuId,
+                      "survey_id": surveyId,
+                      "dep_id": srInfo.depId,
+                      "section_id": srInfo.sectionId,
+                      "ff_id": srInfo.ffId,
+                      "outlet_id": retailer.id,
+                      "outlet_code": retailer.outletCode,
+                      "date": salesDate,
+                      "question_id": questionId
+                    };
+                    if (answer[surveyQuestionTypeKey] == "select") {
+                      surveyAnswerMap["answer_id"] = answer[surveyAnswerIdKey];
+                      surveyAnswerMap["answer"] =
+                          answer[surveyAnswerKey].toString();
+                    } else {
+                      surveyAnswerMap["answer"] =
+                          answer[surveyAnswerKey].toString();
+                    }
+                    surveyData.add(surveyAnswerMap);
+                  }
+                });
+              }
+            });
+          }
+          // }
+        }
+      }
+    } catch (e, s) {
+      Helper.dPrint(
+          "inside getSurveyDataForARetailer salesServices catch block $e  $s");
+    }
+
+    return surveyData;
   }
 }

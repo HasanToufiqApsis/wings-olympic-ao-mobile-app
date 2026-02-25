@@ -138,7 +138,7 @@ class SalesService {
       if (sendToServer) {
         ReturnedDataModel? returnedDataModel =
             await getFormattedSalesDataToSendToApi(
-                retailer, saleType, coupon); //--->
+                retailer, saleType, coupon);
         if (saleType == SaleType.delivery &&
             returnedDataModel != null &&
             returnedDataModel.status != ReturnedStatus.success) {
@@ -623,58 +623,6 @@ class SalesService {
     return [];
   }
 
-  //get survey data for sending to api
-  Future<List> getsurveyDataForARetailer(OutletModel retailer) async {
-    List surveyData = [];
-    try {
-      // bool surveySynced = await _syncDataWithServerServices.checkIfDataSyncedToServerForSpecificRetailerAndSpecificTask(retailer.id, surveySyncKey);
-      // if (!surveySynced) {
-      SrInfoModel srInfo = await _syncReadService.getSrInfo();
-      String salesDate = await _syncReadService.getSalesDate();
-      if (syncObj.containsKey(surveyDataKey)) {
-        if (syncObj[surveyDataKey].containsKey(retailer.id.toString())) {
-          Map retailerWiseSurvey =
-              syncObj[surveyDataKey][retailer.id.toString()];
-          if (retailerWiseSurvey.isNotEmpty) {
-            retailerWiseSurvey.forEach((surveyId, surveyAnswers) {
-              if (surveyAnswers.isNotEmpty) {
-                surveyAnswers.forEach((questionId, answer) {
-                  if (answer[surveyAnswerKey].toString().isNotEmpty) {
-                    Map surveyAnswerMap = {
-                      "sbu_id": srInfo.sbuId,
-                      "survey_id": surveyId,
-                      "dep_id": srInfo.depId,
-                      "section_id": srInfo.sectionId,
-                      "ff_id": srInfo.ffId,
-                      "outlet_id": retailer.id,
-                      "outlet_code": retailer.outletCode,
-                      "date": salesDate,
-                      "question_id": questionId
-                    };
-                    if (answer[surveyQuestionTypeKey] == "select") {
-                      surveyAnswerMap["answer_id"] = answer[surveyAnswerIdKey];
-                      surveyAnswerMap["answer"] =
-                          answer[surveyAnswerKey].toString();
-                    } else {
-                      surveyAnswerMap["answer"] =
-                          answer[surveyAnswerKey].toString();
-                    }
-                    surveyData.add(surveyAnswerMap);
-                  }
-                });
-              }
-            });
-          }
-          // }
-        }
-      }
-    } catch (e, s) {
-      Helper.dPrint(
-          "inside getSurveyDataForARetailer salesServices catch block $e  $s");
-    }
-
-    return surveyData;
-  }
 
   //get QC data for sending to api
   Future<List> getQCDataToSendToApi(
@@ -930,7 +878,7 @@ class SalesService {
 
       if (saleType == SaleType.preorder) {
         //get Survey Data
-        List surveyData = await getsurveyDataForARetailer(retailer);
+        List surveyData = await SurveyService().getSurveyDataForARetailer(retailer);
         if (surveyData.isNotEmpty) {
           outletDataMap["survey"] = surveyData;
         }

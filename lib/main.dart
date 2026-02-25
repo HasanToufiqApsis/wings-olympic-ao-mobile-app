@@ -45,7 +45,7 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return Sizer(builder: (context, orientation, deviceType) {
       return MaterialApp(
-        title: "Olympic SR",
+        title: "Olympic AO",
         theme: ThemeData(
           fontFamily: "NotoSansBengali",
           primaryColor: primary,

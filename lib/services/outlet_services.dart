@@ -156,6 +156,16 @@ class OutletServices {
     return null;
   }
 
+  Future<OutletModel?> getOutletBuId(int outletModelId) async {
+    final outlets = await getOutletList(false);
+    for (final outlet in outlets) {
+      if (outlet.id == outletModelId) {
+        return outlet;
+      }
+    }
+    return null;
+  }
+
   Future<bool> checkIfAllOutletSynced() async {
     bool synced = true;
     try {

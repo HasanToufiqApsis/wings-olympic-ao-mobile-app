@@ -143,8 +143,7 @@ class _SurveyUIState extends State<SurveyUI> {
                   data: (data) {
                     if (data.isNotEmpty) {
                       return Container(
-                        height: 10.h,
-                        padding: EdgeInsets.symmetric(horizontal: 3.w),
+                        padding: EdgeInsets.symmetric(horizontal: 16, vertical: 8),
                         decoration: const BoxDecoration(
                           gradient: LinearGradient(
                             begin: Alignment.topLeft,

@@ -948,23 +948,6 @@ class SaleController {
           }
         }
 
-        // if (allKindOfSaleDataModel.saleType == SaleType.delivery) {
-        //   Map checkMap = await _salesService.checkThisDeliveryDataValidateWithServerAvailableStock(
-        //     retailer: allKindOfSaleDataModel.retailer,
-        //     appliedDiscounts: totalDiscounts,
-        //     preorderData: preorderData,
-        //     qcData: qcData,
-        //   );
-        //
-        //   ReturnedDataModel? returnedDataModel = await _salesService.isStockAvailableApi(checkMap);
-        //   if (returnedDataModel != null && returnedDataModel.status != ReturnedStatus.success) {
-        //     return SalesDeliveryResponse(
-        //       status: false,
-        //       message: returnedDataModel.errorMessage ?? '-',
-        //     );
-        //   }
-        // }
-
         ReturnedDataModel? saved = await _salesService.saveAllDataForARetailer(
           retailer: allKindOfSaleDataModel.retailer,
           preorderData: preorderData,
