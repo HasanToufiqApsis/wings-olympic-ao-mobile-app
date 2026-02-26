@@ -1,6 +1,8 @@
 import 'dart:convert';
 import 'dart:developer';
 
+import 'package:flutter/foundation.dart';
+import 'package:wings_olympic_sr/services/audit_searvice.dart';
 import 'package:wings_olympic_sr/services/posm_management_service.dart';
 import 'package:wings_olympic_sr/services/stock_service.dart';
 
@@ -478,155 +480,20 @@ class OfflinePdaService {
 
   Future<List<SaleSubmitTableModel>> getSaleSubmittedData() async {
     List<SaleSubmitTableModel> saleSubmittedData = [];
-    num devicePromotion = 0;
-    num devicePromotionVolume = 0;
-    num deviceSalePromotion = 0;
-    num deviceSalePromotionVolume = 0;
     num deviceSurvey = 0;
-    // num devicePreOrder = 0;
-    num deviceQc = 0;
-    num deviceOutlet = 0;
-    num deviceSpotSaleOutlet = 0;
-    num deviceSales = 0;
-    num deviceSpotSales = 0;
-
-    if (syncObj.containsKey(preorderKey)) {
-      Map preorder = syncObj[preorderKey];
-      if (preorder.isNotEmpty) {
-        deviceOutlet = preorder.length;
-        preorder.forEach((retailerId, moduleValue) {
-          if (moduleValue.isNotEmpty) {
-            moduleValue.forEach((moduleId, skuValue) {
-              if (skuValue.isNotEmpty) {
-                skuValue.forEach((skuId, sku) {
-                  deviceSales += sku[preorderSttKey];
-                });
-              }
-            });
-          }
-        });
-      }
-    }
-
-    if (syncObj.containsKey(spotSaleKey)) {
-      Map preorder = syncObj[spotSaleKey];
-      if (preorder.isNotEmpty) {
-        deviceSpotSaleOutlet = preorder.length;
-        preorder.forEach((retailerId, moduleValue) {
-          if (moduleValue.isNotEmpty) {
-            moduleValue.forEach((moduleId, skuValue) {
-              if (skuValue.isNotEmpty) {
-                skuValue.forEach((skuId, sku) {
-                  deviceSpotSales += sku[preorderSttKey];
-                });
-              }
-            });
-          }
-        });
-      }
-    }
-
-    if (syncObj.containsKey(unsoldOutletKey)) {
-      List<Map> allZeroSell = await SalesService().getZeroSellList();
-
-      if(syncObj.containsKey(preorderKey) && syncObj[preorderKey].isNotEmpty) {
-        Map preorder = syncObj[preorderKey];
-        for(var zero in allZeroSell) {
-          if(!preorder.containsKey(zero["outlet_id"].toString())) {
-            deviceOutlet++;
-          }
-        }
-      } else {
-        deviceOutlet += allZeroSell.length;
-      }
-    }
-
-    if (syncObj.containsKey(qcDataKey)) {
-      Map qc = syncObj[qcDataKey];
-      if (qc.isNotEmpty) {
-        qc.forEach((retailerId, moduleValue) {
-          if (moduleValue.isNotEmpty) {
-            moduleValue.forEach((moduleId, skuValue) {
-              if (skuValue.isNotEmpty) {
-                skuValue.forEach((skuId, qcArray) {
-                  if (qcArray.isNotEmpty) {
-                    for (var i in qcArray) {
-                      deviceQc += i[qcVolumeKey];
-                    }
-                  }
-                });
-              }
-            });
-          }
-        });
-      }
-    }
-
-    // if (syncObj.containsKey(preorderKey)) {
-    //   Map preOrder = syncObj[preorderKey];
-    //   if (preOrder.isNotEmpty) {
-    //     preOrder.forEach((retailerId, moduleValue) {
-    //       if (moduleValue.isNotEmpty) {
-    //         moduleValue.forEach((moduleId, skuValue) {
-    //           if (skuValue.isNotEmpty) {
-    //             skuValue.forEach((skuId, sku) {
-    //               devicePreOrder += sku[preorderSttKey];
-    //             });
-    //           }
-    //         });
-    //       }
-    //     });
-    //   }
-    // }
+    num auditSurvey = 0;
 
     if (syncObj.containsKey(surveyDataKey)) {
-      Map survey = syncObj[surveyDataKey];
-      if (survey.isNotEmpty) {
-        survey.forEach((retailerId, surveyData) {
-          deviceSurvey += surveyData.length;
-        });
-      }
+      deviceSurvey += syncObj[surveyDataKey].length;
     }
 
-    if (syncObj.containsKey(promotionDataKey)) {
-      devicePromotion = getTotalDiscountAmountOfTheDeviceAndType(SaleType.preorder);
-      devicePromotion = num.tryParse(devicePromotion.toStringAsFixed(2))!;
-      print('device data is::: $devicePromotion');
+    if (syncObj.containsKey(surveyPointLocationDataKey)) {
+      auditSurvey += syncObj[surveyPointLocationDataKey].length;
     }
-
-    if (syncObj.containsKey(promotionDataKey)) {
-      devicePromotionVolume = getTotalDiscountVolumeOfTheDeviceAndType(SaleType.preorder);
-      devicePromotionVolume = num.tryParse(devicePromotionVolume.toStringAsFixed(2))!;
-      print('device data is::: $devicePromotionVolume');
-    }
-
-    if (syncObj.containsKey(spotSalePromotionDataKey)) {
-      deviceSalePromotion = getTotalDiscountAmountOfTheDeviceAndType(SaleType.spotSale);
-      deviceSalePromotion = num.tryParse(deviceSalePromotion.toStringAsFixed(2))!;
-      print('device data is::: $deviceSalePromotion');
-    }
-
-    if (syncObj.containsKey(spotSalePromotionDataKey)) {
-      deviceSalePromotionVolume = getTotalDiscountVolumeOfTheDeviceAndType(SaleType.spotSale);
-      deviceSalePromotionVolume = num.tryParse(deviceSalePromotionVolume.toStringAsFixed(2))!;
-      print('device data is::: $deviceSalePromotionVolume');
-    }
-
-    StockModel stockModel = await StockService().getCurrentTotalStocks();
 
     saleSubmittedData = [
-      SaleSubmitTableModel('outlet', 'Preorder outlet count', deviceOutlet),
-      SaleSubmitTableModel('spotSaleOutlet', 'Sale outlet count', deviceSpotSaleOutlet),
-      SaleSubmitTableModel('preOrder', 'Preorder', deviceSales),
-      SaleSubmitTableModel('spotSale', 'Sale', deviceSpotSales),
-      // SaleSubmitTableModel('preOrder', 'Preorder', devicePreOrder),
-      SaleSubmitTableModel('stock', 'Stock', stockModel.liftingStock),
-      SaleSubmitTableModel('qc', 'Damage', deviceQc),
-      // SaleSubmitTableModel('survey', 'Survey', deviceSurvey),
-      SaleSubmitTableModel('promotion', 'Preorder promotion', devicePromotion),
-      // SaleSubmitTableModel('preorderPromotionVolume', 'Preorder Promotion (Volume)', devicePromotionVolume),
-      SaleSubmitTableModel('spotSalePromotion', 'Sale promotion', deviceSalePromotion),
-      // SaleSubmitTableModel('salePromotionVolume', 'Sale Promotion (Volume)', deviceSalePromotionVolume),
+      SaleSubmitTableModel('survey', 'Outlet survey', deviceSurvey),
+      SaleSubmitTableModel('audit', 'Audit', auditSurvey),
     ];
 
     return saleSubmittedData;
@@ -764,6 +631,19 @@ class OfflinePdaService {
       List unsoldOutletData = [];
       List stockCountData = [];
       List stockCheckData = [];
+
+      try {
+        final points = await AuditService().getAllPointList();
+        for (final point in points) {
+          final survey = await SurveyService().getSurveyDataForAPoint(point);
+          if(survey.isNotEmpty) {
+            surveyData.addAll(survey);
+          }
+        }
+      } catch (e, t) {
+        debugPrint(e.toString());
+        debugPrint(t.toString());
+      }
 
       if (retailers.isNotEmpty) {
         for (OutletModel retailer in retailers) {

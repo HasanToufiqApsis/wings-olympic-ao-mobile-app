@@ -870,8 +870,7 @@ class SalesService {
     Map outletDataMap = {};
     try {
       //get Promotion data
-      List promotionData =
-          await getPromotionDataToSendToApi(retailer, saleType);
+      List promotionData = await getPromotionDataToSendToApi(retailer, saleType);
       if (promotionData.isNotEmpty) {
         outletDataMap["promotions"] = promotionData;
       }

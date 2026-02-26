@@ -4,9 +4,12 @@ import 'dart:io';
 import 'package:flutter/material.dart';
 import 'package:wings_olympic_sr/screens/resignation/ui/resignation_ui.dart';
 import 'package:wings_olympic_sr/screens/stock_check/ui/stock_check_ui.dart';
+import '../models/point_model.dart';
+import '../screens/audit/ui/audit_ui.dart';
 import '../screens/notification/screens/notification_screen.dart';
 import '../screens/olympic_tada/ui/olympic_tada_ui.dart';
 import '../screens/sale/ui/updated_examine_ui.dart';
+import '../screens/survey/survey_point_location_ui.dart';
 import '../screens/transfer_bill/ui/transfer_bill_form_ui.dart';
 import '../screens/transfer_bill/ui/transfer_bill_list_ui.dart';
 import 'package:wings_olympic_sr/screens/retailer_selection/models/selection_nav.dart';
@@ -291,6 +294,14 @@ class RouteGenerator {
         SurveyModel surveyModel = m['surveyModel'];
         OutletModel outletModel = m['retailer'];
         return MaterialPageRoute(builder: (_) => SurveyUI(retailerId: retailerId, surveyModel: surveyModel, retailer: outletModel));
+
+      case SurveyPointLocationUI.routeName:
+        Map m = settings.arguments as Map;
+
+        int retailerId = m['pointId'];
+        SurveyModel surveyModel = m['surveyModel'];
+        PointDetailsModel outletModel = m['point'];
+        return MaterialPageRoute(builder: (_) => SurveyPointLocationUI(retailerId: retailerId, surveyModel: surveyModel, retailer: outletModel));
       case SurveyDigitalLearningUI.routeName:
         Map m = settings.arguments as Map;
 
@@ -345,6 +356,9 @@ class RouteGenerator {
 
       case DigitalLearningUI.routeName:
         return MaterialPageRoute(builder: (_) => const DigitalLearningUI());
+
+      case AuditUI.routeName:
+        return MaterialPageRoute(builder: (_) => const AuditUI());
 
       case LeaveCalenderUi.routeName:
         return MaterialPageRoute(builder: (_) => const LeaveCalenderUi());

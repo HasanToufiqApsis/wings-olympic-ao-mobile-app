@@ -184,6 +184,7 @@ const avDataKey = "av-data";
 
 //surveyDataKey stores key "survey-data". inside survey-data, there is retailer wise survey-id wise survey answer stored
 const surveyDataKey = "survey-data";
+const surveyPointLocationDataKey = "survey-point-location-data";
 const surveyQuestionTypeKey = "questionType";
 const surveyAnswerKey = "answer";
 const surveyAnswerIdKey = "answer_id";

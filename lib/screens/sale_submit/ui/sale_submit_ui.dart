@@ -32,14 +32,10 @@ class _SaleSubmitUIState extends ConsumerState<SaleSubmitUI> {
     super.initState();
   }
 
-  final demoList = ["Preorder outlet count",
-    "Sale outlet count",
-    "Preorder",
-    "Sale",
-    "Stock",
-    "Damage",
-    "Preorder promotion",
-    "Sale promotion"];
+  final demoList = [
+    "Outlet survey",
+    "Audit",
+  ];
 
   @override
   Widget build(BuildContext context) {

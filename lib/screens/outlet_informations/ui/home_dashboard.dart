@@ -32,6 +32,7 @@ import '../../approval/ui/approval_dashboard.dart';
 import '../../asset_management/ui/asset_ui.dart';
 import '../../asset_ro/ui/asset_ro_ui.dart';
 import '../../attendance/ui/attendance_ui.dart';
+import '../../audit/ui/audit_ui.dart';
 import '../../bill/ui/bill_ui.dart';
 import '../../delivery/ui/before_delivary_sync_ui.dart';
 import '../../delivery/ui/delivery_selection_ui.dart';
@@ -219,21 +220,19 @@ class _HomeDashboardState extends ConsumerState<HomeDashboard> {
                         },
                       ),
                       getDashboardButton(
+                        assetName: "delivery",
+                        name: DashboardBtnNames.delivery,
+                        onPressed: () {
+                          Navigator.pushNamed(context, AuditUI.routeName);
+                        },
+                      ),
+                      getDashboardButton(
                         assetName: "sync",
                         name: DashboardBtnNames.salesSubmit,
                         onPressed: () {
                           Navigator.pushNamed(context, SaleSubmitUI.routeName);
                         },
                       ),
-                      // getDashboardButton(
-                      //   assetName: "delivery",
-                      //   name: DashboardBtnNames.delivery,
-                      //   onPressed: () {
-                      //     ref.refresh(couponDiscountProvider);
-                      //     ref.refresh(selectedRetailerProvider);
-                      //     Navigator.pushNamed(context, DeliverySelectionUI.routeName);
-                      //   },
-                      // ),
                       // getDashboardButton(
                       //   assetName: "memo",
                       //   name: DashboardBtnNames.memo,
@@ -554,7 +553,7 @@ class _HomeDashboardState extends ConsumerState<HomeDashboard> {
 // import '../../bill/ui/bill_ui.dart';
 // import '../../delivery/ui/before_delivary_sync_ui.dart';
 // import '../../delivery/ui/delivery_selection_ui.dart';
-// import '../../digital_learning/ui/digital_learning_ui.dart';
+// import '../../digital_learning/ui/audit_ui.dart';
 // import '../../friday_sell/ui/friday_sales_ui.dart';
 // import '../../leave_management/ui/leave_management_ui.dart';
 // import '../../maintenance/ui/maintenance_ui.dart';

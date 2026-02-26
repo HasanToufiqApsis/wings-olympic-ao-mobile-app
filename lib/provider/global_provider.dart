@@ -35,6 +35,7 @@ import '../models/maintanence_model.dart';
 import '../models/module.dart';
 import '../models/outlet_model.dart';
 import '../models/pjp_plan_details.dart';
+import '../models/point_model.dart';
 import '../models/posm/posm_type_model.dart';
 import '../models/previous_requisition.dart';
 import '../models/products_details_model.dart';
@@ -79,6 +80,7 @@ import '../screens/settings/model/edit_reason_model.dart';
 import '../services/asset_management_service.dart';
 
 import '../services/attendance_location_service.dart';
+import '../services/audit_searvice.dart';
 import '../services/before_sale_services/survey_service.dart';
 import '../services/change_route_service.dart';
 import '../services/connectivity_service.dart';
@@ -429,6 +431,13 @@ final surveyListProvider = FutureProvider.family
       return await SurveyService().getSurveyList(
         surveyIdList: retailer.availableSurvey,
         retailerId: retailer.id ?? 0,
+      );
+    });
+
+final surveyPointLocationListProvider = FutureProvider.family
+    .autoDispose<List<SurveyModel>, PointDetailsModel>((ref, retailer) async {
+      return await SurveyService().getPointWiseSurveyList(
+        surveyIdList: retailer.availableSurveys ?? [],
       );
     });
 // ========================= memo ==========================================
@@ -1124,6 +1133,10 @@ final getAllBillList = FutureProvider.autoDispose<List<BillDataModel>>(
 final getAllDigitalLearnings =
     FutureProvider.autoDispose<List<DigitalLearningItem>>(
       (ref) async => await DigitalLearningService().getDigitalLearningsList(),
+    );
+
+final getAllPointsProvider = FutureProvider.autoDispose<List<PointDetailsModel>>(
+      (ref) async => await AuditService().getAllPointList(),
     );
 
 final getDigitalSurveyInfo = FutureProvider.family
