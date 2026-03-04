@@ -9,7 +9,9 @@ import '../screens/audit/ui/audit_ui.dart';
 import '../screens/notification/screens/notification_screen.dart';
 import '../screens/olympic_tada/ui/olympic_tada_ui.dart';
 import '../screens/sale/ui/updated_examine_ui.dart';
+import '../screens/stock_validation/models/stock_validation_model.dart';
 import '../screens/stock_validation/ui/stock_validation_ui.dart';
+import '../screens/stock_validation/ui/stock_validation_detail_ui.dart';
 import '../screens/survey/survey_point_location_ui.dart';
 import '../screens/transfer_bill/ui/transfer_bill_form_ui.dart';
 import '../screens/transfer_bill/ui/transfer_bill_list_ui.dart';
@@ -489,6 +491,20 @@ class RouteGenerator {
 
       case StockValidationUI.routeName:
         return MaterialPageRoute(builder: (_) => const StockValidationUI());
+
+      case StockValidationDetailUI.routeName:
+        final args = settings.arguments as Map;
+
+        final outlet = args['outlet'] as OutletModel?;
+        final outletId = args['outlet_id'] as int?;
+        final date = args['date'] as String? ?? '';
+        final entries = List<QcEntryModel>.from(args['entries'] as List? ?? []);
+        return MaterialPageRoute(builder: (_) => StockValidationDetailUI(
+          outlet: outlet,
+          outletId: outletId,
+          date: date,
+          entries: entries,
+        ));
 
       default:
         return MaterialPageRoute(builder: (_) => const SplashScreenUI());
