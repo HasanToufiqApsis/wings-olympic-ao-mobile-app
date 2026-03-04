@@ -50,6 +50,7 @@ import '../../request_for_change_journey_plan/ui/change_route_ui.dart';
 import '../../sale_submit/ui/sale_submit_ui.dart';
 import '../../sales_summary/ui/sales_summary_ui.dart';
 import '../../settings/ui/settings_ui.dart';
+import '../../stock_validation/ui/stock_validation_ui.dart';
 import '../../target_achievement/ui/target_and_achievement_dashboard_ui.dart';
 import '../../tsm_dashboard/providers/tsm_dahboard_providers.dart';
 import '../../tsm_dashboard/tsm_team_performance/ui/tsm_web_pannel_web_view.dart';
@@ -220,10 +221,17 @@ class _HomeDashboardState extends ConsumerState<HomeDashboard> {
                         },
                       ),
                       getDashboardButton(
-                        assetName: "delivery",
-                        name: DashboardBtnNames.delivery,
+                        assetName: "audit",
+                        name: DashboardBtnNames.audit,
                         onPressed: () {
                           Navigator.pushNamed(context, AuditUI.routeName);
+                        },
+                      ),
+                      getDashboardButton(
+                        assetName: "stock_verification",
+                        name: DashboardBtnNames.stockVerification,
+                        onPressed: () {
+                          Navigator.pushNamed(context, StockValidationUI.routeName);
                         },
                       ),
                       getDashboardButton(
@@ -412,9 +420,9 @@ class _HomeDashboardState extends ConsumerState<HomeDashboard> {
     return asyncExist.when(
       data: (exist) {
         // log("-------->>> $assetName");
-        if (!exist) {
-          return const SizedBox();
-        }
+        // if (!exist) {
+        //   return const SizedBox();
+        // }
         return SizedBox(
           width: (100.w - (3.w * 2)) / 4,
           child: Column(

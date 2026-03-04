@@ -22,6 +22,8 @@ class DashboardBtnNames {
   static const resignation ='Resignation';
   static const transferBill = 'Transfer Bill';
   static const taDa ='Ta/Da';
+  static const stockVerification ='Stock Verification';
+  static const audit ='Audit';
 
   static String getImageHeroTag(String value) {
     return '${value}img';

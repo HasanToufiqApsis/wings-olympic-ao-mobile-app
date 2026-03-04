@@ -9,6 +9,7 @@ import '../screens/audit/ui/audit_ui.dart';
 import '../screens/notification/screens/notification_screen.dart';
 import '../screens/olympic_tada/ui/olympic_tada_ui.dart';
 import '../screens/sale/ui/updated_examine_ui.dart';
+import '../screens/stock_validation/ui/stock_validation_ui.dart';
 import '../screens/survey/survey_point_location_ui.dart';
 import '../screens/transfer_bill/ui/transfer_bill_form_ui.dart';
 import '../screens/transfer_bill/ui/transfer_bill_list_ui.dart';
@@ -485,6 +486,9 @@ class RouteGenerator {
 
       case StockCheckUI.routeName:
         return MaterialPageRoute(builder: (_) => const StockCheckUI());
+
+      case StockValidationUI.routeName:
+        return MaterialPageRoute(builder: (_) => const StockValidationUI());
 
       default:
         return MaterialPageRoute(builder: (_) => const SplashScreenUI());
