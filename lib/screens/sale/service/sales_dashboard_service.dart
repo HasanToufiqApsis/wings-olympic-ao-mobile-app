@@ -141,6 +141,17 @@ class SalesDashboardService {
           }
         }
       }
+
+
+      finalList.add(SaleDashboardCategoryModel(
+        type: SaleDashboardType.checkout,
+        slug: 'check_out',
+        image: "logout.png",
+        title: "Check out",
+        weight: getButtonSequence(
+          type: SaleDashboardType.checkout,
+        ),
+      ));
     } catch (e, t) {
       log(e.toString());
       log(t.toString());
