@@ -48,9 +48,10 @@ class _SurveyDigitalLearningUIState extends State<SurveyDigitalLearningUI> {
 
   @override
   Widget build(BuildContext context) {
-    return Consumer(builder: (context, ref, _) {
-      AsyncValue<SurveyModel?> surveyC = ref.watch(getDigitalSurveyInfo(widget.surveyModel));
-      return surveyC.when(
+    return Consumer(
+      builder: (context, ref, _) {
+        AsyncValue<SurveyModel?> surveyC = ref.watch(getDigitalSurveyInfo(widget.surveyModel));
+        return surveyC.when(
           data: (survey) {
             if (survey != null) {
               return Scaffold(
@@ -60,10 +61,9 @@ class _SurveyDigitalLearningUIState extends State<SurveyDigitalLearningUI> {
                   showLeading: true,
                   onLeadingIconPressed: () {
                     if (survey.mandatory == 1) {
-                      Alerts(context: context).customDialog(
-                        type: AlertType.warning,
-                        message: 'You must need to complete this survey?',
-                      );
+                      Alerts(
+                        context: context,
+                      ).customDialog(type: AlertType.warning, message: 'You must need to complete this survey?');
                     } else {
                       navigatorKey.currentState?.pop();
                     }
@@ -73,22 +73,18 @@ class _SurveyDigitalLearningUIState extends State<SurveyDigitalLearningUI> {
                       TextButton(
                         onPressed: () {
                           Alerts(context: context).customDialog(
-                              type: AlertType.info,
-                              message: 'Are you sure you want to skip survey?',
-                              twoButtons: true,
-                              onTap1: () async {
-                                // await SurveyService().submitSurvey({}, widget.surveyModel.id, widget.retailerId);
-                                Navigator.pop(context);
-                                Navigator.pop(context);
-                              });
+                            type: AlertType.info,
+                            message: 'Are you sure you want to skip survey?',
+                            twoButtons: true,
+                            onTap1: () async {
+                              // await SurveyService().submitSurvey({}, widget.surveyModel.id, widget.retailerId);
+                              Navigator.pop(context);
+                              Navigator.pop(context);
+                            },
+                          );
                         },
-                        child: LangText(
-                          'Skip',
-                          style: const TextStyle(
-                            color: Colors.white,
-                          ),
-                        ),
-                      )
+                        child: LangText('Skip', style: const TextStyle(color: Colors.white)),
+                      ),
                   ],
                 ),
                 body: WillPopScope(
@@ -100,55 +96,138 @@ class _SurveyDigitalLearningUIState extends State<SurveyDigitalLearningUI> {
                       Expanded(
                         child: SizedBox(
                           height: 75.h,
-                          child: Consumer(builder: (context, ref, _) {
-                            AsyncValue<List<QuestionModel>> questionList = ref.watch(surveyQuestionProviderDigitalLearning(widget.surveyModel));
-                            return questionList.when(
+                          child: Consumer(
+                            builder: (context, ref, _) {
+                              AsyncValue<List<QuestionModel>> questionList = ref.watch(
+                                surveyQuestionProviderDigitalLearning(widget.surveyModel),
+                              );
+                              return questionList.when(
                                 data: (data) {
                                   if (data.isNotEmpty) {
                                     return SingleChildScrollView(
-                                        child: Column(
-                                      children: [
-                                        // Padding(
-                                        //   padding: EdgeInsets.symmetric(vertical: 2.h, horizontal: 3.w),
-                                        //   child: Align(alignment: Alignment.center, child: globalWidgets.setHeadings(widget.surveyModel.name, color: darkGreen)),
-                                        // ),
-                                        Padding(
-                                          padding: EdgeInsets.symmetric(vertical: 1.h, horizontal: 3.w),
-                                          child: SizedBox(width: 100.w, height: 8.h, child: globalWidgets.showInfo(message: 'You must fill (*) marked questions')),
-                                        ),
-                                        Container(
-                                          padding: EdgeInsets.symmetric(horizontal: 3.w),
-                                          decoration: BoxDecoration(
-                                            borderRadius: BorderRadius.circular(8.sp),
+                                      child: Column(
+                                        children: [
+                                          // Padding(
+                                          //   padding: EdgeInsets.symmetric(vertical: 2.h, horizontal: 3.w),
+                                          //   child: Align(alignment: Alignment.center, child: globalWidgets.setHeadings(widget.surveyModel.name, color: darkGreen)),
+                                          // ),
+                                          Padding(
+                                            padding: EdgeInsets.symmetric(vertical: 1.h, horizontal: 3.w),
+                                            child: SizedBox(
+                                              width: 100.w,
+                                              height: 8.h,
+                                              child: globalWidgets.showInfo(message: widget.surveyModel.name ?? ''),
+                                            ),
                                           ),
-                                          child: Form(
+                                          Container(
+                                            padding: EdgeInsets.symmetric(horizontal: 3.w),
+                                            decoration: BoxDecoration(borderRadius: BorderRadius.circular(8.sp)),
+                                            child: Form(
                                               key: _formKey,
-                                              child: QuestionWidgetDigitalLearning(
-                                                questionList: data,
-                                              )),
-                                        ),
-                                      ],
-                                    ));
+                                              child: QuestionWidgetDigitalLearning(questionList: data),
+                                            ),
+                                          ),
+                                        ],
+                                      ),
+                                    );
                                   } else {
                                     return Center(
-                                        child: LangText(
-                                      "This question doesn\'t have any answer",
-                                      style: TextStyle(fontSize: normalFontSize),
-                                    ));
+                                      child: LangText(
+                                        "This question doesn\'t have any answer",
+                                        style: TextStyle(fontSize: normalFontSize),
+                                      ),
+                                    );
                                   }
                                 },
                                 error: (e, s) => LangText('$e'),
-                                loading: () => const Center(child: CircularProgressIndicator()));
-                          }),
+                                loading: () => const Center(child: CircularProgressIndicator()),
+                              );
+                            },
+                          ),
                         ),
                       ),
 
                       ///=========== submit button ==========================
-                      Consumer(builder: (context, ref, _) {
-                        AsyncValue<List<QuestionModel>> questionList = ref.watch(surveyQuestionProviderDigitalLearning(widget.surveyModel));
-                        return questionList.when(
+                      Consumer(
+                        builder: (context, ref, _) {
+                          AsyncValue<List<QuestionModel>> questionList = ref.watch(
+                            surveyQuestionProviderDigitalLearning(widget.surveyModel),
+                          );
+                          return questionList.when(
                             data: (data) {
                               if (data.isNotEmpty) {
+                                return Container(
+                                  height: 9.h,
+                                  padding: EdgeInsets.symmetric(horizontal: 3.w),
+                                  decoration: const BoxDecoration(
+                                    gradient: LinearGradient(
+                                      begin: Alignment.topLeft,
+                                      end: Alignment.bottomRight,
+                                      colors: [primary, primaryBlue],
+                                    ),
+                                  ),
+                                  alignment: Alignment.centerRight,
+                                  child: SizedBox(
+                                    width: 48.w,
+                                    child: Column(
+                                      mainAxisAlignment: MainAxisAlignment.center,
+                                      children: [
+                                        Consumer(
+                                          builder: (context, ref, _) {
+                                            String lang = ref.watch(languageProvider);
+                                            String hint = "Required Size";
+                                            if (lang != "en") {
+                                              hint = "নির্ধারিত সাইজ";
+                                            }
+                                            return SubmitButtonGroup(
+                                              button1Label: "Submit",
+                                              onButton1Pressed: () async {
+                                                if (_formKey.currentState!.validate()) {
+                                                  List<Map>? answer = await SurveyDigitalLearningController().getAnswerMap(
+                                                    data,
+                                                    survey.id ?? 0,
+                                                  );
+                                                  log(">>---->>> $answer");
+                                                  if (answer != null && answer.isNotEmpty) {
+                                                    print(jsonEncode(answer));
+                                                    Alerts(context: context).customDialog(
+                                                      type: AlertType.info,
+                                                      message: 'Are you sure you want to submit survey?',
+                                                      twoButtons: true,
+                                                      onTap1: () async {
+                                                        print("answer is::: ${jsonEncode(answer)}");
+                                                        ShowMarkModel mark = await SurveyService().submitDigitalLearningSurvey(
+                                                          answer,
+                                                          widget.surveyModel.surveyId,
+                                                        );
+                                                        if (mark.showMark == true) {
+                                                          Navigator.pop(context);
+                                                          Alerts(context: context).customDialog(
+                                                            type: mark.mark > 0 ? AlertType.success : AlertType.error,
+                                                            message: lang != "en"
+                                                                ? 'আপনি পেয়েছেন সর্বমোট ${mark.mark} নাম্বার'
+                                                                : 'You got total ${mark.mark} number',
+                                                            onTap1: () async {
+                                                              Navigator.pop(context);
+                                                              Navigator.pop(context);
+                                                            },
+                                                          );
+                                                        } else {
+                                                          Navigator.pop(context);
+                                                          Navigator.pop(context);
+                                                        }
+                                                      },
+                                                    );
+                                                  }
+                                                }
+                                              },
+                                            );
+                                          },
+                                        ),
+                                      ],
+                                    ),
+                                  ),
+                                );
                                 return Container(
                                   height: 10.h,
                                   padding: EdgeInsets.symmetric(horizontal: 3.w),
@@ -162,48 +241,61 @@ class _SurveyDigitalLearningUIState extends State<SurveyDigitalLearningUI> {
                                   child: Row(
                                     mainAxisAlignment: MainAxisAlignment.end,
                                     children: [
-                                      Consumer(builder: (context, ref, _) {
-                                        String lang = ref.watch(languageProvider);
-                                        String hint = "Required Size";
-                                        if (lang != "en") {
-                                          hint = "নির্ধারিত সাইজ";
-                                        }
-                                        return SizedBox(
+                                      Consumer(
+                                        builder: (context, ref, _) {
+                                          String lang = ref.watch(languageProvider);
+                                          String hint = "Required Size";
+                                          if (lang != "en") {
+                                            hint = "নির্ধারিত সাইজ";
+                                          }
+                                          return SizedBox(
                                             width: 48.w,
                                             child: SubmitButtonGroup(
                                               button1Label: "Submit",
                                               onButton1Pressed: () async {
                                                 if (_formKey.currentState!.validate()) {
-                                                  List<Map>? answer = await SurveyDigitalLearningController().getAnswerMap(data, survey.id ?? 0);
+                                                  List<Map>? answer = await SurveyDigitalLearningController().getAnswerMap(
+                                                    data,
+                                                    survey.id ?? 0,
+                                                  );
                                                   log(">>---->>> $answer");
                                                   if (answer != null && answer.isNotEmpty) {
                                                     print(jsonEncode(answer));
                                                     Alerts(context: context).customDialog(
-                                                        type: AlertType.info,
-                                                        message: 'Are you sure you want to submit survey?',
-                                                        twoButtons: true,
-                                                        onTap1: () async {
-                                                          print("answer is::: ${jsonEncode(answer)}");
-                                                          ShowMarkModel mark = await SurveyService().submitDigitalLearningSurvey(answer, widget.surveyModel.surveyId);
-                                                          if (mark.showMark == true) {
-                                                            Navigator.pop(context);
-                                                            Alerts(context: context).customDialog(
-                                                                type: mark.mark > 0 ? AlertType.success : AlertType.error,
-                                                                message: lang != "en" ? 'আপনি পেয়েছেন সর্বমোট ${mark.mark} নাম্বার' : 'You got total ${mark.mark} number',
-                                                                onTap1: () async {
-                                                                  Navigator.pop(context);
-                                                                  Navigator.pop(context);
-                                                                });
-                                                          } else {
-                                                            Navigator.pop(context);
-                                                            Navigator.pop(context);
-                                                          }
-                                                        });
+                                                      type: AlertType.info,
+                                                      message: 'Are you sure you want to submit survey?',
+                                                      twoButtons: true,
+                                                      onTap1: () async {
+                                                        print("answer is::: ${jsonEncode(answer)}");
+                                                        ShowMarkModel mark = await SurveyService().submitDigitalLearningSurvey(
+                                                          answer,
+                                                          widget.surveyModel.surveyId,
+                                                        );
+                                                        if (mark.showMark == true) {
+                                                          Navigator.pop(context);
+                                                          Alerts(context: context).customDialog(
+                                                            type: mark.mark > 0 ? AlertType.success : AlertType.error,
+                                                            message: lang != "en"
+                                                                ? 'আপনি পেয়েছেন সর্বমোট ${mark.mark} নাম্বার'
+                                                                : 'You got total ${mark.mark} number',
+                                                            onTap1: () async {
+                                                              Navigator.pop(context);
+                                                              Navigator.pop(context);
+                                                            },
+                                                          );
+                                                        } else {
+                                                          Navigator.pop(context);
+                                                          Navigator.pop(context);
+                                                        }
+                                                      },
+                                                    );
                                                   }
                                                 }
                                               },
-                                            ));
-                                      }),
+                                            ),
+                                          );
+                                        },
+                                      ),
                                     ],
                                   ),
                                 );
@@ -212,8 +304,10 @@ class _SurveyDigitalLearningUIState extends State<SurveyDigitalLearningUI> {
                               }
                             },
                             error: (e, s) => LangText(e.toString()),
-                            loading: () => const SizedBox());
-                      }),
+                            loading: () => const SizedBox(),
+                          );
+                        },
+                      ),
                     ],
                   ),
                 ),
@@ -221,12 +315,11 @@ class _SurveyDigitalLearningUIState extends State<SurveyDigitalLearningUI> {
             } else {
               return Scaffold(
                 appBar: CustomAppBar(
-                  title: "Digital Learning ->",
+                  title: "Digital Learning",
                   // titleImage: "pre_order_button.png",
                   showLeading: true,
                   onLeadingIconPressed: () {
-                      navigatorKey.currentState?.pop();
-
+                    navigatorKey.currentState?.pop();
                   },
                 ),
                 body: Column(
@@ -242,25 +335,22 @@ class _SurveyDigitalLearningUIState extends State<SurveyDigitalLearningUI> {
                     //     ),
                     //   ),
                     // ),
-
-                    Icon(Icons.warning_amber_rounded, size: 56, color: yellow,),
+                    Icon(Icons.warning_amber_rounded, size: 56, color: yellow),
                     8.verticalSpacing,
                     Padding(
-                      padding: const EdgeInsets.only(left: 16,top: 10),
-                      child: LangText(
-                        'No question available for this digital learning...',
-                        textAlign: TextAlign.center,
-                      ),
+                      padding: const EdgeInsets.only(left: 16, top: 10),
+                      child: LangText('No question available for this digital learning...', textAlign: TextAlign.center),
                     ),
                     SizedBox(height: 5.h),
-
                   ],
                 ),
               );
             }
           },
           error: (e, s) => LangText('$e'),
-          loading: () => const Center(child: CircularProgressIndicator()));
-    });
+          loading: () => const Center(child: CircularProgressIndicator()),
+        );
+      },
+    );
   }
 }

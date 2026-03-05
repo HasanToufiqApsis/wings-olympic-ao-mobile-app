@@ -17,7 +17,7 @@ import '../../services/before_sale_services/survey_service.dart';
 import 'controller/survey_controller.dart';
 import 'question_widget.dart';
 
-class SurveyUI extends StatefulWidget {
+class SurveyUI extends ConsumerStatefulWidget {
   static const routeName = "/survey";
   final SurveyModel surveyModel;
   final int retailerId;
@@ -34,7 +34,7 @@ class SurveyUI extends StatefulWidget {
   _SurveyUIState createState() => _SurveyUIState();
 }
 
-class _SurveyUIState extends State<SurveyUI> {
+class _SurveyUIState extends ConsumerState<SurveyUI> {
   GlobalWidgets globalWidgets = GlobalWidgets();
   final _formKey = GlobalKey<FormState>();
 
@@ -57,6 +57,10 @@ class _SurveyUIState extends State<SurveyUI> {
               message: 'You must need to complete this survey?',
             );
           } else {
+            final retailer = ref.watch(selectedRetailerProvider);
+            if (retailer != null) {
+              ref.invalidate(saleDashboardMenuProvider(retailer));
+            }
             navigatorKey.currentState?.pop();
           }
         },
@@ -99,35 +103,35 @@ class _SurveyUIState extends State<SurveyUI> {
                         if (data.isNotEmpty) {
                           return SingleChildScrollView(
                               child: Column(
-                            children: [
-                              // Padding(
-                              //   padding: EdgeInsets.symmetric(vertical: 2.h, horizontal: 3.w),
-                              //   child: Align(alignment: Alignment.center, child: globalWidgets.setHeadings(widget.surveyModel.name, color: darkGreen)),
-                              // ),
-                              Padding(
-                                padding: EdgeInsets.symmetric(vertical: 1.h, horizontal: 3.w),
-                                child: SizedBox(width: 100.w, height: 8.h, child: globalWidgets.showInfo(message: 'You must fill (*) marked questions')),
-                              ),
-                              Container(
-                                padding: EdgeInsets.symmetric(horizontal: 3.w),
-                                decoration: BoxDecoration(
-                                  borderRadius: BorderRadius.circular(8.sp),
-                                ),
-                                child: Form(
-                                    key: _formKey,
-                                    child: QuestionWidget(
-                                      questionList: data,
-                                      retailer: widget.retailer,
-                                    )),
-                              ),
-                            ],
-                          ));
+                                children: [
+                                  // Padding(
+                                  //   padding: EdgeInsets.symmetric(vertical: 2.h, horizontal: 3.w),
+                                  //   child: Align(alignment: Alignment.center, child: globalWidgets.setHeadings(widget.surveyModel.name, color: darkGreen)),
+                                  // ),
+                                  Padding(
+                                    padding: EdgeInsets.symmetric(vertical: 1.h, horizontal: 3.w),
+                                    child: SizedBox(width: 100.w, height: 8.h, child: globalWidgets.showInfo(message: widget.surveyModel.name)),
+                                  ),
+                                  Container(
+                                    padding: EdgeInsets.symmetric(horizontal: 3.w),
+                                    decoration: BoxDecoration(
+                                      borderRadius: BorderRadius.circular(8.sp),
+                                    ),
+                                    child: Form(
+                                        key: _formKey,
+                                        child: QuestionWidget(
+                                          questionList: data,
+                                          retailer: widget.retailer,
+                                        )),
+                                  ),
+                                ],
+                              ));
                         } else {
                           return Center(
                               child: LangText(
-                            "This question doesn\'t have any answer",
-                            style: TextStyle(fontSize: normalFontSize),
-                          ));
+                                "This question doesn\'t have any answer",
+                                style: TextStyle(fontSize: normalFontSize),
+                              ));
                         }
                       },
                       error: (e, s) => LangText('$e'),
@@ -143,7 +147,8 @@ class _SurveyUIState extends State<SurveyUI> {
                   data: (data) {
                     if (data.isNotEmpty) {
                       return Container(
-                        padding: EdgeInsets.symmetric(horizontal: 16, vertical: 8),
+                        height: 9.h,
+                        padding: EdgeInsets.symmetric(horizontal: 3.w),
                         decoration: const BoxDecoration(
                           gradient: LinearGradient(
                             begin: Alignment.topLeft,
@@ -151,12 +156,13 @@ class _SurveyUIState extends State<SurveyUI> {
                             colors: [primary, primaryBlue],
                           ),
                         ),
-                        child: Row(
-                          mainAxisAlignment: MainAxisAlignment.end,
-                          children: [
-                            SizedBox(
-                                width: 48.w,
-                                child: SubmitButtonGroup(
+                        alignment: Alignment.centerRight,
+                        child: SizedBox(
+                            width: 48.w,
+                            child: Column(
+                              mainAxisAlignment: MainAxisAlignment.center,
+                              children: [
+                                SubmitButtonGroup(
                                   button1Label: "Submit",
                                   onButton1Pressed: () {
                                     if (_formKey.currentState!.validate()) {
@@ -168,15 +174,19 @@ class _SurveyUIState extends State<SurveyUI> {
                                             twoButtons: true,
                                             onTap1: () async {
                                               await SurveyService().submitSurvey(answer, widget.surveyModel.id, widget.retailerId);
+                                              final retailer = ref.watch(selectedRetailerProvider);
+                                              if (retailer != null) {
+                                                ref.invalidate(saleDashboardMenuProvider(retailer));
+                                              }
                                               Navigator.pop(context);
                                               Navigator.pop(context);
                                             });
                                       }
                                     }
                                   },
-                                )),
-                          ],
-                        ),
+                                ),
+                              ],
+                            )),
                       );
                     } else {
                       return const SizedBox();

@@ -108,7 +108,7 @@ class _SurveyPointLocationUIState extends State<SurveyPointLocationUI> {
                               // ),
                               Padding(
                                 padding: EdgeInsets.symmetric(vertical: 1.h, horizontal: 3.w),
-                                child: SizedBox(width: 100.w, height: 8.h, child: globalWidgets.showInfo(message: 'You must fill (*) marked questions')),
+                                child: SizedBox(width: 100.w, height: 8.h, child: globalWidgets.showInfo(message: widget.surveyModel.name??'')),
                               ),
                               Container(
                                 padding: EdgeInsets.symmetric(horizontal: 3.w),
