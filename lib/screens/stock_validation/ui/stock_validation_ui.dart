@@ -28,40 +28,116 @@ class _StockValidationUIState extends ConsumerState<StockValidationUI> {
     final state = ref.watch(stockValidationProvider);
 
     return Scaffold(
-      backgroundColor: const Color(0xFFF4F6FA),
-      appBar: CustomAppBar(title: 'Stock Validation'),
-      body: state.when(
-        loading: () => const Center(child: CircularProgressIndicator()),
-        error: (err, _) => Center(
-          child: Padding(
-            padding: const EdgeInsets.all(24),
-            child: Column(
-              mainAxisSize: MainAxisSize.min,
-              children: [
-                Icon(Icons.error_outline, size: 48, color: primary),
-                const SizedBox(height: 12),
-                Text(
-                  'Failed to load data',
-                  style: TextStyle(
-                      fontSize: mediumFontSize, fontWeight: FontWeight.bold),
+      appBar: CustomAppBar(
+          titleImage: 'stock_verification.png',
+          title: 'Stock Validation'
+      ),
+      body: DefaultTabController(
+        length: 2,
+        child: Column(
+          children: [
+            Container(
+              margin: EdgeInsets.fromLTRB(3.w, 1.5.h, 3.w, 0),
+              decoration: BoxDecoration(
+                color: Colors.grey.shade100,
+                borderRadius: BorderRadius.circular(10),
+              ),
+              child: TabBar(
+                indicator: BoxDecoration(
+                  color: primary,
+                  borderRadius: BorderRadius.circular(10),
                 ),
-                const SizedBox(height: 8),
-                Text(err.toString(),
-                    textAlign: TextAlign.center,
-                    style: TextStyle(color: Colors.grey[600])),
-                const SizedBox(height: 16),
-                ElevatedButton(
-                  onPressed: () =>
-                      ref.read(stockValidationProvider.notifier).refresh(),
-                  style: ElevatedButton.styleFrom(backgroundColor: primary),
-                  child: const Text('Retry',
-                      style: TextStyle(color: Colors.white)),
-                ),
-              ],
+                labelColor: Colors.white,
+                unselectedLabelColor: Colors.black87,
+                tabs: const [
+                  Tab(text: 'Outlet'),
+                  Tab(text: 'Point'),
+                ],
+              ),
             ),
-          ),
+            Expanded(
+              child: TabBarView(
+                children: [
+                  state.when(
+                    loading: () =>
+                        const Center(child: CircularProgressIndicator()),
+                    error: (err, _) => Center(
+                      child: Padding(
+                        padding: const EdgeInsets.all(24),
+                        child: Column(
+                          mainAxisSize: MainAxisSize.min,
+                          children: [
+                            Icon(Icons.error_outline, size: 48, color: primary),
+                            const SizedBox(height: 12),
+                            Text(
+                              'Failed to load data',
+                              style: TextStyle(
+                                fontSize: mediumFontSize,
+                                fontWeight: FontWeight.bold,
+                              ),
+                            ),
+                            const SizedBox(height: 8),
+                            Text(
+                              err.toString(),
+                              textAlign: TextAlign.center,
+                              style: TextStyle(color: Colors.grey[600]),
+                            ),
+                            const SizedBox(height: 16),
+                            ElevatedButton(
+                              onPressed: () => ref
+                                  .read(stockValidationProvider.notifier)
+                                  .refresh(),
+                              style: ElevatedButton.styleFrom(
+                                  backgroundColor: primary),
+                              child: const Text(
+                                'Retry',
+                                style: TextStyle(color: Colors.white),
+                              ),
+                            ),
+                          ],
+                        ),
+                      ),
+                    ),
+                    data: (data) => _buildBody(data),
+                  ),
+                  _buildPointComingSoon(),
+                ],
+              ),
+            ),
+          ],
         ),
-        data: (data) => _buildBody(data),
+      ),
+    );
+  }
+
+  Widget _buildPointComingSoon() {
+    return Center(
+      child: Padding(
+        padding: const EdgeInsets.all(24),
+        child: Column(
+          mainAxisSize: MainAxisSize.min,
+          children: [
+            Icon(Icons.construction_rounded, size: 54, color: Colors.grey[500]),
+            const SizedBox(height: 12),
+            Text(
+              'Point',
+              style: TextStyle(
+                fontSize: mediumFontSize,
+                fontWeight: FontWeight.w700,
+                color: Colors.grey[800],
+              ),
+            ),
+            const SizedBox(height: 6),
+            Text(
+              'Demo / Coming soon',
+              textAlign: TextAlign.center,
+              style: TextStyle(
+                fontSize: smallFontSize,
+                color: Colors.grey[600],
+              ),
+            ),
+          ],
+        ),
       ),
     );
   }
