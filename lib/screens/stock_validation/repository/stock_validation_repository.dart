@@ -143,4 +143,47 @@ class StockValidationRepository {
     }
     return returnedDataModel;
   }
+
+  Future<ReturnedDataModel> submitPointQcVerification(Map payload) async {
+    ReturnedDataModel returnedDataModel = ReturnedDataModel(
+      status: ReturnedStatus.error,
+    );
+    try {
+      final sr = await SyncReadService().getSrInfo();
+      final url = Links.submitPointWiseQcUrl;
+      print("-->> ${url}");
+      print("-->> ${jsonEncode(payload)}");
+      returnedDataModel = await GlobalHttp(
+        uri: url,
+        httpType: HttpType.post,
+        accessToken: sr.accessToken,
+        refreshToken: sr.refreshToken,
+        body: jsonEncode(payload),
+      ).fetch();
+    } catch (e, t) {
+      debugPrint(e.toString());
+      debugPrint(t.toString());
+    }
+    return returnedDataModel;
+  }
+
+  Future<ReturnedDataModel> getPointQcVerificationData() async {
+    ReturnedDataModel returnedDataModel = ReturnedDataModel(
+      status: ReturnedStatus.error,
+    );
+    try {
+      final sr = await SyncReadService().getSrInfo();
+      final url = Links.getPointWiseQcUrl(depId: sr.depId ?? 0);
+      returnedDataModel = await GlobalHttp(
+        uri: url,
+        httpType: HttpType.get,
+        accessToken: sr.accessToken,
+        refreshToken: sr.refreshToken,
+      ).fetch();
+    } catch (e, t) {
+      debugPrint(e.toString());
+      debugPrint(t.toString());
+    }
+    return returnedDataModel;
+  }
 }

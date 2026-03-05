@@ -33,3 +33,43 @@ class StockValidationNotifier
 
   Future<void> refresh() => _fetchData();
 }
+
+class PointValidationNotifier
+    extends StateNotifier<AsyncValue<PointValidationResponseModel>> {
+  final Ref ref;
+  final _repo = StockValidationRepository();
+
+  PointValidationNotifier(this.ref) : super(const AsyncValue.loading()) {
+    _fetchData();
+  }
+
+  Future<void> _fetchData() async {
+    try {
+      state = const AsyncValue.loading();
+      final result = await _repo.getPointQcVerificationData();
+      final raw = result.data;
+      if (raw is! Map) {
+        state = AsyncValue.error(
+          result.errorMessage ?? 'Failed to fetch point data',
+          StackTrace.current,
+        );
+        return;
+      }
+
+      final payload = raw['data'] is Map ? raw['data'] as Map : raw;
+      if (payload['data'] is! List) {
+        state = AsyncValue.error(
+          result.errorMessage ?? 'Invalid point response',
+          StackTrace.current,
+        );
+        return;
+      }
+
+      state = AsyncValue.data(PointValidationResponseModel.fromJson(payload));
+    } catch (e, s) {
+      state = AsyncValue.error(e, s);
+    }
+  }
+
+  Future<void> refresh() => _fetchData();
+}

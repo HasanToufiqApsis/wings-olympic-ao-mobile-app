@@ -56,7 +56,49 @@ class StockValidationController {
     await submit(verificationData);
   }
 
-  Future<void> submit(List<Map<String, dynamic>> verificationData) async {
+  Future<void> onPointSubmit({
+    required List<PointQcEntryModel> entries,
+    required Map<int, TextEditingController> volumeControllers,
+    required Map<int, TextEditingController> remarkControllers,
+    required String date,
+  }) async {
+    final srInfo = await SyncReadService().getSrInfo();
+    final sbuIdStr = srInfo.sbuId.replaceAll('[', '').replaceAll(']', '');
+    final sbuId = int.tryParse(sbuIdStr) ?? 1;
+    final depId = srInfo.depId ?? 0;
+
+    final List<Map<String, dynamic>> verificationData = [];
+    for (int i = 0; i < entries.length; i++) {
+      final entry = entries[i];
+      final editedVolumeStr = volumeControllers[i]?.text;
+      if (editedVolumeStr == null || editedVolumeStr.isEmpty) {
+        _alerts.customDialog(
+          type: AlertType.error,
+          message: 'Please enter a valid volume for entry ${entry.skuName}',
+        );
+        return;
+      }
+      final editedVolume = num.tryParse(editedVolumeStr) ?? 0;
+      final remark = remarkControllers[i]?.text ?? '';
+      verificationData.add({
+        'sbu_id': sbuId,
+        'dep_id': depId,
+        'sku_id': entry.skuId,
+        'fault_id': entry.faultId,
+        'unit_price': entry.unitPrice,
+        'volume': editedVolume,
+        'total_value': entry.unitPrice * editedVolume,
+        'date': date,
+        'remark': remark,
+      });
+    }
+    await submitPointQcVarification(
+      verificationData,
+    );
+  }
+
+  Future<void> submit(
+    List<Map<String, dynamic>> verificationData) async {
     _alerts.floatingLoading();
     try {
       final payload = {'qcVerificationData': verificationData, 'verificationSource': 'app'};
@@ -71,6 +113,33 @@ class StockValidationController {
           onTap1: () {
             Navigator.of(context).pop(); // dismiss dialog
             Navigator.of(context).pop(); // pop details screen
+          },
+        );
+      } else {
+        _alerts.customDialog(type: AlertType.error, message: result.errorMessage ?? 'Submission failed. Please try again.');
+      }
+    } catch (e) {
+      Navigator.of(context).pop(); // dismiss loading
+      _alerts.customDialog(type: AlertType.error, message: 'An error occurred: ${e.toString()}');
+    }
+  }
+
+  Future<void> submitPointQcVarification(
+    List<Map<String, dynamic>> verificationData
+      ) async {
+    _alerts.floatingLoading();
+    try {
+      final payload = {'qcVerificationData': verificationData};
+      final ReturnedDataModel result = await StockValidationRepository().submitPointQcVerification(payload);
+      Navigator.of(context).pop(); // dismiss loading
+      if (result.status == ReturnedStatus.success) {
+          ref.invalidate(pointValidationProvider);
+        _alerts.customDialog(
+          type: AlertType.success,
+          message: 'Verification submitted successfully!',
+          button1: 'OK',
+          onTap1: () {
+            Navigator.of(context).pop();
           },
         );
       } else {

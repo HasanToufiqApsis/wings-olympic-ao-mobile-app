@@ -7,3 +7,8 @@ final stockValidationProvider = StateNotifierProvider.autoDispose<
     StockValidationNotifier, AsyncValue<StockValidationResponseModel>>(
   (ref) => StockValidationNotifier(ref),
 );
+
+final pointValidationProvider = StateNotifierProvider.autoDispose<
+    PointValidationNotifier, AsyncValue<PointValidationResponseModel>>(
+  (ref) => PointValidationNotifier(ref),
+);

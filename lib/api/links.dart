@@ -148,7 +148,9 @@ class Links {
 
   static final String individualSurveySubmitUrl = '$baseUrl/app-api/sales/survey-submit';
   static String getOutletWiseQcUrl({required int depId}) => '$baseUrl/qc-management/get-qc-app-summary?qc_type=1&dep_id=$depId';
+  static String getPointWiseQcUrl({required int depId}) => '$baseUrl/qc-management/last-submitted-point-wise-qc?dep_id=$depId';
   static final String submitOutletWiseQcUrl = '$baseUrl/qc-management/qc-ao-verification';
+  static final String submitPointWiseQcUrl = '$baseUrl/qc-management/qc-verification';
 }
 
 String getActivity({required String activity}){
@@ -156,7 +158,6 @@ String getActivity({required String activity}){
     return 'Asset Installation';
   } return 'Asset Pull-out';
 }
-
 
 
 

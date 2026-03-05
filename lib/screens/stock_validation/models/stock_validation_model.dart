@@ -93,3 +93,59 @@ class StockValidationResponseModel {
     );
   }
 }
+
+class PointQcEntryModel {
+  final int skuId;
+  final String skuName;
+  final String skuCode;
+  final int faultId;
+  final String faultType;
+  final num unitPrice;
+  final num volume;
+  final num value;
+
+  PointQcEntryModel({
+    required this.skuId,
+    required this.skuName,
+    required this.skuCode,
+    required this.faultId,
+    required this.faultType,
+    required this.unitPrice,
+    required this.volume,
+    required this.value,
+  });
+
+  factory PointQcEntryModel.fromJson(Map json) {
+    return PointQcEntryModel(
+      skuId: json['sku_id'] ?? 0,
+      skuName: json['sku_name'] ?? '',
+      skuCode: json['sku_code'] ?? '',
+      faultId: json['fault_id'] ?? 0,
+      faultType: json['fault_type'] ?? '',
+      unitPrice: num.tryParse(json['unit_price'].toString()) ?? 0,
+      volume: num.tryParse(json['volume'].toString()) ?? 0,
+      value: num.tryParse(json['value'].toString()) ?? 0,
+    );
+  }
+}
+
+class PointValidationResponseModel {
+  final List<PointQcEntryModel> entries;
+  final String lastSubmissionDate;
+  final String lastVerificationDate;
+
+  PointValidationResponseModel({
+    required this.entries,
+    required this.lastSubmissionDate,
+    required this.lastVerificationDate,
+  });
+
+  factory PointValidationResponseModel.fromJson(Map json) {
+    final rawEntries = json['data'] as List? ?? [];
+    return PointValidationResponseModel(
+      entries: rawEntries.map((e) => PointQcEntryModel.fromJson(e)).toList(),
+      lastSubmissionDate: json['last_submission_date']?.toString() ?? '',
+      lastVerificationDate: json['last_verification_date']?.toString() ?? '',
+    );
+  }
+}
