@@ -14,7 +14,8 @@ import '../controller/stock_validation_controller.dart';
 import '../models/stock_validation_model.dart';
 
 class StockValidationDetailUI extends ConsumerStatefulWidget {
-  const StockValidationDetailUI({Key? key,
+  const StockValidationDetailUI({
+    Key? key,
     required this.outlet,
     required this.outletId,
     required this.date,
@@ -29,12 +30,10 @@ class StockValidationDetailUI extends ConsumerStatefulWidget {
   static const String routeName = '/stock_validation_detail';
 
   @override
-  ConsumerState<StockValidationDetailUI> createState() =>
-      _StockValidationDetailUIState();
+  ConsumerState<StockValidationDetailUI> createState() => _StockValidationDetailUIState();
 }
 
-class _StockValidationDetailUIState
-    extends ConsumerState<StockValidationDetailUI> {
+class _StockValidationDetailUIState extends ConsumerState<StockValidationDetailUI> {
   OutletModel? _outlet;
   int? _outletId;
   String _date = '';
@@ -63,8 +62,7 @@ class _StockValidationDetailUIState
     // Initialise controllers once
     if (_volumeControllers.isEmpty) {
       for (int i = 0; i < _entries.length; i++) {
-        _volumeControllers[i] =
-            TextEditingController(text: _entries[i].volume.toString());
+        _volumeControllers[i] = TextEditingController(text: _entries[i].volume.toString());
         _remarkControllers[i] = TextEditingController();
       }
     }
@@ -106,33 +104,45 @@ class _StockValidationDetailUIState
   }
 
   Future<void> _onSubmit() async {
-    final srInfo = await SyncReadService().getSrInfo();
-    final sbuIdStr = srInfo.sbuId.replaceAll('[', '').replaceAll(']', '');
-    final sbuId = int.tryParse(sbuIdStr) ?? 1;
-
-    final List<Map<String, dynamic>> verificationData = [];
-    for (int i = 0; i < _entries.length; i++) {
-      final entry = _entries[i];
-      final editedVolumeStr = _volumeControllers[i]?.text ?? '0';
-      final editedVolume = num.tryParse(editedVolumeStr) ?? 0;
-      final remark = _remarkControllers[i]?.text ?? '';
-      verificationData.add({
-        'sbu_id': sbuId,
-        'dep_id': entry.depId,
-        'section_id': entry.sectionId,
-        'outlet_id': entry.outletId,
-        'qc_entry_date': entry.qcEntryDate,
-        'sku_id': entry.skuId,
-        'fault_id': entry.faultId,
-        'unit_price': entry.unitPrice,
-        'volume': editedVolume,
-        'total_value': entry.unitPrice * editedVolume,
-        'date': _date,
-        'remark': remark,
-      });
-    }
-    await _controller.submit(verificationData);
+    _controller.onSubmit(
+      entries: _entries,
+      volumeControllers: _volumeControllers,
+      remarkControllers: _remarkControllers,
+      date: _date,
+    );
   }
+
+  // Future<void> _onSubmit() async {
+  //   final srInfo = await SyncReadService().getSrInfo();
+  //   final sbuIdStr = srInfo.sbuId.replaceAll('[', '').replaceAll(']', '');
+  //   final sbuId = int.tryParse(sbuIdStr) ?? 1;
+  //
+  //   final List<Map<String, dynamic>> verificationData = [];
+  //   for (int i = 0; i < _entries.length; i++) {
+  //     final entry = _entries[i];
+  //     final editedVolumeStr = _volumeControllers[i]?.text;
+  //     if (editedVolumeStr == null || editedVolumeStr.isEmpty) {
+  //       return;
+  //     }
+  //     final editedVolume = num.tryParse(editedVolumeStr) ?? 0;
+  //     final remark = _remarkControllers[i]?.text ?? '';
+  //     verificationData.add({
+  //       'sbu_id': sbuId,
+  //       'dep_id': entry.depId,
+  //       'section_id': entry.sectionId,
+  //       'outlet_id': entry.outletId,
+  //       'qc_entry_date': entry.qcEntryDate,
+  //       'sku_id': entry.skuId,
+  //       'fault_id': entry.faultId,
+  //       'unit_price': entry.unitPrice,
+  //       'volume': editedVolume,
+  //       'total_value': entry.unitPrice * editedVolume,
+  //       'date': _date,
+  //       'remark': remark,
+  //     });
+  //   }
+  //   await _controller.submit(verificationData);
+  // }
 
   @override
   Widget build(BuildContext context) {
@@ -142,46 +152,32 @@ class _StockValidationDetailUIState
 
     return Scaffold(
       backgroundColor: const Color(0xFFF4F6FA),
-      appBar: CustomAppBar(
-        title: '$outletCode — ${_formatDate(_date)}',
-      ),
+      appBar: CustomAppBar(title: '$outletCode — ${_formatDate(_date)}'),
       body: Column(
         children: [
           // ── Top info bar ────────────────────────────────────────────
           Container(
             color: Colors.white,
-            padding:
-                const EdgeInsets.symmetric(horizontal: 12, vertical: 8),
+            padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 8),
             child: Row(
               children: [
                 Expanded(
-                  child: _InfoChip(
-                    label: 'Outlet',
-                    value: outletName,
-                  ),
+                  child: _InfoChip(label: 'Outlet', value: outletName),
                 ),
                 const SizedBox(width: 8),
                 Expanded(
-                  child: _InfoChip(
-                    label: 'Date',
-                    value: _formatDate(_date),
-                  ),
+                  child: _InfoChip(label: 'Date', value: _formatDate(_date)),
                 ),
                 const SizedBox(width: 8),
                 ElevatedButton.icon(
                   onPressed: _onSubmit,
                   style: ElevatedButton.styleFrom(
                     backgroundColor: primary,
-                    padding: const EdgeInsets.symmetric(
-                        horizontal: 16, vertical: 10),
-                    shape: RoundedRectangleBorder(
-                        borderRadius: BorderRadius.circular(8)),
+                    padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 10),
+                    shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(8)),
                   ),
-                  icon: const Icon(Icons.check_circle_outline,
-                      color: Colors.white, size: 16),
-                  label: const Text('Submit',
-                      style:
-                          TextStyle(color: Colors.white, fontSize: 13)),
+                  icon: const Icon(Icons.check_circle_outline, color: Colors.white, size: 16),
+                  label: LangText('Submit', style: TextStyle(color: Colors.white, fontSize: 13)),
                 ),
               ],
             ),
@@ -197,27 +193,13 @@ class _StockValidationDetailUIState
                 end: Alignment.centerRight,
               ),
             ),
-            padding:
-                const EdgeInsets.symmetric(horizontal: 12, vertical: 10),
+            padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 10),
             child: Row(
               children: [
-                Expanded(
-                  flex: 3,
-                  child: _TableHeaderText('SKU Name'),
-                ),
-                SizedBox(
-                  width: 70,
-                  child: _TableHeaderText('Code', align: TextAlign.center),
-                ),
-                SizedBox(
-                  width: 60,
-                  child: _TableHeaderText('Vol', align: TextAlign.center),
-                ),
-                SizedBox(
-                  width: 80,
-                  child: _TableHeaderText('Edit Vol',
-                      align: TextAlign.center),
-                ),
+                Expanded(flex: 3, child: _TableHeaderText('SKU')),
+                Expanded(flex: 2, child: _TableHeaderText('Code', align: TextAlign.center)),
+                Expanded(flex: 2, child: _TableHeaderText('Volume', align: TextAlign.center)),
+                Expanded(flex: 3, child: _TableHeaderText('Edit Volume', align: TextAlign.center)),
               ],
             ),
           ),
@@ -235,24 +217,33 @@ class _StockValidationDetailUIState
                     Container(
                       width: double.infinity,
                       color: const Color(0xFF1A73E8).withOpacity(0.12),
-                      padding: const EdgeInsets.symmetric(
-                          horizontal: 12, vertical: 7),
-                      child: Text(
-                        faultType,
-                        style: const TextStyle(
-                          fontSize: 12,
-                          fontWeight: FontWeight.bold,
-                          color: Color(0xFF1A73E8),
-                        ),
+                      padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 7),
+                      child: Row(
+                        children: [
+                          LangText(
+                            "Fault",
+                            style: const TextStyle(fontSize: 12, fontWeight: FontWeight.bold, color: Color(0xFF1A73E8)),
+                          ),
+                          LangText(
+                            ": ",
+                            style: const TextStyle(fontSize: 12, fontWeight: FontWeight.bold, color: Color(0xFF1A73E8)),
+                          ),
+                          LangText(
+                            faultType,
+                            style: const TextStyle(fontSize: 12, fontWeight: FontWeight.bold, color: Color(0xFF1A73E8)),
+                          ),
+                        ],
                       ),
                     ),
                     // Entry rows
-                    ...indices.map((i) => _EntryRow(
-                          entry: _entries[i],
-                          rowIndex: i,
-                          volumeController: _volumeControllers[i]!,
-                          remarkController: _remarkControllers[i]!,
-                        )),
+                    ...indices.map(
+                      (i) => _EntryRow(
+                        entry: _entries[i],
+                        rowIndex: i,
+                        volumeController: _volumeControllers[i]!,
+                        remarkController: _remarkControllers[i]!,
+                      ),
+                    ),
                   ],
                 );
               }).toList(),
@@ -277,14 +268,10 @@ class _InfoChip extends StatelessWidget {
       crossAxisAlignment: CrossAxisAlignment.start,
       mainAxisSize: MainAxisSize.min,
       children: [
-        Text(label,
-            style: TextStyle(fontSize: 10, color: Colors.grey[500])),
-        Text(
+        LangText(label, style: TextStyle(fontSize: 10, color: Colors.grey[500])),
+        LangText(
           value,
-          style: const TextStyle(
-              fontSize: 12,
-              fontWeight: FontWeight.bold,
-              color: Color(0xFF2C2C2C)),
+          style: const TextStyle(fontSize: 12, fontWeight: FontWeight.bold, color: Color(0xFF2C2C2C)),
           overflow: TextOverflow.ellipsis,
         ),
       ],
@@ -296,18 +283,14 @@ class _TableHeaderText extends StatelessWidget {
   final String text;
   final TextAlign align;
 
-  const _TableHeaderText(this.text,
-      {this.align = TextAlign.start});
+  const _TableHeaderText(this.text, {this.align = TextAlign.start});
 
   @override
   Widget build(BuildContext context) {
-    return Text(
+    return LangText(
       text,
       textAlign: align,
-      style: const TextStyle(
-          color: Colors.white,
-          fontSize: 11,
-          fontWeight: FontWeight.bold),
+      style: const TextStyle(color: Colors.white, fontSize: 11, fontWeight: FontWeight.bold),
     );
   }
 }
@@ -349,8 +332,7 @@ class _EntryRowState extends State<_EntryRow> {
 
     return Container(
       color: isEven ? Colors.white : const Color(0xFFF9F9F9),
-      padding:
-          const EdgeInsets.symmetric(horizontal: 12, vertical: 8),
+      padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 8),
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
@@ -361,72 +343,57 @@ class _EntryRowState extends State<_EntryRow> {
               // SKU Name
               Expanded(
                 flex: 3,
-                child: Text(
+                child: LangText(
                   widget.entry.skuInfo.shortName,
-                  style: const TextStyle(
-                      fontSize: 12,
-                      fontWeight: FontWeight.w600,
-                      color: Color(0xFF2C2C2C)),
+                  style: const TextStyle(fontSize: 12, fontWeight: FontWeight.w600, color: Color(0xFF2C2C2C)),
                 ),
               ),
               // SKU Code
-              SizedBox(
-                width: 70,
+              Expanded(
+                flex: 2,
                 child: Center(
-                  child: Text(
+                  child: LangText(
                     widget.entry.skuInfo.materialCode,
-                    style: TextStyle(
-                        fontSize: 11, color: primary),
+                    style: TextStyle(fontSize: 11, color: primary),
                     textAlign: TextAlign.center,
                   ),
                 ),
               ),
               // Original volume (read-only highlighted)
-              SizedBox(
-                width: 60,
+              Expanded(
+                flex: 2,
                 child: Center(
                   child: Container(
-                    padding: const EdgeInsets.symmetric(
-                        horizontal: 6, vertical: 4),
-                    decoration: BoxDecoration(
-                      color: Colors.grey[200],
-                      borderRadius: BorderRadius.circular(4),
-                    ),
-                    child: Text(
+                    padding: const EdgeInsets.symmetric(horizontal: 6, vertical: 4),
+                    decoration: BoxDecoration(color: Colors.grey[200], borderRadius: BorderRadius.circular(4)),
+                    child: LangText(
                       widget.entry.volume.toString(),
                       textAlign: TextAlign.center,
-                      style: const TextStyle(
-                          fontSize: 12, color: Colors.black54),
+                      style: const TextStyle(fontSize: 12, color: Colors.black54),
                     ),
                   ),
                 ),
               ),
               // Editable volume
-              SizedBox(
-                width: 80,
+              Expanded(
+                flex: 3,
                 child: Padding(
                   padding: const EdgeInsets.only(left: 4),
                   child: TextFormField(
                     controller: widget.volumeController,
                     keyboardType: TextInputType.number,
                     textAlign: TextAlign.center,
-                    inputFormatters: [
-                      FilteringTextInputFormatter.allow(
-                          RegExp(r'^\d*\.?\d*')),
-                    ],
+                    inputFormatters: [FilteringTextInputFormatter.allow(RegExp(r'^\d*\.?\d*'))],
                     decoration: InputDecoration(
                       isDense: true,
-                      contentPadding: const EdgeInsets.symmetric(
-                          horizontal: 6, vertical: 6),
+                      contentPadding: const EdgeInsets.symmetric(horizontal: 6, vertical: 6),
                       border: OutlineInputBorder(
                         borderRadius: BorderRadius.circular(4),
-                        borderSide:
-                            BorderSide(color: Colors.grey[300]!),
+                        borderSide: BorderSide(color: Colors.grey[300]!),
                       ),
                       focusedBorder: OutlineInputBorder(
                         borderRadius: BorderRadius.circular(4),
-                        borderSide:
-                            const BorderSide(color: primary),
+                        borderSide: const BorderSide(color: primary),
                       ),
                     ),
                     style: const TextStyle(fontSize: 12),
@@ -443,11 +410,9 @@ class _EntryRowState extends State<_EntryRow> {
             controller: widget.remarkController,
             decoration: InputDecoration(
               isDense: true,
-              contentPadding:
-                  const EdgeInsets.symmetric(horizontal: 10, vertical: 7),
+              contentPadding: const EdgeInsets.symmetric(horizontal: 10, vertical: 7),
               hintText: 'Enter remark',
-              hintStyle:
-                  TextStyle(fontSize: 11, color: Colors.grey[400]),
+              hintStyle: TextStyle(fontSize: 11, color: Colors.grey[400]),
               border: OutlineInputBorder(
                 borderRadius: BorderRadius.circular(4),
                 borderSide: BorderSide(color: Colors.grey[300]!),
@@ -463,12 +428,9 @@ class _EntryRowState extends State<_EntryRow> {
           const SizedBox(height: 4),
 
           // Value
-          Text(
+          LangText(
             'Value: ${_computedValue.toStringAsFixed(2)}',
-            style: TextStyle(
-                fontSize: 11,
-                color: Colors.grey[600],
-                fontStyle: FontStyle.italic),
+            style: TextStyle(fontSize: 11, color: Colors.grey[600], fontStyle: FontStyle.italic),
           ),
         ],
       ),

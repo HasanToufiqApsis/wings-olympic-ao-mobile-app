@@ -420,9 +420,9 @@ class _HomeDashboardState extends ConsumerState<HomeDashboard> {
     return asyncExist.when(
       data: (exist) {
         // log("-------->>> $assetName");
-        // if (!exist) {
-        //   return const SizedBox();
-        // }
+        if (!exist) {
+          return const SizedBox();
+        }
         return SizedBox(
           width: (100.w - (3.w * 2)) / 4,
           child: Column(
