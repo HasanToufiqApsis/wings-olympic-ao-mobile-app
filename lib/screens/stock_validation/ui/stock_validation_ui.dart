@@ -111,7 +111,7 @@ class _StockValidationUIState extends ConsumerState<StockValidationUI> {
                             Icon(Icons.error_outline, size: 48, color: primary),
                             const SizedBox(height: 12),
                             Text(
-                              'Failed to load data',
+                              'No data found',
                               style: TextStyle(
                                 fontSize: mediumFontSize,
                                 fontWeight: FontWeight.bold,
@@ -152,7 +152,7 @@ class _StockValidationUIState extends ConsumerState<StockValidationUI> {
                             Icon(Icons.error_outline, size: 48, color: primary),
                             const SizedBox(height: 12),
                             Text(
-                              'Failed to load point data',
+                              'No data found',
                               style: TextStyle(
                                 fontSize: mediumFontSize,
                                 fontWeight: FontWeight.bold,

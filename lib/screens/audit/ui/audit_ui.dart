@@ -221,7 +221,7 @@ class _ErrorState extends StatelessWidget {
             Icon(Icons.error_outline_rounded, size: 56, color: Colors.red[300]),
             SizedBox(height: 1.5.h),
             LangText(
-              'Failed to load points',
+              'No data found',
               style: TextStyle(
                 color: const Color(0xFF202124),
                 fontSize: mediumFontSize,
