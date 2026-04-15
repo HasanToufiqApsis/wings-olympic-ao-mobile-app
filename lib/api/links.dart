@@ -6,9 +6,9 @@ class Links {
 
 
   static String salesDateUrl = "/app-api/sales/get-enable-sales-date";
-  static String logInAssets = "/app-api/ff-auth/login";
+  static String logInAssets = "/auth/login";
   static String updatePassword = "/app-api/ff-auth/change-password";
-  static String syncAssets = "/app-api/sync-file";
+  static String syncAssets = "/sync-file";
   static String fileUrl = "/app-api/common/upload-file";
   // static String fileUrl = "/app-api/static-file/upload";
   static String retailerUrl = "/app-api/retailer";

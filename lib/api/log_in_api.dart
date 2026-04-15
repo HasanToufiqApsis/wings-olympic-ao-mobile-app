@@ -20,8 +20,8 @@ class LogInAPI {
       Map payload = {
         "username": username,
         "password": password,
-        "version": appVersionDeviceLog,
-        "app_type": 53,
+        // "version": appVersionDeviceLog,
+        "source": "app",
       };
 
       Response res = await post(
@@ -31,7 +31,7 @@ class LogInAPI {
       );
       Map result = jsonDecode(res.body);
       print('---------------------->');
-      print('\nurl is:: ${Uri.parse('${Links.baseUrl}${Links.logInAssets}')}--->\nPayload is::${jsonEncode(payload)}\nbody is:>: ${res.body}');
+      log('\nurl is:: ${Uri.parse('${Links.baseUrl}${Links.logInAssets}')}\nPayload is::${jsonEncode(payload)}\nbody is:>: ${res.body}');
       if (res.statusCode == 201) {
         if (result['success'] == true) {
           Map data = result['data'];
@@ -63,18 +63,27 @@ class LogInAPI {
   Future<ReturnedDataModel> fetchSyncFile(Map useData, String password) async {
     ReturnedDataModel returnedDataModel = ReturnedDataModel(status: ReturnedStatus.error);
     try {
+      // final body = jsonEncode(<String, dynamic>{
+      //   "ff_id": useData["ff_id"],
+      //   "user_type": useData["user_type"],
+      //   "password": password,
+      //   "version": appVersionDeviceLog,
+      // });
+      print("--------------->>> ${useData}");
       final body = jsonEncode(<String, dynamic>{
-        "ff_id": useData["ff_id"],
-        "user_type": useData["user_type"],
+        "user_id": useData['userData']["id"],
+        "source": "app",
+        "user_type": useData['userData']["user_type_id"],
         "password": password,
-        "version": appVersionDeviceLog,
+        "date": useData['date'],
+        "version": appVersionDeviceLog
       });
       Response res = await post(
         Uri.parse('${Links.baseUrl}${Links.syncAssets}'),
         body: body,
         headers: {'Accept': 'application/json', "Content-Type": "application/json", 'refreshToken': useData['refreshToken'], 'Authorization': "Bearer ${useData['accessToken']}"},
       );
-      print('link is:: ${Uri.parse('${Links.baseUrl}${Links.syncAssets}')}\nbody is :${jsonEncode(body)}'
+      log('link is:: ${Uri.parse('${Links.baseUrl}${Links.syncAssets}')}\nbody is :${jsonEncode(body)}'
           '\nresponse >> is ${res.body}');
       if (res.statusCode == 201) {
         try {
@@ -84,8 +93,11 @@ class LogInAPI {
             // print(syncResult);
             if (syncResult["success"]) {
               returnedDataModel.status = ReturnedStatus.success;
-
-              returnedDataModel.data = syncResult["data"];
+              Map data = syncResult["data"];
+              if(data.containsKey('userData')) {
+                data['userData']['password'] = password;
+              }
+              returnedDataModel.data = data;
             }
           }
         } catch (e, s) {
