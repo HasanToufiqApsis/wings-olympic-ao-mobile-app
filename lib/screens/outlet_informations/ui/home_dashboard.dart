@@ -18,14 +18,18 @@ import 'package:wings_olympic_sr/screens/transfer_bill/ui/transfer_bill_list_ui.
 import 'package:wings_olympic_sr/services/shared_storage_services.dart';
 
 import '../../../constants/constant_variables.dart';
+import '../../../models/location_category_models.dart';
 import '../../../models/module.dart';
 import '../../../models/sr_info_model.dart';
 import '../../../provider/global_provider.dart';
 import '../../../reusable_widgets/language_textbox.dart';
 import '../../../reusable_widgets/scaffold_widgets/appbar.dart';
 import '../../../services/change_route_service.dart';
+import '../../../services/ff_services.dart';
 import '../../../services/geo_location_service.dart';
 import '../../../services/langugae_pack_service.dart';
+import '../../../services/location_category_services.dart';
+import '../../../services/outlet_services.dart';
 import '../../../services/sync_service.dart';
 import '../../allowance_management/ui/allowance_management_ui.dart';
 import '../../approval/ui/approval_dashboard.dart';
@@ -69,18 +73,15 @@ class HomeDashboard extends ConsumerStatefulWidget {
 class _HomeDashboardState extends ConsumerState<HomeDashboard> {
   late final OutletController _outletController;
   final _useHero = false;
+  final _outletServices = OutletServices();
+  final _locationServices = LocationCategoryServices();
+  final _ffServices = FFServices();
 
   @override
   void initState() {
     super.initState();
     SyncService().printSync();
     LocationService(context).initialize();
-    // InternetPopup().initialize(
-    //     context: context,
-    //     onTapPop: true,
-    //     onChange: (value) {
-    //       ref.read(internetConnectivityProvider.state).state = value;
-    //     },);
     _outletController = OutletController(context: context, ref: ref);
     WidgetsBinding.instance.addPostFrameCallback((val) async {
       final viewComplexityStr = await LocalStorageHelper.read(viewComplexityKey);
@@ -89,8 +90,16 @@ class _HomeDashboardState extends ConsumerState<HomeDashboard> {
         log('view complexity => $viewComplexityStr');
         ref.read(productViewTypeProvider.notifier).state = viewComplexity ?? ViewComplexity.complex;
       }
+      await _checkAndShowOutletSelectionPopup();
     });
     _welcomeMessage();
+  }
+
+  Future<void> _checkAndShowOutletSelectionPopup() async {
+    final isEmpty = await _outletServices.isOutletListEmpty();
+    if (isEmpty && mounted) {
+      await _showOutletSelectionPopup();
+    }
   }
 
   String _getSrRouteSubTitle(SrInfoModel? srInfo) {
@@ -520,6 +529,322 @@ class _HomeDashboardState extends ConsumerState<HomeDashboard> {
 
   void _welcomeMessage() {
     _outletController.showWelcomeMessage();
+  }
+
+  // =====================================================================
+  // Outlet Selection Popup (Zone > Region > Area > Point)
+  // =====================================================================
+
+  Future<void> _showOutletSelectionPopup() async {
+    // State holders inside the popup
+    ZoneModel? selectedZone;
+    RegionModel? selectedRegion;
+    AreaModel? selectedArea;
+    PointModel? selectedPoint;
+
+    List<ZoneModel> zones = await _locationServices.getZoneList();
+    List<RegionModel> regions = [];
+    List<AreaModel> areas = [];
+    List<PointModel> points = [];
+
+    bool isLoading = false;
+    String? errorMsg;
+
+    if (!mounted) return;
+
+    await showDialog(
+      context: context,
+      barrierDismissible: false,
+      builder: (dialogContext) {
+        return StatefulBuilder(
+          builder: (ctx, setDialogState) {
+            return AlertDialog(
+              shape: RoundedRectangleBorder(
+                borderRadius: BorderRadius.circular(16),
+              ),
+              titlePadding: const EdgeInsets.fromLTRB(20, 20, 20, 0),
+              contentPadding: const EdgeInsets.fromLTRB(20, 12, 20, 0),
+              title: Row(
+                children: [
+                  Container(
+                    padding: const EdgeInsets.all(8),
+                    decoration: BoxDecoration(
+                      color: primary.withOpacity(0.1),
+                      shape: BoxShape.circle,
+                    ),
+                    child: const Icon(Icons.location_on, color: primary, size: 22),
+                  ),
+                  const SizedBox(width: 10),
+                  const Text(
+                    'Select Location',
+                    style: TextStyle(
+                      fontSize: 16,
+                      fontWeight: FontWeight.bold,
+                      color: primary,
+                    ),
+                  ),
+                ],
+              ),
+              content: SingleChildScrollView(
+                child: Column(
+                  mainAxisSize: MainAxisSize.min,
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    const SizedBox(height: 8),
+
+                    // Zone dropdown
+                    _buildDropdownField<ZoneModel>(
+                      label: 'Zone',
+                      icon: Icons.map_outlined,
+                      value: selectedZone,
+                      items: zones,
+                      itemLabel: (z) => z.name,
+                      onChanged: (z) async {
+                        setDialogState(() {
+                          selectedZone = z;
+                          selectedRegion = null;
+                          selectedArea = null;
+                          selectedPoint = null;
+                          regions = [];
+                          areas = [];
+                          points = [];
+                          errorMsg = null;
+                        });
+                        if (z != null) {
+                          final r = await _locationServices.getRegionList(zoneId: z.id);
+                          setDialogState(() => regions = r);
+                        }
+                      },
+                    ),
+
+                    const SizedBox(height: 12),
+
+                    // Region dropdown
+                    _buildDropdownField<RegionModel>(
+                      label: 'Region',
+                      icon: Icons.terrain_outlined,
+                      value: selectedRegion,
+                      items: regions,
+                      itemLabel: (r) => r.name,
+                      enabled: selectedZone != null,
+                      onChanged: (r) async {
+                        setDialogState(() {
+                          selectedRegion = r;
+                          selectedArea = null;
+                          selectedPoint = null;
+                          areas = [];
+                          points = [];
+                          errorMsg = null;
+                        });
+                        if (r != null) {
+                          final a = await _locationServices.getAreaList(regionId: r.id);
+                          setDialogState(() => areas = a);
+                        }
+                      },
+                    ),
+
+                    const SizedBox(height: 12),
+
+                    // Area dropdown
+                    _buildDropdownField<AreaModel>(
+                      label: 'Area',
+                      icon: Icons.location_city_outlined,
+                      value: selectedArea,
+                      items: areas,
+                      itemLabel: (a) => a.name,
+                      enabled: selectedRegion != null,
+                      onChanged: (a) async {
+                        setDialogState(() {
+                          selectedArea = a;
+                          selectedPoint = null;
+                          points = [];
+                          errorMsg = null;
+                        });
+                        if (a != null) {
+                          final p = await _locationServices.getPointListByArea(areaId: a.id);
+                          setDialogState(() => points = p);
+                        }
+                      },
+                    ),
+
+                    const SizedBox(height: 12),
+
+                    // Point dropdown
+                    _buildDropdownField<PointModel>(
+                      label: 'Point',
+                      icon: Icons.place_outlined,
+                      value: selectedPoint,
+                      items: points,
+                      itemLabel: (p) => p.name,
+                      enabled: selectedArea != null,
+                      onChanged: (p) {
+                        setDialogState(() {
+                          selectedPoint = p;
+                          errorMsg = null;
+                        });
+                      },
+                    ),
+
+                    if (errorMsg != null) ...
+                      [
+                        const SizedBox(height: 10),
+                        Text(
+                          errorMsg!,
+                          style: const TextStyle(color: Colors.red, fontSize: 12),
+                        ),
+                      ],
+
+                    const SizedBox(height: 16),
+                  ],
+                ),
+              ),
+              actionsAlignment: MainAxisAlignment.center,
+              actionsPadding: const EdgeInsets.fromLTRB(20, 0, 20, 16),
+              actions: [
+                SizedBox(
+                  width: double.infinity,
+                  child: ElevatedButton(
+                    style: ElevatedButton.styleFrom(
+                      backgroundColor: primary,
+                      foregroundColor: Colors.white,
+                      padding: const EdgeInsets.symmetric(vertical: 14),
+                      shape: RoundedRectangleBorder(
+                        borderRadius: BorderRadius.circular(10),
+                      ),
+                    ),
+                    onPressed: isLoading
+                        ? null
+                        : () async {
+                            if (selectedPoint == null) {
+                              setDialogState(
+                                () => errorMsg = 'Please select a point to continue.',
+                              );
+                              return;
+                            }
+                            setDialogState(() {
+                              isLoading = true;
+                              errorMsg = null;
+                            });
+                            final saleDate = await _ffServices.getSalesDate();
+                            final success =
+                                await _outletServices.fetchAndUpdateRetailersFromApi(
+                              pointId: selectedPoint!.id,
+                              saleDate: saleDate,
+                            );
+                            setDialogState(() => isLoading = false);
+                            if (success) {
+                              if (dialogContext.mounted) {
+                                Navigator.of(dialogContext).pop();
+                              }
+                            } else {
+                              setDialogState(
+                                () => errorMsg = 'Failed to load outlets. Please check your connection.',
+                              );
+                            }
+                          },
+                    child: isLoading
+                        ? const SizedBox(
+                            height: 20,
+                            width: 20,
+                            child: CircularProgressIndicator(
+                              strokeWidth: 2,
+                              color: Colors.white,
+                            ),
+                          )
+                        : const Text(
+                            'Load Outlets',
+                            style: TextStyle(fontWeight: FontWeight.bold, fontSize: 15),
+                          ),
+                  ),
+                ),
+              ],
+            );
+          },
+        );
+      },
+    );
+  }
+
+  Widget _buildDropdownField<T>({
+    required String label,
+    required IconData icon,
+    required T? value,
+    required List<T> items,
+    required String Function(T) itemLabel,
+    required ValueChanged<T?> onChanged,
+    bool enabled = true,
+  }) {
+    return Column(
+      crossAxisAlignment: CrossAxisAlignment.start,
+      children: [
+        Text(
+          label,
+          style: TextStyle(
+            fontSize: 12,
+            fontWeight: FontWeight.w600,
+            color: enabled ? primaryBlue : Colors.grey,
+          ),
+        ),
+        const SizedBox(height: 4),
+        Container(
+          decoration: BoxDecoration(
+            borderRadius: BorderRadius.circular(8),
+            border: Border.all(
+              color: enabled ? primaryBlue.withOpacity(0.4) : Colors.grey.shade300,
+            ),
+            color: enabled ? Colors.white : Colors.grey.shade100,
+          ),
+          child: DropdownButtonHideUnderline(
+            child: ButtonTheme(
+              alignedDropdown: true,
+              child: DropdownButton<T>(
+                value: value,
+                isExpanded: true,
+                hint: Row(
+                  children: [
+                    Icon(icon, size: 16, color: enabled ? Colors.grey : Colors.grey.shade400),
+                    const SizedBox(width: 6),
+                    Text(
+                      enabled ? 'Select $label' : 'Select ${_getPreviousLabel(label)} first',
+                      style: TextStyle(
+                        color: enabled ? Colors.grey : Colors.grey.shade400,
+                        fontSize: 13,
+                      ),
+                    ),
+                  ],
+                ),
+                onChanged: enabled ? onChanged : null,
+                items: items
+                    .map(
+                      (item) => DropdownMenuItem<T>(
+                        value: item,
+                        child: Text(
+                          itemLabel(item),
+                          style: const TextStyle(fontSize: 13),
+                          overflow: TextOverflow.ellipsis,
+                        ),
+                      ),
+                    )
+                    .toList(),
+              ),
+            ),
+          ),
+        ),
+      ],
+    );
+  }
+
+  String _getPreviousLabel(String label) {
+    switch (label) {
+      case 'Region':
+        return 'Zone';
+      case 'Area':
+        return 'Region';
+      case 'Point':
+        return 'Area';
+      default:
+        return '';
+    }
   }
 }
 

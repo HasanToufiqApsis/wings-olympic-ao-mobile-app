@@ -6,6 +6,8 @@ import '../constants/sync_global.dart';
 import '../models/location_category_models.dart';
 import 'sync_service.dart';
 
+// ignore_for_file: avoid_print
+
 class LocationCategoryServices {
   final SyncService _syncService = SyncService();
 
@@ -212,5 +214,81 @@ class LocationCategoryServices {
     }
 
     return null;
+  }
+
+  // ==================== Zone / Region / Area / Point ====================
+
+  Future<List<ZoneModel>> getZoneList() async {
+    List<ZoneModel> zones = [];
+    try {
+      await _syncService.checkSyncVariable();
+      if (syncObj.containsKey('locations') &&
+          syncObj['locations'].containsKey('zone')) {
+        Map zoneMap = syncObj['locations']['zone'];
+        zoneMap.forEach((key, value) {
+          zones.add(ZoneModel.fromJson(value));
+        });
+      }
+    } catch (e) {
+      print('inside getZoneList LocationCategoryServices catch block $e');
+    }
+    return zones;
+  }
+
+  Future<List<RegionModel>> getRegionList({int? zoneId}) async {
+    List<RegionModel> regions = [];
+    try {
+      await _syncService.checkSyncVariable();
+      if (syncObj.containsKey('locations') &&
+          syncObj['locations'].containsKey('region')) {
+        Map regionMap = syncObj['locations']['region'];
+        regionMap.forEach((key, value) {
+          if (zoneId == null || value['parent_id'] == zoneId) {
+            regions.add(RegionModel.fromJson(value));
+          }
+        });
+      }
+    } catch (e) {
+      print('inside getRegionList LocationCategoryServices catch block $e');
+    }
+    return regions;
+  }
+
+  Future<List<AreaModel>> getAreaList({int? regionId}) async {
+    List<AreaModel> areas = [];
+    try {
+      await _syncService.checkSyncVariable();
+      if (syncObj.containsKey('locations') &&
+          syncObj['locations'].containsKey('area')) {
+        Map areaMap = syncObj['locations']['area'];
+        areaMap.forEach((key, value) {
+          if (regionId == null || value['parent_id'] == regionId) {
+            areas.add(AreaModel.fromJson(value));
+          }
+        });
+      }
+    } catch (e) {
+      print('inside getAreaList LocationCategoryServices catch block $e');
+    }
+    return areas;
+  }
+
+  Future<List<PointModel>> getPointListByArea({int? areaId}) async {
+    List<PointModel> points = [];
+    try {
+      await _syncService.checkSyncVariable();
+      if (syncObj.containsKey('locations') &&
+          syncObj['locations'].containsKey('point')) {
+        Map pointMap = syncObj['locations']['point'];
+        pointMap.forEach((key, value) {
+          if (areaId == null || value['parent_id'] == areaId) {
+            points.add(PointModel.fromJson(value));
+          }
+        });
+      }
+    } catch (e) {
+      print('inside getPointListByArea LocationCategoryServices catch block $e');
+    }
+    return points;
   }
 }

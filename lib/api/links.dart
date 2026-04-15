@@ -149,6 +149,7 @@ class Links {
   static final String individualSurveySubmitUrl = '$baseUrl/app-api/sales/survey-submit';
   static String getOutletWiseQcUrl({required int depId}) => '$baseUrl/qc-management/get-qc-app-summary?qc_type=1&dep_id=$depId';
   static String getPointWiseQcUrl({required int depId}) => '$baseUrl/qc-management/last-submitted-point-wise-qc?dep_id=$depId';
+  static String getPointWiseOutletUrl({required int pointId, required String saleDate}) => '$baseUrl/sync-file/retailers?dep_id=$pointId&sale_date=$saleDate';
   static final String submitOutletWiseQcUrl = '$baseUrl/qc-management/qc-ao-verification';
   static final String submitPointWiseQcUrl = '$baseUrl/qc-management/qc-verification';
 }

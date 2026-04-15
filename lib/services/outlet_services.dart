@@ -1002,4 +1002,66 @@ class OutletServices {
     }
     return imageUrl;
   }
+
+  /// Returns true when retailers list in sync file is empty (no outlets loaded yet)
+  Future<bool> isOutletListEmpty() async {
+    try {
+      await _syncService.checkSyncVariable();
+      if (syncObj.containsKey('retailers')) {
+        final retailers = syncObj['retailers'];
+        return retailers == null || (retailers as List).isEmpty;
+      }
+    } catch (e) {
+      Helper.dPrint('inside isOutletListEmpty OutletServices catch block $e');
+    }
+    return true;
+  }
+
+  /// Calls the retailers API for the given [pointId] and [saleDate],
+  /// then replaces syncObj['retailers'] with the fetched list and writes the sync file.
+  Future<bool> fetchAndUpdateRetailersFromApi({
+    required int pointId,
+    required String saleDate,
+  }) async {
+    try {
+      final srInfo = await _ffServices.getSrInfo();
+      if (srInfo == null) return false;
+
+      final url = Links.getPointWiseOutletUrl(pointId: pointId, saleDate: saleDate);
+      final result = await GlobalHttp(
+        uri: url,
+        httpType: HttpType.get,
+        accessToken: srInfo.accessToken,
+        refreshToken: srInfo.refreshToken,
+      ).fetch();
+
+      if (result.status == ReturnedStatus.success) {
+        final data = result.data?['data'];
+        if (data != null && data.containsKey('retailers')) {
+          final List retailers = data['retailers'] as List;
+          await _syncService.checkSyncVariable();
+          if (retailers.isNotEmpty) {
+            syncObj['retailers'] = retailers;
+          }
+          if (data.containsKey('survey') && data['survey'] == true && data['survey'].containsKey('survey_details') &&
+              data['survey']['survey_details'].containsKey('survey_info') &&
+              data['survey']['survey_details'].containsKey('questions')) {
+            if (!syncObj.containsKey('survey_details')) {
+              syncObj['survey_details'] = {};
+            }
+            List serveryInfo = syncObj['survey_details']['survey_info'] as List;
+            serveryInfo.add(data['survey']['survey_details']['survey_info']);
+            Map questions = syncObj['survey_details']['questions'] as Map;
+            questions.addAll(data['survey']['survey_details']['questions']);
+          }
+
+          await _syncService.writeSync();
+          return true;
+        }
+      }
+    } catch (e, s) {
+      Helper.dPrint('inside fetchAndUpdateRetailersFromApi OutletServices catch block $e $s');
+    }
+    return false;
+  }
 }
