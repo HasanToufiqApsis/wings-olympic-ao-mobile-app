@@ -171,7 +171,13 @@ class _SurveyPointLocationUIState extends State<SurveyPointLocationUI> {
                                             onTap1: () async {
                                               await SurveyService().submitPointSurvey(answer, widget.surveyModel.id, widget.retailerId);
                                               Navigator.pop(context);
-                                              Navigator.pop(context);
+                                              Alerts(context: context).customDialog(
+                                                  type: AlertType.success,
+                                                  description: 'Audit survey submitted successfully?',
+                                                  onTap1: () {
+                                                    Navigator.pop(context);
+                                                    Navigator.pop(context);
+                                                  });
                                             });
                                       }
                                     }

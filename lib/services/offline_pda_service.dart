@@ -69,14 +69,11 @@ class OfflinePdaService {
       "ff_id": srInfo.ffId,
       "date": salesDate,
     };
-    Map sectionOutletData = await formatBikroiJomaData();
-    pda['section_data'] = sectionOutletData['section_data'];
-    pda['outlet_data'] = sectionOutletData['outlet_data'];
     pda['survey'] = await getSurveyData();
     pda['call_time'] = await getCallTime();
     pda['qc'] = await getQc();
     // pda['promotions'] = await getPromotion();
-    // pda['outlet_data'] = await getOutletData();
+
     pda['geo_data'] = await getGeoData();
     // pda['device_log'] = [await DeviceInfoService().getDeviceLog()];
     //
@@ -358,24 +355,6 @@ class OfflinePdaService {
   }
 
   ////======================Formatting data for bikroi joma start==============================================
-  Future<Map> formatBikroiJomaData() async {
-    Map finalBikroiJomaData = {};
-
-    try {
-      await _syncService.checkSyncVariable();
-
-      //calculate outletData
-      List<Map> outletDataMap = await getOutletDataForBicroiJoma();
-      finalBikroiJomaData["outlet_data"] = outletDataMap;
-
-      //calculate section data
-      // List<Map> sectionData = await getSectionDataForBicroiJoma();
-      // finalBikroiJomaData["section_data"] = sectionData;
-    } catch (e) {
-      Helper.dPrint("inside formatBikroiJomaData offlinePdaService catch block $e");
-    }
-    return finalBikroiJomaData;
-  }
 
   //get OutletData List for bicroi joma
   Future<List<Map>> getOutletDataForBicroiJoma() async {
@@ -492,8 +471,8 @@ class OfflinePdaService {
     }
 
     saleSubmittedData = [
-      SaleSubmitTableModel('survey', 'Outlet survey', deviceSurvey),
-      SaleSubmitTableModel('audit', 'Audit', auditSurvey),
+      SaleSubmitTableModel('outlet_survey', 'Outlet survey', deviceSurvey),
+      SaleSubmitTableModel('point_survey', 'Audit', auditSurvey),
     ];
 
     return saleSubmittedData;
@@ -612,25 +591,11 @@ class OfflinePdaService {
       SrInfoModel srInfo = await _syncReadService.getSrInfo();
       finalMap = {
         "date": salesDate,
-        "section_id": srInfo.sectionId,
-        "ff_id": srInfo.ffId,
-        "outlet_data": {},
-        if(saleType==SaleType.preorder) "rtc_survey": [],
+        "user_id": srInfo.ffId,
+        "user_type": srInfo.userType,
       };
 
-      //pre_order
-      String saleKeyInOutletData = SalesTypeUtils.toOutletDataSaleKey(saleType);
-
-      List promotionData = [];
-      List couponData = [];
       List surveyData = [];
-      List qcData = [];
-      List callTimeData = [];
-      List preorderData = [];
-      List geoData = [];
-      List unsoldOutletData = [];
-      List stockCountData = [];
-      List stockCheckData = [];
 
       try {
         final points = await AuditService().getAllPointList();
@@ -649,143 +614,20 @@ class OfflinePdaService {
         for (OutletModel retailer in retailers) {
           CouponModel? coupon;
 
-          Map? cpn= await couponService.checkRetailerCouponCode(retailer: retailer);
-          if(cpn!=null){
-            coupon = await couponService.getCouponFromCouponCode(couponCode: cpn["code"]);
-            print('i found the coupon:: ${coupon?.maxUses}');
-          }
-
           Map outletData = await _salesService.getFormattedSaleData(retailer, saleType, coupon: coupon);
           if (outletData.isNotEmpty) {
-            // unsold outlet data
-            unsoldOutletData = getUnsoldOutletData();
-
-            //outlet stock count
-            if(outletData.containsKey("stock_check_data")){
-              if (outletData["stock_check_data"].isNotEmpty) {
-                stockCheckData.addAll(outletData["stock_check_data"]);
-              }
-            }
-
-            //outlet stock count
-            if(outletData.containsKey("outlet_stock_count")){
-              if (outletData["outlet_stock_count"].isNotEmpty) {
-                stockCountData.addAll(outletData["outlet_stock_count"]);
-              }
-            }
-
-            //promotions
-            if (outletData.containsKey("promotions")) {
-              if (outletData["promotions"].isNotEmpty) {
-                promotionData.addAll(outletData["promotions"]);
-              }
-            }
-
-            //coupon
-            if (outletData.containsKey("coupons")) {
-              if (outletData["coupons"].isNotEmpty) {
-                couponData.addAll(outletData['coupons']);
-              }
-            }
-
             //survey
             if (outletData.containsKey("survey")) {
               if (outletData["survey"].isNotEmpty) {
                 surveyData.addAll(outletData["survey"]);
               }
             }
-
-            //qc
-            if (outletData.containsKey("qc")) {
-              if (outletData["qc"].isNotEmpty) {
-                qcData.addAll(outletData["qc"]);
-              }
-            }
-
-            //call_time
-            if (outletData.containsKey("call_time")) {
-              if (outletData["call_time"].isNotEmpty) {
-                callTimeData.addAll(outletData["call_time"]);
-              }
-            }
-
-            if (outletData.containsKey(saleKeyInOutletData)) {
-              if (outletData[saleKeyInOutletData].isNotEmpty) {
-                preorderData.addAll(outletData[saleKeyInOutletData]);
-              }
-            }
-
-            //geo_data
-            if (outletData.containsKey("geo_data")) {
-              if (outletData["geo_data"].isNotEmpty) {
-                geoData.addAll(outletData["geo_data"]);
-              }
-            }
-
-            if(saleType == SaleType.delivery) {
-
-              Map m = await _salesService.createCallTime(retailer);
-              callTimeData.addAll([m]);
-            }
           }
         }
       }
-
-      try {
-        if (syncObj.containsKey(zeroSaleDataKey) && saleType == SaleType.delivery) {
-          Map zeroSaleDatas = syncObj[zeroSaleDataKey];
-          if (zeroSaleDatas.isNotEmpty) {
-            for (MapEntry zeroSaleDataEntry in zeroSaleDatas.entries) {
-              OutletModel? retailer = await _syncReadService.getRetailerModelFromId(zeroSaleDataEntry.key);
-              if (retailer != null) {
-                List zeroSaleData = await _deliveryServices.getZeroSaleDataForARetailer(retailer.id ?? 0);
-                if (zeroSaleData.isNotEmpty) {
-                  preorderData.addAll(zeroSaleData);
-                }
-              }
-            }
-          }
-        }
-      } catch (e) {
-        Helper.dPrint("zero sale data error in offline pda $e");
-      }
-
-      try {
-        if (syncObj.containsKey(unsoldOutletKey) && saleType == SaleType.preorder) {
-          List<Map> zeroSaleData = await _salesService.getZeroSellList();
-          if (zeroSaleData.isNotEmpty) {
-            preorderData.addAll(zeroSaleData);
-            finalMap["outlet_data"][saleKeyInOutletData] = preorderData;
-          }
-        }
-      } catch (e, t) {
-        Helper.dPrint(e.toString());
-        Helper.dPrint(t.toString());
-      }
-
-      finalMap["outlet_data"]["promotions"] = promotionData;
-      finalMap["outlet_data"]["stock_check_data"] = stockCheckData;
-      finalMap["outlet_data"][saleKeyInOutletData] = preorderData;
 
       if (saleType == SaleType.preorder || saleType == SaleType.spotSale) {
-        finalMap["outlet_data"]["outlet_stock_count"] = stockCountData;
-        finalMap["outlet_data"]["survey"] = surveyData;
-        finalMap["outlet_data"]["geo_data"] = geoData;
-        finalMap["outlet_data"]["call_time"] = callTimeData;
-        finalMap["outlet_data"]["coupons"] = couponData;
-
-        ///todo remove this line and add all zero sell data on "pre_order" list
-        finalMap["outlet_data"][unsoldOutletKey] = unsoldOutletData;
-
-        List posmData = [];
-        posmData = await PosmManagementService().haveAllPosmData();
-
-        if (posmData.isNotEmpty) {
-          finalMap["outlet_data"]["posm"] = posmData;
-        }
-      } else {
-        finalMap["outlet_data"]["call_time"] = callTimeData;
-        finalMap["outlet_data"]["qc"] = qcData;
+        finalMap["survey"] = surveyData;
       }
 
       if(saleType==SaleType.preorder) {
@@ -813,14 +655,9 @@ class OfflinePdaService {
           case SaleType.spotSale:
             url = Links.saveSpotSaleSectionDataUrl;
         }
-        log("SaLeTyPeId::: $saleType");
-        if(saleType == SaleType.delivery && disableSalesSummary == false) {
-          Map overallStock = await _salesService.getPayloadForCheckStock(preorderData: finalMap);
-          log('overall stock is:::: ${jsonEncode(overallStock)}');
-          if(overallStock.isNotEmpty) {
-            finalMap["outlet_data"]["sales_summary"] = overallStock;
-          }
-        }
+        log("SaLeTyPeId:::? $saleType");
+        log("SaLeTyPeId::> $finalMap");
+
         log(jsonEncode(finalMap));
         ReturnedDataModel returnedDataModel =
             await GlobalHttp(httpType: HttpType.post, uri: '${Links.baseUrl}$url', accessToken: srInfo.accessToken, refreshToken: srInfo.refreshToken, body: jsonEncode(finalMap)).fetch();

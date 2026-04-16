@@ -175,8 +175,6 @@ class StockService {
       SrInfoModel srInfo = await _syncReadService.getSrInfo();
       List stockDataList = await getLiftingStock();
 
-      print("--------------->>>> >> 4 ${stockDataList.length}");
-
       ReturnedDataModel returned = await GlobalHttp(
           httpType: HttpType.post,
           uri: '${Links.baseUrl}${Links.submitLiftingStock}',
@@ -197,37 +195,7 @@ class StockService {
   Future<List<Map>> getLiftingStock() async {
     List<Map> liftingStock = [];
     try {
-      await _syncService.checkSyncVariable();
-      SrInfoModel srInfo = await _syncReadService.getSrInfo();
-      String salesDate = await _syncReadService.getSalesDate();
-      if (syncObj["stock"].isNotEmpty) {
-        for (var m in syncObj["stock"].keys) {
-          var stockBySku = syncObj["stock"][m];
-          print("--------------->>>> >> 1 ${stockBySku}");
-          if (stockBySku.isNotEmpty) {
-            Module? module = await _productCategoryServices.getModuleModelFromModuleSlug(m);
-            print("--------------->>>> >> 2 ${module?.name}");
-            stockBySku.forEach((skuId, stockMap) {
-              if (stockMap.containsKey("lifting_stock")) {
-                print("--------------->>>> >> 2 ${module?.name}");
-                if (stockMap["lifting_stock"] > 0) {
-                  print("--------------->>>> >> 3 ${stockMap["lifting_stock"]}");
-                  Map s = {
-                    "ff_id": srInfo.ffId,
-                    "sbu_id": module!.id,
-                    "dep_id": srInfo.depId,
-                    "section_id": srInfo.sectionId,
-                    "sku_id": int.parse(skuId.toString()),
-                    "quantity": stockMap["lifting_stock"],
-                    "date": salesDate
-                  };
-                  liftingStock.add(s);
-                }
-              }
-            });
-          }
-        }
-      }
+
     } catch (e, t) {
       debugPrint(e.toString());
       debugPrint(t.toString());

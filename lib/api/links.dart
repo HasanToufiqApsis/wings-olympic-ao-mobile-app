@@ -16,9 +16,9 @@ class Links {
   static String outletEditUrl = "/app-api/retailer/";
   static String saveSalesDataUrl = "/app-api/sales/save-sales-data";
   static String saveSpotSaleDataUrl = '/app-api/sales/save-spot-sale-data-new';
-  static String salesSubmitServerData = '/app-api/sync-file/get-server-data-count/';
+  static String salesSubmitServerData({required int depId, required String date}) => '$baseUrl/sync-file/get-server-count?dep_id=$depId&date=$date';
   static String salesSubmit = "/app-api/sales/sales-submit";
-  static String saveSaleSectionDataUrl = "/app-api/sales/save-sales-section-data";
+  static String saveSaleSectionDataUrl = "/sync-file/save-point-data";
   static String saveSpotSaleSectionDataUrl = "/app-api/sales/save-spot-sales-section-data";
   static String saveDeliverySectionDataUrl = "/app-api/sales/save-delivery-section-data-new";
   static String getRetailerListUrl = "/app-api/sync-file/get-retailer-list";

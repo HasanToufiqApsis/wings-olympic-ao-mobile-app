@@ -134,9 +134,9 @@ class OutletModel {
       }
     }
     // double totalSalePrice = json['id']==null? 0 : SalesService().getTotalSalePriceForARetailer(json['id']);
-    double totalSalePrice = json['id']==null? 0 : SalesService().getTotalSalePriceForARetailer(json['id']);
-    bool preorderExists = json['id']==null? false : PreOrderService().checkIfPreorderTakenForARetailer(json["id"]);
-    bool spotSalesExists = json['id']==null? false : PreOrderService().checkIfSpotSalesTakenForARetailer(json["id"]);
+    double totalSalePrice = 0;
+    bool preorderExists = false;
+    bool spotSalesExists = false;
     final cluster = ClusterService().getClusterFromId(clusterId: json["cluster_id"] ?? 0);
 
     return OutletModel(

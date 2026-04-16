@@ -1054,6 +1054,7 @@ class OutletServices {
             Map questions = syncObj['survey_details']['questions'] as Map;
             questions.addAll(data['survey']['survey_details']['questions']);
           }
+          syncObj['userData']['pointId']=pointId;
 
           await _syncService.writeSync();
           return true;

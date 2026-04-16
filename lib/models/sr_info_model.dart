@@ -24,6 +24,7 @@ class SrInfoModel {
   late String password;
   late String fullname;
   late int wpf;
+  late int pointId;
 
   SrInfoModel(
       {required this.accessToken,
@@ -42,6 +43,7 @@ class SrInfoModel {
       required this.password,
       required this.fullname,
       required this.wpf,
+      required this.pointId,
       required this.srRoute,
       required this.distributionHouseId,
       required this.distributionHouseName});
@@ -64,6 +66,7 @@ class SrInfoModel {
     password = json['password'];
     fullname = json['name'];
     wpf = json['wpf'] ?? 0;
+    pointId = json['pointId'] ?? 0;
     srRoute = json['sr_route'] ?? '';
     // distributionHouseId = json['distribution_house_id'].toString().isEmpty? 0: int.parse(json['distribution_house_id'].toString());
     // distributionHouseName = json['distribution_house_name'];

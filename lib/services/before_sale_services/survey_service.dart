@@ -243,6 +243,7 @@ class SurveyService {
 
   ///submit survey
   submitSurvey(Map answer, int surveyId, int retailerId) async {
+    print("----<><<<<<<<<<>> ${answer}");
     try {
       if (!syncObj.containsKey(surveyDataKey)) {
         syncObj[surveyDataKey] = {};
@@ -516,8 +517,8 @@ class SurveyService {
                     Map surveyAnswerMap = {
                       "sbu_id": srInfo.sbuId,
                       "survey_id": surveyId,
-                      "dep_id": srInfo.depId,
-                      "section_id": srInfo.sectionId,
+                      "dep_id": retailer.deplId,
+                      "section_id": retailer.sectionId,
                       "ff_id": srInfo.ffId,
                       "outlet_id": retailer.id,
                       "outlet_code": retailer.outletCode,
@@ -566,7 +567,7 @@ class SurveyService {
                     Map surveyAnswerMap = {
                       "sbu_id": srInfo.sbuId,
                       "survey_id": surveyId,
-                      "dep_id": srInfo.depId,
+                      "dep_id": srInfo.pointId,
                       // "section_id": srInfo.sectionId,
                       "ff_id": srInfo.ffId,
                       // "outlet_id": retailer.id,

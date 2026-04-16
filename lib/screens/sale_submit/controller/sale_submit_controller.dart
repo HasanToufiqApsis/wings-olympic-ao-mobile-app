@@ -65,7 +65,7 @@ class SaleSubmitController {
     String date = await SyncReadService().getSalesDate();
     ReturnedDataModel returnedDataModel = await GlobalHttp(
       httpType: HttpType.get,
-      uri: '${Links.baseUrl}${Links.salesSubmitServerData}${srInfo.sectionId}/$date',
+      uri: Links.salesSubmitServerData(depId: srInfo.pointId, date: date),
       accessToken: srInfo.accessToken,
       refreshToken: srInfo.refreshToken,
     ).fetch();
@@ -206,15 +206,15 @@ class SaleSubmitController {
                 }
               });
 
-              await offlinePdaService.flashAllServerData();
+              // await offlinePdaService.flashAllServerData();
               await offlinePdaService.getAllOutletDataForSync(unsentRetailerList, SaleType.preorder);
-              await offlinePdaService.getAllOutletDataForSync(unsentRetailerList, SaleType.spotSale);
+              // await offlinePdaService.getAllOutletDataForSync(unsentRetailerList, SaleType.spotSale);
               ref.read(syncDataProgressProvider.notifier).state = retailerDataDoneProgress;
               if (t.isActive) {
                 t.cancel();
               }
 
-              await StockService().sendStockDataToServer();
+              // await StockService().sendStockDataToServer();
               List<OutletModel> deliveryRetailerList = await offlinePdaService.getDeliveryRetailerList();
               Timer t2 = Timer.periodic(const Duration(seconds: 2), (timer) {
                 if (currentProgress < 80) {
@@ -223,13 +223,13 @@ class SaleSubmitController {
                 }
               });
 
-              await offlinePdaService.getAllOutletDataForSync(deliveryRetailerList, SaleType.delivery, disableSalesSummary: true);
+              // await offlinePdaService.getAllOutletDataForSync(deliveryRetailerList, SaleType.delivery, disableSalesSummary: true);
               ref.read(syncDataProgressProvider.notifier).state = deliveryDataDoneProgress;
               if (t2.isActive) {
                 t2.cancel();
               }
 
-              await OutletServices().syncOutletInfo();
+              // await OutletServices().syncOutletInfo();
               ref.read(syncDataProgressProvider.notifier).state = outletDataDoneProgress;
               //for npi survey sync
               // bool npiSurveyUploadDone = await NpiSurveyService().syncAllNpiSurveyData();
