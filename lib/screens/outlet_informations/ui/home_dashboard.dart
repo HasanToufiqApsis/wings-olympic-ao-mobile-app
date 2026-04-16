@@ -204,14 +204,14 @@ class _HomeDashboardState extends ConsumerState<HomeDashboard> {
                     // mainAxisSize: MainAxisSize.min,
                     // runSpacing: 10,
                     children: [
-                      // getDashboardButton(
-                      //   assetName: "attendance",
-                      //   name: DashboardBtnNames.attendance,
-                      //   extraPadding: 0.1.h,
-                      //   onPressed: () {
-                      //     Navigator.pushNamed(context, AttendanceUI.routeName);
-                      //   },
-                      // ),
+                      getDashboardButton(
+                        assetName: "attendance",
+                        name: DashboardBtnNames.attendance,
+                        extraPadding: 0.1.h,
+                        onPressed: () {
+                          Navigator.pushNamed(context, AttendanceUI.routeName);
+                        },
+                      ),
                       // getDashboardButton(
                       //   assetName: "outlet",
                       //   name: DashboardBtnNames.outlets,
