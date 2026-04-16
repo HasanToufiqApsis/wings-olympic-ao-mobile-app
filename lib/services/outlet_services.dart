@@ -1022,6 +1022,7 @@ class OutletServices {
   Future<bool> fetchAndUpdateRetailersFromApi({
     required int pointId,
     required String saleDate,
+    bool changeRequest = false,
   }) async {
     try {
       final srInfo = await _ffServices.getSrInfo();
@@ -1055,6 +1056,11 @@ class OutletServices {
             questions.addAll(data['survey']['survey_details']['questions']);
           }
           syncObj['userData']['pointId']=pointId;
+          List lastServicesPoints = syncObj['last_service_points'] as List;
+          if(changeRequest == true) {
+            lastServicesPoints.add(pointId);
+            syncObj['last_service_points'] = lastServicesPoints;
+          }
 
           await _syncService.writeSync();
           return true;

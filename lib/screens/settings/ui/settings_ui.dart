@@ -1215,6 +1215,7 @@ class _SettingsUIState extends ConsumerState<SettingsUI> {
                                 await _outletServices.fetchAndUpdateRetailersFromApi(
                               pointId: selectedPoint!.id,
                               saleDate: saleDate,
+                                  changeRequest: true
                             );
                             setDialogState(() => isLoading = false);
                             if (success) {
