@@ -346,14 +346,14 @@ class _HomeDashboardState extends ConsumerState<HomeDashboard> {
                       //     Navigator.pushNamed(context, TransferBillListUI.routeName);
                       //   },
                       // ),
-                      // getDashboardButton(
-                      //   assetName: "taDa",
-                      //   name: DashboardBtnNames.taDa,
-                      //   extraPadding: 0.3.h,
-                      //   onPressed: () {
-                      //     Navigator.pushNamed(context, OlympicTaDaUi.routeName, arguments: false);
-                      //   },
-                      // ),
+                      getDashboardButton(
+                        assetName: "taDa",
+                        name: DashboardBtnNames.taDa,
+                        extraPadding: 0.3.h,
+                        onPressed: () {
+                          Navigator.pushNamed(context, OlympicTaDaUi.routeName, arguments: false);
+                        },
+                      ),
                     ],
                   ),
                 ),
