@@ -690,5 +690,6 @@ const stockSyncKey = "stock-sync";
 const viewComplexityKey = 'view_complexity_key';
 
 const taDaKey = 'taDa-data';
+const taDaSurveyEventKey = 'taDa-survey-events';
 
 const stockCheckDaya = 'stock_check-data';

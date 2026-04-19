@@ -39,6 +39,41 @@ class SurveyService {
 
   final SyncService _syncService = SyncService();
 
+  Future<void> _trackTaDaSurveyEvent({
+    required String surveyType,
+    required int surveyId,
+    int? retailerId,
+    int? pointId,
+    int? depId,
+    int? sectionId,
+  }) async {
+    try {
+      final salesDate = await _syncReadService.getSalesDate();
+      if (!syncObj.containsKey(taDaSurveyEventKey) ||
+          syncObj[taDaSurveyEventKey] is! List) {
+        syncObj[taDaSurveyEventKey] = <dynamic>[];
+      }
+
+      final List<dynamic> events =
+          List<dynamic>.from(syncObj[taDaSurveyEventKey] as List);
+
+      events.add(<String, dynamic>{
+        'survey_type': surveyType,
+        'survey_id': surveyId,
+        'retailer_id': retailerId,
+        'point_id': pointId ?? depId,
+        'dep_id': depId,
+        'section_id': sectionId,
+        'sales_date': salesDate,
+        'created_at': DateTime.now().toIso8601String(),
+      });
+
+      syncObj[taDaSurveyEventKey] = events;
+    } catch (e, s) {
+      Helper.dPrint('Survey event tracking failed $e $s');
+    }
+  }
+
   ///survey list for retailers
   Future<List<SurveyModel>> getAllSurveyList(
       {required List surveyIdList, required int retailerId}) async {
@@ -255,6 +290,17 @@ class SurveyService {
 
       syncObj[surveyDataKey][retailerId.toString()][surveyId.toString()] = answer;
 
+      if (answer.isNotEmpty) {
+        final retailer = await outletService.getOutletBuId(retailerId);
+        await _trackTaDaSurveyEvent(
+          surveyType: 'outlet',
+          surveyId: surveyId,
+          retailerId: retailerId,
+          depId: retailer?.deplId,
+          sectionId: retailer?.sectionId,
+        );
+      }
+
       await SyncService().writeSync(jsonEncode(syncObj));
       sendSurveyDataToServer(retailerId: retailerId);
     } catch (e, s) {
@@ -274,6 +320,14 @@ class SurveyService {
       }
 
       syncObj[surveyPointLocationDataKey][pointId.toString()][surveyId.toString()] = answer;
+
+      if (answer.isNotEmpty) {
+        await _trackTaDaSurveyEvent(
+          surveyType: 'audit',
+          surveyId: surveyId,
+          pointId: pointId,
+        );
+      }
 
       await SyncService().writeSync(jsonEncode(syncObj));
       sendPointSurveyDataToServer(retailerId: pointId);

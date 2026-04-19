@@ -1,114 +1,112 @@
-import 'dart:developer';
-import 'dart:io';
-
-import 'package:camera/camera.dart';
-import 'package:file_picker/file_picker.dart';
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:sizer/sizer.dart';
-import 'package:wings_olympic_sr/models/fare_chart_model.dart';
-import 'package:wings_olympic_sr/screens/olympic_tada/service/olympic_tada_service.dart';
 
 import '../../../api/leave_management_api.dart';
 import '../../../constants/enum.dart';
 import '../../../main.dart';
-import '../../../models/leave_model.dart';
 import '../../../models/returned_data_model.dart';
-import '../../../provider/global_provider.dart';
 import '../../../reusable_widgets/custom_dialog.dart';
-import '../../../reusable_widgets/language_textbox.dart';
-import '../../../reusable_widgets/scaffold_widgets/cameraScreen.dart';
-import '../../../services/Image_service.dart';
-import '../../../services/ff_services.dart';
+import '../model/olympic_da_info.dart';
+import '../model/olympic_tada_entry.dart';
+import '../service/olympic_tada_service.dart';
 
 class OlympicTaDaController {
-  BuildContext context;
-  WidgetRef ref;
-  late Alerts alerts;
-
-  LeaveManagementAPI leaveManagementAPI = LeaveManagementAPI();
-
   OlympicTaDaController({required this.context, required this.ref})
       : alerts = Alerts(context: context);
 
-  final _service = OlympicTaDaService();
+  final BuildContext context;
+  final WidgetRef ref;
+  final Alerts alerts;
+  final LeaveManagementAPI leaveManagementAPI = LeaveManagementAPI();
+  final OlympicTaDaService _service = OlympicTaDaService();
 
-  Future draftTaDa({required String remarks}) async {
-    try {
-      final vehicleTaDa = ref.watch(selectedOlympicTaDaTypeProvider);
-      for (var v in vehicleTaDa) {
-        if (v.selectedTaDa == null || (v.textEditingController?.text.isEmpty ?? false)) {
-          alerts.customDialog(
-              type: AlertType.warning,
-              description: "Enter all vehicle type and cost");
-          return;
-        }
-      }
-      await _service.draftTaDa(vehicleTaDa: vehicleTaDa, remarks: remarks);
-      alerts.customDialog(
-        type: AlertType.success,
-        description: "Your Ta/Da successfully saved as draft",
-      );
-    } catch (e, t) {
-      debugPrint(e.toString());
-      debugPrint(t.toString());
+  String? validateEntries({
+    required List<OlympicTaDaEntry> entries,
+    required OlympicDaInfo? daInfo,
+  }) {
+    if (daInfo == null) {
+      return 'Complete the required survey first to get DA.';
     }
+
+    final filledEntries = entries.where((entry) => !entry.isEmpty).toList();
+    if (filledEntries.isEmpty) {
+      return 'Add at least one TA row before saving or submitting.';
+    }
+
+    for (final entry in filledEntries) {
+      if (!entry.isComplete) {
+        return 'Complete vehicle, from, to, and amount for every TA row.';
+      }
+    }
+
+    return null;
   }
 
-
-  Future<void> submitTaDaToServer({
-    required List<FareChartModel> fareCharts,
+  Future<void> draftTaDa({
+    required List<OlympicTaDaEntry> entries,
+    required OlympicDaInfo? daInfo,
     required String remarks,
   }) async {
+    final validationMessage =
+        validateEntries(entries: entries, daInfo: daInfo);
+    if (validationMessage != null) {
+      alerts.customDialog(
+        type: AlertType.warning,
+        description: validationMessage,
+      );
+      return;
+    }
 
-    final vehicleTaDa = ref.watch(selectedOlympicTaDaTypeProvider);
-    for (var v in vehicleTaDa) {
-      if (v.selectedTaDa == null ||
-          (v.textEditingController?.text.isEmpty ?? false)) {
-        alerts.customDialog(
-            type: AlertType.warning,
-            description: "Enter all vehicle type and cost");
-        return;
-      }
+    await _service.draftTaDa(
+      entries: entries,
+      remarks: remarks,
+      daInfo: daInfo,
+    );
+
+    alerts.customDialog(
+      type: AlertType.success,
+      description: 'Your Ta/Da has been saved as draft.',
+    );
+  }
+
+  Future<void> submitTaDaToServer({
+    required List<OlympicTaDaEntry> entries,
+    required OlympicDaInfo? daInfo,
+    required String remarks,
+  }) async {
+    final validationMessage =
+        validateEntries(entries: entries, daInfo: daInfo);
+    if (validationMessage != null) {
+      alerts.customDialog(
+        type: AlertType.warning,
+        description: validationMessage,
+      );
+      return;
     }
 
     alerts.floatingLoading();
 
-    List<String> imagesPathList = [];
-    final list = ref.watch(multipleImageListProvider);
-    for (int a = 0; a != list.length; a++) {
-      var imagePath = ref
-          .watch(multipleImageProvider("${CapturedMultipleImageType.taDa}-$a"));
-      if (imagePath != null) {
-        imagesPathList.add(imagePath);
-      }
-    }
-
-    final taDaExpense =  await _service.taDaVehicleTypeList();
-    final fixedTaDaExpense =  await _service.fixedTaDaVehicleTypeList();
-
-    ReturnedDataModel returnedDataModel = await leaveManagementAPI.sendOlympicTaDaData(
-      extraTaDa: vehicleTaDa,
-      fareCharts: fareCharts,
-      images: imagesPathList,
+    final ReturnedDataModel returnedDataModel =
+        await leaveManagementAPI.sendOlympicTaDaData(
+      taEntries: entries.where((entry) => !entry.isEmpty).toList(),
+      daInfo: daInfo!,
       remarks: remarks,
-      taDaExpense: taDaExpense,
-      fixedTaDaExpense: fixedTaDaExpense,
     );
 
     navigatorKey.currentState?.pop();
     if (returnedDataModel.status == ReturnedStatus.success) {
       _service.taDaSubmitted();
       navigatorKey.currentState?.pop();
-      // ref.refresh(taDaDataProvider);
       alerts.customDialog(
         type: AlertType.success,
-        description: "Your Ta/Da request has been successfully submitted",
+        description: 'Your Ta/Da request has been successfully submitted.',
       );
     } else {
       alerts.customDialog(
-          type: AlertType.error, description: returnedDataModel.errorMessage);
+        type: AlertType.error,
+        description:
+            returnedDataModel.errorMessage ?? 'Failed to submit Ta/Da.',
+      );
     }
   }
 }

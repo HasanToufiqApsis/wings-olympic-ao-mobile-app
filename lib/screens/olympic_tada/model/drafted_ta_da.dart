@@ -1,31 +1,55 @@
-class DraftedTaDa {
-  // {
-  // "cost_type": "201",
-  // "cost": "60"
-  // }
+import 'olympic_da_info.dart';
 
+class DraftedTaDa {
   int? costType;
   int? cost;
   String? identity;
+  int? vehicleId;
+  String? vehicleSlug;
+  String? fromLocation;
+  String? toLocation;
+  String? km;
+  String? remarks;
 
-  DraftedTaDa({required this.costType, required this.cost});
+  DraftedTaDa({
+    this.costType,
+    this.cost,
+    this.identity,
+    this.vehicleId,
+    this.vehicleSlug,
+    this.fromLocation,
+    this.toLocation,
+    this.km,
+    this.remarks,
+  });
 
-  DraftedTaDa.fromJson(Map<String, dynamic> json) {
-    final ct = json['cost_type'] ?? "0";
-    final c = json['cost'] ?? "0";
-    costType = int.tryParse(ct) ?? 0;
+  factory DraftedTaDa.fromJson(Map<String, dynamic> json) {
+    final rawCost = json['amount'] ?? json['cost'] ?? 0;
 
-    if (c is int) {
-      cost = c;
-    } else if (c is double) {
-      cost = c.toInt();
-    } else if (c is String) {
-      cost = double.tryParse(c)?.toInt() ?? 0;
+    int parsedCost;
+    if (rawCost is int) {
+      parsedCost = rawCost;
+    } else if (rawCost is double) {
+      parsedCost = rawCost.toInt();
     } else {
-      cost = 0;
+      parsedCost = double.tryParse(rawCost.toString())?.toInt() ?? 0;
     }
 
-    identity = json['identity'] ?? DateTime.now().toIso8601String();
+    return DraftedTaDa(
+      costType: int.tryParse(
+        (json['vehicle_id'] ?? json['cost_type'] ?? 0).toString(),
+      ),
+      cost: parsedCost,
+      identity: json['identity']?.toString() ??
+          DateTime.now().toIso8601String(),
+      vehicleId: int.tryParse(json['vehicle_id']?.toString() ?? ''),
+      vehicleSlug: json['vehicle_slug']?.toString(),
+      fromLocation:
+          (json['from'] ?? json['from_location'])?.toString(),
+      toLocation: (json['to'] ?? json['to_location'])?.toString(),
+      km: json['km']?.toString(),
+      remarks: (json['remarks'] ?? json['remark'])?.toString(),
+    );
   }
 }
 
@@ -33,18 +57,42 @@ class DraftedTaDaData {
   List<DraftedTaDa>? draftedTaDa;
   String? remarks;
   bool? submitted;
+  OlympicDaInfo? daInfo;
+  String? salesDate;
 
-  DraftedTaDaData({required this.draftedTaDa, required this.remarks, required this.submitted});
+  DraftedTaDaData({
+    required this.draftedTaDa,
+    required this.remarks,
+    required this.submitted,
+    this.daInfo,
+    this.salesDate,
+  });
 
-  DraftedTaDaData.fromJson(Map<String, dynamic> json) {
-    submitted = json['submitted'] ?? false;
-    remarks = json['remarks'] ?? "";
-
-    List<DraftedTaDa> list = [];
-    for(var val in json['cost_list'] ?? []) {
-      list.add(DraftedTaDa.fromJson(val));
+  factory DraftedTaDaData.fromJson(Map<String, dynamic> json) {
+    final List<DraftedTaDa> list = [];
+    final rawRows = json['ta_rows'] ?? json['cost_list'] ?? <dynamic>[];
+    for (final val in rawRows) {
+      if (val is Map<String, dynamic>) {
+        list.add(DraftedTaDa.fromJson(val));
+      } else if (val is Map) {
+        list.add(DraftedTaDa.fromJson(Map<String, dynamic>.from(val)));
+      }
     }
 
-    draftedTaDa = list;
+    OlympicDaInfo? daInfo;
+    final rawDaInfo = json['da_info'];
+    if (rawDaInfo is Map<String, dynamic>) {
+      daInfo = OlympicDaInfo.fromJson(rawDaInfo);
+    } else if (rawDaInfo is Map) {
+      daInfo = OlympicDaInfo.fromJson(Map<String, dynamic>.from(rawDaInfo));
+    }
+
+    return DraftedTaDaData(
+      draftedTaDa: list,
+      remarks: json['remarks']?.toString() ?? '',
+      submitted: json['submitted'] == true,
+      daInfo: daInfo,
+      salesDate: json['sales_date']?.toString(),
+    );
   }
 }

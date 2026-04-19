@@ -3,17 +3,16 @@ import 'dart:developer';
 import 'dart:io';
 
 import 'package:flutter/material.dart';
-import 'package:wings_olympic_sr/screens/olympic_tada/model/extra_ta_da_model.dart';
 
 import '../constants/constant_variables.dart';
 import '../constants/enum.dart';
-import '../models/fare_chart_model.dart';
 import '../models/leave_model.dart';
 import '../models/returned_data_model.dart';
 import '../models/sr_info_model.dart';
 import '../screens/allowance_management/model/created_tada_model.dart';
 import '../screens/leave_management/model/selected_vehicle_with_tada.dart';
-import '../screens/olympic_tada/model/selected_vehicle_with_tada_olympic.dart';
+import '../screens/olympic_tada/model/olympic_da_info.dart';
+import '../screens/olympic_tada/model/olympic_tada_entry.dart';
 import '../services/Image_service.dart';
 import '../services/connectivity_service.dart';
 import '../services/ff_services.dart';
@@ -221,12 +220,9 @@ class LeaveManagementAPI {
   }
 
   Future<ReturnedDataModel> sendOlympicTaDaData({
-    required List<SelectedVehicleWithTaDaOlympic> extraTaDa,
-    required List<FareChartModel> fareCharts,
-    required List<String> images,
+    required List<OlympicTaDaEntry> taEntries,
+    required OlympicDaInfo daInfo,
     required String remarks,
-    required List<ExtraTaDaType> taDaExpense,
-    required List<ExtraTaDaType> fixedTaDaExpense,
   }) async {
     ReturnedDataModel returnedDataModel =
     ReturnedDataModel(status: ReturnedStatus.error);
@@ -234,38 +230,21 @@ class LeaveManagementAPI {
       SrInfoModel sr = await syncReadService.getSrInfo();
       List costList = [];
       num total = 0;
-      for (var vehicle in extraTaDa) {
-        final exp = taDaExpense.firstWhere((element) => element.id == vehicle.selectedTaDa?.id);
-        total += num.tryParse(vehicle.textEditingController?.text ?? "0") ?? 0;
-        costList.add({
-          "cost_type": "${exp.categoryId}",
-          "cost": "${vehicle.textEditingController?.text}"
-        });
-      }
-      for (var vehicle in fixedTaDaExpense) {
-        costList.add({
-          "cost_type": "${vehicle.categoryId}",
-          "cost": "${vehicle.amount}"
-        });
-      }
-      for (var vehicle in fareCharts) {
-        total += num.tryParse((vehicle.fareInAmount??"").toString()) ?? 0;
-        costList.add({
-          "cost_type": "${vehicle.transportCategoryId}",
-          "cost": "${vehicle.fareInAmount}",
-          "cluster_id_from": vehicle.clusterIdFrom,
-          "cluster_id_to": vehicle.clusterIdTo,
-        });
+      for (final entry in taEntries) {
+        total += entry.amount;
+        costList.add(entry.toApiJson());
       }
 
-      List<String> imagesNames = [];
-
-      // for (var imagePath in images) {
-      //   imagesNames.add("tada/${sr.userType}/${sr.ffId}/${imagePath
-      //       .split("/")
-      //       .last}");
-      //   await sendManualOverrideImageToServer(File(imagePath), sr);
-      // }
+      total += daInfo.amount;
+      costList.add({
+        "cost_type": "${daInfo.sectionId ?? daInfo.pointId}",
+        "cost": "${daInfo.amount.toStringAsFixed(0)}",
+        "entry_type": "DA",
+        "survey_type": daInfo.surveyType,
+        "point_id": daInfo.pointId,
+        "section_id": daInfo.sectionId,
+        "allowance_type": daInfo.allowanceType,
+      });
 
       Map payload = {
         "user_id": sr.ffId,
@@ -273,7 +252,7 @@ class LeaveManagementAPI {
         "ta_da_cost": costList,
         "remark": remarks,
         "total_cost": total,
-        "ta_da_image": imagesNames,
+        "ta_da_image": <String>[],
       };
 
       log("payload :::: ${jsonEncode(payload)}");
