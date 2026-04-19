@@ -15,36 +15,64 @@ Map currentStockData = {};
 //
 // String appVersion = '1.0.1';
 Map dummyData = {
-  "date": "2026-02-15",
+  "date": "2026-04-19",
   "logged_in": 1,
   "userData": {
-    "accessToken": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MjI4LCJ1c2VyVHlwZUlkIjo0MSwiZW1haWwiOiJhYnUuc2FsZWhAZ21haWwuY29tIiwic2J1X2lkIjoiWzU0XSIsImlhdCI6MTc3MTEyOTI3NywiZXhwIjoxMDAxNzcxMTIyMzk3fQ.dZ4FRerjfEs2QtY0G_7BYxqQtwxXDNKztX1WiPrnbWc",
-    "refreshToken": "JgQKUCyedILBJCNs",
-    "ff_id": 228,
-    "sbu_id": "[54]",
-    "dep_id": 167,
-    "email": "abu.saleh@gmail.com",
-    "contact_no": "01584163560",
-    "nid": "1234567890123",
-    "birth_certificate_no": "12345678901234567",
-    "employee_id": "asr-2319249",
-    "referrer_id": null,
-    "employment_status": "on_notice",
-    "is_permanent": 0,
-    "visiting_frequency": "2",
-    "user_type": 41,
+    "accessToken": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJuYW1lIjoiQWhtZWQgTGlua29uIiwiaWQiOjE3NjUsInVzZXJUeXBlSWQiOjY1LCJlbWFpbCI6ImxpbmtvbkBnbWFpbC5jb20iLCJzYnVfaWQiOls1NF0sImlhdCI6MTc3NjU4Nzg2MywiZXhwIjoxMDAxNzc2NTgwOTgzfQ.MljwHRXNmrbuOfE8a6ryn0bYmU9H0jQZ4O2jdC87Cck",
+    "refreshToken": "CX73qo3C42oFcWBL",
+    "date": "2026-04-19",
+    "id": 1765,
+    "sbu_id": [
+      54
+    ],
+    "user_type_id": 65,
+    "user_role_id": 1,
+    "name": "Ahmed Linkon",
+    "email": "linkon@gmail.com",
+    "joining_date": null,
+    "end_date": null,
+    "user_name": "linkon@gmail.com",
+    "contact": "01888999444",
     "status": 1,
-    "username": "01584163560",
-    "password": "123",
-    "fullname": "Abu Saleh",
-    "sr_route": "Kakoli (Kakoli_Route)",
-    "distribution_house_id": 420,
-    "distribution_house_name": "Satkhira",
-    "wpf": 0,
-    "point_name": "KOLAROA",
-    "point_contact_no": "8801716169154",
-    "company_name": "Agami Limited",
-    "section_id": 202
+    "image": null,
+    "created_by": null,
+    "updated_by": null,
+    "created_at": "2026-04-09T09:31:40.000Z",
+    "updated_at": "2026-04-09T09:33:56.000Z",
+    "user_type_slug": "AO",
+    "dep_ids": [
+      166,
+      167
+    ],
+    "depots": [
+      {
+        "dep_id": 166,
+        "type": null,
+        "parent_location_id": 0
+      },
+      {
+        "dep_id": 167,
+        "type": "depot",
+        "parent_location_id": 0
+      }
+    ],
+    "permitted_sbus": {
+      "sbu_ids": [
+        54
+      ],
+      "default_sbu": 54,
+      "multi_access": 0
+    },
+    "sbu_info": [
+      {
+        "id": 54,
+        "sbu_name": "Sun"
+      }
+    ],
+    "sections": [],
+    "routes": [],
+    "password": "apsis@2025",
+    "pointId": 167
   },
   "retailers": [
     {
@@ -66,8 +94,9 @@ Map dummyData = {
       "dep_id": 167,
       "section_id": 202,
       "cluster_id": 0,
+      "sap_code": "ord-101132",
       "qc_price_group": 3,
-      "outlet_cover_photo": "http://192.168.20.16:2080/app-api/static-file/retailer/ord-101132/outlet_cover_image.jpg",
+      "outlet_cover_photo": "https://olympic-dev.wingssfa.net/app-api/static-file/retailer/ord-101132/outlet_cover_image.jpg",
       "lat": 23.7936524,
       "long": 90.4046146,
       "allowable_distance": 100,
@@ -83,21 +112,9 @@ Map dummyData = {
           "slug": "Blue"
         }
       },
-      "available_promotions": [
-        {
-          "id": 65,
-          "discount_val": 5,
-          "cap_val": null
-        },
-        {
-          "id": 66,
-          "discount_val": 4,
-          "cap_val": null
-        }
-      ],
-      "available_try_before_you_buy": [],
-      "available_qps_promotions": [],
-      "available_surveys": []
+      "available_surveys": [
+        599
+      ]
     },
     {
       "id": 151,
@@ -118,8 +135,9 @@ Map dummyData = {
       "dep_id": 167,
       "section_id": 202,
       "cluster_id": 46089,
+      "sap_code": "15",
       "qc_price_group": 3,
-      "outlet_cover_photo": "http://192.168.20.16:2080/app-api/static-file/retailer/15/outlet_cover_image.jpg",
+      "outlet_cover_photo": "https://olympic-dev.wingssfa.net/app-api/static-file/retailer/15/outlet_cover_image.jpg",
       "lat": 23.7936804,
       "long": 90.4045817,
       "allowable_distance": 100,
@@ -135,21 +153,9 @@ Map dummyData = {
           "slug": "Gold"
         }
       },
-      "available_promotions": [
-        {
-          "id": 65,
-          "discount_val": 5,
-          "cap_val": null
-        },
-        {
-          "id": 66,
-          "discount_val": 4,
-          "cap_val": null
-        }
-      ],
-      "available_try_before_you_buy": [],
-      "available_qps_promotions": [],
-      "available_surveys": []
+      "available_surveys": [
+        599
+      ]
     },
     {
       "id": 152,
@@ -159,7 +165,7 @@ Map dummyData = {
       "owner": "Sajid",
       "contact": "01535155113",
       "approval_status": "APPROVED",
-      "nid": "1234567895",
+      "nid": "",
       "address": "204/1,Niketon",
       "price_group": 1,
       "outlet_cover_image": null,
@@ -170,10 +176,11 @@ Map dummyData = {
       "dep_id": 167,
       "section_id": 202,
       "cluster_id": 46073,
+      "sap_code": "SA-123445",
       "qc_price_group": 3,
-      "outlet_cover_photo": "http://192.168.20.16:2080/app-api/static-file/retailer/SA-123445/outlet_cover_image.jpg",
-      "lat": 23.7936343,
-      "long": 90.4045739,
+      "outlet_cover_photo": "https://olympic-dev.wingssfa.net/app-api/static-file/retailer/SA-123445/outlet_cover_image.jpg",
+      "lat": 23.7936334,
+      "long": 90.404596,
       "allowable_distance": 100,
       "reasoning_check": 1,
       "available_onboarding_info": {
@@ -187,24 +194,8 @@ Map dummyData = {
           "slug": "Gold"
         }
       },
-      "available_promotions": [
-        {
-          "id": 65,
-          "discount_val": 5,
-          "cap_val": null
-        },
-        {
-          "id": 66,
-          "discount_val": 4,
-          "cap_val": null
-        }
-      ],
-      "available_try_before_you_buy": [],
-      "available_qps_promotions": [],
       "available_surveys": [
-        533,
-        534,
-        537
+        599
       ]
     },
     {
@@ -226,8 +217,9 @@ Map dummyData = {
       "dep_id": 167,
       "section_id": 202,
       "cluster_id": 0,
+      "sap_code": "99898",
       "qc_price_group": 3,
-      "outlet_cover_photo": "http://192.168.20.16:2080/app-api/static-file/retailer/99898/outlet_cover_image.jpg",
+      "outlet_cover_photo": "https://olympic-dev.wingssfa.net/app-api/static-file/retailer/99898/outlet_cover_image.jpg",
       "lat": 23.793779,
       "long": 90.404598,
       "allowable_distance": 100,
@@ -243,21 +235,9 @@ Map dummyData = {
           "slug": "Gold"
         }
       },
-      "available_promotions": [
-        {
-          "id": 65,
-          "discount_val": 5,
-          "cap_val": null
-        },
-        {
-          "id": 66,
-          "discount_val": 4,
-          "cap_val": null
-        }
-      ],
-      "available_try_before_you_buy": [],
-      "available_qps_promotions": [],
-      "available_surveys": []
+      "available_surveys": [
+        599
+      ]
     },
     {
       "id": 154,
@@ -278,8 +258,9 @@ Map dummyData = {
       "dep_id": 167,
       "section_id": 202,
       "cluster_id": 498,
+      "sap_code": "K-1234",
       "qc_price_group": 3,
-      "outlet_cover_photo": "http://192.168.20.16:2080/app-api/static-file/retailer/K-1234/outlet_cover_image.jpg",
+      "outlet_cover_photo": "https://olympic-dev.wingssfa.net/app-api/static-file/retailer/K-1234/outlet_cover_image.jpg",
       "lat": 23.793714,
       "long": 90.40453,
       "allowable_distance": 100,
@@ -295,29 +276,8 @@ Map dummyData = {
           "slug": "Gold"
         }
       },
-      "available_promotions": [
-        {
-          "id": 9,
-          "discount_val": 2,
-          "cap_val": null
-        },
-        {
-          "id": 65,
-          "discount_val": 5,
-          "cap_val": null
-        },
-        {
-          "id": 66,
-          "discount_val": 4,
-          "cap_val": null
-        }
-      ],
-      "available_try_before_you_buy": [],
-      "available_qps_promotions": [],
       "available_surveys": [
-        533,
-        534,
-        537
+        599
       ]
     },
     {
@@ -339,8 +299,9 @@ Map dummyData = {
       "dep_id": 167,
       "section_id": 202,
       "cluster_id": 499,
+      "sap_code": "M-1234",
       "qc_price_group": 3,
-      "outlet_cover_photo": "http://192.168.20.16:2080/app-api/static-file/retailer/M-1234/outlet_cover_image.jpg",
+      "outlet_cover_photo": "https://olympic-dev.wingssfa.net/app-api/static-file/retailer/M-1234/outlet_cover_image.jpg",
       "lat": 23.793707,
       "long": 90.404526,
       "allowable_distance": 100,
@@ -356,129 +317,9 @@ Map dummyData = {
           "slug": "Gold"
         }
       },
-      "available_promotions": [
-        {
-          "id": 65,
-          "discount_val": 5,
-          "cap_val": null
-        },
-        {
-          "id": 66,
-          "discount_val": 4,
-          "cap_val": null
-        }
-      ],
-      "available_try_before_you_buy": [],
-      "available_qps_promotions": [],
       "available_surveys": [
-        533,
-        534,
-        537
+        599
       ]
-    },
-    {
-      "id": 1436,
-      "outlet_name": "Gmail store",
-      "outlet_name_bn": "জিমেইল ষ্টোর",
-      "outlet_code": "R-228228210126-002",
-      "owner": "Alal",
-      "contact": "01789456123",
-      "approval_status": "APPROVED",
-      "nid": "123456789978654",
-      "address": "Dhaka, Banani",
-      "price_group": 1,
-      "outlet_cover_image": null,
-      "outlet_cooler_image": null,
-      "sbu_id": [
-        54
-      ],
-      "dep_id": 167,
-      "section_id": 202,
-      "cluster_id": null,
-      "qc_price_group": 3,
-      "outlet_cover_photo": "http://192.168.20.16:2080/app-api/static-file/retailer/R-228228210126-002/outlet_cover_image.jpg",
-      "lat": 23.7937144,
-      "long": 90.4045622,
-      "allowable_distance": 100,
-      "reasoning_check": 1,
-      "available_onboarding_info": {
-        "cooler_status": "No",
-        "business_type": {
-          "id": 47,
-          "slug": "Grocery"
-        },
-        "channel_category": {
-          "id": 53,
-          "slug": "Silver"
-        }
-      },
-      "available_promotions": [
-        {
-          "id": 65,
-          "discount_val": 5,
-          "cap_val": null
-        },
-        {
-          "id": 66,
-          "discount_val": 4,
-          "cap_val": null
-        }
-      ],
-      "available_try_before_you_buy": [],
-      "available_qps_promotions": [],
-      "available_surveys": []
-    },
-    {
-      "id": 1437,
-      "outlet_name": "Khan store Banani",
-      "outlet_name_bn": "Khan store Banani",
-      "outlet_code": "R-228228220126-002",
-      "owner": "khan",
-      "contact": "01885885666",
-      "approval_status": "APPROVED",
-      "nid": "1958358",
-      "address": "Badda",
-      "price_group": 1,
-      "outlet_cover_image": null,
-      "outlet_cooler_image": null,
-      "sbu_id": [
-        54
-      ],
-      "dep_id": 167,
-      "section_id": 202,
-      "cluster_id": null,
-      "qc_price_group": 3,
-      "outlet_cover_photo": "http://192.168.20.16:2080/app-api/static-file/retailer/R-228228220126-002/outlet_cover_image.jpg",
-      "lat": 23.7939054,
-      "long": 90.4046311,
-      "allowable_distance": 100,
-      "reasoning_check": 1,
-      "available_onboarding_info": {
-        "cooler_status": "No",
-        "business_type": {
-          "id": 45,
-          "slug": "Wholesale"
-        },
-        "channel_category": {
-          "id": 51,
-          "slug": "Platinum"
-        }
-      },
-      "available_promotions": [
-        {
-          "id": 65,
-          "discount_val": 5,
-          "cap_val": null
-        },
-        {
-          "id": 66,
-          "discount_val": 4,
-          "cap_val": null
-        }
-      ],
-      "available_try_before_you_buy": [],
-      "available_qps_promotions": [],
-      "available_surveys": []
     },
     {
       "id": 1438,
@@ -497,10 +338,11 @@ Map dummyData = {
         54
       ],
       "dep_id": 167,
-      "section_id": 202,
+      "section_id": 213,
       "cluster_id": null,
+      "sap_code": "R-228228220126-003",
       "qc_price_group": 3,
-      "outlet_cover_photo": "http://192.168.20.16:2080/app-api/static-file/retailer/R-228228220126-003/outlet_cover_image.jpg",
+      "outlet_cover_photo": "https://olympic-dev.wingssfa.net/app-api/static-file/retailer/R-228228220126-003/outlet_cover_image.jpg",
       "lat": 23.7936568,
       "long": 90.4046068,
       "allowable_distance": 100,
@@ -516,21 +358,9 @@ Map dummyData = {
           "slug": "Gold"
         }
       },
-      "available_promotions": [
-        {
-          "id": 65,
-          "discount_val": 5,
-          "cap_val": null
-        },
-        {
-          "id": 66,
-          "discount_val": 4,
-          "cap_val": null
-        }
-      ],
-      "available_try_before_you_buy": [],
-      "available_qps_promotions": [],
-      "available_surveys": []
+      "available_surveys": [
+        599
+      ]
     },
     {
       "id": 1439,
@@ -549,10 +379,11 @@ Map dummyData = {
         54
       ],
       "dep_id": 167,
-      "section_id": 202,
+      "section_id": 213,
       "cluster_id": null,
+      "sap_code": "R-228228220126-004",
       "qc_price_group": 3,
-      "outlet_cover_photo": "http://192.168.20.16:2080/app-api/static-file/retailer/R-228228220126-004/outlet_cover_image.jpg",
+      "outlet_cover_photo": "https://olympic-dev.wingssfa.net/app-api/static-file/retailer/R-228228220126-004/outlet_cover_image.jpg",
       "lat": 23.7936529,
       "long": 90.4046194,
       "allowable_distance": 100,
@@ -568,21 +399,9 @@ Map dummyData = {
           "slug": "Silver"
         }
       },
-      "available_promotions": [
-        {
-          "id": 65,
-          "discount_val": 5,
-          "cap_val": null
-        },
-        {
-          "id": 66,
-          "discount_val": 4,
-          "cap_val": null
-        }
-      ],
-      "available_try_before_you_buy": [],
-      "available_qps_promotions": [],
-      "available_surveys": []
+      "available_surveys": [
+        599
+      ]
     },
     {
       "id": 1440,
@@ -601,10 +420,11 @@ Map dummyData = {
         54
       ],
       "dep_id": 167,
-      "section_id": 202,
+      "section_id": 213,
       "cluster_id": null,
+      "sap_code": "R-228228220126-002",
       "qc_price_group": 3,
-      "outlet_cover_photo": "http://192.168.20.16:2080/app-api/static-file/retailer/R-228228220126-002/outlet_cover_image.jpg",
+      "outlet_cover_photo": "https://olympic-dev.wingssfa.net/app-api/static-file/retailer/R-228228220126-002/outlet_cover_image.jpg",
       "lat": 23.7936753,
       "long": 90.4045548,
       "allowable_distance": 100,
@@ -620,21 +440,9 @@ Map dummyData = {
           "slug": "Platinum"
         }
       },
-      "available_promotions": [
-        {
-          "id": 65,
-          "discount_val": 5,
-          "cap_val": null
-        },
-        {
-          "id": 66,
-          "discount_val": 4,
-          "cap_val": null
-        }
-      ],
-      "available_try_before_you_buy": [],
-      "available_qps_promotions": [],
-      "available_surveys": []
+      "available_surveys": [
+        599
+      ]
     },
     {
       "id": 1441,
@@ -653,10 +461,11 @@ Map dummyData = {
         54
       ],
       "dep_id": 167,
-      "section_id": 202,
+      "section_id": 213,
       "cluster_id": null,
+      "sap_code": "R-228228220126-005",
       "qc_price_group": 3,
-      "outlet_cover_photo": "http://192.168.20.16:2080/app-api/static-file/retailer/R-228228220126-005/outlet_cover_image.jpg",
+      "outlet_cover_photo": "https://olympic-dev.wingssfa.net/app-api/static-file/retailer/R-228228220126-005/outlet_cover_image.jpg",
       "lat": 23.7936687,
       "long": 90.4045721,
       "allowable_distance": 100,
@@ -672,21 +481,9 @@ Map dummyData = {
           "slug": "Silver"
         }
       },
-      "available_promotions": [
-        {
-          "id": 65,
-          "discount_val": 5,
-          "cap_val": null
-        },
-        {
-          "id": 66,
-          "discount_val": 4,
-          "cap_val": null
-        }
-      ],
-      "available_try_before_you_buy": [],
-      "available_qps_promotions": [],
-      "available_surveys": []
+      "available_surveys": [
+        599
+      ]
     },
     {
       "id": 1443,
@@ -705,10 +502,11 @@ Map dummyData = {
         54
       ],
       "dep_id": 167,
-      "section_id": 202,
+      "section_id": 213,
       "cluster_id": null,
+      "sap_code": "R-228228250126-002",
       "qc_price_group": 3,
-      "outlet_cover_photo": "http://192.168.20.16:2080/app-api/static-file/retailer/R-228228250126-002/outlet_cover_image.jpg",
+      "outlet_cover_photo": "https://olympic-dev.wingssfa.net/app-api/static-file/retailer/R-228228250126-002/outlet_cover_image.jpg",
       "lat": 23.7936625,
       "long": 90.4046194,
       "allowable_distance": 100,
@@ -724,21 +522,9 @@ Map dummyData = {
           "slug": "Silver"
         }
       },
-      "available_promotions": [
-        {
-          "id": 65,
-          "discount_val": 5,
-          "cap_val": null
-        },
-        {
-          "id": 66,
-          "discount_val": 4,
-          "cap_val": null
-        }
-      ],
-      "available_try_before_you_buy": [],
-      "available_qps_promotions": [],
-      "available_surveys": []
+      "available_surveys": [
+        599
+      ]
     },
     {
       "id": 1444,
@@ -757,10 +543,11 @@ Map dummyData = {
         54
       ],
       "dep_id": 167,
-      "section_id": 202,
+      "section_id": 213,
       "cluster_id": null,
+      "sap_code": "R-228228250126-006",
       "qc_price_group": 3,
-      "outlet_cover_photo": "http://192.168.20.16:2080/app-api/static-file/retailer/R-228228250126-006/outlet_cover_image.jpg",
+      "outlet_cover_photo": "https://olympic-dev.wingssfa.net/app-api/static-file/retailer/R-228228250126-006/outlet_cover_image.jpg",
       "lat": 23.7936967,
       "long": 90.4045728,
       "allowable_distance": 100,
@@ -776,21 +563,9 @@ Map dummyData = {
           "slug": "Silver"
         }
       },
-      "available_promotions": [
-        {
-          "id": 65,
-          "discount_val": 5,
-          "cap_val": null
-        },
-        {
-          "id": 66,
-          "discount_val": 4,
-          "cap_val": null
-        }
-      ],
-      "available_try_before_you_buy": [],
-      "available_qps_promotions": [],
-      "available_surveys": []
+      "available_surveys": [
+        599
+      ]
     },
     {
       "id": 1445,
@@ -809,10 +584,11 @@ Map dummyData = {
         54
       ],
       "dep_id": 167,
-      "section_id": 202,
+      "section_id": 213,
       "cluster_id": null,
+      "sap_code": "R-228228250126-007",
       "qc_price_group": 3,
-      "outlet_cover_photo": "http://192.168.20.16:2080/app-api/static-file/retailer/R-228228250126-007/outlet_cover_image.jpg",
+      "outlet_cover_photo": "https://olympic-dev.wingssfa.net/app-api/static-file/retailer/R-228228250126-007/outlet_cover_image.jpg",
       "lat": 23.7936488,
       "long": 90.4045872,
       "allowable_distance": 100,
@@ -823,7 +599,7 @@ Map dummyData = {
           "id": 57,
           "slug": "AFBL"
         },
-        "cooler_photo_url": "http://192.168.20.16:2080/app-api/static-file/retailer/R-228228250126-007/outlet_cooler_image.jpg",
+        "cooler_photo_url": "https://olympic-dev.wingssfa.net/app-api/static-file/retailer/R-228228250126-007/outlet_cooler_image.jpg",
         "business_type": {
           "id": 45,
           "slug": "Wholesale"
@@ -833,21 +609,9 @@ Map dummyData = {
           "slug": "Platinum"
         }
       },
-      "available_promotions": [
-        {
-          "id": 65,
-          "discount_val": 5,
-          "cap_val": null
-        },
-        {
-          "id": 66,
-          "discount_val": 4,
-          "cap_val": null
-        }
-      ],
-      "available_try_before_you_buy": [],
-      "available_qps_promotions": [],
-      "available_surveys": []
+      "available_surveys": [
+        599
+      ]
     },
     {
       "id": 1447,
@@ -866,10 +630,11 @@ Map dummyData = {
         54
       ],
       "dep_id": 167,
-      "section_id": 202,
+      "section_id": 213,
       "cluster_id": null,
+      "sap_code": "R-228228260126-003",
       "qc_price_group": 3,
-      "outlet_cover_photo": "http://192.168.20.16:2080/app-api/static-file/retailer/R-228228260126-003/outlet_cover_image.jpg",
+      "outlet_cover_photo": "https://olympic-dev.wingssfa.net/app-api/static-file/retailer/R-228228260126-003/outlet_cover_image.jpg",
       "lat": 23.7937094,
       "long": 90.4045836,
       "allowable_distance": 100,
@@ -885,21 +650,9 @@ Map dummyData = {
           "slug": "Bronze"
         }
       },
-      "available_promotions": [
-        {
-          "id": 65,
-          "discount_val": 5,
-          "cap_val": null
-        },
-        {
-          "id": 66,
-          "discount_val": 4,
-          "cap_val": null
-        }
-      ],
-      "available_try_before_you_buy": [],
-      "available_qps_promotions": [],
-      "available_surveys": []
+      "available_surveys": [
+        599
+      ]
     },
     {
       "id": 1448,
@@ -918,10 +671,11 @@ Map dummyData = {
         54
       ],
       "dep_id": 167,
-      "section_id": 202,
+      "section_id": 213,
       "cluster_id": null,
+      "sap_code": "R-228228280126-005",
       "qc_price_group": 3,
-      "outlet_cover_photo": "http://192.168.20.16:2080/app-api/static-file/retailer/R-228228280126-005/outlet_cover_image.jpg",
+      "outlet_cover_photo": "https://olympic-dev.wingssfa.net/app-api/static-file/retailer/R-228228280126-005/outlet_cover_image.jpg",
       "lat": 23.7936443,
       "long": 90.4045111,
       "allowable_distance": 100,
@@ -937,21 +691,9 @@ Map dummyData = {
           "slug": "Gold"
         }
       },
-      "available_promotions": [
-        {
-          "id": 65,
-          "discount_val": 5,
-          "cap_val": null
-        },
-        {
-          "id": 66,
-          "discount_val": 4,
-          "cap_val": null
-        }
-      ],
-      "available_try_before_you_buy": [],
-      "available_qps_promotions": [],
-      "available_surveys": []
+      "available_surveys": [
+        599
+      ]
     },
     {
       "id": 1449,
@@ -970,10 +712,11 @@ Map dummyData = {
         54
       ],
       "dep_id": 167,
-      "section_id": 202,
+      "section_id": 213,
       "cluster_id": null,
+      "sap_code": "R-228228280126-002",
       "qc_price_group": 3,
-      "outlet_cover_photo": "http://192.168.20.16:2080/app-api/static-file/retailer/R-228228280126-002/outlet_cover_image.jpg",
+      "outlet_cover_photo": "https://olympic-dev.wingssfa.net/app-api/static-file/retailer/R-228228280126-002/outlet_cover_image.jpg",
       "lat": 23.7936284,
       "long": 90.4045098,
       "allowable_distance": 100,
@@ -993,21 +736,9 @@ Map dummyData = {
           "slug": "Gold"
         }
       },
-      "available_promotions": [
-        {
-          "id": 65,
-          "discount_val": 5,
-          "cap_val": null
-        },
-        {
-          "id": 66,
-          "discount_val": 4,
-          "cap_val": null
-        }
-      ],
-      "available_try_before_you_buy": [],
-      "available_qps_promotions": [],
-      "available_surveys": []
+      "available_surveys": [
+        599
+      ]
     },
     {
       "id": 1450,
@@ -1026,10 +757,11 @@ Map dummyData = {
         54
       ],
       "dep_id": 167,
-      "section_id": 202,
+      "section_id": 213,
       "cluster_id": null,
+      "sap_code": "R-228228280126-003",
       "qc_price_group": 3,
-      "outlet_cover_photo": "http://192.168.20.16:2080/app-api/static-file/retailer/R-228228280126-003/outlet_cover_image.jpg",
+      "outlet_cover_photo": "https://olympic-dev.wingssfa.net/app-api/static-file/retailer/R-228228280126-003/outlet_cover_image.jpg",
       "lat": 23.7936945,
       "long": 90.4044945,
       "allowable_distance": 100,
@@ -1049,21 +781,9 @@ Map dummyData = {
           "slug": "Gold"
         }
       },
-      "available_promotions": [
-        {
-          "id": 65,
-          "discount_val": 5,
-          "cap_val": null
-        },
-        {
-          "id": 66,
-          "discount_val": 4,
-          "cap_val": null
-        }
-      ],
-      "available_try_before_you_buy": [],
-      "available_qps_promotions": [],
-      "available_surveys": []
+      "available_surveys": [
+        599
+      ]
     },
     {
       "id": 1451,
@@ -1082,10 +802,11 @@ Map dummyData = {
         54
       ],
       "dep_id": 167,
-      "section_id": 202,
+      "section_id": 213,
       "cluster_id": 499,
+      "sap_code": "R-228228290126-009",
       "qc_price_group": 3,
-      "outlet_cover_photo": "http://192.168.20.16:2080/app-api/static-file/retailer/R-228228290126-009/outlet_cover_image.jpg",
+      "outlet_cover_photo": "https://olympic-dev.wingssfa.net/app-api/static-file/retailer/R-228228290126-009/outlet_cover_image.jpg",
       "lat": 23.7936409,
       "long": 90.4046321,
       "allowable_distance": 100,
@@ -1105,21 +826,9 @@ Map dummyData = {
           "slug": "Platinum"
         }
       },
-      "available_promotions": [
-        {
-          "id": 65,
-          "discount_val": 5,
-          "cap_val": null
-        },
-        {
-          "id": 66,
-          "discount_val": 4,
-          "cap_val": null
-        }
-      ],
-      "available_try_before_you_buy": [],
-      "available_qps_promotions": [],
-      "available_surveys": []
+      "available_surveys": [
+        599
+      ]
     },
     {
       "id": 1452,
@@ -1138,10 +847,11 @@ Map dummyData = {
         54
       ],
       "dep_id": 167,
-      "section_id": 202,
+      "section_id": 213,
       "cluster_id": 500,
+      "sap_code": "R-228228290126-010",
       "qc_price_group": 3,
-      "outlet_cover_photo": "http://192.168.20.16:2080/app-api/static-file/retailer/R-228228290126-010/outlet_cover_image.jpg",
+      "outlet_cover_photo": "https://olympic-dev.wingssfa.net/app-api/static-file/retailer/R-228228290126-010/outlet_cover_image.jpg",
       "lat": 23.7936546,
       "long": 90.404605,
       "allowable_distance": 100,
@@ -1161,21 +871,9 @@ Map dummyData = {
           "slug": "Platinum"
         }
       },
-      "available_promotions": [
-        {
-          "id": 65,
-          "discount_val": 5,
-          "cap_val": null
-        },
-        {
-          "id": 66,
-          "discount_val": 4,
-          "cap_val": null
-        }
-      ],
-      "available_try_before_you_buy": [],
-      "available_qps_promotions": [],
-      "available_surveys": []
+      "available_surveys": [
+        599
+      ]
     },
     {
       "id": 1453,
@@ -1194,10 +892,11 @@ Map dummyData = {
         54
       ],
       "dep_id": 167,
-      "section_id": 202,
+      "section_id": 213,
       "cluster_id": 46063,
+      "sap_code": "R-228228290126-011",
       "qc_price_group": 3,
-      "outlet_cover_photo": "http://192.168.20.16:2080/app-api/static-file/retailer/R-228228290126-011/outlet_cover_image.jpg",
+      "outlet_cover_photo": "https://olympic-dev.wingssfa.net/app-api/static-file/retailer/R-228228290126-011/outlet_cover_image.jpg",
       "lat": 23.7936878,
       "long": 90.4045443,
       "allowable_distance": 100,
@@ -1217,21 +916,9 @@ Map dummyData = {
           "slug": "Gold"
         }
       },
-      "available_promotions": [
-        {
-          "id": 65,
-          "discount_val": 5,
-          "cap_val": null
-        },
-        {
-          "id": 66,
-          "discount_val": 4,
-          "cap_val": null
-        }
-      ],
-      "available_try_before_you_buy": [],
-      "available_qps_promotions": [],
-      "available_surveys": []
+      "available_surveys": [
+        599
+      ]
     },
     {
       "id": 1454,
@@ -1250,10 +937,11 @@ Map dummyData = {
         54
       ],
       "dep_id": 167,
-      "section_id": 202,
+      "section_id": 213,
       "cluster_id": 46065,
+      "sap_code": "R-228228290126-012",
       "qc_price_group": 3,
-      "outlet_cover_photo": "http://192.168.20.16:2080/app-api/static-file/retailer/R-228228290126-012/outlet_cover_image.jpg",
+      "outlet_cover_photo": "https://olympic-dev.wingssfa.net/app-api/static-file/retailer/R-228228290126-012/outlet_cover_image.jpg",
       "lat": 23.7936503,
       "long": 90.4046224,
       "allowable_distance": 100,
@@ -1273,21 +961,9 @@ Map dummyData = {
           "slug": "Platinum"
         }
       },
-      "available_promotions": [
-        {
-          "id": 65,
-          "discount_val": 5,
-          "cap_val": null
-        },
-        {
-          "id": 66,
-          "discount_val": 4,
-          "cap_val": null
-        }
-      ],
-      "available_try_before_you_buy": [],
-      "available_qps_promotions": [],
-      "available_surveys": []
+      "available_surveys": [
+        599
+      ]
     },
     {
       "id": 1455,
@@ -1306,10 +982,11 @@ Map dummyData = {
         54
       ],
       "dep_id": 167,
-      "section_id": 202,
+      "section_id": 213,
       "cluster_id": 46070,
+      "sap_code": "R-228228290126-013",
       "qc_price_group": 3,
-      "outlet_cover_photo": "http://192.168.20.16:2080/app-api/static-file/retailer/R-228228290126-013/outlet_cover_image.jpg",
+      "outlet_cover_photo": "https://olympic-dev.wingssfa.net/app-api/static-file/retailer/R-228228290126-013/outlet_cover_image.jpg",
       "lat": 23.7936674,
       "long": 90.4045855,
       "allowable_distance": 100,
@@ -1329,21 +1006,9 @@ Map dummyData = {
           "slug": "Gold"
         }
       },
-      "available_promotions": [
-        {
-          "id": 65,
-          "discount_val": 5,
-          "cap_val": null
-        },
-        {
-          "id": 66,
-          "discount_val": 4,
-          "cap_val": null
-        }
-      ],
-      "available_try_before_you_buy": [],
-      "available_qps_promotions": [],
-      "available_surveys": []
+      "available_surveys": [
+        599
+      ]
     },
     {
       "id": 1456,
@@ -1364,8 +1029,9 @@ Map dummyData = {
       "dep_id": 167,
       "section_id": 202,
       "cluster_id": 46066,
+      "sap_code": "R-228228290126-017",
       "qc_price_group": 3,
-      "outlet_cover_photo": "http://192.168.20.16:2080/app-api/static-file/retailer/R-228228290126-017/outlet_cover_image.jpg",
+      "outlet_cover_photo": "https://olympic-dev.wingssfa.net/app-api/static-file/retailer/R-228228290126-017/outlet_cover_image.jpg",
       "lat": 23.7936842,
       "long": 90.4045995,
       "allowable_distance": 100,
@@ -1381,21 +1047,9 @@ Map dummyData = {
           "slug": "Gold"
         }
       },
-      "available_promotions": [
-        {
-          "id": 65,
-          "discount_val": 5,
-          "cap_val": null
-        },
-        {
-          "id": 66,
-          "discount_val": 4,
-          "cap_val": null
-        }
-      ],
-      "available_try_before_you_buy": [],
-      "available_qps_promotions": [],
-      "available_surveys": []
+      "available_surveys": [
+        599
+      ]
     },
     {
       "id": 1457,
@@ -1416,8 +1070,9 @@ Map dummyData = {
       "dep_id": 167,
       "section_id": 202,
       "cluster_id": 46070,
+      "sap_code": "R-228228290126-018",
       "qc_price_group": 3,
-      "outlet_cover_photo": "http://192.168.20.16:2080/app-api/static-file/retailer/R-228228290126-018/outlet_cover_image.jpg",
+      "outlet_cover_photo": "https://olympic-dev.wingssfa.net/app-api/static-file/retailer/R-228228290126-018/outlet_cover_image.jpg",
       "lat": 23.7936504,
       "long": 90.4046178,
       "allowable_distance": 100,
@@ -1433,21 +1088,9 @@ Map dummyData = {
           "slug": "Gold"
         }
       },
-      "available_promotions": [
-        {
-          "id": 65,
-          "discount_val": 5,
-          "cap_val": null
-        },
-        {
-          "id": 66,
-          "discount_val": 4,
-          "cap_val": null
-        }
-      ],
-      "available_try_before_you_buy": [],
-      "available_qps_promotions": [],
-      "available_surveys": []
+      "available_surveys": [
+        599
+      ]
     },
     {
       "id": 1458,
@@ -1468,8 +1111,9 @@ Map dummyData = {
       "dep_id": 167,
       "section_id": 202,
       "cluster_id": 46064,
+      "sap_code": "R-228228290126-019",
       "qc_price_group": 3,
-      "outlet_cover_photo": "http://192.168.20.16:2080/app-api/static-file/retailer/R-228228290126-019/outlet_cover_image.jpg",
+      "outlet_cover_photo": "https://olympic-dev.wingssfa.net/app-api/static-file/retailer/R-228228290126-019/outlet_cover_image.jpg",
       "lat": 23.7936561,
       "long": 90.4046003,
       "allowable_distance": 100,
@@ -1485,21 +1129,9 @@ Map dummyData = {
           "slug": "Gold"
         }
       },
-      "available_promotions": [
-        {
-          "id": 65,
-          "discount_val": 5,
-          "cap_val": null
-        },
-        {
-          "id": 66,
-          "discount_val": 4,
-          "cap_val": null
-        }
-      ],
-      "available_try_before_you_buy": [],
-      "available_qps_promotions": [],
-      "available_surveys": []
+      "available_surveys": [
+        599
+      ]
     },
     {
       "id": 1459,
@@ -1520,8 +1152,9 @@ Map dummyData = {
       "dep_id": 167,
       "section_id": 202,
       "cluster_id": 498,
+      "sap_code": "R-228228290126-020",
       "qc_price_group": 3,
-      "outlet_cover_photo": "http://192.168.20.16:2080/app-api/static-file/retailer/R-228228290126-020/outlet_cover_image.jpg",
+      "outlet_cover_photo": "https://olympic-dev.wingssfa.net/app-api/static-file/retailer/R-228228290126-020/outlet_cover_image.jpg",
       "lat": 23.7936961,
       "long": 90.4045576,
       "allowable_distance": 100,
@@ -1537,21 +1170,9 @@ Map dummyData = {
           "slug": "Gold"
         }
       },
-      "available_promotions": [
-        {
-          "id": 65,
-          "discount_val": 5,
-          "cap_val": null
-        },
-        {
-          "id": 66,
-          "discount_val": 4,
-          "cap_val": null
-        }
-      ],
-      "available_try_before_you_buy": [],
-      "available_qps_promotions": [],
-      "available_surveys": []
+      "available_surveys": [
+        599
+      ]
     },
     {
       "id": 1460,
@@ -1572,8 +1193,9 @@ Map dummyData = {
       "dep_id": 167,
       "section_id": 202,
       "cluster_id": 46066,
+      "sap_code": "R-228228290126-021",
       "qc_price_group": 3,
-      "outlet_cover_photo": "http://192.168.20.16:2080/app-api/static-file/retailer/R-228228290126-021/outlet_cover_image.jpg",
+      "outlet_cover_photo": "https://olympic-dev.wingssfa.net/app-api/static-file/retailer/R-228228290126-021/outlet_cover_image.jpg",
       "lat": 23.7936473,
       "long": 90.4046063,
       "allowable_distance": 100,
@@ -1589,21 +1211,9 @@ Map dummyData = {
           "slug": "Silver"
         }
       },
-      "available_promotions": [
-        {
-          "id": 65,
-          "discount_val": 5,
-          "cap_val": null
-        },
-        {
-          "id": 66,
-          "discount_val": 4,
-          "cap_val": null
-        }
-      ],
-      "available_try_before_you_buy": [],
-      "available_qps_promotions": [],
-      "available_surveys": []
+      "available_surveys": [
+        599
+      ]
     },
     {
       "id": 1461,
@@ -1624,8 +1234,9 @@ Map dummyData = {
       "dep_id": 167,
       "section_id": 202,
       "cluster_id": 46063,
+      "sap_code": "R-228228020226-002",
       "qc_price_group": 3,
-      "outlet_cover_photo": "http://192.168.20.16:2080/app-api/static-file/retailer/R-228228020226-002/outlet_cover_image.jpg",
+      "outlet_cover_photo": "https://olympic-dev.wingssfa.net/app-api/static-file/retailer/R-228228020226-002/outlet_cover_image.jpg",
       "lat": 23.7938464,
       "long": 90.404586,
       "allowable_distance": 100,
@@ -1645,21 +1256,9 @@ Map dummyData = {
           "slug": "Gold"
         }
       },
-      "available_promotions": [
-        {
-          "id": 65,
-          "discount_val": 5,
-          "cap_val": null
-        },
-        {
-          "id": 66,
-          "discount_val": 4,
-          "cap_val": null
-        }
-      ],
-      "available_try_before_you_buy": [],
-      "available_qps_promotions": [],
-      "available_surveys": []
+      "available_surveys": [
+        599
+      ]
     },
     {
       "id": 1462,
@@ -1680,8 +1279,9 @@ Map dummyData = {
       "dep_id": 167,
       "section_id": 202,
       "cluster_id": 499,
+      "sap_code": "R-228228020226-003",
       "qc_price_group": 3,
-      "outlet_cover_photo": "http://192.168.20.16:2080/app-api/static-file/retailer/R-228228020226-003/outlet_cover_image.jpg",
+      "outlet_cover_photo": "https://olympic-dev.wingssfa.net/app-api/static-file/retailer/R-228228020226-003/outlet_cover_image.jpg",
       "lat": 23.7936237,
       "long": 90.4046236,
       "allowable_distance": 100,
@@ -1701,21 +1301,9 @@ Map dummyData = {
           "slug": "Gold"
         }
       },
-      "available_promotions": [
-        {
-          "id": 65,
-          "discount_val": 5,
-          "cap_val": null
-        },
-        {
-          "id": 66,
-          "discount_val": 4,
-          "cap_val": null
-        }
-      ],
-      "available_try_before_you_buy": [],
-      "available_qps_promotions": [],
-      "available_surveys": []
+      "available_surveys": [
+        599
+      ]
     },
     {
       "id": 1464,
@@ -1736,8 +1324,9 @@ Map dummyData = {
       "dep_id": 167,
       "section_id": 202,
       "cluster_id": 499,
+      "sap_code": "R-228228020226-004",
       "qc_price_group": 3,
-      "outlet_cover_photo": "http://192.168.20.16:2080/app-api/static-file/retailer/R-228228020226-004/outlet_cover_image.jpg",
+      "outlet_cover_photo": "https://olympic-dev.wingssfa.net/app-api/static-file/retailer/R-228228020226-004/outlet_cover_image.jpg",
       "lat": 23.7939196,
       "long": 90.4046952,
       "allowable_distance": 100,
@@ -1757,21 +1346,9 @@ Map dummyData = {
           "slug": "Gold"
         }
       },
-      "available_promotions": [
-        {
-          "id": 65,
-          "discount_val": 5,
-          "cap_val": null
-        },
-        {
-          "id": 66,
-          "discount_val": 4,
-          "cap_val": null
-        }
-      ],
-      "available_try_before_you_buy": [],
-      "available_qps_promotions": [],
-      "available_surveys": []
+      "available_surveys": [
+        599
+      ]
     },
     {
       "id": 1465,
@@ -1792,8 +1369,9 @@ Map dummyData = {
       "dep_id": 167,
       "section_id": 202,
       "cluster_id": 498,
+      "sap_code": "R-228228030226-002",
       "qc_price_group": 3,
-      "outlet_cover_photo": "http://192.168.20.16:2080/app-api/static-file/retailer/R-228228030226-002/outlet_cover_image.jpg",
+      "outlet_cover_photo": "https://olympic-dev.wingssfa.net/app-api/static-file/retailer/R-228228030226-002/outlet_cover_image.jpg",
       "lat": 23.7936111,
       "long": 90.4045778,
       "allowable_distance": 100,
@@ -1813,21 +1391,9 @@ Map dummyData = {
           "slug": "Gold"
         }
       },
-      "available_promotions": [
-        {
-          "id": 65,
-          "discount_val": 5,
-          "cap_val": null
-        },
-        {
-          "id": 66,
-          "discount_val": 4,
-          "cap_val": null
-        }
-      ],
-      "available_try_before_you_buy": [],
-      "available_qps_promotions": [],
-      "available_surveys": []
+      "available_surveys": [
+        599
+      ]
     },
     {
       "id": 1466,
@@ -1848,8 +1414,9 @@ Map dummyData = {
       "dep_id": 167,
       "section_id": 202,
       "cluster_id": 499,
+      "sap_code": "R-228228030226-002",
       "qc_price_group": 3,
-      "outlet_cover_photo": "http://192.168.20.16:2080/app-api/static-file/retailer/R-228228030226-002/outlet_cover_image.jpg",
+      "outlet_cover_photo": "https://olympic-dev.wingssfa.net/app-api/static-file/retailer/R-228228030226-002/outlet_cover_image.jpg",
       "lat": 23.7936587,
       "long": 90.4045928,
       "allowable_distance": 100,
@@ -1865,21 +1432,9 @@ Map dummyData = {
           "slug": "Gold"
         }
       },
-      "available_promotions": [
-        {
-          "id": 65,
-          "discount_val": 5,
-          "cap_val": null
-        },
-        {
-          "id": 66,
-          "discount_val": 4,
-          "cap_val": null
-        }
-      ],
-      "available_try_before_you_buy": [],
-      "available_qps_promotions": [],
-      "available_surveys": []
+      "available_surveys": [
+        599
+      ]
     },
     {
       "id": 1467,
@@ -1900,8 +1455,9 @@ Map dummyData = {
       "dep_id": 167,
       "section_id": 202,
       "cluster_id": 500,
+      "sap_code": "R-228228030226-003",
       "qc_price_group": 3,
-      "outlet_cover_photo": "http://192.168.20.16:2080/app-api/static-file/retailer/R-228228030226-003/outlet_cover_image.jpg",
+      "outlet_cover_photo": "https://olympic-dev.wingssfa.net/app-api/static-file/retailer/R-228228030226-003/outlet_cover_image.jpg",
       "lat": 23.7936827,
       "long": 90.4046185,
       "allowable_distance": 100,
@@ -1917,21 +1473,9 @@ Map dummyData = {
           "slug": "Gold"
         }
       },
-      "available_promotions": [
-        {
-          "id": 65,
-          "discount_val": 5,
-          "cap_val": null
-        },
-        {
-          "id": 66,
-          "discount_val": 4,
-          "cap_val": null
-        }
-      ],
-      "available_try_before_you_buy": [],
-      "available_qps_promotions": [],
-      "available_surveys": []
+      "available_surveys": [
+        599
+      ]
     },
     {
       "id": 1470,
@@ -1952,8 +1496,9 @@ Map dummyData = {
       "dep_id": 167,
       "section_id": 202,
       "cluster_id": 500,
+      "sap_code": "R-228228050226-003",
       "qc_price_group": 3,
-      "outlet_cover_photo": "http://192.168.20.16:2080/app-api/static-file/retailer/R-228228050226-003/outlet_cover_image.jpg",
+      "outlet_cover_photo": "https://olympic-dev.wingssfa.net/app-api/static-file/retailer/R-228228050226-003/outlet_cover_image.jpg",
       "lat": 23.7940266,
       "long": 90.4050935,
       "allowable_distance": 100,
@@ -1973,21 +1518,9 @@ Map dummyData = {
           "slug": "Gold"
         }
       },
-      "available_promotions": [
-        {
-          "id": 65,
-          "discount_val": 5,
-          "cap_val": null
-        },
-        {
-          "id": 66,
-          "discount_val": 4,
-          "cap_val": null
-        }
-      ],
-      "available_try_before_you_buy": [],
-      "available_qps_promotions": [],
-      "available_surveys": []
+      "available_surveys": [
+        599
+      ]
     },
     {
       "id": 1472,
@@ -2008,8 +1541,9 @@ Map dummyData = {
       "dep_id": 167,
       "section_id": 202,
       "cluster_id": 46063,
+      "sap_code": "R-228228050226-004",
       "qc_price_group": 3,
-      "outlet_cover_photo": "http://192.168.20.16:2080/app-api/static-file/retailer/R-228228050226-004/outlet_cover_image.jpg",
+      "outlet_cover_photo": "https://olympic-dev.wingssfa.net/app-api/static-file/retailer/R-228228050226-004/outlet_cover_image.jpg",
       "lat": 23.7936413,
       "long": 90.4045458,
       "allowable_distance": 100,
@@ -2029,21 +1563,9 @@ Map dummyData = {
           "slug": "Gold"
         }
       },
-      "available_promotions": [
-        {
-          "id": 65,
-          "discount_val": 5,
-          "cap_val": null
-        },
-        {
-          "id": 66,
-          "discount_val": 4,
-          "cap_val": null
-        }
-      ],
-      "available_try_before_you_buy": [],
-      "available_qps_promotions": [],
-      "available_surveys": []
+      "available_surveys": [
+        599
+      ]
     },
     {
       "id": 1473,
@@ -2064,8 +1586,9 @@ Map dummyData = {
       "dep_id": 167,
       "section_id": 202,
       "cluster_id": 499,
+      "sap_code": "R-228228050226-005",
       "qc_price_group": 3,
-      "outlet_cover_photo": "http://192.168.20.16:2080/app-api/static-file/retailer/R-228228050226-005/outlet_cover_image.jpg",
+      "outlet_cover_photo": "https://olympic-dev.wingssfa.net/app-api/static-file/retailer/R-228228050226-005/outlet_cover_image.jpg",
       "lat": 23.7935994,
       "long": 90.4045652,
       "allowable_distance": 100,
@@ -2081,21 +1604,9 @@ Map dummyData = {
           "slug": "Gold"
         }
       },
-      "available_promotions": [
-        {
-          "id": 65,
-          "discount_val": 5,
-          "cap_val": null
-        },
-        {
-          "id": 66,
-          "discount_val": 4,
-          "cap_val": null
-        }
-      ],
-      "available_try_before_you_buy": [],
-      "available_qps_promotions": [],
-      "available_surveys": []
+      "available_surveys": [
+        599
+      ]
     },
     {
       "id": 1474,
@@ -2116,8 +1627,9 @@ Map dummyData = {
       "dep_id": 167,
       "section_id": 202,
       "cluster_id": 499,
+      "sap_code": "R-228228050226-006",
       "qc_price_group": 3,
-      "outlet_cover_photo": "http://192.168.20.16:2080/app-api/static-file/retailer/R-228228050226-006/outlet_cover_image.jpg",
+      "outlet_cover_photo": "https://olympic-dev.wingssfa.net/app-api/static-file/retailer/R-228228050226-006/outlet_cover_image.jpg",
       "lat": 23.7936196,
       "long": 90.4045794,
       "allowable_distance": 100,
@@ -2133,21 +1645,9 @@ Map dummyData = {
           "slug": "Gold"
         }
       },
-      "available_promotions": [
-        {
-          "id": 65,
-          "discount_val": 5,
-          "cap_val": null
-        },
-        {
-          "id": 66,
-          "discount_val": 4,
-          "cap_val": null
-        }
-      ],
-      "available_try_before_you_buy": [],
-      "available_qps_promotions": [],
-      "available_surveys": []
+      "available_surveys": [
+        599
+      ]
     },
     {
       "id": 1475,
@@ -2156,7 +1656,7 @@ Map dummyData = {
       "outlet_code": "R-228228050226-007",
       "owner": "Jabbar",
       "contact": "01558326523",
-      "approval_status": "PENDING",
+      "approval_status": "APPROVED",
       "nid": "8523145236",
       "address": "Abbas",
       "price_group": 1,
@@ -2168,8 +1668,9 @@ Map dummyData = {
       "dep_id": 167,
       "section_id": 202,
       "cluster_id": 46064,
+      "sap_code": "R-228228050226-007",
       "qc_price_group": 3,
-      "outlet_cover_photo": "http://192.168.20.16:2080/app-api/static-file/retailer/R-228228050226-007/outlet_cover_image.jpg",
+      "outlet_cover_photo": "https://olympic-dev.wingssfa.net/app-api/static-file/retailer/R-228228050226-007/outlet_cover_image.jpg",
       "lat": 23.7935785,
       "long": 90.4046437,
       "allowable_distance": 100,
@@ -2189,21 +1690,9 @@ Map dummyData = {
           "slug": "Gold"
         }
       },
-      "available_promotions": [
-        {
-          "id": 65,
-          "discount_val": 5,
-          "cap_val": null
-        },
-        {
-          "id": 66,
-          "discount_val": 4,
-          "cap_val": null
-        }
-      ],
-      "available_try_before_you_buy": [],
-      "available_qps_promotions": [],
-      "available_surveys": []
+      "available_surveys": [
+        599
+      ]
     },
     {
       "id": 1476,
@@ -2224,8 +1713,9 @@ Map dummyData = {
       "dep_id": 167,
       "section_id": 202,
       "cluster_id": 0,
+      "sap_code": "OLM-8190525-003",
       "qc_price_group": 3,
-      "outlet_cover_photo": "http://192.168.20.16:2080/app-api/static-file/retailer/OLM-8190525-003/outlet_cover_image.jpg",
+      "outlet_cover_photo": "https://olympic-dev.wingssfa.net/app-api/static-file/retailer/OLM-8190525-003/outlet_cover_image.jpg",
       "lat": 23.83473,
       "long": 90.416331,
       "allowable_distance": 100,
@@ -2241,21 +1731,9 @@ Map dummyData = {
           "slug": "Bronze"
         }
       },
-      "available_promotions": [
-        {
-          "id": 65,
-          "discount_val": 5,
-          "cap_val": null
-        },
-        {
-          "id": 66,
-          "discount_val": 4,
-          "cap_val": null
-        }
-      ],
-      "available_try_before_you_buy": [],
-      "available_qps_promotions": [],
-      "available_surveys": []
+      "available_surveys": [
+        599
+      ]
     },
     {
       "id": 1478,
@@ -2276,8 +1754,9 @@ Map dummyData = {
       "dep_id": 167,
       "section_id": 202,
       "cluster_id": 0,
+      "sap_code": "1234",
       "qc_price_group": 3,
-      "outlet_cover_photo": "http://192.168.20.16:2080/app-api/static-file/retailer/1234/outlet_cover_image.jpg",
+      "outlet_cover_photo": "https://olympic-dev.wingssfa.net/app-api/static-file/retailer/1234/outlet_cover_image.jpg",
       "lat": 22.3396,
       "long": 91.8292,
       "allowable_distance": 100,
@@ -2293,21 +1772,9 @@ Map dummyData = {
           "slug": "Gold"
         }
       },
-      "available_promotions": [
-        {
-          "id": 65,
-          "discount_val": 5,
-          "cap_val": null
-        },
-        {
-          "id": 66,
-          "discount_val": 4,
-          "cap_val": null
-        }
-      ],
-      "available_try_before_you_buy": [],
-      "available_qps_promotions": [],
-      "available_surveys": []
+      "available_surveys": [
+        599
+      ]
     },
     {
       "id": 1481,
@@ -2326,10 +1793,11 @@ Map dummyData = {
         54
       ],
       "dep_id": 167,
-      "section_id": 202,
+      "section_id": 213,
       "cluster_id": 498,
+      "sap_code": "R-228228080226-002",
       "qc_price_group": 3,
-      "outlet_cover_photo": "http://192.168.20.16:2080/app-api/static-file/retailer/R-228228080226-002/outlet_cover_image.jpg",
+      "outlet_cover_photo": "https://olympic-dev.wingssfa.net/app-api/static-file/retailer/R-228228080226-002/outlet_cover_image.jpg",
       "lat": 22.8269288,
       "long": 91.5223027,
       "allowable_distance": 100,
@@ -2349,1708 +1817,1194 @@ Map dummyData = {
           "slug": "Gold"
         }
       },
-      "available_promotions": [
-        {
-          "id": 65,
-          "discount_val": 5,
-          "cap_val": null
-        },
-        {
-          "id": 66,
-          "discount_val": 4,
-          "cap_val": null
-        }
+      "available_surveys": [
+        599
+      ]
+    },
+    {
+      "id": 1483,
+      "outlet_name": "Rabbi Store",
+      "outlet_name_bn": "Rabbi Store",
+      "outlet_code": "12343",
+      "owner": "Rabbi",
+      "contact": "01786554555",
+      "approval_status": "APPROVED",
+      "nid": "1209876898",
+      "address": "Aftabnagar",
+      "price_group": 1,
+      "outlet_cover_image": null,
+      "outlet_cooler_image": null,
+      "sbu_id": [
+        54
       ],
-      "available_try_before_you_buy": [],
-      "available_qps_promotions": [],
-      "available_surveys": []
+      "dep_id": 167,
+      "section_id": 202,
+      "cluster_id": 0,
+      "sap_code": "12343",
+      "qc_price_group": 3,
+      "outlet_cover_photo": "https://olympic-dev.wingssfa.net/app-api/static-file/retailer/12343/outlet_cover_image.jpg",
+      "lat": 23.793659,
+      "long": 90.404649,
+      "allowable_distance": 100,
+      "reasoning_check": 1,
+      "available_onboarding_info": {
+        "cooler_status": "No",
+        "business_type": {
+          "id": 45,
+          "slug": "Wholesale"
+        },
+        "channel_category": {
+          "id": 52,
+          "slug": "Gold"
+        }
+      },
+      "available_surveys": [
+        599
+      ]
+    },
+    {
+      "id": 1484,
+      "outlet_name": "Rabbi Store",
+      "outlet_name_bn": "Rabbi Store",
+      "outlet_code": "12344",
+      "owner": "Rabbi",
+      "contact": "01786554555",
+      "approval_status": "APPROVED",
+      "nid": "1209876898",
+      "address": "Aftabnagar, Dhaka, Bangladesh",
+      "price_group": 1,
+      "outlet_cover_image": null,
+      "outlet_cooler_image": null,
+      "sbu_id": [
+        54
+      ],
+      "dep_id": 167,
+      "section_id": 202,
+      "cluster_id": 0,
+      "sap_code": "12344",
+      "qc_price_group": 3,
+      "outlet_cover_photo": "https://olympic-dev.wingssfa.net/app-api/static-file/retailer/12344/outlet_cover_image.jpg",
+      "lat": 23.793661,
+      "long": 90.404647,
+      "allowable_distance": 100,
+      "reasoning_check": 1,
+      "available_onboarding_info": {
+        "cooler_status": "No",
+        "business_type": {
+          "id": 45,
+          "slug": "Wholesale"
+        },
+        "channel_category": {
+          "id": 52,
+          "slug": "Gold"
+        }
+      },
+      "available_surveys": [
+        599
+      ]
+    },
+    {
+      "id": 1485,
+      "outlet_name": "Momtaz Store",
+      "outlet_name_bn": "Momtaz Store",
+      "outlet_code": "123433",
+      "owner": "Momtaz",
+      "contact": "01786554555",
+      "approval_status": "APPROVED",
+      "nid": "1209876898",
+      "address": "Momtaz Store",
+      "price_group": 1,
+      "outlet_cover_image": null,
+      "outlet_cooler_image": null,
+      "sbu_id": [
+        54
+      ],
+      "dep_id": 167,
+      "section_id": 202,
+      "cluster_id": 0,
+      "sap_code": "123433",
+      "qc_price_group": 3,
+      "outlet_cover_photo": "https://olympic-dev.wingssfa.net/app-api/static-file/retailer/123433/outlet_cover_image.jpg",
+      "lat": 23.793659,
+      "long": 90.404654,
+      "allowable_distance": 100,
+      "reasoning_check": 1,
+      "available_onboarding_info": {
+        "cooler_status": "No",
+        "business_type": {
+          "id": 45,
+          "slug": "Wholesale"
+        },
+        "channel_category": {
+          "id": 53,
+          "slug": "Silver"
+        }
+      },
+      "available_surveys": [
+        599
+      ]
+    },
+    {
+      "id": 1486,
+      "outlet_name": "Momtaz Store",
+      "outlet_name_bn": "Momtaz Store",
+      "outlet_code": "1234332",
+      "owner": "Momtaz",
+      "contact": "01786554555",
+      "approval_status": "APPROVED",
+      "nid": "1209876898",
+      "address": "Badda",
+      "price_group": 1,
+      "outlet_cover_image": null,
+      "outlet_cooler_image": null,
+      "sbu_id": [
+        54
+      ],
+      "dep_id": 167,
+      "section_id": 202,
+      "cluster_id": 0,
+      "sap_code": "1234332",
+      "qc_price_group": 3,
+      "outlet_cover_photo": "https://olympic-dev.wingssfa.net/app-api/static-file/retailer/1234332/outlet_cover_image.jpg",
+      "lat": 23.793663,
+      "long": 90.404651,
+      "allowable_distance": 100,
+      "reasoning_check": 1,
+      "available_onboarding_info": {
+        "cooler_status": "No",
+        "business_type": {
+          "id": 47,
+          "slug": "Grocery"
+        },
+        "channel_category": {
+          "id": 53,
+          "slug": "Silver"
+        }
+      },
+      "available_surveys": [
+        599
+      ]
+    },
+    {
+      "id": 1488,
+      "outlet_name": "abcd",
+      "outlet_name_bn": "abcd",
+      "outlet_code": "R-228228160226-002",
+      "owner": "abcd",
+      "contact": "01741423438",
+      "approval_status": "APPROVED",
+      "nid": "",
+      "address": "abcd",
+      "price_group": 1,
+      "outlet_cover_image": "olympic/retailer/R-228228160226-002/outlet_cover_image.jpg",
+      "outlet_cooler_image": null,
+      "sbu_id": [
+        54
+      ],
+      "dep_id": 167,
+      "section_id": 202,
+      "cluster_id": 500,
+      "sap_code": "R-228228160226-002",
+      "qc_price_group": 3,
+      "outlet_cover_photo": "https://olympic-dev.wingssfa.net/app-api/static-file/retailer/R-228228160226-002/outlet_cover_image.jpg",
+      "lat": 23.7936692,
+      "long": 90.4045662,
+      "allowable_distance": 100,
+      "reasoning_check": 1,
+      "available_onboarding_info": {
+        "cooler_status": "No",
+        "business_type": {
+          "id": 46,
+          "slug": "Supershop"
+        },
+        "channel_category": {
+          "id": 52,
+          "slug": "Gold"
+        }
+      },
+      "available_surveys": [
+        599
+      ]
+    },
+    {
+      "id": 1490,
+      "outlet_name": "Rahim Store",
+      "outlet_name_bn": "Rahim Store",
+      "outlet_code": "Rahim67",
+      "owner": "Rahim",
+      "contact": "01786554555",
+      "approval_status": "APPROVED",
+      "nid": null,
+      "address": "Banani",
+      "price_group": 1,
+      "outlet_cover_image": null,
+      "outlet_cooler_image": null,
+      "sbu_id": [
+        54
+      ],
+      "dep_id": 167,
+      "section_id": 202,
+      "cluster_id": 0,
+      "sap_code": "Rahim67",
+      "qc_price_group": 3,
+      "outlet_cover_photo": "https://olympic-dev.wingssfa.net/app-api/static-file/retailer/Rahim67/outlet_cover_image.jpg",
+      "lat": 23.793664,
+      "long": 90.404651,
+      "allowable_distance": 100,
+      "reasoning_check": 1,
+      "available_onboarding_info": {
+        "cooler_status": "No",
+        "business_type": {
+          "id": 45,
+          "slug": "Wholesale"
+        },
+        "channel_category": {
+          "id": 52,
+          "slug": "Gold"
+        }
+      },
+      "available_surveys": [
+        599
+      ]
+    },
+    {
+      "id": 1492,
+      "outlet_name": "Samir Store",
+      "outlet_name_bn": "Samir Store",
+      "outlet_code": "R-228228010326-002",
+      "owner": "Samir",
+      "contact": "01511111111",
+      "approval_status": "APPROVED",
+      "nid": "1652365482",
+      "address": "Bashandhura",
+      "price_group": 1,
+      "outlet_cover_image": "olympic/retailer/R-228228010326-002/outlet_cover_image.jpg",
+      "outlet_cooler_image": null,
+      "sbu_id": [
+        54
+      ],
+      "dep_id": 167,
+      "section_id": 378,
+      "cluster_id": 498,
+      "sap_code": "R-228228010326-002",
+      "qc_price_group": 3,
+      "outlet_cover_photo": "https://olympic-dev.wingssfa.net/app-api/static-file/retailer/R-228228010326-002/outlet_cover_image.jpg",
+      "lat": 23.7939943,
+      "long": 90.4046935,
+      "allowable_distance": 100,
+      "reasoning_check": 1,
+      "available_onboarding_info": {
+        "cooler_status": "No",
+        "business_type": {
+          "id": 46,
+          "slug": "Supershop"
+        },
+        "channel_category": {
+          "id": 52,
+          "slug": "Gold"
+        }
+      },
+      "available_surveys": [
+        599
+      ]
+    },
+    {
+      "id": 1493,
+      "outlet_name": "Rabbi Store",
+      "outlet_name_bn": "Rabbi Store",
+      "outlet_code": "R-228228010326-003",
+      "owner": "Rabbi",
+      "contact": "01511111111",
+      "approval_status": "PENDING",
+      "nid": "1325652356",
+      "address": "Bashundhora",
+      "price_group": 1,
+      "outlet_cover_image": "olympic/retailer/R-228228010326-003/outlet_cover_image.jpg",
+      "outlet_cooler_image": null,
+      "sbu_id": [
+        54
+      ],
+      "dep_id": 167,
+      "section_id": 378,
+      "cluster_id": 498,
+      "sap_code": "R-228228010326-003",
+      "qc_price_group": 3,
+      "outlet_cover_photo": "https://olympic-dev.wingssfa.net/app-api/static-file/retailer/R-228228010326-003/outlet_cover_image.jpg",
+      "lat": 23.7937179,
+      "long": 90.4046215,
+      "allowable_distance": 100,
+      "reasoning_check": 1,
+      "available_onboarding_info": {
+        "cooler_status": "No",
+        "business_type": {
+          "id": 45,
+          "slug": "Wholesale"
+        },
+        "channel_category": {
+          "id": 51,
+          "slug": "Platinum"
+        }
+      },
+      "available_surveys": [
+        599
+      ]
+    },
+    {
+      "id": 1494,
+      "outlet_name": "gggggg",
+      "outlet_name_bn": "gggg",
+      "outlet_code": "R-228228010326-008",
+      "owner": "ggggg",
+      "contact": "01478252536",
+      "approval_status": "PENDING",
+      "nid": "1212454578",
+      "address": "vvv",
+      "price_group": 1,
+      "outlet_cover_image": "olympic/retailer/R-228228010326-008/outlet_cover_image.jpg",
+      "outlet_cooler_image": null,
+      "sbu_id": [
+        54
+      ],
+      "dep_id": 167,
+      "section_id": 378,
+      "cluster_id": 46063,
+      "sap_code": "R-228228010326-008",
+      "qc_price_group": 3,
+      "outlet_cover_photo": "https://olympic-dev.wingssfa.net/app-api/static-file/retailer/R-228228010326-008/outlet_cover_image.jpg",
+      "lat": 23.7937411,
+      "long": 90.4045357,
+      "allowable_distance": 100,
+      "reasoning_check": 1,
+      "available_onboarding_info": {
+        "cooler_status": "No",
+        "business_type": {
+          "id": 48,
+          "slug": "Tong"
+        },
+        "channel_category": {
+          "id": 52,
+          "slug": "Gold"
+        }
+      },
+      "available_surveys": [
+        599
+      ]
+    },
+    {
+      "id": 1495,
+      "outlet_name": "Abc",
+      "outlet_name_bn": "Abc",
+      "outlet_code": "R-228228020326-004",
+      "owner": "Abcb",
+      "contact": "01556552666",
+      "approval_status": "PENDING",
+      "nid": "5235626523",
+      "address": "Badda",
+      "price_group": 1,
+      "outlet_cover_image": "olympic/retailer/R-228228020326-004/outlet_cover_image.jpg",
+      "outlet_cooler_image": null,
+      "sbu_id": [
+        54
+      ],
+      "dep_id": 167,
+      "section_id": 378,
+      "cluster_id": 498,
+      "sap_code": "R-228228020326-004",
+      "qc_price_group": 3,
+      "outlet_cover_photo": "https://olympic-dev.wingssfa.net/app-api/static-file/retailer/R-228228020326-004/outlet_cover_image.jpg",
+      "lat": 23.7939921,
+      "long": 90.4050633,
+      "allowable_distance": 100,
+      "reasoning_check": 1,
+      "available_onboarding_info": {
+        "cooler_status": "No",
+        "business_type": {
+          "id": 45,
+          "slug": "Wholesale"
+        },
+        "channel_category": {
+          "id": 51,
+          "slug": "Platinum"
+        }
+      },
+      "available_surveys": [
+        599
+      ]
+    },
+    {
+      "id": 1502,
+      "outlet_name": "Sufia",
+      "outlet_name_bn": "Sufia",
+      "outlet_code": "R-228228090326-002",
+      "owner": "Sufia",
+      "contact": "01762335888",
+      "approval_status": "APPROVED",
+      "nid": "1523658213",
+      "address": "Banani",
+      "price_group": 1,
+      "outlet_cover_image": "olympic/retailer/R-228228090326-002/outlet_cover_image.jpg",
+      "outlet_cooler_image": null,
+      "sbu_id": [
+        54
+      ],
+      "dep_id": 167,
+      "section_id": 213,
+      "cluster_id": 498,
+      "sap_code": null,
+      "qc_price_group": 3,
+      "outlet_cover_photo": "https://olympic-dev.wingssfa.net/app-api/static-file/retailer/R-228228090326-002/outlet_cover_image.jpg",
+      "lat": 23.79366,
+      "long": 90.4046925,
+      "allowable_distance": 100,
+      "reasoning_check": 1,
+      "available_onboarding_info": {
+        "cooler_status": "No",
+        "business_type": {
+          "id": 45,
+          "slug": "Wholesale"
+        },
+        "channel_category": {
+          "id": 51,
+          "slug": "Platinum"
+        }
+      },
+      "available_surveys": [
+        599
+      ]
+    },
+    {
+      "id": 1503,
+      "outlet_name": "Momtaz Store",
+      "outlet_name_bn": "Momtaz Store",
+      "outlet_code": "mom123",
+      "owner": "Momtaz",
+      "contact": "01786554557",
+      "approval_status": "APPROVED",
+      "nid": null,
+      "address": "Badda",
+      "price_group": 1,
+      "outlet_cover_image": null,
+      "outlet_cooler_image": null,
+      "sbu_id": [
+        54
+      ],
+      "dep_id": 167,
+      "section_id": 222,
+      "cluster_id": 0,
+      "sap_code": null,
+      "qc_price_group": 3,
+      "outlet_cover_photo": "https://olympic-dev.wingssfa.net/app-api/static-file/retailer/mom123/outlet_cover_image.jpg",
+      "lat": 23.793663,
+      "long": 90.40463,
+      "allowable_distance": 100,
+      "reasoning_check": 1,
+      "available_onboarding_info": {
+        "cooler_status": "No",
+        "business_type": {
+          "id": 45,
+          "slug": "Wholesale"
+        },
+        "channel_category": {
+          "id": 52,
+          "slug": "Gold"
+        }
+      },
+      "available_surveys": [
+        599
+      ]
+    },
+    {
+      "id": 1505,
+      "outlet_name": "ehhe",
+      "outlet_name_bn": "ehhe",
+      "outlet_code": "R-228228100326-009",
+      "owner": "eheh",
+      "contact": "01745858586",
+      "approval_status": "PENDING",
+      "nid": "2145783695",
+      "address": "vsjdj",
+      "price_group": 1,
+      "outlet_cover_image": "olympic/retailer/R-228228100326-009/outlet_cover_image.jpg",
+      "outlet_cooler_image": null,
+      "sbu_id": [
+        54
+      ],
+      "dep_id": 167,
+      "section_id": 213,
+      "cluster_id": 499,
+      "sap_code": null,
+      "qc_price_group": 3,
+      "outlet_cover_photo": "https://olympic-dev.wingssfa.net/app-api/static-file/retailer/R-228228100326-009/outlet_cover_image.jpg",
+      "lat": 23.7937078,
+      "long": 90.40457,
+      "allowable_distance": 100,
+      "reasoning_check": 1,
+      "available_onboarding_info": {
+        "cooler_status": "No",
+        "business_type": {
+          "id": 48,
+          "slug": "Tong"
+        },
+        "channel_category": {
+          "id": 52,
+          "slug": "Gold"
+        }
+      },
+      "available_surveys": [
+        599
+      ]
+    },
+    {
+      "id": 1506,
+      "outlet_name": "bdbdbd",
+      "outlet_name_bn": "bebrbr",
+      "outlet_code": "R-228228100326-010",
+      "owner": "hshdhd",
+      "contact": "01755885566",
+      "approval_status": "REJECTED",
+      "nid": "8787454569",
+      "address": "shhshd",
+      "price_group": 1,
+      "outlet_cover_image": "olympic/retailer/R-228228100326-010/outlet_cover_image.jpg",
+      "outlet_cooler_image": null,
+      "sbu_id": [
+        54
+      ],
+      "dep_id": 167,
+      "section_id": 213,
+      "cluster_id": 500,
+      "sap_code": null,
+      "qc_price_group": 3,
+      "outlet_cover_photo": "https://olympic-dev.wingssfa.net/app-api/static-file/retailer/R-228228100326-010/outlet_cover_image.jpg",
+      "lat": 23.7937496,
+      "long": 90.4045298,
+      "allowable_distance": 100,
+      "reasoning_check": 1,
+      "available_onboarding_info": {
+        "cooler_status": "No",
+        "business_type": {
+          "id": 47,
+          "slug": "Grocery"
+        },
+        "channel_category": {
+          "id": 52,
+          "slug": "Gold"
+        }
+      },
+      "available_surveys": [
+        599
+      ]
+    },
+    {
+      "id": 1508,
+      "outlet_name": "Asraf Store",
+      "outlet_name_bn": "Asraf Store",
+      "outlet_code": "R-228228110326-002",
+      "owner": "Asraf",
+      "contact": "01885213526",
+      "approval_status": "APPROVED",
+      "nid": "1235642536",
+      "address": "Badda",
+      "price_group": 1,
+      "outlet_cover_image": "olympic/retailer/R-228228110326-002/outlet_cover_image.jpg",
+      "outlet_cooler_image": null,
+      "sbu_id": [
+        54
+      ],
+      "dep_id": 167,
+      "section_id": 213,
+      "cluster_id": 293752,
+      "sap_code": null,
+      "qc_price_group": 3,
+      "outlet_cover_photo": "https://olympic-dev.wingssfa.net/app-api/static-file/retailer/R-228228110326-002/outlet_cover_image.jpg",
+      "lat": 23.7938971,
+      "long": 90.4046451,
+      "allowable_distance": 100,
+      "reasoning_check": 1,
+      "available_onboarding_info": {
+        "cooler_status": "No",
+        "business_type": {
+          "id": 45,
+          "slug": "Wholesale"
+        },
+        "channel_category": {
+          "id": 51,
+          "slug": "Platinum"
+        }
+      },
+      "available_surveys": [
+        599
+      ]
+    },
+    {
+      "id": 1437,
+      "outlet_name": "Khan store Banani",
+      "outlet_name_bn": "Khan store Banani",
+      "outlet_code": "R-228228220126-002",
+      "owner": "khan",
+      "contact": "01885885666",
+      "approval_status": "APPROVED",
+      "nid": "1958358",
+      "address": "Badda",
+      "price_group": 1,
+      "outlet_cover_image": null,
+      "outlet_cooler_image": null,
+      "sbu_id": [
+        54
+      ],
+      "dep_id": 167,
+      "section_id": 213,
+      "cluster_id": null,
+      "sap_code": "R-228228220126-002",
+      "qc_price_group": 3,
+      "outlet_cover_photo": "https://olympic-dev.wingssfa.net/app-api/static-file/retailer/R-228228220126-002/outlet_cover_image.jpg",
+      "lat": 23.7939054,
+      "long": 90.4046311,
+      "allowable_distance": 100,
+      "reasoning_check": 1,
+      "available_onboarding_info": {
+        "cooler_status": "No",
+        "business_type": {
+          "id": 45,
+          "slug": "Wholesale"
+        },
+        "channel_category": {
+          "id": 51,
+          "slug": "Platinum"
+        }
+      },
+      "available_surveys": [
+        599
+      ]
+    },
+    {
+      "id": 1436,
+      "outlet_name": "Gmail store",
+      "outlet_name_bn": "জিমেইল ষ্টোর",
+      "outlet_code": "R-228228210126-002",
+      "owner": "Alal",
+      "contact": "01789456123",
+      "approval_status": "APPROVED",
+      "nid": "123456789978654",
+      "address": "Dhaka, Banani",
+      "price_group": 1,
+      "outlet_cover_image": null,
+      "outlet_cooler_image": null,
+      "sbu_id": [
+        54
+      ],
+      "dep_id": 167,
+      "section_id": 213,
+      "cluster_id": null,
+      "sap_code": "R-228228210126-002",
+      "qc_price_group": 3,
+      "outlet_cover_photo": "https://olympic-dev.wingssfa.net/app-api/static-file/retailer/R-228228210126-002/outlet_cover_image.jpg",
+      "lat": 23.7937144,
+      "long": 90.4045622,
+      "allowable_distance": 100,
+      "reasoning_check": 1,
+      "available_onboarding_info": {
+        "cooler_status": "No",
+        "business_type": {
+          "id": 47,
+          "slug": "Grocery"
+        },
+        "channel_category": {
+          "id": 53,
+          "slug": "Silver"
+        }
+      },
+      "available_surveys": [
+        599
+      ]
+    },
+    {
+      "id": 1488,
+      "outlet_name": "abcd",
+      "outlet_name_bn": "abcd",
+      "outlet_code": "R-228228160226-002",
+      "owner": "abcd",
+      "contact": "01741423438",
+      "approval_status": "APPROVED",
+      "nid": "",
+      "address": "abcd",
+      "price_group": 1,
+      "outlet_cover_image": "olympic/retailer/R-228228160226-002/outlet_cover_image.jpg",
+      "outlet_cooler_image": null,
+      "sbu_id": [
+        54
+      ],
+      "dep_id": 167,
+      "section_id": 213,
+      "cluster_id": 500,
+      "sap_code": "R-228228160226-002",
+      "qc_price_group": 3,
+      "outlet_cover_photo": "https://olympic-dev.wingssfa.net/app-api/static-file/retailer/R-228228160226-002/outlet_cover_image.jpg",
+      "lat": 23.7936692,
+      "long": 90.4045662,
+      "allowable_distance": 100,
+      "reasoning_check": 1,
+      "available_onboarding_info": {
+        "cooler_status": "No",
+        "business_type": {
+          "id": 46,
+          "slug": "Supershop"
+        },
+        "channel_category": {
+          "id": 52,
+          "slug": "Gold"
+        }
+      },
+      "available_surveys": [
+        599
+      ]
+    },
+    {
+      "id": 1473,
+      "outlet_name": "zzzzzzzzzzzzzzz",
+      "outlet_name_bn": "zzzzzzzzzzzzzzz",
+      "outlet_code": "R-228228050226-005",
+      "owner": "zzzzzzzzzzzzzz",
+      "contact": "01758889966",
+      "approval_status": "PENDING",
+      "nid": "1235426985",
+      "address": "vshs",
+      "price_group": 1,
+      "outlet_cover_image": "olympic/retailer/R-228228050226-005/outlet_cover_image.jpg",
+      "outlet_cooler_image": null,
+      "sbu_id": [
+        54
+      ],
+      "dep_id": 167,
+      "section_id": 213,
+      "cluster_id": 499,
+      "sap_code": "R-228228050226-005",
+      "qc_price_group": 3,
+      "outlet_cover_photo": "https://olympic-dev.wingssfa.net/app-api/static-file/retailer/R-228228050226-005/outlet_cover_image.jpg",
+      "lat": 23.7935994,
+      "long": 90.4045652,
+      "allowable_distance": 100,
+      "reasoning_check": 1,
+      "available_onboarding_info": {
+        "cooler_status": "No",
+        "business_type": {
+          "id": 48,
+          "slug": "Tong"
+        },
+        "channel_category": {
+          "id": 52,
+          "slug": "Gold"
+        }
+      },
+      "available_surveys": [
+        599
+      ]
+    },
+    {
+      "id": 1474,
+      "outlet_name": "xxxxxxxxxxx",
+      "outlet_name_bn": "xxxxxxxxxxx",
+      "outlet_code": "R-228228050226-006",
+      "owner": "xxxxxxxxxx",
+      "contact": "01888588588",
+      "approval_status": "PENDING",
+      "nid": "0088559966",
+      "address": "hsjd",
+      "price_group": 1,
+      "outlet_cover_image": "olympic/retailer/R-228228050226-006/outlet_cover_image.jpg",
+      "outlet_cooler_image": null,
+      "sbu_id": [
+        54
+      ],
+      "dep_id": 167,
+      "section_id": 213,
+      "cluster_id": 499,
+      "sap_code": "R-228228050226-006",
+      "qc_price_group": 3,
+      "outlet_cover_photo": "https://olympic-dev.wingssfa.net/app-api/static-file/retailer/R-228228050226-006/outlet_cover_image.jpg",
+      "lat": 23.7936196,
+      "long": 90.4045794,
+      "allowable_distance": 100,
+      "reasoning_check": 1,
+      "available_onboarding_info": {
+        "cooler_status": "No",
+        "business_type": {
+          "id": 48,
+          "slug": "Tong"
+        },
+        "channel_category": {
+          "id": 52,
+          "slug": "Gold"
+        }
+      },
+      "available_surveys": [
+        599
+      ]
+    },
+    {
+      "id": 1456,
+      "outlet_name": "Cl4",
+      "outlet_name_bn": "nxjxbx",
+      "outlet_code": "R-228228290126-017",
+      "owner": "jxjxbx",
+      "contact": "01741423438",
+      "approval_status": "PENDING",
+      "nid": "1133446677",
+      "address": "hzbzbz",
+      "price_group": 1,
+      "outlet_cover_image": "olympic/retailer/R-228228290126-017/outlet_cover_image.jpg",
+      "outlet_cooler_image": null,
+      "sbu_id": [
+        54
+      ],
+      "dep_id": 167,
+      "section_id": 213,
+      "cluster_id": 46066,
+      "sap_code": "R-228228290126-017",
+      "qc_price_group": 3,
+      "outlet_cover_photo": "https://olympic-dev.wingssfa.net/app-api/static-file/retailer/R-228228290126-017/outlet_cover_image.jpg",
+      "lat": 23.7936842,
+      "long": 90.4045995,
+      "allowable_distance": 100,
+      "reasoning_check": 1,
+      "available_onboarding_info": {
+        "cooler_status": "No",
+        "business_type": {
+          "id": 47,
+          "slug": "Grocery"
+        },
+        "channel_category": {
+          "id": 52,
+          "slug": "Gold"
+        }
+      },
+      "available_surveys": [
+        599
+      ]
+    },
+    {
+      "id": 154,
+      "outlet_name": "Nishat Store",
+      "outlet_name_bn": "নিশাত স্টোর",
+      "outlet_code": "K-1234",
+      "owner": "Nishat",
+      "contact": "0",
+      "approval_status": "APPROVED",
+      "nid": "0",
+      "address": "Kakoli",
+      "price_group": 1,
+      "outlet_cover_image": null,
+      "outlet_cooler_image": null,
+      "sbu_id": [
+        54
+      ],
+      "dep_id": 167,
+      "section_id": 213,
+      "cluster_id": 498,
+      "sap_code": "K-1234",
+      "qc_price_group": 3,
+      "outlet_cover_photo": "https://olympic-dev.wingssfa.net/app-api/static-file/retailer/K-1234/outlet_cover_image.jpg",
+      "lat": 23.793714,
+      "long": 90.40453,
+      "allowable_distance": 100,
+      "reasoning_check": 1,
+      "available_onboarding_info": {
+        "cooler_status": "No",
+        "business_type": {
+          "id": 45,
+          "slug": "Wholesale"
+        },
+        "channel_category": {
+          "id": 52,
+          "slug": "Gold"
+        }
+      },
+      "available_surveys": [
+        599
+      ]
+    },
+    {
+      "id": 1493,
+      "outlet_name": "Rabbi Store",
+      "outlet_name_bn": "Rabbi Store",
+      "outlet_code": "R-228228010326-003",
+      "owner": "Rabbi",
+      "contact": "01511111111",
+      "approval_status": "PENDING",
+      "nid": "1325652356",
+      "address": "Bashundhora",
+      "price_group": 1,
+      "outlet_cover_image": "olympic/retailer/R-228228010326-003/outlet_cover_image.jpg",
+      "outlet_cooler_image": null,
+      "sbu_id": [
+        54
+      ],
+      "dep_id": 167,
+      "section_id": 213,
+      "cluster_id": 498,
+      "sap_code": "R-228228010326-003",
+      "qc_price_group": 3,
+      "outlet_cover_photo": "https://olympic-dev.wingssfa.net/app-api/static-file/retailer/R-228228010326-003/outlet_cover_image.jpg",
+      "lat": 23.7937179,
+      "long": 90.4046215,
+      "allowable_distance": 100,
+      "reasoning_check": 1,
+      "available_onboarding_info": {
+        "cooler_status": "No",
+        "business_type": {
+          "id": 45,
+          "slug": "Wholesale"
+        },
+        "channel_category": {
+          "id": 51,
+          "slug": "Platinum"
+        }
+      },
+      "available_surveys": [
+        599
+      ]
+    },
+    {
+      "id": 1492,
+      "outlet_name": "Samir Store",
+      "outlet_name_bn": "Samir Store",
+      "outlet_code": "R-228228010326-002",
+      "owner": "Samir",
+      "contact": "01511111111",
+      "approval_status": "APPROVED",
+      "nid": "1652365482",
+      "address": "Bashandhura",
+      "price_group": 1,
+      "outlet_cover_image": "olympic/retailer/R-228228010326-002/outlet_cover_image.jpg",
+      "outlet_cooler_image": null,
+      "sbu_id": [
+        54
+      ],
+      "dep_id": 167,
+      "section_id": 213,
+      "cluster_id": 498,
+      "sap_code": "R-228228010326-002",
+      "qc_price_group": 3,
+      "outlet_cover_photo": "https://olympic-dev.wingssfa.net/app-api/static-file/retailer/R-228228010326-002/outlet_cover_image.jpg",
+      "lat": 23.7939943,
+      "long": 90.4046935,
+      "allowable_distance": 100,
+      "reasoning_check": 1,
+      "available_onboarding_info": {
+        "cooler_status": "No",
+        "business_type": {
+          "id": 46,
+          "slug": "Supershop"
+        },
+        "channel_category": {
+          "id": 52,
+          "slug": "Gold"
+        }
+      },
+      "available_surveys": [
+        599
+      ]
+    },
+    {
+      "id": 1465,
+      "outlet_name": "Dolphin Store",
+      "outlet_name_bn": "Dolphin Store",
+      "outlet_code": "R-228228030226-002",
+      "owner": "Dolphin",
+      "contact": "01883995666",
+      "approval_status": "PENDING",
+      "nid": "0853265868",
+      "address": "Badda",
+      "price_group": 1,
+      "outlet_cover_image": "olympic/retailer/R-228228030226-002/outlet_cover_image.jpg",
+      "outlet_cooler_image": "olympic/retailer/R-228228030226-002/outlet_cooler_image.jpg",
+      "sbu_id": [
+        54
+      ],
+      "dep_id": 167,
+      "section_id": 213,
+      "cluster_id": 498,
+      "sap_code": "R-228228030226-002",
+      "qc_price_group": 3,
+      "outlet_cover_photo": "https://olympic-dev.wingssfa.net/app-api/static-file/retailer/R-228228030226-002/outlet_cover_image.jpg",
+      "lat": 23.7936111,
+      "long": 90.4045778,
+      "allowable_distance": 100,
+      "reasoning_check": 1,
+      "available_onboarding_info": {
+        "cooler_status": "No",
+        "cooler": {
+          "id": 58,
+          "slug": "Pepsi"
+        },
+        "business_type": {
+          "id": 45,
+          "slug": "Wholesale"
+        },
+        "channel_category": {
+          "id": 52,
+          "slug": "Gold"
+        }
+      },
+      "available_surveys": [
+        599
+      ]
+    },
+    {
+      "id": 1495,
+      "outlet_name": "Abc",
+      "outlet_name_bn": "Abc",
+      "outlet_code": "R-228228020326-004",
+      "owner": "Abcb",
+      "contact": "01556552666",
+      "approval_status": "PENDING",
+      "nid": "5235626523",
+      "address": "Badda",
+      "price_group": 1,
+      "outlet_cover_image": "olympic/retailer/R-228228020326-004/outlet_cover_image.jpg",
+      "outlet_cooler_image": null,
+      "sbu_id": [
+        54
+      ],
+      "dep_id": 167,
+      "section_id": 213,
+      "cluster_id": 498,
+      "sap_code": "R-228228020326-004",
+      "qc_price_group": 3,
+      "outlet_cover_photo": "https://olympic-dev.wingssfa.net/app-api/static-file/retailer/R-228228020326-004/outlet_cover_image.jpg",
+      "lat": 23.7939921,
+      "long": 90.4050633,
+      "allowable_distance": 100,
+      "reasoning_check": 1,
+      "available_onboarding_info": {
+        "cooler_status": "No",
+        "business_type": {
+          "id": 45,
+          "slug": "Wholesale"
+        },
+        "channel_category": {
+          "id": 51,
+          "slug": "Platinum"
+        }
+      },
+      "available_surveys": [
+        599
+      ]
+    },
+    {
+      "id": 1511,
+      "outlet_name": "Rabbi Store",
+      "outlet_name_bn": "রাব্বি স্টোর",
+      "outlet_code": "R-228228140326-002",
+      "owner": "Rabbi",
+      "contact": "01765778777",
+      "approval_status": "APPROVED",
+      "nid": "1976578675",
+      "address": "Dhaka",
+      "price_group": 1,
+      "outlet_cover_image": "olympic/retailer/R-228228140326-002/outlet_cover_image.jpg",
+      "outlet_cooler_image": null,
+      "sbu_id": [
+        54
+      ],
+      "dep_id": 167,
+      "section_id": 213,
+      "cluster_id": 498,
+      "sap_code": null,
+      "qc_price_group": 3,
+      "outlet_cover_photo": "https://olympic-dev.wingssfa.net/app-api/static-file/retailer/R-228228140326-002/outlet_cover_image.jpg",
+      "lat": 23.7666139,
+      "long": 90.4270397,
+      "allowable_distance": 100,
+      "reasoning_check": 1,
+      "available_onboarding_info": {
+        "cooler_status": "No",
+        "business_type": {
+          "id": 45,
+          "slug": "Wholesale"
+        },
+        "channel_category": {
+          "id": 51,
+          "slug": "Platinum"
+        }
+      },
+      "available_surveys": [
+        599
+      ]
+    },
+    {
+      "id": 1513,
+      "outlet_name": "AP",
+      "outlet_name_bn": "AP",
+      "outlet_code": "AP09",
+      "owner": "Apon",
+      "contact": "01786554333",
+      "approval_status": "APPROVED",
+      "nid": null,
+      "address": "Banani",
+      "price_group": 1,
+      "outlet_cover_image": null,
+      "outlet_cooler_image": null,
+      "sbu_id": [
+        54
+      ],
+      "dep_id": 167,
+      "section_id": 204,
+      "cluster_id": 0,
+      "sap_code": null,
+      "qc_price_group": 3,
+      "outlet_cover_photo": "https://olympic-dev.wingssfa.net/app-api/static-file/retailer/AP09/outlet_cover_image.jpg",
+      "lat": 23.793645,
+      "long": 90.404641,
+      "allowable_distance": 100,
+      "reasoning_check": 1,
+      "available_onboarding_info": {
+        "cooler_status": "No",
+        "business_type": {
+          "id": 45,
+          "slug": "Wholesale"
+        },
+        "channel_category": {
+          "id": 52,
+          "slug": "Gold"
+        }
+      },
+      "available_surveys": [
+        599
+      ]
     }
   ],
-  "clusters": [
-    {
-      "id": 498,
-      "cluster_type_id": 160,
-      "dep_id": 167,
-      "slug": "Dolphin Goli"
-    },
-    {
-      "id": 499,
-      "cluster_type_id": 157,
-      "dep_id": 167,
-      "slug": "Lake Circus"
-    },
-    {
-      "id": 500,
-      "cluster_type_id": 157,
-      "dep_id": 167,
-      "slug": "Boshir Uddin Road"
-    },
-    {
-      "id": 46063,
-      "cluster_type_id": 157,
-      "dep_id": 167,
-      "slug": "M More"
-    },
-    {
-      "id": 46064,
-      "cluster_type_id": 178,
-      "dep_id": 167,
-      "slug": "Sonali Biri"
-    },
-    {
-      "id": 46065,
-      "cluster_type_id": 178,
-      "dep_id": 167,
-      "slug": "Mouchak More"
-    },
-    {
-      "id": 46066,
-      "cluster_type_id": 178,
-      "dep_id": 167,
-      "slug": "Shatbaria More"
-    },
-    {
-      "id": 46067,
-      "cluster_type_id": 178,
-      "dep_id": 167,
-      "slug": "Char Rastar More"
-    },
-    {
-      "id": 46068,
-      "cluster_type_id": 178,
-      "dep_id": 167,
-      "slug": "Poshu Haat"
-    },
-    {
-      "id": 46069,
-      "cluster_type_id": 178,
-      "dep_id": 167,
-      "slug": "Dhorompur"
-    },
-    {
-      "id": 46070,
-      "cluster_type_id": 178,
-      "dep_id": 167,
-      "slug": "Dhorompur Bazar"
-    },
-    {
-      "id": 46072,
-      "cluster_type_id": 178,
-      "dep_id": 167,
-      "slug": "Joggesshor Bazar"
-    },
-    {
-      "id": 46073,
-      "cluster_type_id": 178,
-      "dep_id": 167,
-      "slug": "Bottola"
-    },
-    {
-      "id": 46074,
-      "cluster_type_id": 178,
-      "dep_id": 167,
-      "slug": "Karigorpara"
-    },
-    {
-      "id": 46075,
-      "cluster_type_id": 178,
-      "dep_id": 167,
-      "slug": "Porankhali"
-    },
-    {
-      "id": 46076,
-      "cluster_type_id": 178,
-      "dep_id": 167,
-      "slug": "Station bazar"
-    },
-    {
-      "id": 46077,
-      "cluster_type_id": 157,
-      "dep_id": 167,
-      "slug": "C bazar"
-    },
-    {
-      "id": 46079,
-      "cluster_type_id": 178,
-      "dep_id": 167,
-      "slug": "Sono Bazar Mor"
-    },
-    {
-      "id": 46081,
-      "cluster_type_id": 178,
-      "dep_id": 167,
-      "slug": "Pouro market"
-    },
-    {
-      "id": 46082,
-      "cluster_type_id": 178,
-      "dep_id": 167,
-      "slug": "Dak bangla"
-    },
-    {
-      "id": 46084,
-      "cluster_type_id": 178,
-      "dep_id": 167,
-      "slug": "Mosjid Mor"
-    },
-    {
-      "id": 46085,
-      "cluster_type_id": 178,
-      "dep_id": 167,
-      "slug": "Godaun mor"
-    },
-    {
-      "id": 46086,
-      "cluster_type_id": 178,
-      "dep_id": 167,
-      "slug": "Hall bazar"
-    },
-    {
-      "id": 46087,
-      "cluster_type_id": 178,
-      "dep_id": 167,
-      "slug": "Bahadurpur"
-    },
-    {
-      "id": 46088,
-      "cluster_type_id": 157,
-      "dep_id": 167,
-      "slug": "Kuchiamura"
-    },
-    {
-      "id": 46089,
-      "cluster_type_id": 178,
-      "dep_id": 167,
-      "slug": "Notun Haat"
-    },
-    {
-      "id": 46090,
-      "cluster_type_id": 178,
-      "dep_id": 167,
-      "slug": "Sentar More"
-    },
-    {
-      "id": 46091,
-      "cluster_type_id": 157,
-      "dep_id": 167,
-      "slug": "Golap Nogar"
-    },
-    {
-      "id": 46092,
-      "cluster_type_id": 178,
-      "dep_id": 167,
-      "slug": "Kilik More"
-    },
-    {
-      "id": 46093,
-      "cluster_type_id": 178,
-      "dep_id": 167,
-      "slug": "H More"
-    },
-    {
-      "id": 46095,
-      "cluster_type_id": 178,
-      "dep_id": 167,
-      "slug": "Jatri Sawni"
-    },
-    {
-      "id": 46096,
-      "cluster_type_id": 178,
-      "dep_id": 167,
-      "slug": "Oill pamp"
-    },
-    {
-      "id": 46098,
-      "cluster_type_id": 178,
-      "dep_id": 167,
-      "slug": "Coach stand"
-    },
-    {
-      "id": 46099,
-      "cluster_type_id": 178,
-      "dep_id": 167,
-      "slug": "Pourosova Mor"
-    },
-    {
-      "id": 46100,
-      "cluster_type_id": 178,
-      "dep_id": 167,
-      "slug": "Tempu Stand"
-    },
-    {
-      "id": 46106,
-      "cluster_type_id": 178,
-      "dep_id": 167,
-      "slug": "Kachari Para"
-    },
-    {
-      "id": 46108,
-      "cluster_type_id": 178,
-      "dep_id": 167,
-      "slug": "South Rail Gate"
-    },
-    {
-      "id": 46109,
-      "cluster_type_id": 178,
-      "dep_id": 167,
-      "slug": "4 Raster More"
-    },
-    {
-      "id": 46110,
-      "cluster_type_id": 178,
-      "dep_id": 167,
-      "slug": "Chand Gram"
-    },
-    {
-      "id": 46111,
-      "cluster_type_id": 178,
-      "dep_id": 167,
-      "slug": "Chondipur"
-    },
-    {
-      "id": 46112,
-      "cluster_type_id": 178,
-      "dep_id": 167,
-      "slug": "Kharara"
-    },
-    {
-      "id": 46115,
-      "cluster_type_id": 178,
-      "dep_id": 167,
-      "slug": "Ferot Mor"
-    },
-    {
-      "id": 46117,
-      "cluster_type_id": 178,
-      "dep_id": 167,
-      "slug": "Rubel More"
-    },
-    {
-      "id": 46118,
-      "cluster_type_id": 178,
-      "dep_id": 167,
-      "slug": "Loridiar"
-    },
-    {
-      "id": 46119,
-      "cluster_type_id": 178,
-      "dep_id": 167,
-      "slug": "Fozipur"
-    },
-    {
-      "id": 46121,
-      "cluster_type_id": 178,
-      "dep_id": 167,
-      "slug": "Boria"
-    },
-    {
-      "id": 46122,
-      "cluster_type_id": 178,
-      "dep_id": 167,
-      "slug": "MohisaKhola"
-    },
-    {
-      "id": 46123,
-      "cluster_type_id": 178,
-      "dep_id": 167,
-      "slug": "Shatgacha"
-    },
-    {
-      "id": 46124,
-      "cluster_type_id": 178,
-      "dep_id": 167,
-      "slug": "Foizullapur"
-    },
-    {
-      "id": 46125,
-      "cluster_type_id": 178,
-      "dep_id": 167,
-      "slug": "Raita Bottola"
-    },
-    {
-      "id": 46126,
-      "cluster_type_id": 178,
-      "dep_id": 167,
-      "slug": "Raita Pathor ghat"
-    },
-    {
-      "id": 46127,
-      "cluster_type_id": 178,
-      "dep_id": 167,
-      "slug": "Raita S Bazar"
-    },
-    {
-      "id": 46128,
-      "cluster_type_id": 178,
-      "dep_id": 167,
-      "slug": "Raita Station"
-    },
-    {
-      "id": 46129,
-      "cluster_type_id": 178,
-      "dep_id": 167,
-      "slug": "Arkandi"
-    },
-    {
-      "id": 46131,
-      "cluster_type_id": 178,
-      "dep_id": 167,
-      "slug": "Farukpur Relgate"
-    },
-    {
-      "id": 46132,
-      "cluster_type_id": 178,
-      "dep_id": 167,
-      "slug": "Shamur More"
-    },
-    {
-      "id": 46133,
-      "cluster_type_id": 178,
-      "dep_id": 167,
-      "slug": "Soner More"
-    },
-    {
-      "id": 46134,
-      "cluster_type_id": 178,
-      "dep_id": 167,
-      "slug": "Rjur More"
-    },
-    {
-      "id": 46136,
-      "cluster_type_id": 157,
-      "dep_id": 167,
-      "slug": "Moslempur"
-    },
-    {
-      "id": 46137,
-      "cluster_type_id": 157,
-      "dep_id": 167,
-      "slug": "Moslempur Balirmath"
-    },
-    {
-      "id": 46140,
-      "cluster_type_id": 157,
-      "dep_id": 167,
-      "slug": "Pamp House"
-    },
-    {
-      "id": 46142,
-      "cluster_type_id": 157,
-      "dep_id": 167,
-      "slug": "Vanggapul"
-    },
-    {
-      "id": 46143,
-      "cluster_type_id": 157,
-      "dep_id": 167,
-      "slug": "Kamalpur"
-    },
-    {
-      "id": 46144,
-      "cluster_type_id": 157,
-      "dep_id": 167,
-      "slug": "Vita"
-    },
-    {
-      "id": 46146,
-      "cluster_type_id": 178,
-      "dep_id": 167,
-      "slug": "Nohir More"
-    },
-    {
-      "id": 46147,
-      "cluster_type_id": 178,
-      "dep_id": 167,
-      "slug": "Mirzapur"
-    },
-    {
-      "id": 46148,
-      "cluster_type_id": 157,
-      "dep_id": 167,
-      "slug": "Dontuya"
-    },
-    {
-      "id": 46151,
-      "cluster_type_id": 178,
-      "dep_id": 167,
-      "slug": "Jaker Bari"
-    },
-    {
-      "id": 46152,
-      "cluster_type_id": 157,
-      "dep_id": 167,
-      "slug": "Kaji Hata"
-    },
-    {
-      "id": 46153,
-      "cluster_type_id": 178,
-      "dep_id": 167,
-      "slug": "Moniadora"
-    },
-    {
-      "id": 46154,
-      "cluster_type_id": 178,
-      "dep_id": 167,
-      "slug": "Nasir Nagar"
-    },
-    {
-      "id": 46155,
-      "cluster_type_id": 178,
-      "dep_id": 167,
-      "slug": "Uttar Varotipur"
-    },
-    {
-      "id": 46156,
-      "cluster_type_id": 178,
-      "dep_id": 167,
-      "slug": "Khemirdia"
-    },
-    {
-      "id": 46157,
-      "cluster_type_id": 178,
-      "dep_id": 167,
-      "slug": "Somiti More"
-    },
-    {
-      "id": 46158,
-      "cluster_type_id": 178,
-      "dep_id": 167,
-      "slug": "Musarafpur"
-    },
-    {
-      "id": 46159,
-      "cluster_type_id": 178,
-      "dep_id": 167,
-      "slug": "Jogossar"
-    },
-    {
-      "id": 46160,
-      "cluster_type_id": 178,
-      "dep_id": 167,
-      "slug": "Fokirabad"
-    },
-    {
-      "id": 46161,
-      "cluster_type_id": 178,
-      "dep_id": 167,
-      "slug": "Mazar"
-    },
-    {
-      "id": 46163,
-      "cluster_type_id": 178,
-      "dep_id": 167,
-      "slug": "Sorupeghope"
-    },
-    {
-      "id": 46166,
-      "cluster_type_id": 178,
-      "dep_id": 167,
-      "slug": "Hosen Pur"
-    },
-    {
-      "id": 46172,
-      "cluster_type_id": 178,
-      "dep_id": 167,
-      "slug": "Bamonpara"
-    },
-    {
-      "id": 46176,
-      "cluster_type_id": 178,
-      "dep_id": 167,
-      "slug": "Bittepara"
-    },
-    {
-      "id": 46177,
-      "cluster_type_id": 178,
-      "dep_id": 167,
-      "slug": "Shatbari Mathpara"
-    },
-    {
-      "id": 46178,
-      "cluster_type_id": 178,
-      "dep_id": 167,
-      "slug": "Shatbari Dokkhinpara"
-    },
-    {
-      "id": 46180,
-      "cluster_type_id": 178,
-      "dep_id": 167,
-      "slug": "Muslimpara"
-    },
-    {
-      "id": 46184,
-      "cluster_type_id": 178,
-      "dep_id": 167,
-      "slug": "Munshi Para"
-    },
-    {
-      "id": 46186,
-      "cluster_type_id": 157,
-      "dep_id": 167,
-      "slug": "3 No. Bridge"
-    },
-    {
-      "id": 46188,
-      "cluster_type_id": 178,
-      "dep_id": 167,
-      "slug": "Munshi Oahedpur"
-    },
-    {
-      "id": 46191,
-      "cluster_type_id": 157,
-      "dep_id": 167,
-      "slug": "Shatbari Gorosthan Para"
-    },
-    {
-      "id": 46192,
-      "cluster_type_id": 178,
-      "dep_id": 167,
-      "slug": "Baggari Pul"
-    },
-    {
-      "id": 46194,
-      "cluster_type_id": 178,
-      "dep_id": 167,
-      "slug": "Islampur Gate"
-    },
-    {
-      "id": 46195,
-      "cluster_type_id": 178,
-      "dep_id": 167,
-      "slug": "Bangal Para"
-    },
-    {
-      "id": 46196,
-      "cluster_type_id": 178,
-      "dep_id": 167,
-      "slug": "Dhaka Chor"
-    },
-    {
-      "id": 46198,
-      "cluster_type_id": 178,
-      "dep_id": 167,
-      "slug": "Somotir Mor"
-    },
-    {
-      "id": 46199,
-      "cluster_type_id": 178,
-      "dep_id": 167,
-      "slug": "Chor Damukdia"
-    },
-    {
-      "id": 46200,
-      "cluster_type_id": 178,
-      "dep_id": 167,
-      "slug": "Damukdia"
-    },
-    {
-      "id": 46201,
-      "cluster_type_id": 178,
-      "dep_id": 167,
-      "slug": "Satbaria Club"
-    },
-    {
-      "id": 46202,
-      "cluster_type_id": 178,
-      "dep_id": 167,
-      "slug": "Sat Bari"
-    },
-    {
-      "id": 46203,
-      "cluster_type_id": 178,
-      "dep_id": 167,
-      "slug": "Uttor Vobanipur EID Gah"
-    },
-    {
-      "id": 46204,
-      "cluster_type_id": 178,
-      "dep_id": 167,
-      "slug": "Dhorompur Purbopara"
-    },
-    {
-      "id": 61144,
-      "cluster_type_id": 178,
-      "dep_id": 167,
-      "slug": "Fire Service More"
-    },
-    {
-      "id": 94291,
-      "cluster_type_id": 157,
-      "dep_id": 167,
-      "slug": "11 Mile"
-    },
-    {
-      "id": 94292,
-      "cluster_type_id": 157,
-      "dep_id": 167,
-      "slug": "10 Mile"
-    },
-    {
-      "id": 94293,
-      "cluster_type_id": 157,
-      "dep_id": 167,
-      "slug": "12 Mile"
-    },
-    {
-      "id": 94570,
-      "cluster_type_id": 178,
-      "dep_id": 167,
-      "slug": "C Bazar"
-    },
-    {
-      "id": 94572,
-      "cluster_type_id": 157,
-      "dep_id": 167,
-      "slug": "Moddho Bazar"
-    },
-    {
-      "id": 94573,
-      "cluster_type_id": 157,
-      "dep_id": 167,
-      "slug": "JSD office"
-    },
-    {
-      "id": 94574,
-      "cluster_type_id": 157,
-      "dep_id": 167,
-      "slug": "S More"
-    },
-    {
-      "id": 94575,
-      "cluster_type_id": 157,
-      "dep_id": 167,
-      "slug": "Bangir More"
-    },
-    {
-      "id": 94576,
-      "cluster_type_id": 157,
-      "dep_id": 167,
-      "slug": "Centre More"
-    },
-    {
-      "id": 94577,
-      "cluster_type_id": 157,
-      "dep_id": 167,
-      "slug": "Balurghat"
-    },
-    {
-      "id": 94578,
-      "cluster_type_id": 157,
-      "dep_id": 167,
-      "slug": "Dhaka Coach Stand"
-    },
-    {
-      "id": 94579,
-      "cluster_type_id": 157,
-      "dep_id": 167,
-      "slug": "Platform"
-    },
-    {
-      "id": 94580,
-      "cluster_type_id": 157,
-      "dep_id": 167,
-      "slug": "Makkro Streen"
-    },
-    {
-      "id": 94581,
-      "cluster_type_id": 157,
-      "dep_id": 167,
-      "slug": "Mazar Road"
-    },
-    {
-      "id": 94582,
-      "cluster_type_id": 157,
-      "dep_id": 167,
-      "slug": "Choytonna More"
-    },
-    {
-      "id": 94583,
-      "cluster_type_id": 160,
-      "dep_id": 167,
-      "slug": "Bus Stand"
-    },
-    {
-      "id": 94584,
-      "cluster_type_id": 157,
-      "dep_id": 167,
-      "slug": "C More"
-    },
-    {
-      "id": 94585,
-      "cluster_type_id": 157,
-      "dep_id": 167,
-      "slug": "Lozen More"
-    },
-    {
-      "id": 94587,
-      "cluster_type_id": 157,
-      "dep_id": 167,
-      "slug": "6 No. Bridge"
-    },
-    {
-      "id": 94592,
-      "cluster_type_id": 157,
-      "dep_id": 167,
-      "slug": "Farukpur"
-    },
-    {
-      "id": 94594,
-      "cluster_type_id": 157,
-      "dep_id": 167,
-      "slug": "Sonar More"
-    },
-    {
-      "id": 94596,
-      "cluster_type_id": 178,
-      "dep_id": 167,
-      "slug": "Dolua Bazar"
-    },
-    {
-      "id": 94598,
-      "cluster_type_id": 157,
-      "dep_id": 167,
-      "slug": "Daskin Vobanipur"
-    },
-    {
-      "id": 94599,
-      "cluster_type_id": 157,
-      "dep_id": 167,
-      "slug": "Golap Nagor Mazar"
-    },
-    {
-      "id": 94604,
-      "cluster_type_id": 157,
-      "dep_id": 167,
-      "slug": "Moslempur Pump"
-    },
-    {
-      "id": 122095,
-      "cluster_type_id": 178,
-      "dep_id": 167,
-      "slug": "Bhera Pan Bazar"
-    },
-    {
-      "id": 122096,
-      "cluster_type_id": 178,
-      "dep_id": 167,
-      "slug": "Bhera Katherpul"
-    },
-    {
-      "id": 122097,
-      "cluster_type_id": 178,
-      "dep_id": 167,
-      "slug": "Bherakudalipara"
-    },
-    {
-      "id": 122098,
-      "cluster_type_id": 178,
-      "dep_id": 167,
-      "slug": "Bhera Bittepara"
-    },
-    {
-      "id": 122099,
-      "cluster_type_id": 178,
-      "dep_id": 167,
-      "slug": "Bhechoitonno More"
-    },
-    {
-      "id": 122100,
-      "cluster_type_id": 178,
-      "dep_id": 167,
-      "slug": "Juniadaha"
-    },
-    {
-      "id": 139526,
-      "cluster_type_id": 178,
-      "dep_id": 167,
-      "slug": "Indra More"
-    },
-    {
-      "id": 139528,
-      "cluster_type_id": 157,
-      "dep_id": 167,
-      "slug": "Gurer Para"
-    },
-    {
-      "id": 139531,
-      "cluster_type_id": 178,
-      "dep_id": 167,
-      "slug": "Nowda Boholbari"
-    },
-    {
-      "id": 139533,
-      "cluster_type_id": 157,
-      "dep_id": 167,
-      "slug": "Doctor More"
-    },
-    {
-      "id": 139535,
-      "cluster_type_id": 178,
-      "dep_id": 167,
-      "slug": "Kazipur Moddo Para"
-    },
-    {
-      "id": 139536,
-      "cluster_type_id": 178,
-      "dep_id": 167,
-      "slug": "Kazipur Britti Para"
-    },
-    {
-      "id": 139540,
-      "cluster_type_id": 178,
-      "dep_id": 167,
-      "slug": "Lolua"
-    },
-    {
-      "id": 139542,
-      "cluster_type_id": 160,
-      "dep_id": 167,
-      "slug": "Fakirpara"
-    },
-    {
-      "id": 139544,
-      "cluster_type_id": 178,
-      "dep_id": 167,
-      "slug": "Kastom"
-    },
-    {
-      "id": 139545,
-      "cluster_type_id": 157,
-      "dep_id": 167,
-      "slug": "Joypur"
-    },
-    {
-      "id": 139827,
-      "cluster_type_id": 178,
-      "dep_id": 167,
-      "slug": "7 Baria"
-    },
-    {
-      "id": 139828,
-      "cluster_type_id": 178,
-      "dep_id": 167,
-      "slug": "Farakpur Rail Gate"
-    },
-    {
-      "id": 139829,
-      "cluster_type_id": 178,
-      "dep_id": 167,
-      "slug": "Kazihata"
-    },
-    {
-      "id": 139832,
-      "cluster_type_id": 178,
-      "dep_id": 167,
-      "slug": "Mos Pamp House"
-    },
-    {
-      "id": 197936,
-      "cluster_type_id": 178,
-      "dep_id": 167,
-      "slug": "M Mor (Bhera)"
-    },
-    {
-      "id": 197937,
-      "cluster_type_id": 178,
-      "dep_id": 167,
-      "slug": "Joggesshor Bridge"
-    },
-    {
-      "id": 197938,
-      "cluster_type_id": 178,
-      "dep_id": 167,
-      "slug": "Thanar Mor (Bhera)"
-    },
-    {
-      "id": 197939,
-      "cluster_type_id": 178,
-      "dep_id": 167,
-      "slug": "Jasod Office Mor"
-    },
-    {
-      "id": 197940,
-      "cluster_type_id": 178,
-      "dep_id": 167,
-      "slug": "Chashi Club"
-    },
-    {
-      "id": 197941,
-      "cluster_type_id": 178,
-      "dep_id": 167,
-      "slug": "1 No Bridge"
-    },
-    {
-      "id": 197942,
-      "cluster_type_id": 178,
-      "dep_id": 167,
-      "slug": "Katherpul"
-    },
-    {
-      "id": 197943,
-      "cluster_type_id": 178,
-      "dep_id": 167,
-      "slug": "Kudalipara"
-    },
-    {
-      "id": 197944,
-      "cluster_type_id": 160,
-      "dep_id": 167,
-      "slug": "Bheramara Bus Stand"
-    },
-    {
-      "id": 197945,
-      "cluster_type_id": 178,
-      "dep_id": 167,
-      "slug": "Baradi Bazar"
-    },
-    {
-      "id": 197946,
-      "cluster_type_id": 157,
-      "dep_id": 167,
-      "slug": "Upozila More (Bhera)"
-    },
-    {
-      "id": 197947,
-      "cluster_type_id": 157,
-      "dep_id": 167,
-      "slug": "Allahr Dorga High S"
-    },
-    {
-      "id": 197948,
-      "cluster_type_id": 178,
-      "dep_id": 167,
-      "slug": "Ektarpur"
-    },
-    {
-      "id": 197949,
-      "cluster_type_id": 178,
-      "dep_id": 167,
-      "slug": "12 Mile Bus Stand"
-    },
-    {
-      "id": 198014,
-      "cluster_type_id": 178,
-      "dep_id": 167,
-      "slug": "4 No Bridge"
-    },
-    {
-      "id": 200835,
-      "cluster_type_id": 178,
-      "dep_id": 167,
-      "slug": "Kather Pul"
-    },
-    {
-      "id": 200836,
-      "cluster_type_id": 160,
-      "dep_id": 167,
-      "slug": "Ronopia"
-    },
-    {
-      "id": 200838,
-      "cluster_type_id": 178,
-      "dep_id": 167,
-      "slug": "Kudalia Para"
-    },
-    {
-      "id": 210248,
-      "cluster_type_id": 178,
-      "dep_id": 167,
-      "slug": "Satbaria"
-    },
-    {
-      "id": 210249,
-      "cluster_type_id": 178,
-      "dep_id": 167,
-      "slug": "Char Raster More"
-    },
-    {
-      "id": 210250,
-      "cluster_type_id": 178,
-      "dep_id": 167,
-      "slug": "Poshu Hat"
-    },
-    {
-      "id": 210251,
-      "cluster_type_id": 178,
-      "dep_id": 167,
-      "slug": "Jogossor"
-    },
-    {
-      "id": 210252,
-      "cluster_type_id": 178,
-      "dep_id": 167,
-      "slug": "Jogossor Bridge"
-    },
-    {
-      "id": 210253,
-      "cluster_type_id": 178,
-      "dep_id": 167,
-      "slug": "Poran Khali"
-    },
-    {
-      "id": 210254,
-      "cluster_type_id": 178,
-      "dep_id": 167,
-      "slug": "Manik Para"
-    },
-    {
-      "id": 210255,
-      "cluster_type_id": 178,
-      "dep_id": 167,
-      "slug": "Godown More"
-    },
-    {
-      "id": 210257,
-      "cluster_type_id": 178,
-      "dep_id": 167,
-      "slug": "Notun Hat"
-    },
-    {
-      "id": 210258,
-      "cluster_type_id": 178,
-      "dep_id": 167,
-      "slug": "Golapnagor"
-    },
-    {
-      "id": 210259,
-      "cluster_type_id": 178,
-      "dep_id": 167,
-      "slug": "Jattri Souney"
-    },
-    {
-      "id": 210260,
-      "cluster_type_id": 178,
-      "dep_id": 167,
-      "slug": "Choitnno More"
-    },
-    {
-      "id": 210261,
-      "cluster_type_id": 178,
-      "dep_id": 167,
-      "slug": "Kather Pole"
-    },
-    {
-      "id": 210262,
-      "cluster_type_id": 178,
-      "dep_id": 167,
-      "slug": "Mazar More"
-    },
-    {
-      "id": 210263,
-      "cluster_type_id": 178,
-      "dep_id": 167,
-      "slug": "Kodalia Para"
-    },
-    {
-      "id": 210264,
-      "cluster_type_id": 178,
-      "dep_id": 167,
-      "slug": "C Gate"
-    },
-    {
-      "id": 210265,
-      "cluster_type_id": 178,
-      "dep_id": 167,
-      "slug": "Dokkin Rail Gate"
-    },
-    {
-      "id": 210266,
-      "cluster_type_id": 178,
-      "dep_id": 167,
-      "slug": "4No. Bridge"
-    },
-    {
-      "id": 210267,
-      "cluster_type_id": 178,
-      "dep_id": 167,
-      "slug": "Baradi"
-    },
-    {
-      "id": 210268,
-      "cluster_type_id": 178,
-      "dep_id": 167,
-      "slug": "Firot More"
-    },
-    {
-      "id": 210269,
-      "cluster_type_id": 178,
-      "dep_id": 167,
-      "slug": "Robelar More"
-    },
-    {
-      "id": 210270,
-      "cluster_type_id": 178,
-      "dep_id": 167,
-      "slug": "Mijan More"
-    },
-    {
-      "id": 210271,
-      "cluster_type_id": 178,
-      "dep_id": 167,
-      "slug": "Boria Bazar"
-    },
-    {
-      "id": 210272,
-      "cluster_type_id": 178,
-      "dep_id": 167,
-      "slug": "Gasia Doulotpur"
-    },
-    {
-      "id": 210273,
-      "cluster_type_id": 178,
-      "dep_id": 167,
-      "slug": "Raita"
-    },
-    {
-      "id": 210274,
-      "cluster_type_id": 178,
-      "dep_id": 167,
-      "slug": "Horipur"
-    },
-    {
-      "id": 210275,
-      "cluster_type_id": 178,
-      "dep_id": 167,
-      "slug": "Upazila More"
-    },
-    {
-      "id": 210276,
-      "cluster_type_id": 178,
-      "dep_id": 167,
-      "slug": "Farakpur Railgate"
-    },
-    {
-      "id": 210277,
-      "cluster_type_id": 178,
-      "dep_id": 167,
-      "slug": "Samur More"
-    },
-    {
-      "id": 210278,
-      "cluster_type_id": 178,
-      "dep_id": 167,
-      "slug": "Nolua Bazar"
-    },
-    {
-      "id": 210279,
-      "cluster_type_id": 178,
-      "dep_id": 167,
-      "slug": "Mirzapur Bazar"
-    },
-    {
-      "id": 210280,
-      "cluster_type_id": 178,
-      "dep_id": 167,
-      "slug": "Nahir More"
-    },
-    {
-      "id": 210281,
-      "cluster_type_id": 178,
-      "dep_id": 167,
-      "slug": "Juniadoha"
-    },
-    {
-      "id": 210282,
-      "cluster_type_id": 178,
-      "dep_id": 167,
-      "slug": "Ronopia Bazar"
-    },
-    {
-      "id": 210283,
-      "cluster_type_id": 178,
-      "dep_id": 167,
-      "slug": "Mohisadora"
-    },
-    {
-      "id": 210284,
-      "cluster_type_id": 178,
-      "dep_id": 167,
-      "slug": "Nasir Nagor"
-    },
-    {
-      "id": 210285,
-      "cluster_type_id": 178,
-      "dep_id": 167,
-      "slug": "Professor Para"
-    },
-    {
-      "id": 210286,
-      "cluster_type_id": 178,
-      "dep_id": 167,
-      "slug": "Khemirdiar"
-    },
-    {
-      "id": 210287,
-      "cluster_type_id": 178,
-      "dep_id": 167,
-      "slug": "Moulahabaspur"
-    },
-    {
-      "id": 210288,
-      "cluster_type_id": 178,
-      "dep_id": 167,
-      "slug": "Somitirmore"
-    },
-    {
-      "id": 210289,
-      "cluster_type_id": 178,
-      "dep_id": 167,
-      "slug": "Vanga Pul"
-    },
-    {
-      "id": 210290,
-      "cluster_type_id": 178,
-      "dep_id": 167,
-      "slug": "Senur Gate"
-    },
-    {
-      "id": 210291,
-      "cluster_type_id": 178,
-      "dep_id": 167,
-      "slug": "Khat Mill"
-    },
-    {
-      "id": 210292,
-      "cluster_type_id": 178,
-      "dep_id": 167,
-      "slug": "Baka Pul"
-    },
-    {
-      "id": 210293,
-      "cluster_type_id": 178,
-      "dep_id": 167,
-      "slug": "Gm Gate"
-    },
-    {
-      "id": 210294,
-      "cluster_type_id": 178,
-      "dep_id": 167,
-      "slug": "Taltola"
-    },
-    {
-      "id": 210295,
-      "cluster_type_id": 178,
-      "dep_id": 167,
-      "slug": "Jipani Pul"
-    },
-    {
-      "id": 210296,
-      "cluster_type_id": 178,
-      "dep_id": 167,
-      "slug": "Shatbari"
-    },
-    {
-      "id": 231230,
-      "cluster_type_id": 157,
-      "dep_id": 167,
-      "slug": "Patoaronde"
-    },
-    {
-      "id": 280784,
-      "cluster_type_id": 157,
-      "dep_id": 167,
-      "slug": "T \u0026 T Road"
-    },
-    {
-      "id": 280785,
-      "cluster_type_id": 178,
-      "dep_id": 167,
-      "slug": "Chermen Mor"
-    },
-    {
-      "id": 280786,
-      "cluster_type_id": 178,
-      "dep_id": 167,
-      "slug": "Collage Mor"
-    },
-    {
-      "id": 280787,
-      "cluster_type_id": 178,
-      "dep_id": 167,
-      "slug": "Golap Nogar Bazar"
-    },
-    {
-      "id": 280788,
-      "cluster_type_id": 178,
-      "dep_id": 167,
-      "slug": "Eyaeya Park"
-    },
-    {
-      "id": 280789,
-      "cluster_type_id": 178,
-      "dep_id": 167,
-      "slug": "Bamonpara Chermen Mor"
-    },
-    {
-      "id": 280790,
-      "cluster_type_id": 178,
-      "dep_id": 167,
-      "slug": "Allhera Mor"
-    },
-    {
-      "id": 282607,
-      "cluster_type_id": 178,
-      "dep_id": 167,
-      "slug": "M P Bazar"
-    },
-    {
-      "id": 282608,
-      "cluster_type_id": 178,
-      "dep_id": 167,
-      "slug": "Moshjid Goli"
-    },
-    {
-      "id": 282609,
-      "cluster_type_id": 157,
-      "dep_id": 167,
-      "slug": "Golap Nogor Bazar"
-    },
-    {
-      "id": 282610,
-      "cluster_type_id": 157,
-      "dep_id": 167,
-      "slug": "School Bazar"
-    },
-    {
-      "id": 282611,
-      "cluster_type_id": 178,
-      "dep_id": 167,
-      "slug": "Mazarroad"
-    },
-    {
-      "id": 282612,
-      "cluster_type_id": 178,
-      "dep_id": 167,
-      "slug": "Golap Bazar"
-    },
-    {
-      "id": 282613,
-      "cluster_type_id": 178,
-      "dep_id": 167,
-      "slug": "Kuchiamura Bazar"
-    },
-    {
-      "id": 282614,
-      "cluster_type_id": 178,
-      "dep_id": 167,
-      "slug": "Colloge More"
-    },
-    {
-      "id": 282615,
-      "cluster_type_id": 157,
-      "dep_id": 167,
-      "slug": "Kuchiamura Posuhut"
-    },
-    {
-      "id": 282616,
-      "cluster_type_id": 160,
-      "dep_id": 167,
-      "slug": "Khacha Bazar"
-    },
-    {
-      "id": 282617,
-      "cluster_type_id": 160,
-      "dep_id": 167,
-      "slug": "Rail Bazar"
-    },
-    {
-      "id": 282618,
-      "cluster_type_id": 178,
-      "dep_id": 167,
-      "slug": "Kuchiamora Posuhut"
-    }
-  ],
-  "transport_types": [
-    {
-      "id": 349,
-      "sbu_id": "0",
-      "parent": 348,
-      "type": 0,
-      "display_label": "Van",
-      "slug": "Van",
-      "status": 1,
-      "sort": "1.00",
-      "created_by": null,
-      "updated_by": null,
-      "created_at": "2025-12-04T10:48:35.000Z",
-      "updated_at": "2025-12-04T10:48:46.000Z"
-    },
-    {
-      "id": 350,
-      "sbu_id": "0",
-      "parent": 348,
-      "type": 0,
-      "display_label": "Bike",
-      "slug": "Bike",
-      "status": 1,
-      "sort": "2.00",
-      "created_by": null,
-      "updated_by": null,
-      "created_at": "2025-12-04T10:48:45.000Z",
-      "updated_at": "2026-01-21T04:59:29.000Z"
-    }
-  ],
-  "fare_charts": [
-    {
-      "id": 2,
-      "dep_id": 171,
-      "route_id": 40,
-      "section_id": 202,
-      "cluster_id_from": 499,
-      "cluster_id_to": 500,
-      "distance_in_km": 15,
-      "transport_category_id": 349,
-      "fare_in_amount": 20,
-      "category_slug": "Van"
-    },
-    {
-      "id": 3,
-      "dep_id": 171,
-      "route_id": 40,
-      "section_id": 202,
-      "cluster_id_from": 500,
-      "cluster_id_to": 501,
-      "distance_in_km": 12,
-      "transport_category_id": 349,
-      "fare_in_amount": 25,
-      "category_slug": "Van"
-    },
-    {
-      "id": 4,
-      "dep_id": 171,
-      "route_id": 40,
-      "section_id": 202,
-      "cluster_id_from": 500,
-      "cluster_id_to": 46063,
-      "distance_in_km": 5,
-      "transport_category_id": 349,
-      "fare_in_amount": 10,
-      "category_slug": "Van"
-    },
-    {
-      "id": 5,
-      "dep_id": 171,
-      "route_id": 40,
-      "section_id": 202,
-      "cluster_id_from": 46063,
-      "cluster_id_to": 46064,
-      "distance_in_km": 20,
-      "transport_category_id": 349,
-      "fare_in_amount": 40,
-      "category_slug": "Van"
-    },
-    {
-      "id": 6,
-      "dep_id": 171,
-      "route_id": 40,
-      "section_id": 202,
-      "cluster_id_from": 46064,
-      "cluster_id_to": 46065,
-      "distance_in_km": 20,
-      "transport_category_id": 349,
-      "fare_in_amount": 40,
-      "category_slug": "Van"
-    },
-    {
-      "id": 7,
-      "dep_id": 171,
-      "route_id": 40,
-      "section_id": 202,
-      "cluster_id_from": 46065,
-      "cluster_id_to": 46066,
-      "distance_in_km": 20,
-      "transport_category_id": 349,
-      "fare_in_amount": 40,
-      "category_slug": "Van"
-    },
-    {
-      "id": 8,
-      "dep_id": 171,
-      "route_id": 40,
-      "section_id": 202,
-      "cluster_id_from": 46067,
-      "cluster_id_to": 46068,
-      "distance_in_km": 20,
-      "transport_category_id": 349,
-      "fare_in_amount": 40,
-      "category_slug": "Van"
-    },
-    {
-      "id": 9,
-      "dep_id": 171,
-      "route_id": 40,
-      "section_id": 202,
-      "cluster_id_from": 46068,
-      "cluster_id_to": 46069,
-      "distance_in_km": 20,
-      "transport_category_id": 349,
-      "fare_in_amount": 40,
-      "category_slug": "Van"
-    },
-    {
-      "id": 200,
-      "dep_id": 171,
-      "route_id": 40,
-      "section_id": 202,
-      "cluster_id_from": 498,
-      "cluster_id_to": 499,
-      "distance_in_km": 15,
-      "transport_category_id": 349,
-      "fare_in_amount": 20,
-      "category_slug": "Van"
-    },
-    {
-      "id": 245,
-      "dep_id": 167,
-      "route_id": 34,
-      "section_id": 202,
-      "cluster_id_from": 498,
-      "cluster_id_to": 499,
-      "distance_in_km": 1,
-      "transport_category_id": 349,
-      "fare_in_amount": 111,
-      "category_slug": "Van"
-    }
-  ],
+  "transport_types": [],
   "notifications": [],
   "resignation_notice_days": 30,
-  "product_classification_types": [
-    {
-      "id": 13,
-      "name": "MANDATORY"
-    },
-    {
-      "id": 14,
-      "name": "FOCUSED"
-    },
-    {
-      "id": 15,
-      "name": "OTHERS"
-    },
-    {
-      "id": 47,
-      "name": "Classification_Type_1"
-    }
-  ],
-  "outlet_onboarding_configurations": {
-    "available_onboarding_buttons": {
-      "new_outlet": 1,
-      "inactive_outlet": 0,
-      "modify_outlet": 1
-    },
-    "business_types": [
-      {
-        "id": 45,
-        "slug": "Wholesale"
-      },
-      {
-        "id": 46,
-        "slug": "Supershop"
-      },
-      {
-        "id": 47,
-        "slug": "Grocery"
-      },
-      {
-        "id": 48,
-        "slug": "Tong"
-      },
-      {
-        "id": 49,
-        "slug": "Pharma"
-      },
-      {
-        "id": 50,
-        "slug": "Departmental"
-      },
-      {
-        "id": 107,
-        "slug": "HORECA"
-      },
-      {
-        "id": 108,
-        "slug": "Confectionary"
-      },
-      {
-        "id": 110,
-        "slug": "Community Center"
-      }
-    ],
-    "channel_categories": [
-      {
-        "id": 51,
-        "slug": "Platinum"
-      },
-      {
-        "id": 52,
-        "slug": "Gold"
-      },
-      {
-        "id": 53,
-        "slug": "Silver"
-      },
-      {
-        "id": 54,
-        "slug": "Bronze"
-      },
-      {
-        "id": 111,
-        "slug": "Blue"
-      }
-    ],
-    "coolers": [
-      {
-        "id": 57,
-        "slug": "AFBL"
-      },
-      {
-        "id": 58,
-        "slug": "Pepsi"
-      },
-      {
-        "id": 59,
-        "slug": "Pran"
-      },
-      {
-        "id": 60,
-        "slug": "Coke"
-      },
-      {
-        "id": 61,
-        "slug": "Own"
-      },
-      {
-        "id": 62,
-        "slug": "Others"
-      }
-    ]
-  },
   "dashboard_button": {
-    "pre_order_button": 1,
-    "delivery": 1,
-    "memo": 1,
+    "stock": 0,
+    "pre_order_button": 0,
+    "delivery": 0,
+    "memo": 0,
     "attendance": 1,
-    "summary": 1,
-    "asset": 1,
-    "route_change": 1,
+    "summary": 0,
+    "asset": 0,
+    "route_change": 0,
     "sync": 1,
-    "leave_management": 1,
+    "leave_management": 0,
     "outlet": 1,
     "tsm": 0,
-    "sales_entry": 1,
+    "sales_entry": 0,
     "ro": 0,
     "approval_asset": 0,
     "maintenance": 0,
     "bill": 0,
     "digital_learning": 1,
     "pjp_plan": 0,
-    "allowance": 1,
-    "promotion": 1,
+    "allowance": 0,
     "web_panel": 0,
-    "stock": 1,
-    "spot_sale": 1,
-    "resignation": 1,
-    "taDa": 1
+    "resignation": 0,
+    "taDa": 1,
+    "catalogue": 0,
+    "stock_verification": 1,
+    "audit": 1,
+    "market": 0
   },
   "retailer_selection_config": {
     "tab_mode": true,
@@ -4126,1817 +3080,51 @@ Map dummyData = {
       }
     }
   },
-  "cats": {
-    "54": {
-      "9": {
-        "38": {
-          "id": 38,
-          "name": "Biscuits",
-          "short_name": "Biscuits",
-          "parent_id": 0
-        }
-      },
-      "10": {
-        "81": {
-          "id": 81,
-          "name": "Energy Plus",
-          "short_name": "Energy",
-          "parent_id": 38,
-          "sales_enable": 1,
-          "type": 10,
-          "uom_type": 17,
-          "uom_type_default": 120,
-          "file_url": "olympic/81.png",
-          "pack_size_value": 1,
-          "pack_size_cases": 4,
-          "sort": 1,
-          "created_at": "2025-12-25T12:26:52.000Z",
-          "uom_parent_id": 4,
-          "filter_type": "Classification_Type_1",
-          "unit_config": {
-            "4": 1,
-            "17": 1
-          },
-          "parents": {
-            "9": 38
-          },
-          "isSKUNew": false
-        },
-        "82": {
-          "id": 82,
-          "name": "Lemon Cream",
-          "short_name": "Lemon",
-          "parent_id": 38,
-          "sales_enable": 1,
-          "type": 10,
-          "uom_type": 17,
-          "uom_type_default": 120,
-          "file_url": "olympic/82.png",
-          "pack_size_value": 1,
-          "pack_size_cases": 6,
-          "sort": 1,
-          "created_at": "2025-06-18T12:42:58.000Z",
-          "uom_parent_id": 4,
-          "filter_type": "OTHERS",
-          "unit_config": {
-            "4": 1,
-            "17": 1
-          },
-          "parents": {
-            "9": 38
-          },
-          "isSKUNew": false
-        },
-        "83": {
-          "id": 83,
-          "name": "Nutty",
-          "short_name": "Nutty",
-          "parent_id": 38,
-          "sales_enable": 1,
-          "type": 10,
-          "uom_type": 219,
-          "uom_type_default": 120,
-          "file_url": "olympic/83.png",
-          "pack_size_value": 1,
-          "pack_size_cases": 16,
-          "sort": 1,
-          "created_at": "2025-06-19T09:46:56.000Z",
-          "uom_parent_id": 4,
-          "filter_type": "Classification_Type_1",
-          "unit_config": {
-            "4": 1,
-            "219": 1
-          },
-          "parents": {
-            "9": 38
-          },
-          "isSKUNew": false
-        },
-        "84": {
-          "id": 84,
-          "name": "First Choice",
-          "short_name": "Choice",
-          "parent_id": 38,
-          "sales_enable": 0,
-          "type": 10,
-          "uom_type": 17,
-          "uom_type_default": 120,
-          "file_url": "olympic/84.png",
-          "pack_size_value": 1,
-          "pack_size_cases": 6,
-          "sort": 1,
-          "created_at": "2025-06-19T10:22:09.000Z",
-          "uom_parent_id": 4,
-          "filter_type": "OTHERS",
-          "unit_config": {
-            "4": 1,
-            "17": 1
-          },
-          "parents": {
-            "9": 38
-          },
-          "isSKUNew": false
-        },
-        "92": {
-          "id": 92,
-          "name": "Saltes",
-          "short_name": "Salt",
-          "parent_id": 38,
-          "sales_enable": 1,
-          "type": 10,
-          "uom_type": 17,
-          "uom_type_default": 120,
-          "file_url": "",
-          "pack_size_value": 1,
-          "pack_size_cases": 1,
-          "sort": 1,
-          "created_at": "2025-06-25T07:05:01.000Z",
-          "uom_parent_id": 4,
-          "filter_type": "FOCUSED",
-          "unit_config": {
-            "4": 1,
-            "17": 1
-          },
-          "parents": {
-            "9": 38
-          },
-          "isSKUNew": false
-        },
-        "93": {
-          "id": 93,
-          "name": "Digestive",
-          "short_name": "Digestive",
-          "parent_id": 38,
-          "sales_enable": 1,
-          "type": 10,
-          "uom_type": 17,
-          "uom_type_default": 120,
-          "file_url": "",
-          "pack_size_value": 1,
-          "pack_size_cases": 4,
-          "sort": 1,
-          "created_at": "2025-06-29T11:59:03.000Z",
-          "uom_parent_id": 4,
-          "filter_type": "FOCUSED",
-          "unit_config": {
-            "4": 1,
-            "17": 1
-          },
-          "parents": {
-            "9": 38
-          },
-          "isSKUNew": false
-        },
-        "94": {
-          "id": 94,
-          "name": "Pineapple Cream",
-          "short_name": "Pineapple",
-          "parent_id": 38,
-          "sales_enable": 1,
-          "type": 10,
-          "uom_type": 17,
-          "uom_type_default": 120,
-          "file_url": "",
-          "pack_size_value": 1,
-          "pack_size_cases": 6,
-          "sort": 1,
-          "created_at": "2025-06-30T06:37:38.000Z",
-          "uom_parent_id": 4,
-          "filter_type": "FOCUSED",
-          "unit_config": {
-            "4": 1,
-            "17": 1
-          },
-          "parents": {
-            "9": 38
-          },
-          "isSKUNew": false
-        },
-        "112": {
-          "id": 112,
-          "name": "Tip",
-          "short_name": "Tip",
-          "parent_id": 38,
-          "sales_enable": 1,
-          "type": 10,
-          "uom_type": 166,
-          "uom_type_default": 120,
-          "file_url": "",
-          "pack_size_value": null,
-          "pack_size_cases": 6,
-          "sort": 1,
-          "created_at": null,
-          "uom_parent_id": 2,
-          "filter_type": "Classification_Type_1",
-          "unit_config": {
-            "2": 1
-          },
-          "parents": {
-            "9": 38
-          },
-          "isSKUNew": false
-        },
-        "113": {
-          "id": 113,
-          "name": "Tim Tim",
-          "short_name": "TT_01",
-          "parent_id": 38,
-          "sales_enable": 1,
-          "type": 10,
-          "uom_type": 11,
-          "uom_type_default": 120,
-          "file_url": "",
-          "pack_size_value": null,
-          "pack_size_cases": 6,
-          "sort": 2,
-          "created_at": null,
-          "uom_parent_id": 2,
-          "filter_type": "FOCUSED",
-          "unit_config": {
-            "2": 1
-          },
-          "parents": {
-            "9": 38
-          },
-          "isSKUNew": false
-        },
-        "114": {
-          "id": 114,
-          "name": "Oreno",
-          "short_name": "OR_01",
-          "parent_id": 38,
-          "sales_enable": 1,
-          "type": 10,
-          "uom_type": 166,
-          "uom_type_default": 120,
-          "file_url": "olympic/114.png",
-          "pack_size_value": null,
-          "pack_size_cases": 6,
-          "sort": 1,
-          "created_at": null,
-          "uom_parent_id": 2,
-          "filter_type": "Classification_Type_1",
-          "unit_config": {
-            "2": 1
-          },
-          "parents": {
-            "9": 38
-          },
-          "isSKUNew": false
-        },
-        "115": {
-          "id": 115,
-          "name": "Amoxicillin 20mg Capsule",
-          "short_name": "SKU0022",
-          "parent_id": 38,
-          "sales_enable": 1,
-          "type": 10,
-          "uom_type": 11,
-          "uom_type_default": 11,
-          "file_url": "",
-          "pack_size_value": null,
-          "pack_size_cases": 6,
-          "sort": 2,
-          "created_at": null,
-          "uom_parent_id": 2,
-          "filter_type": "FOCUSED",
-          "unit_config": {
-            "2": 1
-          },
-          "parents": {
-            "9": 38
-          },
-          "isSKUNew": false
-        }
-      }
-    }
-  },
-  "stock": {
-    "Sun": {
-      "81": {
-        "lifting_stock": 0,
-        "current_stock": 0,
-        "sbu_id": "54",
-        "id": 81,
-        "sales_enable": 1
-      },
-      "82": {
-        "lifting_stock": 0,
-        "current_stock": 0,
-        "sbu_id": "54",
-        "id": 82,
-        "sales_enable": 1
-      },
-      "83": {
-        "lifting_stock": 0,
-        "current_stock": 0,
-        "sbu_id": "54",
-        "id": 83,
-        "sales_enable": 1
-      },
-      "84": {
-        "lifting_stock": 0,
-        "current_stock": 0,
-        "sbu_id": "54",
-        "id": 84,
-        "sales_enable": 0
-      },
-      "92": {
-        "lifting_stock": 0,
-        "current_stock": 0,
-        "sbu_id": "54",
-        "id": 92,
-        "sales_enable": 1
-      },
-      "93": {
-        "lifting_stock": 0,
-        "current_stock": 0,
-        "sbu_id": "54",
-        "id": 93,
-        "sales_enable": 1
-      },
-      "94": {
-        "lifting_stock": 0,
-        "current_stock": 0,
-        "sbu_id": "54",
-        "id": 94,
-        "sales_enable": 1
-      },
-      "112": {
-        "lifting_stock": 0,
-        "current_stock": 0,
-        "sbu_id": "54",
-        "id": 112,
-        "sales_enable": 1
-      },
-      "113": {
-        "lifting_stock": 0,
-        "current_stock": 0,
-        "sbu_id": "54",
-        "id": 113,
-        "sales_enable": 1
-      },
-      "114": {
-        "lifting_stock": 0,
-        "current_stock": 0,
-        "sbu_id": "54",
-        "id": 114,
-        "sales_enable": 1
-      },
-      "115": {
-        "lifting_stock": 0,
-        "current_stock": 0,
-        "sbu_id": "54",
-        "id": 115,
-        "sales_enable": 1
-      }
-    }
-  },
-  "price_group": {
-    "1": {
-      "81": {
-        "id": 81,
-        "base_price": "18.00000",
-        "price_group_id": 1,
-        "sbu_id": 54
-      },
-      "82": {
-        "id": 82,
-        "base_price": "15.00000",
-        "price_group_id": 1,
-        "sbu_id": 54
-      },
-      "83": {
-        "id": 83,
-        "base_price": "15.00000",
-        "price_group_id": 1,
-        "sbu_id": 54
-      },
-      "84": {
-        "id": 84,
-        "base_price": "20.00000",
-        "price_group_id": 1,
-        "sbu_id": 54
-      },
-      "92": {
-        "id": 92,
-        "base_price": "50.00000",
-        "price_group_id": 1,
-        "sbu_id": 54
-      },
-      "93": {
-        "id": 93,
-        "base_price": "30.00000",
-        "price_group_id": 1,
-        "sbu_id": 54
-      },
-      "94": {
-        "id": 94,
-        "base_price": "15.00000",
-        "price_group_id": 1,
-        "sbu_id": 54
-      },
-      "112": {
-        "id": 112,
-        "base_price": "12.00000",
-        "price_group_id": 1,
-        "sbu_id": 54
-      },
-      "113": {
-        "id": 113,
-        "base_price": "12.00000",
-        "price_group_id": 1,
-        "sbu_id": 54
-      },
-      "114": {
-        "id": 114,
-        "base_price": "12.00000",
-        "price_group_id": 1,
-        "sbu_id": 54
-      },
-      "115": {
-        "id": 115,
-        "base_price": "18.00000",
-        "price_group_id": 1,
-        "sbu_id": 54
-      }
-    },
-    "2": {
-      "81": {
-        "id": 81,
-        "base_price": "20.00000",
-        "price_group_id": 2,
-        "sbu_id": 54
-      },
-      "82": {
-        "id": 82,
-        "base_price": "15.00000",
-        "price_group_id": 2,
-        "sbu_id": 54
-      },
-      "83": {
-        "id": 83,
-        "base_price": "15.00000",
-        "price_group_id": 2,
-        "sbu_id": 54
-      },
-      "84": {
-        "id": 84,
-        "base_price": "20.00000",
-        "price_group_id": 2,
-        "sbu_id": 54
-      },
-      "92": {
-        "id": 92,
-        "base_price": "50.00000",
-        "price_group_id": 2,
-        "sbu_id": 54
-      },
-      "93": {
-        "id": 93,
-        "base_price": "30.00000",
-        "price_group_id": 2,
-        "sbu_id": 54
-      },
-      "94": {
-        "id": 94,
-        "base_price": "15.00000",
-        "price_group_id": 2,
-        "sbu_id": 54
-      },
-      "112": {
-        "id": 112,
-        "base_price": "11.00000",
-        "price_group_id": 2,
-        "sbu_id": 54
-      },
-      "113": {
-        "id": 113,
-        "base_price": "11.00000",
-        "price_group_id": 2,
-        "sbu_id": 54
-      },
-      "114": {
-        "id": 114,
-        "base_price": "11.00000",
-        "price_group_id": 2,
-        "sbu_id": 54
-      },
-      "115": {
-        "id": 115,
-        "base_price": "19.99000",
-        "price_group_id": 2,
-        "sbu_id": 54
-      }
-    },
-    "3": {
-      "81": {
-        "id": 81,
-        "base_price": "16.00000",
-        "price_group_id": 3,
-        "sbu_id": 54
-      },
-      "82": {
-        "id": 82,
-        "base_price": "13.00000",
-        "price_group_id": 3,
-        "sbu_id": 54
-      },
-      "83": {
-        "id": 83,
-        "base_price": "14.00000",
-        "price_group_id": 3,
-        "sbu_id": 54
-      },
-      "84": {
-        "id": 84,
-        "base_price": "18.50000",
-        "price_group_id": 3,
-        "sbu_id": 54
-      },
-      "92": {
-        "id": 92,
-        "base_price": "47.00000",
-        "price_group_id": 3,
-        "sbu_id": 54
-      },
-      "93": {
-        "id": 93,
-        "base_price": "29.00000",
-        "price_group_id": 3,
-        "sbu_id": 54
-      },
-      "94": {
-        "id": 94,
-        "base_price": "14.50000",
-        "price_group_id": 3,
-        "sbu_id": 54
-      },
-      "112": {
-        "id": 112,
-        "base_price": "10.00000",
-        "price_group_id": 3,
-        "sbu_id": 54
-      },
-      "113": {
-        "id": 113,
-        "base_price": "10.00000",
-        "price_group_id": 3,
-        "sbu_id": 54
-      },
-      "114": {
-        "id": 114,
-        "base_price": "10.00000",
-        "price_group_id": 3,
-        "sbu_id": 54
-      },
-      "115": {
-        "id": 115,
-        "base_price": "15.00000",
-        "price_group_id": 3,
-        "sbu_id": 54
-      }
-    }
-  },
-  "qc_info": {
-    "54": [
-      {
-        "id": 97,
-        "sbu_id": 54,
-        "name": "Manufacturing Fault",
-        "types": []
-      },
-      {
-        "id": 108,
-        "sbu_id": 54,
-        "name": "Test QC Fault",
-        "types": [
-          {
-            "id": 109,
-            "parent": 108,
-            "name": "Test Child QC Fault",
-            "quantity": 0
-          }
-        ]
-      }
-    ]
-  },
-  "wom_configurations": {},
-  "tutorial": [],
-  "av_configurations": {},
-  "preorder_configurations": {},
   "app_version_info": {
     "app_version": "1.0.0",
     "version_mandatory": 1
   },
-  "app_version_configurations": {},
   "survey_details": {
     "survey_info": [
       {
-        "id": 533,
-        "name": "Report Testing Survey",
-        "outlet_id": 152,
-        "mandatory": 0
-      },
-      {
-        "id": 534,
-        "name": "My Survey 101",
-        "outlet_id": 152,
-        "mandatory": 0
-      },
-      {
-        "id": 537,
-        "name": "Test Survey 102",
-        "outlet_id": 152,
+        "id": 599,
+        "name": "April Survey",
+        "dep_id": 167,
         "mandatory": 0
       }
     ],
     "questions": {
-      "533": [
+      "599": [
         {
-          "survey_id": 533,
-          "question_id": 937,
+          "survey_id": 599,
+          "question_id": 1003,
           "question_type": "yes_no",
           "has_dependency": 1,
-          "question_name": "Are you interest to play Q/A game?",
+          "question_name": "Abc",
           "required": 0,
           "options": [
             {
               "answer_id": 525,
               "answer_name": "Yes",
-              "question_id": 937,
-              "dependency_question_id": 938,
-              "survey_id": 533,
-              "parent_id": 525
-            },
-            {
-              "answer_id": 526,
-              "answer_name": "No",
-              "question_id": 937,
+              "question_id": 1003,
               "dependency_question_id": null,
-              "survey_id": 533,
-              "parent_id": 526
-            }
-          ],
-          "dependent_questions": {
-            "525": [
-              {
-                "survey_id": 533,
-                "question_id": 938,
-                "question_type": "yes_no",
-                "has_dependency": 1,
-                "question_name": "Start the game!!",
-                "required": 0,
-                "parent_id": 525,
-                "options": [
-                  {
-                    "answer_id": 525,
-                    "answer_name": "Yes",
-                    "question_id": 938,
-                    "dependency_question_id": 939,
-                    "survey_id": 533,
-                    "parent_id": 525
-                  },
-                  {
-                    "answer_id": 526,
-                    "answer_name": "No",
-                    "question_id": 938,
-                    "dependency_question_id": null,
-                    "survey_id": 533,
-                    "parent_id": 526
-                  }
-                ],
-                "dependent_questions": {
-                  "525": [
-                    {
-                      "survey_id": 533,
-                      "question_id": 939,
-                      "question_type": "multiselect",
-                      "has_dependency": 1,
-                      "question_name": "What is the capital of Japan?",
-                      "required": 0,
-                      "parent_id": 525,
-                      "options": [
-                        {
-                          "answer_id": 508,
-                          "answer_name": "Seoul",
-                          "question_id": 939,
-                          "dependency_question_id": null,
-                          "survey_id": 533,
-                          "parent_id": 508
-                        },
-                        {
-                          "answer_id": 509,
-                          "answer_name": "Tokyo",
-                          "question_id": 939,
-                          "dependency_question_id": null,
-                          "survey_id": 533,
-                          "parent_id": 509
-                        },
-                        {
-                          "answer_id": 510,
-                          "answer_name": "Bangkok",
-                          "question_id": 939,
-                          "dependency_question_id": null,
-                          "survey_id": 533,
-                          "parent_id": 510
-                        },
-                        {
-                          "answer_id": 511,
-                          "answer_name": "Beijing",
-                          "question_id": 939,
-                          "dependency_question_id": null,
-                          "survey_id": 533,
-                          "parent_id": 511
-                        }
-                      ],
-                      "dependent_questions": {}
-                    },
-                    {
-                      "survey_id": 533,
-                      "question_id": 940,
-                      "question_type": "multiselect",
-                      "has_dependency": 1,
-                      "question_name": "If you could have one superpower, what would it be?",
-                      "required": 0,
-                      "parent_id": 525,
-                      "options": [
-                        {
-                          "answer_id": 512,
-                          "answer_name": "Invisibility",
-                          "question_id": 940,
-                          "dependency_question_id": null,
-                          "survey_id": 533,
-                          "parent_id": 512
-                        },
-                        {
-                          "answer_id": 513,
-                          "answer_name": "Flying",
-                          "question_id": 940,
-                          "dependency_question_id": null,
-                          "survey_id": 533,
-                          "parent_id": 513
-                        },
-                        {
-                          "answer_id": 514,
-                          "answer_name": "Time travel",
-                          "question_id": 940,
-                          "dependency_question_id": null,
-                          "survey_id": 533,
-                          "parent_id": 514
-                        },
-                        {
-                          "answer_id": 515,
-                          "answer_name": "Reading minds",
-                          "question_id": 940,
-                          "dependency_question_id": null,
-                          "survey_id": 533,
-                          "parent_id": 515
-                        }
-                      ],
-                      "dependent_questions": {}
-                    },
-                    {
-                      "survey_id": 533,
-                      "question_id": 941,
-                      "question_type": "multiselect",
-                      "has_dependency": 1,
-                      "question_name": "Which of these words best describes your mindset today?",
-                      "required": 0,
-                      "parent_id": 525,
-                      "options": [
-                        {
-                          "answer_id": 516,
-                          "answer_name": "Curious",
-                          "question_id": 941,
-                          "dependency_question_id": null,
-                          "survey_id": 533,
-                          "parent_id": 516
-                        },
-                        {
-                          "answer_id": 517,
-                          "answer_name": "Calm",
-                          "question_id": 941,
-                          "dependency_question_id": null,
-                          "survey_id": 533,
-                          "parent_id": 517
-                        },
-                        {
-                          "answer_id": 518,
-                          "answer_name": "Energetic",
-                          "question_id": 941,
-                          "dependency_question_id": null,
-                          "survey_id": 533,
-                          "parent_id": 518
-                        },
-                        {
-                          "answer_id": 519,
-                          "answer_name": "Confused",
-                          "question_id": 941,
-                          "dependency_question_id": null,
-                          "survey_id": 533,
-                          "parent_id": 519
-                        }
-                      ],
-                      "dependent_questions": {}
-                    }
-                  ]
-                }
-              }
-            ]
-          }
-        },
-        {
-          "survey_id": 533,
-          "question_id": 942,
-          "question_type": "number",
-          "has_dependency": 0,
-          "question_name": "You see a locked door with a keypad. A note says ‘2, 4, 8, 16, ?’. What number comes next?",
-          "required": 0,
-          "options": [],
-          "dependent_questions": {}
-        },
-        {
-          "survey_id": 533,
-          "question_id": 943,
-          "question_type": "select",
-          "has_dependency": 1,
-          "question_name": "What is your favorite hobby or thing to do in your free time?",
-          "required": 0,
-          "options": [
-            {
-              "answer_id": 520,
-              "answer_name": "music, drawing, writing, etc.",
-              "question_id": 943,
-              "dependency_question_id": 944,
-              "survey_id": 533,
-              "parent_id": 520
-            },
-            {
-              "answer_id": 529,
-              "answer_name": "watching movies, sleeping, etc.",
-              "question_id": 943,
-              "dependency_question_id": 946,
-              "survey_id": 533,
-              "parent_id": 529
-            }
-          ],
-          "dependent_questions": {
-            "520": [
-              {
-                "survey_id": 533,
-                "question_id": 944,
-                "question_type": "multiselect",
-                "has_dependency": 1,
-                "question_name": "How often do you practice or engage in this hobby?",
-                "required": 0,
-                "parent_id": 520,
-                "options": [
-                  {
-                    "answer_id": 521,
-                    "answer_name": "Every day",
-                    "question_id": 944,
-                    "dependency_question_id": null,
-                    "survey_id": 533,
-                    "parent_id": 521
-                  },
-                  {
-                    "answer_id": 522,
-                    "answer_name": "A few times a week",
-                    "question_id": 944,
-                    "dependency_question_id": null,
-                    "survey_id": 533,
-                    "parent_id": 522
-                  },
-                  {
-                    "answer_id": 523,
-                    "answer_name": "Occasionally",
-                    "question_id": 944,
-                    "dependency_question_id": null,
-                    "survey_id": 533,
-                    "parent_id": 523
-                  },
-                  {
-                    "answer_id": 524,
-                    "answer_name": "Rarely",
-                    "question_id": 944,
-                    "dependency_question_id": null,
-                    "survey_id": 533,
-                    "parent_id": 524
-                  }
-                ],
-                "dependent_questions": {}
-              },
-              {
-                "survey_id": 533,
-                "question_id": 945,
-                "question_type": "multiselect",
-                "has_dependency": 1,
-                "question_name": "Would you like to turn this hobby into a profession someday?",
-                "required": 0,
-                "parent_id": 520,
-                "options": [
-                  {
-                    "answer_id": 525,
-                    "answer_name": "Yes",
-                    "question_id": 945,
-                    "dependency_question_id": null,
-                    "survey_id": 533,
-                    "parent_id": 525
-                  },
-                  {
-                    "answer_id": 526,
-                    "answer_name": "No",
-                    "question_id": 945,
-                    "dependency_question_id": null,
-                    "survey_id": 533,
-                    "parent_id": 526
-                  },
-                  {
-                    "answer_id": 527,
-                    "answer_name": "Maybe",
-                    "question_id": 945,
-                    "dependency_question_id": null,
-                    "survey_id": 533,
-                    "parent_id": 527
-                  },
-                  {
-                    "answer_id": 528,
-                    "answer_name": "Already have",
-                    "question_id": 945,
-                    "dependency_question_id": null,
-                    "survey_id": 533,
-                    "parent_id": 528
-                  }
-                ],
-                "dependent_questions": {}
-              }
-            ],
-            "529": [
-              {
-                "survey_id": 533,
-                "question_id": 946,
-                "question_type": "multiselect",
-                "has_dependency": 1,
-                "question_name": "What kind of content do you enjoy most?",
-                "required": 0,
-                "parent_id": 529,
-                "options": [
-                  {
-                    "answer_id": 530,
-                    "answer_name": "Action \u0026 Adventure",
-                    "question_id": 946,
-                    "dependency_question_id": null,
-                    "survey_id": 533,
-                    "parent_id": 530
-                  },
-                  {
-                    "answer_id": 531,
-                    "answer_name": "Comedy \u0026 Lighthearted",
-                    "question_id": 946,
-                    "dependency_question_id": null,
-                    "survey_id": 533,
-                    "parent_id": 531
-                  },
-                  {
-                    "answer_id": 532,
-                    "answer_name": "Emotional \u0026 Romantic",
-                    "question_id": 946,
-                    "dependency_question_id": null,
-                    "survey_id": 533,
-                    "parent_id": 532
-                  },
-                  {
-                    "answer_id": 533,
-                    "answer_name": "Thriller \u0026 Mystery",
-                    "question_id": 946,
-                    "dependency_question_id": null,
-                    "survey_id": 533,
-                    "parent_id": 533
-                  }
-                ],
-                "dependent_questions": {}
-              },
-              {
-                "survey_id": 533,
-                "question_id": 947,
-                "question_type": "multiselect",
-                "has_dependency": 1,
-                "question_name": "Do you prefer enjoying this alone or with others?",
-                "required": 0,
-                "parent_id": 529,
-                "options": [
-                  {
-                    "answer_id": 534,
-                    "answer_name": "Alone",
-                    "question_id": 947,
-                    "dependency_question_id": null,
-                    "survey_id": 533,
-                    "parent_id": 534
-                  },
-                  {
-                    "answer_id": 535,
-                    "answer_name": "With family",
-                    "question_id": 947,
-                    "dependency_question_id": null,
-                    "survey_id": 533,
-                    "parent_id": 535
-                  },
-                  {
-                    "answer_id": 536,
-                    "answer_name": "With friends",
-                    "question_id": 947,
-                    "dependency_question_id": null,
-                    "survey_id": 533,
-                    "parent_id": 536
-                  },
-                  {
-                    "answer_id": 537,
-                    "answer_name": "Depends on the mood",
-                    "question_id": 947,
-                    "dependency_question_id": null,
-                    "survey_id": 533,
-                    "parent_id": 537
-                  }
-                ],
-                "dependent_questions": {}
-              }
-            ]
-          }
-        },
-        {
-          "survey_id": 533,
-          "question_id": 948,
-          "question_type": "image",
-          "has_dependency": 0,
-          "question_name": "Capture a selfie of your reaction with this survey.",
-          "required": 0,
-          "options": [],
-          "dependent_questions": {}
-        },
-        {
-          "survey_id": 533,
-          "question_id": 949,
-          "question_type": "text",
-          "has_dependency": 0,
-          "question_name": "How do you feel after playing this game?",
-          "required": 0,
-          "options": [],
-          "dependent_questions": {}
-        }
-      ],
-      "534": [
-        {
-          "survey_id": 534,
-          "question_id": 950,
-          "question_type": "yes_no",
-          "has_dependency": 1,
-          "question_name": "Do you have interest in gaming?",
-          "required": 1,
-          "options": [
-            {
-              "answer_id": 525,
-              "answer_name": "Yes",
-              "question_id": 950,
-              "dependency_question_id": 951,
-              "survey_id": 534,
+              "survey_id": 580,
               "parent_id": 525
             },
             {
               "answer_id": 526,
               "answer_name": "No",
-              "question_id": 950,
-              "dependency_question_id": 956,
-              "survey_id": 534,
+              "question_id": 1003,
+              "dependency_question_id": null,
+              "survey_id": 580,
               "parent_id": 526
             }
           ],
-          "dependent_questions": {
-            "525": [
-              {
-                "survey_id": 534,
-                "question_id": 951,
-                "question_type": "yes_no",
-                "has_dependency": 1,
-                "question_name": "Do you play PC games?",
-                "required": 1,
-                "parent_id": 525,
-                "options": [
-                  {
-                    "answer_id": 525,
-                    "answer_name": "Yes",
-                    "question_id": 951,
-                    "dependency_question_id": 952,
-                    "survey_id": 534,
-                    "parent_id": 525
-                  },
-                  {
-                    "answer_id": 526,
-                    "answer_name": "No",
-                    "question_id": 951,
-                    "dependency_question_id": 955,
-                    "survey_id": 534,
-                    "parent_id": 526
-                  }
-                ],
-                "dependent_questions": {
-                  "525": [
-                    {
-                      "survey_id": 534,
-                      "question_id": 952,
-                      "question_type": "select",
-                      "has_dependency": 1,
-                      "question_name": "What kind of games?",
-                      "required": 1,
-                      "parent_id": 525,
-                      "options": [
-                        {
-                          "answer_id": 538,
-                          "answer_name": "XBox",
-                          "question_id": 952,
-                          "dependency_question_id": 953,
-                          "survey_id": 534,
-                          "parent_id": 538
-                        },
-                        {
-                          "answer_id": 539,
-                          "answer_name": "PS5",
-                          "question_id": 952,
-                          "dependency_question_id": 953,
-                          "survey_id": 534,
-                          "parent_id": 539
-                        }
-                      ],
-                      "dependent_questions": {
-                        "538": [
-                          {
-                            "survey_id": 534,
-                            "question_id": 953,
-                            "question_type": "number",
-                            "has_dependency": 0,
-                            "question_name": "how many games?",
-                            "required": 1,
-                            "parent_id": 538,
-                            "options": []
-                          },
-                          {
-                            "survey_id": 534,
-                            "question_id": 953,
-                            "question_type": "number",
-                            "has_dependency": 0,
-                            "question_name": "how many games?",
-                            "required": 1,
-                            "parent_id": 538,
-                            "options": []
-                          },
-                          {
-                            "survey_id": 534,
-                            "question_id": 954,
-                            "question_type": "number",
-                            "has_dependency": 0,
-                            "question_name": "How many hours?",
-                            "required": 1,
-                            "parent_id": 538,
-                            "options": []
-                          },
-                          {
-                            "survey_id": 534,
-                            "question_id": 954,
-                            "question_type": "number",
-                            "has_dependency": 0,
-                            "question_name": "How many hours?",
-                            "required": 1,
-                            "parent_id": 538,
-                            "options": []
-                          }
-                        ]
-                      }
-                    }
-                  ],
-                  "526": [
-                    {
-                      "survey_id": 534,
-                      "question_id": 955,
-                      "question_type": "text",
-                      "has_dependency": 0,
-                      "question_name": "What do you do then?",
-                      "required": 1,
-                      "parent_id": 526,
-                      "options": []
-                    }
-                  ]
-                }
-              }
-            ],
-            "526": [
-              {
-                "survey_id": 534,
-                "question_id": 956,
-                "question_type": "text",
-                "has_dependency": 0,
-                "question_name": "what kind of interest do you have?",
-                "required": 1,
-                "parent_id": 526,
-                "options": []
-              }
-            ]
-          }
-        }
-      ],
-      "537": [
-        {
-          "survey_id": 537,
-          "question_id": 957,
-          "question_type": "yes_no",
-          "has_dependency": 1,
-          "question_name": "Do like ciggereter",
-          "required": 1,
-          "options": [
-            {
-              "answer_id": 525,
-              "answer_name": "Yes",
-              "question_id": 957,
-              "dependency_question_id": 958,
-              "survey_id": 537,
-              "parent_id": 525
-            },
-            {
-              "answer_id": 526,
-              "answer_name": "No",
-              "question_id": 957,
-              "dependency_question_id": 959,
-              "survey_id": 537,
-              "parent_id": 526
-            }
-          ],
-          "dependent_questions": {
-            "525": [
-              {
-                "survey_id": 537,
-                "question_id": 958,
-                "question_type": "number",
-                "has_dependency": 0,
-                "question_name": "how many a day?",
-                "required": 1,
-                "parent_id": 525,
-                "options": []
-              }
-            ],
-            "526": [
-              {
-                "survey_id": 537,
-                "question_id": 959,
-                "question_type": "text",
-                "has_dependency": 0,
-                "question_name": "What do u eat then?",
-                "required": 1,
-                "parent_id": 526,
-                "options": []
-              }
-            ]
-          }
+          "dependent_questions": {}
         }
       ]
     }
   },
-  "promotions": {
-    "1": {
-      "id": 1,
-      "sbu_id": 1,
-      "label": "Buy 1 case, Get 2 Pcs Free",
-      "payable_type": "Product Discount",
-      "discount_type": "Normal",
-      "cap_value": null,
-      "discount_amount": 2,
-      "is_dependency": 0,
-      "total_applicable_quantity": 24,
-      "discount_product_type": "case",
-      "slab_group_id": null,
-      "is_fractional": 0,
-      "number_of_memos": null,
-      "target_amount": null,
-      "target_on": "Value",
-      "skus": [
-        {
-          "sku_id": 81,
-          "applied_unit": 24
-        },
-        {
-          "sku_id": 82,
-          "applied_unit": 24
-        },
-        {
-          "sku_id": 83,
-          "applied_unit": 24
-        },
-        {
-          "sku_id": 84,
-          "applied_unit": 24
-        },
-        {
-          "sku_id": 92,
-          "applied_unit": 24
-        },
-        {
-          "sku_id": 99,
-          "applied_unit": 24
-        }
-      ],
-      "discount_on": [
-        {
-          "sku_id": 81,
-          "discount_val": 2,
-          "applied_unit": 0
-        },
-        {
-          "sku_id": 82,
-          "discount_val": 2,
-          "applied_unit": 0
-        },
-        {
-          "sku_id": 83,
-          "discount_val": 2,
-          "applied_unit": 0
-        },
-        {
-          "sku_id": 84,
-          "discount_val": 2,
-          "applied_unit": 0
-        },
-        {
-          "sku_id": 92,
-          "discount_val": 2,
-          "applied_unit": 0
-        },
-        {
-          "sku_id": 99,
-          "discount_val": 2,
-          "applied_unit": 0
-        }
-      ],
-      "rules": [
-        {
-          "sku_id": 81,
-          "case": 1
-        },
-        {
-          "sku_id": 82,
-          "case": 1
-        },
-        {
-          "sku_id": 83,
-          "case": 1
-        },
-        {
-          "sku_id": 84,
-          "case": 1
-        },
-        {
-          "sku_id": 92,
-          "case": 1
-        },
-        {
-          "sku_id": 99,
-          "case": 1
-        }
-      ],
-      "growth_percentage": null
-    },
-    "5": {
-      "id": 5,
-      "sbu_id": 1,
-      "label": "title",
-      "payable_type": "Absolute Cash",
-      "discount_type": "Normal",
-      "cap_value": 1,
-      "discount_amount": 1,
-      "is_dependency": 0,
-      "total_applicable_quantity": 48,
-      "discount_product_type": "case",
-      "slab_group_id": null,
-      "is_fractional": 0,
-      "number_of_memos": null,
-      "target_amount": null,
-      "target_on": "Value",
-      "skus": [
-        {
-          "sku_id": 81,
-          "applied_unit": 48
-        },
-        {
-          "sku_id": 82,
-          "applied_unit": 48
-        },
-        {
-          "sku_id": 83,
-          "applied_unit": 48
-        },
-        {
-          "sku_id": 84,
-          "applied_unit": 48
-        },
-        {
-          "sku_id": 92,
-          "applied_unit": 48
-        },
-        {
-          "sku_id": 99,
-          "applied_unit": 48
-        }
-      ],
-      "discount_on": [
-        {
-          "sku_id": 81,
-          "discount_val": 1,
-          "applied_unit": 0
-        },
-        {
-          "sku_id": 82,
-          "discount_val": 1,
-          "applied_unit": 0
-        },
-        {
-          "sku_id": 83,
-          "discount_val": 1,
-          "applied_unit": 0
-        },
-        {
-          "sku_id": 84,
-          "discount_val": 1,
-          "applied_unit": 0
-        },
-        {
-          "sku_id": 92,
-          "discount_val": 1,
-          "applied_unit": 0
-        },
-        {
-          "sku_id": 99,
-          "discount_val": 1,
-          "applied_unit": 0
-        }
-      ],
-      "rules": [],
-      "growth_percentage": null
-    },
-    "9": {
-      "id": 9,
-      "sbu_id": 2,
-      "label": "buy 2 case \u002711\u0027 Get 2 pcs Free ",
-      "payable_type": "Percentage of Value",
-      "discount_type": "Normal",
-      "cap_value": 4,
-      "discount_amount": 2,
-      "is_dependency": 0,
-      "total_applicable_quantity": 48,
-      "discount_product_type": "case",
-      "slab_group_id": null,
-      "is_fractional": 0,
-      "number_of_memos": null,
-      "target_amount": null,
-      "target_on": "Value",
-      "skus": [
-        {
-          "sku_id": 81,
-          "applied_unit": 48
-        },
-        {
-          "sku_id": 82,
-          "applied_unit": 48
-        },
-        {
-          "sku_id": 83,
-          "applied_unit": 48
-        },
-        {
-          "sku_id": 84,
-          "applied_unit": 48
-        },
-        {
-          "sku_id": 92,
-          "applied_unit": 48
-        },
-        {
-          "sku_id": 99,
-          "applied_unit": 48
-        }
-      ],
-      "discount_on": [
-        {
-          "sku_id": 81,
-          "discount_val": 2,
-          "applied_unit": 0
-        },
-        {
-          "sku_id": 82,
-          "discount_val": 2,
-          "applied_unit": 0
-        },
-        {
-          "sku_id": 83,
-          "discount_val": 2,
-          "applied_unit": 0
-        },
-        {
-          "sku_id": 84,
-          "discount_val": 2,
-          "applied_unit": 0
-        },
-        {
-          "sku_id": 92,
-          "discount_val": 2,
-          "applied_unit": 0
-        },
-        {
-          "sku_id": 99,
-          "discount_val": 2,
-          "applied_unit": 0
-        }
-      ],
-      "rules": [
-        {
-          "sku_id": 81,
-          "case": 1
-        },
-        {
-          "sku_id": 82,
-          "case": 1
-        },
-        {
-          "sku_id": 83,
-          "case": 1
-        },
-        {
-          "sku_id": 84,
-          "case": 1
-        },
-        {
-          "sku_id": 92,
-          "case": 1
-        },
-        {
-          "sku_id": 99,
-          "case": 1
-        }
-      ],
-      "growth_percentage": null
-    },
-    "65": {
-      "id": 65,
-      "sbu_id": 54,
-      "label": "Buy 4 pcs get 5 taka discount",
-      "payable_type": "Absolute Cash",
-      "discount_type": "Normal",
-      "cap_value": 30,
-      "discount_amount": 5,
-      "is_dependency": 0,
-      "total_applicable_quantity": 4,
-      "discount_product_type": "case",
-      "slab_group_id": null,
-      "is_fractional": 0,
-      "number_of_memos": null,
-      "target_amount": null,
-      "target_on": "Value",
-      "skus": [
-        {
-          "sku_id": 81,
-          "applied_unit": 4
-        }
-      ],
-      "discount_on": [
-        {
-          "sku_id": 81,
-          "discount_val": 5,
-          "applied_unit": 0
-        }
-      ],
-      "rules": [],
-      "growth_percentage": null
-    },
-    "66": {
-      "id": 66,
-      "sbu_id": 54,
-      "label": "Buy 4 pcs get 1 pcs free",
-      "payable_type": "Product Discount",
-      "discount_type": "Normal",
-      "cap_value": 1,
-      "discount_amount": 4,
-      "is_dependency": 0,
-      "total_applicable_quantity": 6,
-      "discount_product_type": "case",
-      "slab_group_id": null,
-      "is_fractional": 0,
-      "number_of_memos": null,
-      "target_amount": null,
-      "target_on": "Value",
-      "skus": [
-        {
-          "sku_id": 82,
-          "applied_unit": 6
-        }
-      ],
-      "discount_on": [
-        {
-          "sku_id": 82,
-          "discount_val": 4,
-          "applied_unit": 0
-        }
-      ],
-      "rules": [],
-      "growth_percentage": null
-    }
-  },
-  "gifts": {},
-  "delivery_configurations": {
-    "delivery_enabled": 1,
-    "zero_sale_enabled": 1,
-    "retailers": [],
-    "existing_preorders": {}
-  },
-  "target_configurations": {
-    "target_enabled_sbus": [
-      54
-    ],
-    "sbu_wise_available_targets": {
-      "54": [
-        "STT"
-      ]
-    },
-    "targets": {
-      "54": {
-        "STT": {
-          "10": {
-            "81": 1050,
-            "82": 1000,
-            "83": 1000,
-            "84": 1000,
-            "85": 1300,
-            "86": 1000
-          }
-        }
-      }
-    },
-    "sr_archivement": {
-      "STT": {
-        "54": {
-          "10": {
-            "81": 472,
-            "82": 44,
-            "83": 80,
-            "84": 0,
-            "85": 0,
-            "86": 0
-          }
-        }
-      }
-    }
-  },
-  "journey_plan_configurations": {
-    "enabled": 1,
-    "routes": [
-      {
-        "id": 202,
-        "slug": "Kakoli_Route",
-        "section_code": "167-34-222",
-        "section_config_id": 252,
-        "route_id": 34
-      }
-    ],
-    "day_wise": {
-      "Fri": 202,
-      "Mon": 202,
-      "Sat": 202,
-      "Sun": 202,
-      "Thu": 202,
-      "Tue": 202,
-      "Wed": 202
-    }
-  },
-  "asset_type": [
-    {
-      "id": 141,
-      "slug": "Light Box"
-    }
-  ],
-  "cooler_type": [
-    {
-      "id": 136,
-      "slug": "Beverage"
-    },
-    {
-      "id": 137,
-      "slug": "Dairy"
-    }
-  ],
-  "light_box_type": [
-    {
-      "id": 142,
-      "slug": "Lubber"
-    },
-    {
-      "id": 143,
-      "slug": "ACP Board"
-    },
-    {
-      "id": 144,
-      "slug": "Profile Light Box"
-    }
-  ],
-  "bill_category": [
-    "Product",
-    "Cash"
-  ],
-  "outlet_unsold_no_button_info": [
-    {
-      "id": 1,
-      "slug": "Outlet Close"
-    },
-    {
-      "id": 2,
-      "slug": "Available stock"
-    },
-    {
-      "id": 3,
-      "slug": "Insufficient fund"
-    }
-  ],
-  "cooler_size": [
-    {
-      "id": 139,
-      "slug": "260L"
-    },
-    {
-      "id": 140,
-      "slug": "440L"
-    }
-  ],
-  "rtc_config": {
-    "is_enabled": false,
-    "rag_score_data": {},
-    "videos": [],
-    "survey_details": {}
-  },
-  "allocated_posm": {},
-  "pull_out_reasons": [
-    "Reason 1",
-    "Reason 2",
-    "Others"
-  ],
-  "coupons": [],
-  "posm_types": [
-    {
-      "posm_type_id": 147,
-      "posm_type": "Poster"
-    },
-    {
-      "posm_type_id": 148,
-      "posm_type": "Sticker"
-    },
-    {
-      "posm_type_id": 149,
-      "posm_type": "Dangler"
-    },
-    {
-      "posm_type_id": 150,
-      "posm_type": "Festoon"
-    },
-    {
-      "posm_type_id": 151,
-      "posm_type": "Bunting"
-    },
-    {
-      "posm_type_id": 152,
-      "posm_type": "Shelf Talker"
-    },
-    {
-      "posm_type_id": 153,
-      "posm_type": "Wobbler"
-    },
-    {
-      "posm_type_id": 154,
-      "posm_type": "Neck Header"
-    },
-    {
-      "posm_type_id": 155,
-      "posm_type": "Cut Out"
-    },
-    {
-      "posm_type_id": 156,
-      "posm_type": "X-Banner"
-    },
-    {
-      "posm_type_id": 157,
-      "posm_type": "Enrollment Book"
-    },
-    {
-      "posm_type_id": 158,
-      "posm_type": "Leaflet"
-    },
-    {
-      "posm_type_id": 159,
-      "posm_type": "Tread Letter"
-    }
-  ],
   "ta_da_config": {
     "vehicle_list": [
       {
@@ -5998,177 +3186,109 @@ Map dummyData = {
       }
     ]
   },
-  "sales_configurations": {
-    "sale_ui_v2_enable": 1,
-    "dashboard_button_sequence": {
-      "sale": 1,
-      "media": 2,
-      "outlet_stock_count": 3,
-      "survey": 4,
-      "promotion": 5,
-      "delivery": 6,
-      "stock_check_image": 7,
-      "check_out": 8,
-      "spot_sale": 1.1
+  "tada_expense_configs": {
+    "166": {
+      "197": {
+        "type": "HQ",
+        "amount": 650
+      }
     },
-    "sales_dashboard_buttons": {
-      "sale": 1,
-      "media": 1,
-      "outlet_stock_count": 1,
-      "survey": 1,
-      "promotion": 1,
-      "delivery": 1,
-      "check_out": 1,
-      "spot_sale": 1,
-      "stock_check_image": 0
+    "167": {
+      "204": {
+        "type": "HQ",
+        "amount": 800
+      },
+      "213": {
+        "type": "EX-HQ",
+        "amount": 700
+      },
+      "214": {
+        "type": "EX-HQ",
+        "amount": 650
+      },
+      "220": {
+        "type": "EX-HQ",
+        "amount": 300
+      },
+      "221": {
+        "type": "OUTSTATION",
+        "amount": 500
+      },
+      "222": {
+        "type": "OUTSTATION",
+        "amount": 800
+      },
+      "223": {
+        "type": "OUTSTATION",
+        "amount": 300
+      },
+      "377": {
+        "type": "OUTSTATION",
+        "amount": 500
+      },
+      "378": {
+        "type": "OUTSTATION",
+        "amount": 300
+      },
+      "379": {
+        "type": "OUTSTATION",
+        "amount": 300
+      },
+      "380": {
+        "type": "OUTSTATION",
+        "amount": 500
+      },
+      "382": {
+        "type": "OUTSTATION",
+        "amount": 800
+      },
+      "388": {
+        "type": "OUTSTATION",
+        "amount": 300
+      }
     }
   },
-  "max_order_limit_config": {
-    "81": {
-      "available_stock": 500032,
-      "in_transit_stock": 24,
-      "allocated_stock_percentage": 13,
-      "max_order_limit": 565063.28
+  "locations": {
+    "zone": {
+      "13": {
+        "id": 13,
+        "name": "Zone-D",
+        "parent_id": 0
+      }
     },
-    "82": {
-      "available_stock": 500010,
-      "in_transit_stock": 0,
-      "allocated_stock_percentage": 13,
-      "max_order_limit": 565011.3
+    "region": {
+      "90": {
+        "id": 90,
+        "name": "Khulna",
+        "parent_id": 13
+      }
     },
-    "83": {
-      "available_stock": 500032,
-      "in_transit_stock": 0,
-      "allocated_stock_percentage": 13,
-      "max_order_limit": 565036.16
+    "area": {
+      "420": {
+        "id": 420,
+        "name": "Satkhira",
+        "parent_id": 90
+      }
     },
-    "84": {
-      "available_stock": 500000,
-      "in_transit_stock": 0,
-      "allocated_stock_percentage": 13,
-      "max_order_limit": 565000
-    },
-    "92": {
-      "available_stock": 500002,
-      "in_transit_stock": 0,
-      "allocated_stock_percentage": 13,
-      "max_order_limit": 565002.26
-    },
-    "93": {
-      "available_stock": 500006,
-      "in_transit_stock": 2,
-      "allocated_stock_percentage": 13,
-      "max_order_limit": 565009.04
-    },
-    "94": {
-      "available_stock": 500009,
-      "in_transit_stock": 3,
-      "allocated_stock_percentage": 13,
-      "max_order_limit": 565013.56
-    },
-    "112": {
-      "available_stock": 500000,
-      "in_transit_stock": 0,
-      "allocated_stock_percentage": 13,
-      "max_order_limit": 565000
-    },
-    "113": {
-      "available_stock": 500000,
-      "in_transit_stock": 0,
-      "allocated_stock_percentage": 13,
-      "max_order_limit": 565000
-    },
-    "114": {
-      "available_stock": 500000,
-      "in_transit_stock": 0,
-      "allocated_stock_percentage": 13,
-      "max_order_limit": 565000
-    },
-    "115": {
-      "available_stock": 500000,
-      "in_transit_stock": 0,
-      "allocated_stock_percentage": 13,
-      "max_order_limit": 565000
+    "point": {
+      "166": {
+        "id": 166,
+        "name": "SATKHIRA",
+        "parent_id": 420,
+        "location_type": 19,
+        "available_surveys": []
+      },
+      "167": {
+        "id": 167,
+        "name": "KOLAROA",
+        "parent_id": 420,
+        "location_type": 19,
+        "available_surveys": [
+          599
+        ]
+      }
     }
   },
-  "stock_check_image_retake": 1,
-  "tada_expense_configs": [
-    {
-      "id": 28,
-      "sbu_id": "[54]",
-      "user_type_id": 41,
-      "category_id": 204,
-      "amount": "600.00",
-      "status": 1,
-      "category_type": 200,
-      "category_slug": "Hotel",
-      "category_display_label": "Hotel",
-      "user_type": "SO",
-      "user_pre_type": "SO",
-      "user_is_management": 0,
-      "slug": null
-    },
-    {
-      "id": 30,
-      "sbu_id": "[54]",
-      "user_type_id": 41,
-      "category_id": 204,
-      "amount": "2000.00",
-      "status": 1,
-      "category_type": 200,
-      "category_slug": "Hotel",
-      "category_display_label": "Hotel",
-      "user_type": "SO",
-      "user_pre_type": "SO",
-      "user_is_management": 0,
-      "slug": null
-    },
-    {
-      "id": 31,
-      "sbu_id": "[54]",
-      "user_type_id": 41,
-      "category_id": 201,
-      "amount": "100.00",
-      "status": 1,
-      "category_type": 200,
-      "category_slug": "Breakfast",
-      "category_display_label": "Breakfast",
-      "user_type": "SO",
-      "user_pre_type": "SO",
-      "user_is_management": 0,
-      "slug": null
-    },
-    {
-      "id": 32,
-      "sbu_id": "[54]",
-      "user_type_id": 41,
-      "category_id": 201,
-      "amount": "100.00",
-      "status": 1,
-      "category_type": 200,
-      "category_slug": "Breakfast",
-      "category_display_label": "Breakfast",
-      "user_type": "SO",
-      "user_pre_type": "SO",
-      "user_is_management": 0,
-      "slug": null
-    },
-    {
-      "id": 35,
-      "sbu_id": "[54]",
-      "user_type_id": 41,
-      "category_id": 205,
-      "amount": "0.00",
-      "status": 1,
-      "category_type": 0,
-      "category_slug": "Others",
-      "category_display_label": "Others",
-      "user_type": "SO",
-      "user_pre_type": "SO",
-      "user_is_management": 0,
-      "slug": null
-    }
-  ],
   "sale_submit_config": {
     "resetEnabled": true,
     "reasons": [
@@ -6186,199 +3306,1383 @@ Map dummyData = {
       }
     ]
   },
-  "sku_unit_config": {
-    "81": [
-      {
-        "pack_type": "Box",
-        "pack_size": 12,
-        "uom_type": "Pcs"
-      },
-      {
-        "pack_type": "Cartoon",
-        "pack_size": 6,
-        "uom_type": "Pcs"
-      },
-      {
-        "pack_type": "Piece",
-        "pack_size": 1,
-        "uom_type": "Pcs"
-      }
-    ],
-    "82": [
-      {
-        "pack_type": "Cartoon",
-        "pack_size": 12,
-        "uom_type": "Pcs"
-      },
-      {
-        "pack_type": "Piece",
-        "pack_size": 1,
-        "uom_type": "Pcs"
-      }
-    ],
-    "83": [
-      {
-        "pack_type": "Cartoon",
-        "pack_size": 12,
-        "uom_type": "Pcs"
-      },
-      {
-        "pack_type": "Piece",
-        "pack_size": 1,
-        "uom_type": "Pcs"
-      }
-    ],
-    "84": [
-      {
-        "pack_type": "Digital Goods",
-        "pack_size": 1,
-        "uom_type": "Pcs"
-      }
-    ],
-    "92": [
-      {
-        "pack_type": "Piece",
-        "pack_size": 1,
-        "uom_type": "Pcs"
-      }
-    ],
-    "93": [
-      {
-        "pack_type": "Cartoon",
-        "pack_size": 1,
-        "uom_type": "Pcs"
-      }
-    ],
-    "94": [
-      {
-        "pack_type": "Digital Goods",
-        "pack_size": 1,
-        "uom_type": "Pcs"
-      }
-    ],
-    "112": [
-      {
-        "pack_type": "Cartoon",
-        "pack_size": null,
-        "uom_type": "Bag"
-      }
-    ],
-    "113": [
-      {
-        "pack_type": "Cartoon",
-        "pack_size": null,
-        "uom_type": "CAN"
-      }
-    ],
-    "114": [
-      {
-        "pack_type": "Cartoon",
-        "pack_size": null,
-        "uom_type": "Bag"
-      }
-    ],
-    "115": [
-      {
-        "pack_type": "SKU",
-        "pack_size": null,
-        "uom_type": "CAN"
-      }
-    ]
-  },
-  "sr-achievement": {
-    "STT": {
-      "54": {
-        "10": {
-          "81": 472,
-          "82": 44,
-          "83": 80,
-          "84": 0,
-          "85": 0,
-          "86": 0
+  "max_service_count": 2,
+  "last_service_points": [],
+  "survey-data": {
+    "1440": {
+      "599": {
+        "1003": {
+          "questionType": "select",
+          "answer_id": 525,
+          "answer": "Yes"
         }
       }
     }
   },
-  "finalAssets": {
-    "SKU": {
-      "id": 1,
-      "slug": "SKU",
-      "version": "1.0.16",
-      "assets": [
-        "/app-api/static-file/download/olympic/81.png",
-        "/app-api/static-file/download/olympic/82.png",
-        "/app-api/static-file/download/olympic/83.png",
-        "/app-api/static-file/download/olympic/84.png",
-        "/app-api/static-file/download/85.undefined",
-        "/app-api/static-file/download/86.undefined",
-        "/app-api/static-file/download/92.undefined",
-        "/app-api/static-file/download/93.undefined",
-        "/app-api/static-file/download/94.undefined",
-        "/app-api/static-file/download/96.undefined",
-        "/app-api/static-file/download/97.undefined",
-        "/app-api/static-file/download/98.undefined",
-        "/app-api/static-file/download/99.undefined",
-        "/app-api/static-file/download/100.undefined",
-        "/app-api/static-file/download/101.undefined",
-        "/app-api/static-file/download/110.undefined",
-        "/app-api/static-file/download/111.undefined",
-        "/app-api/static-file/download/112.undefined",
-        "/app-api/static-file/download/113.undefined",
-        "/app-api/static-file/download/olympic/114.png",
-        "/app-api/static-file/download/115.undefined",
-        "/app-api/static-file/download/117.undefined",
-        "/app-api/static-file/download/118.undefined",
-        "/app-api/static-file/download/119.undefined",
-        "/app-api/static-file/download/120.undefined",
-        "/app-api/static-file/download/121.undefined",
-        "/app-api/static-file/download/olympic/122.png"
-      ]
-    },
-    "ICONS": {
-      "id": 3,
-      "slug": "ICONS",
-      "version": "1.0.16",
-      "assets": [
-        "/app-api/static-file/download/app_logos/attendance.png",
-        "/app-api/static-file/download/app_logos/route_change.png",
-        "/app-api/static-file/download/app_logos/pjp_plan.png",
-        "/app-api/static-file/download/app_logos/web_panel.png",
-        "/app-api/static-file/download/app_logos/bangla.png",
-        "/app-api/static-file/download/app_logos/delivery.png",
-        "/app-api/static-file/download/app_logos/english.png",
-        "/app-api/static-file/download/app_logos/logout.png",
-        "/app-api/static-file/download/app_logos/new_outlet.png",
-        "/app-api/static-file/download/app_logos/promotion.png",
-        "/app-api/static-file/download/app_logos/sales.png",
-        "/app-api/static-file/download/app_logos/stock.png",
-        "/app-api/static-file/download/app_logos/survey.png",
-        "/app-api/static-file/download/app_logos/attendance.png",
-        "/app-api/static-file/download/app_logos/route_change.png",
-        "/app-api/static-file/download/app_logos/pjp_plan.png",
-        "/app-api/static-file/download/app_logos/web_panel.png",
-        "/app-api/static-file/download/app_logos/bangla.png",
-        "/app-api/static-file/download/app_logos/delivery.png",
-        "/app-api/static-file/download/app_logos/english.png",
-        "/app-api/static-file/download/app_logos/logout.png",
-        "/app-api/static-file/download/app_logos/new_outlet.png",
-        "/app-api/static-file/download/app_logos/promotion.png",
-        "/app-api/static-file/download/app_logos/sales.png",
-        "/app-api/static-file/download/app_logos/stock.png",
-        "/app-api/static-file/download/app_logos/survey.png",
-        "/app-api/static-file/download/assets/93.png",
-        "/app-api/static-file/download/assets/94.png",
-        "/app-api/static-file/download/assets/test_updated.png",
-        "/app-api/static-file/download/assets/test_updated.png",
-        "/app-api/static-file/download/assets/117.png",
-        "/app-api/static-file/download/assets/undefined.png",
-        "/app-api/static-file/download/olympic/81.png",
-        "/app-api/static-file/download/olympic/82.png",
-        "/app-api/static-file/download/olympic/122.png",
-        "/app-api/static-file/download/olympic/114.png",
-        "/app-api/static-file/download/olympic/83.png",
-        "/app-api/static-file/download/olympic/84.png"
-      ]
+  "taDa-survey-events": [
+    {
+      "survey_type": "outlet",
+      "survey_id": 599,
+      "retailer_id": 1440,
+      "point_id": 167,
+      "dep_id": 167,
+      "section_id": 213,
+      "sales_date": "2026-04-19",
+      "created_at": "2026-04-19T14:38:06.071676"
     }
+  ],
+  "checkout-data": {
+    "1440": [
+      {
+        "ff_id": 1765,
+        "sbu_id": "[54]",
+        "dep_id": null,
+        "section_id": null,
+        "outlet_id": 1440,
+        "outlet_code": "R-228228220126-002",
+        "date": "2026-04-19",
+        "checkout_datetime": "2026-04-19 14:38:07.988744"
+      }
+    ]
   },
-  "welcomed": true
+  "sr-tracking": [
+    {
+      "sbu_id": "[54]",
+      "date": "2026-04-19",
+      "pin_date_time": "2026-04-19 14:38:56.010934",
+      "ff_id": 1765,
+      "dep_id": null,
+      "section_id": null,
+      "latitude": "23.7938097",
+      "longitude": "90.4044768",
+      "accuracy": 34.400001525878906,
+      "altitude": 29.5,
+      "altitudeAccuracy": "",
+      "heading": 273.8368225097656,
+      "speed": 0.9432469606399536,
+      "internet_speed": "",
+      "connection_type": ""
+    },
+    {
+      "sbu_id": "[54]",
+      "date": "2026-04-19",
+      "pin_date_time": "2026-04-19 14:40:50.066339",
+      "ff_id": 1765,
+      "dep_id": null,
+      "section_id": null,
+      "latitude": "23.7937626",
+      "longitude": "90.4045414",
+      "accuracy": 19.812000274658203,
+      "altitude": 29.400001525878906,
+      "altitudeAccuracy": "",
+      "heading": 218.24612426757812,
+      "speed": 0.4173867702484131,
+      "internet_speed": "",
+      "connection_type": ""
+    },
+    {
+      "sbu_id": "[54]",
+      "date": "2026-04-19",
+      "pin_date_time": "2026-04-19 14:41:57.483178",
+      "ff_id": 1765,
+      "dep_id": null,
+      "section_id": null,
+      "latitude": "23.7937587",
+      "longitude": "90.4045613",
+      "accuracy": 15.442999839782715,
+      "altitude": 29.400001525878906,
+      "altitudeAccuracy": "",
+      "heading": 65.80790710449219,
+      "speed": 0.15951423346996307,
+      "internet_speed": "",
+      "connection_type": ""
+    },
+    {
+      "sbu_id": "[54]",
+      "date": "2026-04-19",
+      "pin_date_time": "2026-04-19 14:43:53.675066",
+      "ff_id": 1765,
+      "dep_id": null,
+      "section_id": null,
+      "latitude": "23.7937747",
+      "longitude": "90.4045711",
+      "accuracy": 15.996000289916992,
+      "altitude": 29.400001525878906,
+      "altitudeAccuracy": "",
+      "heading": 20.415328979492188,
+      "speed": 0.5251979827880859,
+      "internet_speed": "",
+      "connection_type": ""
+    },
+    {
+      "sbu_id": "[54]",
+      "date": "2026-04-19",
+      "pin_date_time": "2026-04-19 14:45:00.765875",
+      "ff_id": 1765,
+      "dep_id": null,
+      "section_id": null,
+      "latitude": "23.7937667",
+      "longitude": "90.4045203",
+      "accuracy": 31.225000381469727,
+      "altitude": 28.600000381469727,
+      "altitudeAccuracy": "",
+      "heading": 224.4224090576172,
+      "speed": 0.6315683722496033,
+      "internet_speed": "",
+      "connection_type": ""
+    },
+    {
+      "sbu_id": "[54]",
+      "date": "2026-04-19",
+      "pin_date_time": "2026-04-19 14:46:56.737384",
+      "ff_id": 1765,
+      "dep_id": null,
+      "section_id": null,
+      "latitude": "23.793763",
+      "longitude": "90.404572",
+      "accuracy": 18.00200080871582,
+      "altitude": 29.400001525878906,
+      "altitudeAccuracy": "",
+      "heading": 130.48263549804688,
+      "speed": 0.6469206809997559,
+      "internet_speed": "",
+      "connection_type": ""
+    },
+    {
+      "sbu_id": "[54]",
+      "date": "2026-04-19",
+      "pin_date_time": "2026-04-19 14:48:03.869503",
+      "ff_id": 1765,
+      "dep_id": null,
+      "section_id": null,
+      "latitude": "23.7937771",
+      "longitude": "90.404482",
+      "accuracy": 25.006999969482422,
+      "altitude": 28.600000381469727,
+      "altitudeAccuracy": "",
+      "heading": 291.708984375,
+      "speed": 0.5740599036216736,
+      "internet_speed": "",
+      "connection_type": ""
+    },
+    {
+      "sbu_id": "[54]",
+      "date": "2026-04-19",
+      "pin_date_time": "2026-04-19 14:49:59.792497",
+      "ff_id": 1765,
+      "dep_id": null,
+      "section_id": null,
+      "latitude": "23.7937554",
+      "longitude": "90.4045244",
+      "accuracy": 25.065000534057617,
+      "altitude": 28.600000381469727,
+      "altitudeAccuracy": "",
+      "heading": 0.0,
+      "speed": 0.04018164053559303,
+      "internet_speed": "",
+      "connection_type": ""
+    },
+    {
+      "sbu_id": "[54]",
+      "date": "2026-04-19",
+      "pin_date_time": "2026-04-19 14:51:06.770583",
+      "ff_id": 1765,
+      "dep_id": null,
+      "section_id": null,
+      "latitude": "23.7937623",
+      "longitude": "90.4045462",
+      "accuracy": 13.855999946594238,
+      "altitude": 28.600000381469727,
+      "altitudeAccuracy": "",
+      "heading": 182.0541229248047,
+      "speed": 0.2672993540763855,
+      "internet_speed": "",
+      "connection_type": ""
+    },
+    {
+      "sbu_id": "[54]",
+      "date": "2026-04-19",
+      "pin_date_time": "2026-04-19 14:53:02.833518",
+      "ff_id": 1765,
+      "dep_id": null,
+      "section_id": null,
+      "latitude": "23.7937804",
+      "longitude": "90.4044725",
+      "accuracy": 30.023000717163086,
+      "altitude": 28.600000381469727,
+      "altitudeAccuracy": "",
+      "heading": 123.69442749023438,
+      "speed": 0.4204852879047394,
+      "internet_speed": "",
+      "connection_type": ""
+    },
+    {
+      "sbu_id": "[54]",
+      "date": "2026-04-19",
+      "pin_date_time": "2026-04-19 14:54:10.110125",
+      "ff_id": 1765,
+      "dep_id": null,
+      "section_id": null,
+      "latitude": "23.7937645",
+      "longitude": "90.4045771",
+      "accuracy": 13.779999732971191,
+      "altitude": 29.0,
+      "altitudeAccuracy": "",
+      "heading": 89.19033813476562,
+      "speed": 0.842764675617218,
+      "internet_speed": "",
+      "connection_type": ""
+    },
+    {
+      "sbu_id": "[54]",
+      "date": "2026-04-19",
+      "pin_date_time": "2026-04-19 14:56:06.064483",
+      "ff_id": 1765,
+      "dep_id": null,
+      "section_id": null,
+      "latitude": "23.793758",
+      "longitude": "90.4045312",
+      "accuracy": 12.899999618530273,
+      "altitude": 28.600000381469727,
+      "altitudeAccuracy": "",
+      "heading": 229.3285675048828,
+      "speed": 0.5233741998672485,
+      "internet_speed": "",
+      "connection_type": ""
+    },
+    {
+      "sbu_id": "[54]",
+      "date": "2026-04-19",
+      "pin_date_time": "2026-04-19 14:57:13.229264",
+      "ff_id": 1765,
+      "dep_id": null,
+      "section_id": null,
+      "latitude": "23.7937756",
+      "longitude": "90.4045015",
+      "accuracy": 14.829999923706055,
+      "altitude": 28.600000381469727,
+      "altitudeAccuracy": "",
+      "heading": 120.84637451171875,
+      "speed": 1.2439618110656738,
+      "internet_speed": "",
+      "connection_type": ""
+    },
+    {
+      "sbu_id": "[54]",
+      "date": "2026-04-19",
+      "pin_date_time": "2026-04-19 14:59:08.997876",
+      "ff_id": 1765,
+      "dep_id": null,
+      "section_id": null,
+      "latitude": "23.7937887",
+      "longitude": "90.4044306",
+      "accuracy": 32.73699951171875,
+      "altitude": 28.600000381469727,
+      "altitudeAccuracy": "",
+      "heading": 296.7905578613281,
+      "speed": 1.8192962408065796,
+      "internet_speed": "",
+      "connection_type": ""
+    },
+    {
+      "sbu_id": "[54]",
+      "date": "2026-04-19",
+      "pin_date_time": "2026-04-19 15:00:15.796812",
+      "ff_id": 1765,
+      "dep_id": null,
+      "section_id": null,
+      "latitude": "23.7938029",
+      "longitude": "90.4044551",
+      "accuracy": 27.64900016784668,
+      "altitude": 28.600000381469727,
+      "altitudeAccuracy": "",
+      "heading": 318.8730773925781,
+      "speed": 0.2406924068927765,
+      "internet_speed": "",
+      "connection_type": ""
+    },
+    {
+      "sbu_id": "[54]",
+      "date": "2026-04-19",
+      "pin_date_time": "2026-04-19 15:02:11.883028",
+      "ff_id": 1765,
+      "dep_id": null,
+      "section_id": null,
+      "latitude": "23.7937319",
+      "longitude": "90.4045487",
+      "accuracy": 17.94099998474121,
+      "altitude": 28.600000381469727,
+      "altitudeAccuracy": "",
+      "heading": 208.06845092773438,
+      "speed": 0.398750901222229,
+      "internet_speed": "",
+      "connection_type": ""
+    },
+    {
+      "sbu_id": "[54]",
+      "date": "2026-04-19",
+      "pin_date_time": "2026-04-19 15:03:18.897890",
+      "ff_id": 1765,
+      "dep_id": null,
+      "section_id": null,
+      "latitude": "23.7937798",
+      "longitude": "90.4044379",
+      "accuracy": 30.059999465942383,
+      "altitude": 28.600000381469727,
+      "altitudeAccuracy": "",
+      "heading": 300.3021545410156,
+      "speed": 3.0835840702056885,
+      "internet_speed": "",
+      "connection_type": ""
+    },
+    {
+      "sbu_id": "[54]",
+      "date": "2026-04-19",
+      "pin_date_time": "2026-04-19 15:05:15.057628",
+      "ff_id": 1765,
+      "dep_id": null,
+      "section_id": null,
+      "latitude": "23.7937555",
+      "longitude": "90.4045394",
+      "accuracy": 17.35300064086914,
+      "altitude": 28.5,
+      "altitudeAccuracy": "",
+      "heading": 82.69734191894531,
+      "speed": 0.21372801065444946,
+      "internet_speed": "",
+      "connection_type": ""
+    },
+    {
+      "sbu_id": "[54]",
+      "date": "2026-04-19",
+      "pin_date_time": "2026-04-19 15:06:22.323216",
+      "ff_id": 1765,
+      "dep_id": null,
+      "section_id": null,
+      "latitude": "23.7937465",
+      "longitude": "90.4045554",
+      "accuracy": 12.602999687194824,
+      "altitude": 29.400001525878906,
+      "altitudeAccuracy": "",
+      "heading": 124.69124603271484,
+      "speed": 0.4434601664543152,
+      "internet_speed": "",
+      "connection_type": ""
+    },
+    {
+      "sbu_id": "[54]",
+      "date": "2026-04-19",
+      "pin_date_time": "2026-04-19 15:08:18.721500",
+      "ff_id": 1765,
+      "dep_id": null,
+      "section_id": null,
+      "latitude": "23.7937901",
+      "longitude": "90.4044736",
+      "accuracy": 35.141998291015625,
+      "altitude": 28.600000381469727,
+      "altitudeAccuracy": "",
+      "heading": 301.23248291015625,
+      "speed": 1.2828409671783447,
+      "internet_speed": "",
+      "connection_type": ""
+    },
+    {
+      "sbu_id": "[54]",
+      "date": "2026-04-19",
+      "pin_date_time": "2026-04-19 15:09:26.335449",
+      "ff_id": 1765,
+      "dep_id": null,
+      "section_id": null,
+      "latitude": "23.7937286",
+      "longitude": "90.4045878",
+      "accuracy": 42.5,
+      "altitude": 24.600000381469727,
+      "altitudeAccuracy": "",
+      "heading": 138.72503662109375,
+      "speed": 1.0197111368179321,
+      "internet_speed": "",
+      "connection_type": ""
+    },
+    {
+      "sbu_id": "[54]",
+      "date": "2026-04-19",
+      "pin_date_time": "2026-04-19 15:11:22.600696",
+      "ff_id": 1765,
+      "dep_id": null,
+      "section_id": null,
+      "latitude": "23.7937506",
+      "longitude": "90.4045461",
+      "accuracy": 24.329999923706055,
+      "altitude": 28.5,
+      "altitudeAccuracy": "",
+      "heading": 0.0,
+      "speed": 0.07463232427835464,
+      "internet_speed": "",
+      "connection_type": ""
+    },
+    {
+      "sbu_id": "[54]",
+      "date": "2026-04-19",
+      "pin_date_time": "2026-04-19 15:12:30.108917",
+      "ff_id": 1765,
+      "dep_id": null,
+      "section_id": null,
+      "latitude": "23.7937321",
+      "longitude": "90.4045698",
+      "accuracy": 15.8100004196167,
+      "altitude": 28.5,
+      "altitudeAccuracy": "",
+      "heading": 110.16438293457031,
+      "speed": 2.338780403137207,
+      "internet_speed": "",
+      "connection_type": ""
+    },
+    {
+      "sbu_id": "[54]",
+      "date": "2026-04-19",
+      "pin_date_time": "2026-04-19 15:14:26.440754",
+      "ff_id": 1765,
+      "dep_id": null,
+      "section_id": null,
+      "latitude": "23.7937276",
+      "longitude": "90.4045821",
+      "accuracy": 12.13599967956543,
+      "altitude": 28.5,
+      "altitudeAccuracy": "",
+      "heading": 128.98109436035156,
+      "speed": 0.2890559434890747,
+      "internet_speed": "",
+      "connection_type": ""
+    },
+    {
+      "sbu_id": "[54]",
+      "date": "2026-04-19",
+      "pin_date_time": "2026-04-19 15:15:34.013414",
+      "ff_id": 1765,
+      "dep_id": null,
+      "section_id": null,
+      "latitude": "23.7937363",
+      "longitude": "90.4045629",
+      "accuracy": 20.858999252319336,
+      "altitude": 29.400001525878906,
+      "altitudeAccuracy": "",
+      "heading": 145.4242706298828,
+      "speed": 0.5385462641716003,
+      "internet_speed": "",
+      "connection_type": ""
+    },
+    {
+      "sbu_id": "[54]",
+      "date": "2026-04-19",
+      "pin_date_time": "2026-04-19 15:17:30.306874",
+      "ff_id": 1765,
+      "dep_id": null,
+      "section_id": null,
+      "latitude": "23.7937682",
+      "longitude": "90.4045562",
+      "accuracy": 15.89900016784668,
+      "altitude": 29.400001525878906,
+      "altitudeAccuracy": "",
+      "heading": 118.45274353027344,
+      "speed": 1.2129426002502441,
+      "internet_speed": "",
+      "connection_type": ""
+    },
+    {
+      "sbu_id": "[54]",
+      "date": "2026-04-19",
+      "pin_date_time": "2026-04-19 15:18:37.924806",
+      "ff_id": 1765,
+      "dep_id": null,
+      "section_id": null,
+      "latitude": "23.7937361",
+      "longitude": "90.4045676",
+      "accuracy": 20.12700080871582,
+      "altitude": 28.5,
+      "altitudeAccuracy": "",
+      "heading": 133.70689392089844,
+      "speed": 0.34310635924339294,
+      "internet_speed": "",
+      "connection_type": ""
+    },
+    {
+      "sbu_id": "[54]",
+      "date": "2026-04-19",
+      "pin_date_time": "2026-04-19 15:20:34.535091",
+      "ff_id": 1765,
+      "dep_id": null,
+      "section_id": null,
+      "latitude": "23.7937558",
+      "longitude": "90.4045315",
+      "accuracy": 22.187000274658203,
+      "altitude": 28.5,
+      "altitudeAccuracy": "",
+      "heading": 2.907447099685669,
+      "speed": 0.2362721711397171,
+      "internet_speed": "",
+      "connection_type": ""
+    },
+    {
+      "sbu_id": "[54]",
+      "date": "2026-04-19",
+      "pin_date_time": "2026-04-19 15:21:42.063775",
+      "ff_id": 1765,
+      "dep_id": null,
+      "section_id": null,
+      "latitude": "23.7937568",
+      "longitude": "90.4045372",
+      "accuracy": 17.757999420166016,
+      "altitude": 28.5,
+      "altitudeAccuracy": "",
+      "heading": 302.59881591796875,
+      "speed": 0.5364304780960083,
+      "internet_speed": "",
+      "connection_type": ""
+    },
+    {
+      "sbu_id": "[54]",
+      "date": "2026-04-19",
+      "pin_date_time": "2026-04-19 15:23:38.524767",
+      "ff_id": 1765,
+      "dep_id": null,
+      "section_id": null,
+      "latitude": "23.7937518",
+      "longitude": "90.4045335",
+      "accuracy": 28.98699951171875,
+      "altitude": 28.600000381469727,
+      "altitudeAccuracy": "",
+      "heading": 133.1545867919922,
+      "speed": 0.27916601300239563,
+      "internet_speed": "",
+      "connection_type": ""
+    },
+    {
+      "sbu_id": "[54]",
+      "date": "2026-04-19",
+      "pin_date_time": "2026-04-19 15:24:45.997394",
+      "ff_id": 1765,
+      "dep_id": null,
+      "section_id": null,
+      "latitude": "23.7937793",
+      "longitude": "90.4045336",
+      "accuracy": 12.21500015258789,
+      "altitude": 28.5,
+      "altitudeAccuracy": "",
+      "heading": 3.880509376525879,
+      "speed": 0.6473612785339355,
+      "internet_speed": "",
+      "connection_type": ""
+    },
+    {
+      "sbu_id": "[54]",
+      "date": "2026-04-19",
+      "pin_date_time": "2026-04-19 15:26:42.097929",
+      "ff_id": 1765,
+      "dep_id": null,
+      "section_id": null,
+      "latitude": "23.7937389",
+      "longitude": "90.4045598",
+      "accuracy": 26.697999954223633,
+      "altitude": 28.5,
+      "altitudeAccuracy": "",
+      "heading": 119.04127502441406,
+      "speed": 0.41916948556900024,
+      "internet_speed": "",
+      "connection_type": ""
+    },
+    {
+      "sbu_id": "[54]",
+      "date": "2026-04-19",
+      "pin_date_time": "2026-04-19 15:27:49.287507",
+      "ff_id": 1765,
+      "dep_id": null,
+      "section_id": null,
+      "latitude": "23.7937804",
+      "longitude": "90.4044485",
+      "accuracy": 32.14099884033203,
+      "altitude": 28.600000381469727,
+      "altitudeAccuracy": "",
+      "heading": 290.6420593261719,
+      "speed": 1.5735995769500732,
+      "internet_speed": "",
+      "connection_type": ""
+    },
+    {
+      "sbu_id": "[54]",
+      "date": "2026-04-19",
+      "pin_date_time": "2026-04-19 15:29:45.618020",
+      "ff_id": 1765,
+      "dep_id": null,
+      "section_id": null,
+      "latitude": "23.7937587",
+      "longitude": "90.4045269",
+      "accuracy": 29.976999282836914,
+      "altitude": 28.600000381469727,
+      "altitudeAccuracy": "",
+      "heading": 293.3172302246094,
+      "speed": 0.6716263294219971,
+      "internet_speed": "",
+      "connection_type": ""
+    },
+    {
+      "sbu_id": "[54]",
+      "date": "2026-04-19",
+      "pin_date_time": "2026-04-19 15:30:52.834902",
+      "ff_id": 1765,
+      "dep_id": null,
+      "section_id": null,
+      "latitude": "23.7937808",
+      "longitude": "90.4044764",
+      "accuracy": 32.034000396728516,
+      "altitude": 28.600000381469727,
+      "altitudeAccuracy": "",
+      "heading": 305.78387451171875,
+      "speed": 1.5912580490112305,
+      "internet_speed": "",
+      "connection_type": ""
+    },
+    {
+      "sbu_id": "[54]",
+      "date": "2026-04-19",
+      "pin_date_time": "2026-04-19 15:32:49.164922",
+      "ff_id": 1765,
+      "dep_id": null,
+      "section_id": null,
+      "latitude": "23.7937712",
+      "longitude": "90.4045498",
+      "accuracy": 17.231000900268555,
+      "altitude": 29.400001525878906,
+      "altitudeAccuracy": "",
+      "heading": 122.01617431640625,
+      "speed": 1.333457350730896,
+      "internet_speed": "",
+      "connection_type": ""
+    },
+    {
+      "sbu_id": "[54]",
+      "date": "2026-04-19",
+      "pin_date_time": "2026-04-19 15:33:56.264096",
+      "ff_id": 1765,
+      "dep_id": null,
+      "section_id": null,
+      "latitude": "23.7937945",
+      "longitude": "90.4045204",
+      "accuracy": 18.211999893188477,
+      "altitude": 29.400001525878906,
+      "altitudeAccuracy": "",
+      "heading": 323.7137145996094,
+      "speed": 0.8307191133499146,
+      "internet_speed": "",
+      "connection_type": ""
+    },
+    {
+      "sbu_id": "[54]",
+      "date": "2026-04-19",
+      "pin_date_time": "2026-04-19 15:35:52.371309",
+      "ff_id": 1765,
+      "dep_id": null,
+      "section_id": null,
+      "latitude": "23.7937808",
+      "longitude": "90.4045025",
+      "accuracy": 17.801000595092773,
+      "altitude": 29.400001525878906,
+      "altitudeAccuracy": "",
+      "heading": 306.1676025390625,
+      "speed": 1.2571641206741333,
+      "internet_speed": "",
+      "connection_type": ""
+    },
+    {
+      "sbu_id": "[54]",
+      "date": "2026-04-19",
+      "pin_date_time": "2026-04-19 15:36:59.699749",
+      "ff_id": 1765,
+      "dep_id": null,
+      "section_id": null,
+      "latitude": "23.793718",
+      "longitude": "90.4045497",
+      "accuracy": 26.92300033569336,
+      "altitude": 29.400001525878906,
+      "altitudeAccuracy": "",
+      "heading": 158.64781188964844,
+      "speed": 1.5376111268997192,
+      "internet_speed": "",
+      "connection_type": ""
+    },
+    {
+      "sbu_id": "[54]",
+      "date": "2026-04-19",
+      "pin_date_time": "2026-04-19 15:38:55.829079",
+      "ff_id": 1765,
+      "dep_id": null,
+      "section_id": null,
+      "latitude": "23.79374",
+      "longitude": "90.4045613",
+      "accuracy": 20.39299964904785,
+      "altitude": 28.600000381469727,
+      "altitudeAccuracy": "",
+      "heading": 310.39190673828125,
+      "speed": 0.39579981565475464,
+      "internet_speed": "",
+      "connection_type": ""
+    },
+    {
+      "sbu_id": "[54]",
+      "date": "2026-04-19",
+      "pin_date_time": "2026-04-19 15:40:03.137970",
+      "ff_id": 1765,
+      "dep_id": null,
+      "section_id": null,
+      "latitude": "23.7937756",
+      "longitude": "90.4045367",
+      "accuracy": 19.121000289916992,
+      "altitude": 29.400001525878906,
+      "altitudeAccuracy": "",
+      "heading": 347.2776184082031,
+      "speed": 0.20071427524089813,
+      "internet_speed": "",
+      "connection_type": ""
+    },
+    {
+      "sbu_id": "[54]",
+      "date": "2026-04-19",
+      "pin_date_time": "2026-04-19 15:41:59.443427",
+      "ff_id": 1765,
+      "dep_id": null,
+      "section_id": null,
+      "latitude": "23.793781",
+      "longitude": "90.4045283",
+      "accuracy": 15.333999633789062,
+      "altitude": 29.400001525878906,
+      "altitudeAccuracy": "",
+      "heading": 323.4021911621094,
+      "speed": 1.229228138923645,
+      "internet_speed": "",
+      "connection_type": ""
+    },
+    {
+      "sbu_id": "[54]",
+      "date": "2026-04-19",
+      "pin_date_time": "2026-04-19 15:43:06.984236",
+      "ff_id": 1765,
+      "dep_id": null,
+      "section_id": null,
+      "latitude": "23.7937412",
+      "longitude": "90.4045568",
+      "accuracy": 12.743000030517578,
+      "altitude": 28.5,
+      "altitudeAccuracy": "",
+      "heading": 267.88958740234375,
+      "speed": 0.2193380445241928,
+      "internet_speed": "",
+      "connection_type": ""
+    },
+    {
+      "sbu_id": "[54]",
+      "date": "2026-04-19",
+      "pin_date_time": "2026-04-19 15:45:03.492987",
+      "ff_id": 1765,
+      "dep_id": null,
+      "section_id": null,
+      "latitude": "23.7937619",
+      "longitude": "90.4045676",
+      "accuracy": 19.13599967956543,
+      "altitude": 29.400001525878906,
+      "altitudeAccuracy": "",
+      "heading": 355.0057678222656,
+      "speed": 1.1547250747680664,
+      "internet_speed": "",
+      "connection_type": ""
+    },
+    {
+      "sbu_id": "[54]",
+      "date": "2026-04-19",
+      "pin_date_time": "2026-04-19 15:46:10.794549",
+      "ff_id": 1765,
+      "dep_id": null,
+      "section_id": null,
+      "latitude": "23.7937423",
+      "longitude": "90.4045661",
+      "accuracy": 18.902999877929688,
+      "altitude": 29.400001525878906,
+      "altitudeAccuracy": "",
+      "heading": 139.84393310546875,
+      "speed": 0.28340837359428406,
+      "internet_speed": "",
+      "connection_type": ""
+    },
+    {
+      "sbu_id": "[54]",
+      "date": "2026-04-19",
+      "pin_date_time": "2026-04-19 15:48:07.406297",
+      "ff_id": 1765,
+      "dep_id": null,
+      "section_id": null,
+      "latitude": "23.7937789",
+      "longitude": "90.4045473",
+      "accuracy": 15.362000465393066,
+      "altitude": 28.5,
+      "altitudeAccuracy": "",
+      "heading": 334.5329284667969,
+      "speed": 1.3420085906982422,
+      "internet_speed": "",
+      "connection_type": ""
+    },
+    {
+      "sbu_id": "[54]",
+      "date": "2026-04-19",
+      "pin_date_time": "2026-04-19 15:49:14.814476",
+      "ff_id": 1765,
+      "dep_id": null,
+      "section_id": null,
+      "latitude": "23.7937765",
+      "longitude": "90.4045397",
+      "accuracy": 16.665000915527344,
+      "altitude": 29.400001525878906,
+      "altitudeAccuracy": "",
+      "heading": 344.58172607421875,
+      "speed": 0.42588940262794495,
+      "internet_speed": "",
+      "connection_type": ""
+    },
+    {
+      "sbu_id": "[54]",
+      "date": "2026-04-19",
+      "pin_date_time": "2026-04-19 15:51:11.104238",
+      "ff_id": 1765,
+      "dep_id": null,
+      "section_id": null,
+      "latitude": "23.7937347",
+      "longitude": "90.4045646",
+      "accuracy": 12.310999870300293,
+      "altitude": 28.5,
+      "altitudeAccuracy": "",
+      "heading": 145.34457397460938,
+      "speed": 0.922319769859314,
+      "internet_speed": "",
+      "connection_type": ""
+    },
+    {
+      "sbu_id": "[54]",
+      "date": "2026-04-19",
+      "pin_date_time": "2026-04-19 15:52:18.286567",
+      "ff_id": 1765,
+      "dep_id": null,
+      "section_id": null,
+      "latitude": "23.7937697",
+      "longitude": "90.4045457",
+      "accuracy": 16.76099967956543,
+      "altitude": 29.400001525878906,
+      "altitudeAccuracy": "",
+      "heading": 143.73614501953125,
+      "speed": 0.5725743770599365,
+      "internet_speed": "",
+      "connection_type": ""
+    },
+    {
+      "sbu_id": "[54]",
+      "date": "2026-04-19",
+      "pin_date_time": "2026-04-19 15:54:14.225253",
+      "ff_id": 1765,
+      "dep_id": null,
+      "section_id": null,
+      "latitude": "23.7937774",
+      "longitude": "90.4044792",
+      "accuracy": 26.09600067138672,
+      "altitude": 28.600000381469727,
+      "altitudeAccuracy": "",
+      "heading": 303.9300231933594,
+      "speed": 1.1412841081619263,
+      "internet_speed": "",
+      "connection_type": ""
+    },
+    {
+      "sbu_id": "[54]",
+      "date": "2026-04-19",
+      "pin_date_time": "2026-04-19 15:55:21.697112",
+      "ff_id": 1765,
+      "dep_id": null,
+      "section_id": null,
+      "latitude": "23.7937419",
+      "longitude": "90.4045844",
+      "accuracy": 15.234999656677246,
+      "altitude": 28.5,
+      "altitudeAccuracy": "",
+      "heading": 128.59933471679688,
+      "speed": 0.24525101482868195,
+      "internet_speed": "",
+      "connection_type": ""
+    },
+    {
+      "sbu_id": "[54]",
+      "date": "2026-04-19",
+      "pin_date_time": "2026-04-19 15:57:17.739251",
+      "ff_id": 1765,
+      "dep_id": null,
+      "section_id": null,
+      "latitude": "23.7937822",
+      "longitude": "90.4045511",
+      "accuracy": 12.95199966430664,
+      "altitude": 28.5,
+      "altitudeAccuracy": "",
+      "heading": 337.46392822265625,
+      "speed": 1.2416679859161377,
+      "internet_speed": "",
+      "connection_type": ""
+    },
+    {
+      "sbu_id": "[54]",
+      "date": "2026-04-19",
+      "pin_date_time": "2026-04-19 15:58:25.288087",
+      "ff_id": 1765,
+      "dep_id": null,
+      "section_id": null,
+      "latitude": "23.7937264",
+      "longitude": "90.4045693",
+      "accuracy": 13.642999649047852,
+      "altitude": 28.5,
+      "altitudeAccuracy": "",
+      "heading": 93.54219818115234,
+      "speed": 0.3529861867427826,
+      "internet_speed": "",
+      "connection_type": ""
+    },
+    {
+      "sbu_id": "[54]",
+      "date": "2026-04-19",
+      "pin_date_time": "2026-04-19 16:00:21.858735",
+      "ff_id": 1765,
+      "dep_id": null,
+      "section_id": null,
+      "latitude": "23.7937308",
+      "longitude": "90.404556",
+      "accuracy": 13.762999534606934,
+      "altitude": 28.5,
+      "altitudeAccuracy": "",
+      "heading": 338.4409484863281,
+      "speed": 0.6689454317092896,
+      "internet_speed": "",
+      "connection_type": ""
+    },
+    {
+      "sbu_id": "[54]",
+      "date": "2026-04-19",
+      "pin_date_time": "2026-04-19 16:01:29.493896",
+      "ff_id": 1765,
+      "dep_id": null,
+      "section_id": null,
+      "latitude": "23.7937402",
+      "longitude": "90.4045579",
+      "accuracy": 13.116000175476074,
+      "altitude": 28.600000381469727,
+      "altitudeAccuracy": "",
+      "heading": 153.874267578125,
+      "speed": 0.23371665179729462,
+      "internet_speed": "",
+      "connection_type": ""
+    },
+    {
+      "sbu_id": "[54]",
+      "date": "2026-04-19",
+      "pin_date_time": "2026-04-19 16:38:19.742511",
+      "ff_id": 1765,
+      "dep_id": null,
+      "section_id": null,
+      "latitude": "23.7937029",
+      "longitude": "90.4046125",
+      "accuracy": 100.0,
+      "altitude": 28.5,
+      "altitudeAccuracy": "",
+      "heading": 0.0,
+      "speed": 0.0,
+      "internet_speed": "",
+      "connection_type": ""
+    },
+    {
+      "sbu_id": "[54]",
+      "date": "2026-04-19",
+      "pin_date_time": "2026-04-19 16:41:22.738727",
+      "ff_id": 1765,
+      "dep_id": null,
+      "section_id": null,
+      "latitude": "23.793762",
+      "longitude": "90.4045356",
+      "accuracy": 27.361000061035156,
+      "altitude": 28.600000381469727,
+      "altitudeAccuracy": "",
+      "heading": 297.5794372558594,
+      "speed": 0.29418712854385376,
+      "internet_speed": "",
+      "connection_type": ""
+    },
+    {
+      "sbu_id": "[54]",
+      "date": "2026-04-19",
+      "pin_date_time": "2026-04-19 16:44:25.883642",
+      "ff_id": 1765,
+      "dep_id": null,
+      "section_id": null,
+      "latitude": "23.7937602",
+      "longitude": "90.4045787",
+      "accuracy": 18.615999221801758,
+      "altitude": 29.400001525878906,
+      "altitudeAccuracy": "",
+      "heading": 121.40380859375,
+      "speed": 0.3132609724998474,
+      "internet_speed": "",
+      "connection_type": ""
+    },
+    {
+      "sbu_id": "[54]",
+      "date": "2026-04-19",
+      "pin_date_time": "2026-04-19 16:47:28.577515",
+      "ff_id": 1765,
+      "dep_id": null,
+      "section_id": null,
+      "latitude": "23.7937866",
+      "longitude": "90.4045168",
+      "accuracy": 14.52400016784668,
+      "altitude": 29.400001525878906,
+      "altitudeAccuracy": "",
+      "heading": 130.44569396972656,
+      "speed": 0.6094775199890137,
+      "internet_speed": "",
+      "connection_type": ""
+    },
+    {
+      "sbu_id": "[54]",
+      "date": "2026-04-19",
+      "pin_date_time": "2026-04-19 16:50:31.840015",
+      "ff_id": 1765,
+      "dep_id": null,
+      "section_id": null,
+      "latitude": "23.7938044",
+      "longitude": "90.4044545",
+      "accuracy": 17.09000015258789,
+      "altitude": 29.400001525878906,
+      "altitudeAccuracy": "",
+      "heading": 278.8493347167969,
+      "speed": 0.5861616134643555,
+      "internet_speed": "",
+      "connection_type": ""
+    },
+    {
+      "sbu_id": "[54]",
+      "date": "2026-04-19",
+      "pin_date_time": "2026-04-19 16:53:35.380804",
+      "ff_id": 1765,
+      "dep_id": null,
+      "section_id": null,
+      "latitude": "23.7937977",
+      "longitude": "90.4045056",
+      "accuracy": 16.445999145507812,
+      "altitude": 29.400001525878906,
+      "altitudeAccuracy": "",
+      "heading": 67.68529510498047,
+      "speed": 0.4008368253707886,
+      "internet_speed": "",
+      "connection_type": ""
+    },
+    {
+      "sbu_id": "[54]",
+      "date": "2026-04-19",
+      "pin_date_time": "2026-04-19 16:56:38.732602",
+      "ff_id": 1765,
+      "dep_id": null,
+      "section_id": null,
+      "latitude": "23.7937747",
+      "longitude": "90.4045363",
+      "accuracy": 15.340999603271484,
+      "altitude": 29.400001525878906,
+      "altitudeAccuracy": "",
+      "heading": 123.12374877929688,
+      "speed": 0.8679903745651245,
+      "internet_speed": "",
+      "connection_type": ""
+    },
+    {
+      "sbu_id": "[54]",
+      "date": "2026-04-19",
+      "pin_date_time": "2026-04-19 16:59:42.031132",
+      "ff_id": 1765,
+      "dep_id": null,
+      "section_id": null,
+      "latitude": "23.7938098",
+      "longitude": "90.4044982",
+      "accuracy": 15.039999961853027,
+      "altitude": 29.400001525878906,
+      "altitudeAccuracy": "",
+      "heading": 321.5453186035156,
+      "speed": 2.036003589630127,
+      "internet_speed": "",
+      "connection_type": ""
+    },
+    {
+      "sbu_id": "[54]",
+      "date": "2026-04-19",
+      "pin_date_time": "2026-04-19 17:02:45.449808",
+      "ff_id": 1765,
+      "dep_id": null,
+      "section_id": null,
+      "latitude": "23.7937664",
+      "longitude": "90.4045271",
+      "accuracy": 23.176000595092773,
+      "altitude": 29.100000381469727,
+      "altitudeAccuracy": "",
+      "heading": 210.2021026611328,
+      "speed": 0.4601050913333893,
+      "internet_speed": "",
+      "connection_type": ""
+    },
+    {
+      "sbu_id": "[54]",
+      "date": "2026-04-19",
+      "pin_date_time": "2026-04-19 17:05:49.553262",
+      "ff_id": 1765,
+      "dep_id": null,
+      "section_id": null,
+      "latitude": "23.7937311",
+      "longitude": "90.4045699",
+      "accuracy": 20.398000717163086,
+      "altitude": 29.400001525878906,
+      "altitudeAccuracy": "",
+      "heading": 294.8773498535156,
+      "speed": 0.8090713620185852,
+      "internet_speed": "",
+      "connection_type": ""
+    },
+    {
+      "sbu_id": "[54]",
+      "date": "2026-04-19",
+      "pin_date_time": "2026-04-19 17:08:53.467140",
+      "ff_id": 1765,
+      "dep_id": null,
+      "section_id": null,
+      "latitude": "23.793808",
+      "longitude": "90.404453",
+      "accuracy": 19.47100067138672,
+      "altitude": 29.400001525878906,
+      "altitudeAccuracy": "",
+      "heading": 287.15191650390625,
+      "speed": 1.3285802602767944,
+      "internet_speed": "",
+      "connection_type": ""
+    },
+    {
+      "sbu_id": "[54]",
+      "date": "2026-04-19",
+      "pin_date_time": "2026-04-19 17:11:57.477964",
+      "ff_id": 1765,
+      "dep_id": null,
+      "section_id": null,
+      "latitude": "23.7937652",
+      "longitude": "90.4045704",
+      "accuracy": 16.349000930786133,
+      "altitude": 29.400001525878906,
+      "altitudeAccuracy": "",
+      "heading": 21.599349975585938,
+      "speed": 0.30587708950042725,
+      "internet_speed": "",
+      "connection_type": ""
+    },
+    {
+      "sbu_id": "[54]",
+      "date": "2026-04-19",
+      "pin_date_time": "2026-04-19 17:22:30.203691",
+      "ff_id": 1765,
+      "dep_id": null,
+      "section_id": null,
+      "latitude": "23.7937421",
+      "longitude": "90.4045789",
+      "accuracy": 100.0,
+      "altitude": 29.400001525878906,
+      "altitudeAccuracy": "",
+      "heading": 0.0,
+      "speed": 0.0,
+      "internet_speed": "",
+      "connection_type": ""
+    },
+    {
+      "sbu_id": "[54]",
+      "date": "2026-04-19",
+      "pin_date_time": "2026-04-19 17:25:34.610789",
+      "ff_id": 1765,
+      "dep_id": null,
+      "section_id": null,
+      "latitude": "23.7937821",
+      "longitude": "90.4045439",
+      "accuracy": 14.501999855041504,
+      "altitude": 29.0,
+      "altitudeAccuracy": "",
+      "heading": 291.6941833496094,
+      "speed": 0.5819262862205505,
+      "internet_speed": "",
+      "connection_type": ""
+    },
+    {
+      "sbu_id": "[54]",
+      "date": "2026-04-19",
+      "pin_date_time": "2026-04-19 17:31:01.611477",
+      "ff_id": 1765,
+      "dep_id": null,
+      "section_id": null,
+      "latitude": "23.7937492",
+      "longitude": "90.4045504",
+      "accuracy": 12.199000358581543,
+      "altitude": 28.5,
+      "altitudeAccuracy": "",
+      "heading": 353.690185546875,
+      "speed": 0.7888555526733398,
+      "internet_speed": "",
+      "connection_type": ""
+    },
+    {
+      "sbu_id": "[54]",
+      "date": "2026-04-19",
+      "pin_date_time": "2026-04-19 17:34:02.238155",
+      "ff_id": 1765,
+      "dep_id": null,
+      "section_id": null,
+      "latitude": "23.7937248",
+      "longitude": "90.4045519",
+      "accuracy": 28.731000900268555,
+      "altitude": 28.5,
+      "altitudeAccuracy": "",
+      "heading": 172.16244506835938,
+      "speed": 0.4372892677783966,
+      "internet_speed": "",
+      "connection_type": ""
+    },
+    {
+      "sbu_id": "[54]",
+      "date": "2026-04-19",
+      "pin_date_time": "2026-04-19 17:37:06.631750",
+      "ff_id": 1765,
+      "dep_id": null,
+      "section_id": null,
+      "latitude": "23.7937394",
+      "longitude": "90.4045415",
+      "accuracy": 29.43199920654297,
+      "altitude": 28.5,
+      "altitudeAccuracy": "",
+      "heading": 288.6180419921875,
+      "speed": 0.4957827925682068,
+      "internet_speed": "",
+      "connection_type": ""
+    },
+    {
+      "sbu_id": "[54]",
+      "date": "2026-04-19",
+      "pin_date_time": "2026-04-19 17:40:10.333831",
+      "ff_id": 1765,
+      "dep_id": null,
+      "section_id": null,
+      "latitude": "23.7937215",
+      "longitude": "90.4045544",
+      "accuracy": 19.200000762939453,
+      "altitude": 28.5,
+      "altitudeAccuracy": "",
+      "heading": 190.17059326171875,
+      "speed": 0.4182320237159729,
+      "internet_speed": "",
+      "connection_type": ""
+    },
+    {
+      "sbu_id": "[54]",
+      "date": "2026-04-19",
+      "pin_date_time": "2026-04-19 17:43:12.690375",
+      "ff_id": 1765,
+      "dep_id": null,
+      "section_id": null,
+      "latitude": "23.7937991",
+      "longitude": "90.4044947",
+      "accuracy": 17.819000244140625,
+      "altitude": 29.400001525878906,
+      "altitudeAccuracy": "",
+      "heading": 276.3432312011719,
+      "speed": 0.5715140104293823,
+      "internet_speed": "",
+      "connection_type": ""
+    },
+    {
+      "sbu_id": "[54]",
+      "date": "2026-04-19",
+      "pin_date_time": "2026-04-19 17:46:16.074395",
+      "ff_id": 1765,
+      "dep_id": null,
+      "section_id": null,
+      "latitude": "23.7937683",
+      "longitude": "90.404546",
+      "accuracy": 19.531999588012695,
+      "altitude": 29.600000381469727,
+      "altitudeAccuracy": "",
+      "heading": 145.44894409179688,
+      "speed": 0.4685799777507782,
+      "internet_speed": "",
+      "connection_type": ""
+    },
+    {
+      "sbu_id": "[54]",
+      "date": "2026-04-19",
+      "pin_date_time": "2026-04-19 17:49:19.795500",
+      "ff_id": 1765,
+      "dep_id": null,
+      "section_id": null,
+      "latitude": "23.7938234",
+      "longitude": "90.4044212",
+      "accuracy": 18.277000427246094,
+      "altitude": 29.400001525878906,
+      "altitudeAccuracy": "",
+      "heading": 298.7890625,
+      "speed": 2.12319278717041,
+      "internet_speed": "",
+      "connection_type": ""
+    },
+    {
+      "sbu_id": "[54]",
+      "date": "2026-04-19",
+      "pin_date_time": "2026-04-19 17:52:21.483401",
+      "ff_id": 1765,
+      "dep_id": null,
+      "section_id": null,
+      "latitude": "23.7937575",
+      "longitude": "90.4045431",
+      "accuracy": 17.481000900268555,
+      "altitude": 29.400001525878906,
+      "altitudeAccuracy": "",
+      "heading": 135.97396850585938,
+      "speed": 1.5727273225784302,
+      "internet_speed": "",
+      "connection_type": ""
+    }
+  ],
+  "taDa-data": {
+    "remarks": "ggggh",
+    "submitted": false,
+    "sales_date": "2026-04-19",
+    "da_info": {
+      "survey_type": "outlet",
+      "point_id": 167,
+      "section_id": 213,
+      "allowance_type": "EX-HQ",
+      "amount": 700.0,
+      "sales_date": "2026-04-19"
+    },
+    "ta_rows": [
+      {
+        "identity": "1776587889987954",
+        "vehicle_id": 198,
+        "vehicle_slug": "CNG",
+        "from": "Banani",
+        "to": "Mirpur",
+        "km": "9",
+        "amount": "320",
+        "remarks": ""
+      }
+    ]
+  },
+  "attendance_configuration": {
+    "mandatory_attendance": 1,
+    "check_in": 0
+  }
 };

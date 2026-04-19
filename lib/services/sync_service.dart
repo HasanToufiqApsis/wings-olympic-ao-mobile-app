@@ -17,6 +17,18 @@ class SyncService {
   factory SyncService() => _instance;
   SyncService._internal();
 
+  int _parseAttendanceConfigValue(dynamic value) {
+    if (value is int) return value;
+    if (value is bool) return value ? 1 : 0;
+    if (value is String) {
+      final parsed = int.tryParse(value);
+      if (parsed != null) return parsed;
+      if (value.toLowerCase() == 'true') return 1;
+      if (value.toLowerCase() == 'false') return 0;
+    }
+    return 0;
+  }
+
   //create/get a path for sync file storing
   Future<String> getPath() async {
     Directory baseDir = await getApplicationDocumentsDirectory();
@@ -160,6 +172,45 @@ class SyncService {
 
   logoutFromSync() async {
     syncObj['logged_in'] = 0;
+    await writeSync(jsonEncode(syncObj));
+  }
+
+  Future<Map<String, dynamic>> getAttendanceConfiguration() async {
+    await checkSyncVariable();
+    if (syncObj['attendance_configuration'] is Map) {
+      return Map<String, dynamic>.from(syncObj['attendance_configuration'] as Map);
+    }
+    return <String, dynamic>{};
+  }
+
+  Future<bool> isMandatoryAttendanceEnabled() async {
+    final config = await getAttendanceConfiguration();
+    return _parseAttendanceConfigValue(config['mandatory_attendance']) == 1;
+  }
+
+  Future<bool> hasAttendanceCheckedIn() async {
+    final config = await getAttendanceConfiguration();
+    return _parseAttendanceConfigValue(config['check_in']) == 1;
+  }
+
+  Future<bool> shouldLockHomeMenusForAttendance() async {
+    final mandatory = await isMandatoryAttendanceEnabled();
+    if (!mandatory) return false;
+    final checkedIn = await hasAttendanceCheckedIn();
+    return !checkedIn;
+  }
+
+  Future<void> updateAttendanceCheckInStatus({required bool checkedIn}) async {
+    await checkSyncVariable();
+    final Map<String, dynamic> config =
+        syncObj['attendance_configuration'] is Map
+            ? Map<String, dynamic>.from(syncObj['attendance_configuration'] as Map)
+            : <String, dynamic>{};
+
+    config['mandatory_attendance'] =
+        _parseAttendanceConfigValue(config['mandatory_attendance']);
+    config['check_in'] = checkedIn ? 1 : 0;
+    syncObj['attendance_configuration'] = config;
     await writeSync(jsonEncode(syncObj));
   }
 

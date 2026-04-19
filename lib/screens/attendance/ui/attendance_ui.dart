@@ -121,6 +121,8 @@ class _AttendanceUIState extends ConsumerState<AttendanceUI> {
                                 });
                               },
                             ),
+                            _buildAttendanceStatusBadge(attendanceModel),
+                            const SizedBox(height: 18),
                             Consumer(builder: (context, ref, _) {
                               AsyncValue<LocationAddressModel<Placemark?>?> asyncLocation = ref.watch(currentAddressProvider);
                               return asyncLocation.when(
@@ -306,5 +308,74 @@ class _AttendanceUIState extends ConsumerState<AttendanceUI> {
       return 'Not found';
     }
     return 'পাওয়া যায়নি';
+  }
+
+  Widget _buildAttendanceStatusBadge(AttendanceModel attendanceModel) {
+    final status = attendanceModel.status;
+    final backgroundColor = _getAttendanceStatusBackground(status);
+    final textColor = _getAttendanceStatusTextColor(status);
+    final label = _getAttendanceStatusLabel(status);
+
+    return Container(
+      padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 10),
+      decoration: BoxDecoration(
+        color: backgroundColor,
+        borderRadius: BorderRadius.circular(999),
+      ),
+      child: Row(
+        mainAxisSize: MainAxisSize.min,
+        children: [
+          Container(
+            width: 10,
+            height: 10,
+            decoration: BoxDecoration(
+              color: textColor,
+              shape: BoxShape.circle,
+            ),
+          ),
+          const SizedBox(width: 10),
+          Text(
+            label,
+            style: TextStyle(
+              color: textColor,
+              fontWeight: FontWeight.w700,
+            ),
+          ),
+        ],
+      ),
+    );
+  }
+
+  String _getAttendanceStatusLabel(AttendanceStatus status) {
+    switch (status) {
+      case AttendanceStatus.noAttendance:
+        return 'Not Checked In';
+      case AttendanceStatus.checkInDone:
+        return 'Checked In';
+      case AttendanceStatus.attendanceDone:
+        return 'Checked Out';
+    }
+  }
+
+  Color _getAttendanceStatusBackground(AttendanceStatus status) {
+    switch (status) {
+      case AttendanceStatus.noAttendance:
+        return const Color(0xFFFFF1CC);
+      case AttendanceStatus.checkInDone:
+        return const Color(0xFFDFF7E5);
+      case AttendanceStatus.attendanceDone:
+        return const Color(0xFFFFE1E1);
+    }
+  }
+
+  Color _getAttendanceStatusTextColor(AttendanceStatus status) {
+    switch (status) {
+      case AttendanceStatus.noAttendance:
+        return const Color(0xFF8A6300);
+      case AttendanceStatus.checkInDone:
+        return const Color(0xFF1F7A36);
+      case AttendanceStatus.attendanceDone:
+        return const Color(0xFFB3261E);
+    }
   }
 }

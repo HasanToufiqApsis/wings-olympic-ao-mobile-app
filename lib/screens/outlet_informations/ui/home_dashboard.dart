@@ -26,12 +26,14 @@ import '../../../provider/global_provider.dart';
 import '../../../reusable_widgets/language_textbox.dart';
 import '../../../reusable_widgets/scaffold_widgets/appbar.dart';
 import '../../../services/change_route_service.dart';
+import '../../../services/connectivity_service.dart';
 import '../../../services/ff_services.dart';
 import '../../../services/geo_location_service.dart';
 import '../../../services/langugae_pack_service.dart';
 import '../../../services/location_category_services.dart';
 import '../../../services/outlet_services.dart';
 import '../../../services/sync_service.dart';
+import '../../../api/attendance_api.dart';
 import '../../allowance_management/ui/allowance_management_ui.dart';
 import '../../approval/ui/approval_dashboard.dart';
 import '../../asset_management/ui/asset_ui.dart';
@@ -85,6 +87,7 @@ class _HomeDashboardState extends ConsumerState<HomeDashboard> {
     LocationService(context).initialize();
     _outletController = OutletController(context: context, ref: ref);
     WidgetsBinding.instance.addPostFrameCallback((val) async {
+      await _syncAttendanceRestrictionForHome();
       final viewComplexityStr = await LocalStorageHelper.read(viewComplexityKey);
       if (viewComplexityStr != null) {
         final viewComplexity = ViewComplexity.fromString(viewComplexityStr.toString());
@@ -121,6 +124,7 @@ class _HomeDashboardState extends ConsumerState<HomeDashboard> {
   @override
   Widget build(BuildContext context) {
     AsyncValue<SrInfoModel?> asyncSrInfo = ref.watch(userDataProvider);
+    final attendanceLocked = ref.watch(homeDashboardAttendanceLockedProvider);
     return asyncSrInfo.when(
       data: (srInfo) {
         return Scaffold(
@@ -224,6 +228,7 @@ class _HomeDashboardState extends ConsumerState<HomeDashboard> {
                       getDashboardButton(
                         assetName: "outlet",
                         name: DashboardBtnNames.preorder,
+                        isAttendanceRestricted: attendanceLocked,
                         onPressed: () {
                           ref.refresh(couponDiscountProvider);
                           ref.refresh(selectedRetailerProvider);
@@ -233,6 +238,7 @@ class _HomeDashboardState extends ConsumerState<HomeDashboard> {
                       getDashboardButton(
                         assetName: "audit",
                         name: DashboardBtnNames.audit,
+                        isAttendanceRestricted: attendanceLocked,
                         onPressed: () {
                           Navigator.pushNamed(context, AuditUI.routeName);
                         },
@@ -240,6 +246,7 @@ class _HomeDashboardState extends ConsumerState<HomeDashboard> {
                       getDashboardButton(
                         assetName: "stock_verification",
                         name: DashboardBtnNames.stockVerification,
+                        isAttendanceRestricted: attendanceLocked,
                         onPressed: () {
                           Navigator.pushNamed(context, StockValidationUI.routeName);
                         },
@@ -247,6 +254,7 @@ class _HomeDashboardState extends ConsumerState<HomeDashboard> {
                       getDashboardButton(
                         assetName: "sync",
                         name: DashboardBtnNames.salesSubmit,
+                        isAttendanceRestricted: attendanceLocked,
                         onPressed: () {
                           Navigator.pushNamed(context, SaleSubmitUI.routeName);
                         },
@@ -350,6 +358,7 @@ class _HomeDashboardState extends ConsumerState<HomeDashboard> {
                         assetName: "taDa",
                         name: DashboardBtnNames.taDa,
                         extraPadding: 0.3.h,
+                        isAttendanceRestricted: attendanceLocked,
                         onPressed: () {
                           Navigator.pushNamed(context, OlympicTaDaUi.routeName, arguments: false);
                         },
@@ -357,6 +366,11 @@ class _HomeDashboardState extends ConsumerState<HomeDashboard> {
                     ],
                   ),
                 ),
+                if (attendanceLocked)
+                  Padding(
+                    padding: EdgeInsets.fromLTRB(3.w, 1.5.h, 3.w, 0),
+                    child: _buildAttendanceLockBanner(),
+                  ),
                 // Padding(
                 //   padding: EdgeInsets.only(top: 16, bottom: 16, right: 3.w, left: 3.w),
                 //   child: Consumer(
@@ -425,6 +439,7 @@ class _HomeDashboardState extends ConsumerState<HomeDashboard> {
     required String name,
     required VoidCallback onPressed,
     double? extraPadding,
+    bool isAttendanceRestricted = false,
   }) {
     AsyncValue<bool> asyncExist = ref.watch(dashboardButtonProvider(assetName));
     return asyncExist.when(
@@ -443,6 +458,10 @@ class _HomeDashboardState extends ConsumerState<HomeDashboard> {
             children: [
               InkWell(
                 onTap: () async {
+                  if (isAttendanceRestricted) {
+                    _showAttendanceRequiredMessage();
+                    return;
+                  }
                   bool enabled = await ChangeRouteService().checkIfBreakdownEnabled();
                   if (!enabled) {
                     onPressed();
@@ -452,15 +471,18 @@ class _HomeDashboardState extends ConsumerState<HomeDashboard> {
                   padding: EdgeInsets.symmetric(horizontal: 2.w),
                   child: AspectRatio(
                     aspectRatio: 1,
-                    child: Container(
-                      height: 10.h,
-                      width: 18.w,
-                      decoration: BoxDecoration(shape: BoxShape.circle, color: dashboaedItemColor),
-                      child: Padding(
-                        padding: EdgeInsets.symmetric(vertical: 2.2.h + (extraPadding ?? 0)),
-                        child: _useHero
-                            ? Hero(tag: '${name}img', child: Image.asset("assets/$assetName.png"))
-                            : Image.asset("assets/$assetName.png", height: 24, width: 24),
+                    child: Opacity(
+                      opacity: isAttendanceRestricted ? 0.45 : 1,
+                      child: Container(
+                        height: 10.h,
+                        width: 18.w,
+                        decoration: BoxDecoration(shape: BoxShape.circle, color: dashboaedItemColor),
+                        child: Padding(
+                          padding: EdgeInsets.symmetric(vertical: 2.2.h + (extraPadding ?? 0)),
+                          child: _useHero
+                              ? Hero(tag: '${name}img', child: Image.asset("assets/$assetName.png"))
+                              : Image.asset("assets/$assetName.png", height: 24, width: 24),
+                        ),
                       ),
                     ),
                   ),
@@ -494,7 +516,7 @@ class _HomeDashboardState extends ConsumerState<HomeDashboard> {
                                 style: TextStyle(
                                   fontSize: 9.sp,
                                   fontWeight: FontWeight.bold,
-                                  color: primaryBlue,
+                                  color: isAttendanceRestricted ? Colors.grey : primaryBlue,
                                 ),
                                 overflow: TextOverflow.ellipsis,
                                 textAlign: TextAlign.center,
@@ -521,6 +543,70 @@ class _HomeDashboardState extends ConsumerState<HomeDashboard> {
       },
       error: (error, _) => const SizedBox(height: 0, width: 0),
       loading: () => const SizedBox(height: 0, width: 0),
+    );
+  }
+
+  Future<void> _syncAttendanceRestrictionForHome() async {
+    await SyncService().checkSyncVariable();
+    final syncService = SyncService();
+    ref.read(homeDashboardAttendanceLockedProvider.notifier).state =
+        await syncService.shouldLockHomeMenusForAttendance();
+
+    if (!await ConnectivityService().checkInternet()) {
+      return;
+    }
+
+    final attendanceModel = await AttendanceAPI().getAttendanceStatus(DateTime.now());
+    final bool? checkedIn;
+    if (attendanceModel.status == AttendanceStatus.noAttendance) {
+      checkedIn = false;
+    } else if (attendanceModel.id != -1 &&
+        (attendanceModel.status == AttendanceStatus.checkInDone ||
+            attendanceModel.status == AttendanceStatus.attendanceDone)) {
+      checkedIn = true;
+    } else {
+      return;
+    }
+
+    await syncService.updateAttendanceCheckInStatus(checkedIn: checkedIn);
+    ref.read(homeDashboardAttendanceLockedProvider.notifier).state =
+        await syncService.shouldLockHomeMenusForAttendance();
+  }
+
+  void _showAttendanceRequiredMessage() {
+    ScaffoldMessenger.of(context)
+      ..hideCurrentSnackBar()
+      ..showSnackBar(
+        SnackBar(
+          content: LangText('Please complete check-in first.'),
+        ),
+      );
+  }
+
+  Widget _buildAttendanceLockBanner() {
+    return Container(
+      width: double.infinity,
+      padding: const EdgeInsets.all(12),
+      decoration: BoxDecoration(
+        color: const Color(0xFFFFF4E5),
+        borderRadius: BorderRadius.circular(12),
+        border: Border.all(color: const Color(0xFFFFC107)),
+      ),
+      child: Row(
+        children: [
+          Icon(Icons.lock_outline, color: Color(0xFFB26A00)),
+          SizedBox(width: 10),
+          Expanded(
+            child: LangText(
+              'Attendance is mandatory. Please check in first to do service.',
+              style: TextStyle(
+                color: Color(0xFF7A4B00),
+                fontWeight: FontWeight.w600,
+              ),
+            ),
+          ),
+        ],
+      ),
     );
   }
 

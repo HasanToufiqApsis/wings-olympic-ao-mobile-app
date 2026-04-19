@@ -26,7 +26,7 @@ import '../../../reusable_widgets/scaffold_widgets/cameraScreen.dart';
 import '../../../services/ff_services.dart';
 import '../../../services/geo_location_service.dart';
 import '../../../services/helper.dart';
-import '../../../services/sync_read_service.dart';
+import '../../../services/sync_service.dart';
 import '../../pjp_plan/service/pjp_plan_service.dart';
 import '../model/inside_fensing.dart';
 import '../ui/check_in_out_ui.dart';
@@ -386,6 +386,10 @@ class AttendanceController {
       }
       navigatorKey.currentState?.pop();
       if (ret.status == ReturnedStatus.success) {
+        if (type == AttendanceType.checkIn) {
+          await SyncService().updateAttendanceCheckInStatus(checkedIn: true);
+          ref.read(homeDashboardAttendanceLockedProvider.notifier).state = false;
+        }
         alerts.showModalWithWidget(
           child: Padding(
             padding: EdgeInsets.symmetric(vertical: 3.h, horizontal: 3.w),

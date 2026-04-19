@@ -798,6 +798,9 @@ final attendanceStatusCheckProvider =
       }
       return AttendanceModel(id: -1, status: AttendanceStatus.attendanceDone);
     });
+final homeDashboardAttendanceLockedProvider = StateProvider<bool>(
+  (ref) => false,
+);
 // ============================ change route ==========================================
 final selectedDateChangeRouteProvider = StateProvider.autoDispose<DateTime>(
   (ref) => DateTime.now(),
