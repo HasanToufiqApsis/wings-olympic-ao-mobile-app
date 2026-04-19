@@ -1019,14 +1019,52 @@ class OutletServices {
 
   /// Calls the retailers API for the given [pointId] and [saleDate],
   /// then replaces syncObj['retailers'] with the fetched list and writes the sync file.
-  Future<bool> fetchAndUpdateRetailersFromApi({
+  Future<ReturnedDataModel> fetchAndUpdateRetailersFromApi({
     required int pointId,
     required String saleDate,
     bool changeRequest = false,
   }) async {
     try {
       final srInfo = await _ffServices.getSrInfo();
-      if (srInfo == null) return false;
+      if (srInfo == null) {
+        return ReturnedDataModel(
+          status: ReturnedStatus.error,
+          errorMessage: 'SR info not found.',
+        );
+      }
+
+      await _syncService.checkSyncVariable();
+      final List<dynamic> lastServicesPoints =
+          syncObj['last_service_points'] is List
+              ? List<dynamic>.from(syncObj['last_service_points'] as List)
+              : <dynamic>[];
+      final int? maxServiceCount = switch (syncObj['max_service_count']) {
+        int value => value,
+        String value => int.tryParse(value),
+        num value => value.toInt(),
+        _ => null,
+      };
+
+      if (changeRequest &&
+          lastServicesPoints.any(
+            (servicePoint) => servicePoint.toString() == pointId.toString(),
+          )) {
+        return ReturnedDataModel(
+          status: ReturnedStatus.warning,
+          errorMessage:
+              'This service point cannot be selected because service has already been done or is in progress here.',
+        );
+      }
+
+      if (changeRequest &&
+          maxServiceCount != null &&
+          lastServicesPoints.length >= maxServiceCount) {
+        return ReturnedDataModel(
+          status: ReturnedStatus.warning,
+          errorMessage:
+              'Maximum service point change limit reached. You cannot change more than $maxServiceCount times.',
+        );
+      }
 
       final url = Links.getPointWiseOutletUrl(pointId: pointId, saleDate: saleDate);
       final result = await GlobalHttp(
@@ -1040,7 +1078,6 @@ class OutletServices {
         final data = result.data?['data'];
         if (data != null && data.containsKey('retailers')) {
           final List retailers = data['retailers'] as List;
-          await _syncService.checkSyncVariable();
           if (retailers.isNotEmpty) {
             syncObj['retailers'] = retailers;
           }
@@ -1055,20 +1092,22 @@ class OutletServices {
             Map questions = syncObj['survey_details']['questions'] as Map;
             questions.addAll(data['survey']['survey_details']['questions']);
           }
-          syncObj['userData']['pointId']=pointId;
-          List lastServicesPoints = syncObj['last_service_points'] as List;
-          if(changeRequest == true) {
+          syncObj['userData']['pointId'] = pointId;
+          if (changeRequest) {
             lastServicesPoints.add(pointId);
             syncObj['last_service_points'] = lastServicesPoints;
           }
 
           await _syncService.writeSync();
-          return true;
+          return ReturnedDataModel(status: ReturnedStatus.success);
         }
       }
     } catch (e, s) {
       Helper.dPrint('inside fetchAndUpdateRetailersFromApi OutletServices catch block $e $s');
     }
-    return false;
+    return ReturnedDataModel(
+      status: ReturnedStatus.error,
+      errorMessage: 'Failed to load outlets. Please check your connection.',
+    );
   }
 }

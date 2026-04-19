@@ -4,6 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:sizer/sizer.dart';
 import 'package:wings_olympic_sr/constants/constant_keys.dart';
+import 'package:wings_olympic_sr/constants/enum.dart';
 import 'package:wings_olympic_sr/constants/dashboard_btn_names.dart';
 import 'package:wings_olympic_sr/screens/olympic_tada/ui/olympic_tada_ui.dart';
 import 'package:wings_olympic_sr/screens/outlet_informations/ui/statistics_widget.dart';
@@ -726,19 +727,21 @@ class _HomeDashboardState extends ConsumerState<HomeDashboard> {
                               errorMsg = null;
                             });
                             final saleDate = await _ffServices.getSalesDate();
-                            final success =
+                            final result =
                                 await _outletServices.fetchAndUpdateRetailersFromApi(
                               pointId: selectedPoint!.id,
                               saleDate: saleDate,
                             );
                             setDialogState(() => isLoading = false);
-                            if (success) {
+                            if (result.status == ReturnedStatus.success) {
                               if (dialogContext.mounted) {
                                 Navigator.of(dialogContext).pop();
                               }
                             } else {
                               setDialogState(
-                                () => errorMsg = 'Failed to load outlets. Please check your connection.',
+                                () =>
+                                    errorMsg = result.errorMessage ??
+                                        'Failed to load outlets. Please check your connection.',
                               );
                             }
                           },

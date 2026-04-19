@@ -905,7 +905,7 @@ class _SettingsUIState extends ConsumerState<SettingsUI> {
             ),
           );
         },
-        error: (error, _) => Center(child: Text("Error loading settings")),
+        error: (error, _) => Center(child: LangText("Error loading settings")),
         loading: () => Center(child: CircularProgressIndicator()),
       ),
     );
@@ -1052,7 +1052,7 @@ class _SettingsUIState extends ConsumerState<SettingsUI> {
                         child: const Icon(Icons.location_on, color: primary, size: 22),
                       ),
                       const SizedBox(width: 10),
-                      const Text(
+                      LangText(
                         'Change Point',
                         style: TextStyle(
                           fontSize: 16,
@@ -1173,7 +1173,7 @@ class _SettingsUIState extends ConsumerState<SettingsUI> {
                     if (errorMsg != null) ...
                       [
                         const SizedBox(height: 10),
-                        Text(
+                        LangText(
                           errorMsg!,
                           style: const TextStyle(color: Colors.red, fontSize: 12),
                         ),
@@ -1211,23 +1211,25 @@ class _SettingsUIState extends ConsumerState<SettingsUI> {
                               errorMsg = null;
                             });
                             final saleDate = await _ffServices.getSalesDate();
-                            final success =
+                            final result =
                                 await _outletServices.fetchAndUpdateRetailersFromApi(
                               pointId: selectedPoint!.id,
                               saleDate: saleDate,
-                                  changeRequest: true
+                              changeRequest: true,
                             );
                             setDialogState(() => isLoading = false);
-                            if (success) {
+                            if (result.status == ReturnedStatus.success) {
                               if (dialogContext.mounted) {
                                 Navigator.of(dialogContext).pop();
                                 ScaffoldMessenger.of(context).showSnackBar(
-                                  SnackBar(content: Text('Service point updated successfully')),
+                                  SnackBar(content: LangText('Service point updated successfully')),
                                 );
                               }
                             } else {
                               setDialogState(
-                                () => errorMsg = 'Failed to load outlets. Please check your connection.',
+                                () =>
+                                    errorMsg = result.errorMessage ??
+                                        'Failed to load outlets. Please check your connection.',
                               );
                             }
                           },
@@ -1240,7 +1242,7 @@ class _SettingsUIState extends ConsumerState<SettingsUI> {
                               color: Colors.white,
                             ),
                           )
-                        : const Text(
+                        : LangText(
                             'Save Point',
                             style: TextStyle(fontWeight: FontWeight.bold, fontSize: 15),
                           ),
@@ -1266,7 +1268,7 @@ class _SettingsUIState extends ConsumerState<SettingsUI> {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
-        Text(
+        LangText(
           label,
           style: TextStyle(
             fontSize: 12,
@@ -1293,7 +1295,7 @@ class _SettingsUIState extends ConsumerState<SettingsUI> {
                   children: [
                     Icon(icon, size: 16, color: enabled ? Colors.grey : Colors.grey.shade400),
                     const SizedBox(width: 6),
-                    Text(
+                    LangText(
                       enabled ? 'Select $label' : 'Select ${_getPreviousLabel(label)} first',
                       style: TextStyle(
                         color: enabled ? Colors.grey : Colors.grey.shade400,
@@ -1307,7 +1309,7 @@ class _SettingsUIState extends ConsumerState<SettingsUI> {
                     .map(
                       (item) => DropdownMenuItem<T>(
                         value: item,
-                        child: Text(
+                        child: LangText(
                           itemLabel(item),
                           style: const TextStyle(fontSize: 13),
                           overflow: TextOverflow.ellipsis,
