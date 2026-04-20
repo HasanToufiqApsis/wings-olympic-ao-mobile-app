@@ -13,7 +13,7 @@ class SalesDateApi{
     try{
       SrInfoModel? srInfo = await _ffServices.getSrInfo();
       if(srInfo != null){
-        String urlString = "${Links.baseUrl}${Links.salesDateUrl}/${srInfo.depId}";
+        String urlString = "${Links.baseUrl}${Links.salesDateUrl}";
         Uri url = Uri.parse(urlString);
         var response = await http.get(url,headers: {
           "Content-Type": "application/json",
@@ -44,6 +44,7 @@ class SalesDateApi{
       if(isConnected){
         String? salesDate = await fetch();
         // String? salesDate = apiDateFormat.format(DateTime.now());
+        print("sate date --------->>>>>>>> =========== ${salesDate}");
         if(salesDate !=null){
           String syncSalesDate = await _ffServices.getSalesDate();
           print("sate date --------->>>>>>>> ${salesDate} :: ${syncSalesDate}");

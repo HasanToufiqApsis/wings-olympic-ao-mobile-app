@@ -101,8 +101,8 @@ class VerificationController {
           if (kDebugMode == false) {
             txt = jsonEncode(syncDataModel.data);
           } else {
-            // txt = jsonEncode(syncDataModel.data);
-            txt = jsonEncode(dummyData);
+            txt = jsonEncode(syncDataModel.data);
+            // txt = jsonEncode(dummyData);
           }
           await _syncService.writeSync(txt);
           // await LocalStorageHelper.save('timeStampList', jsonEncode([]));

@@ -5,7 +5,7 @@ class Links {
   static String baseUrl = publicUrl;
 
 
-  static String salesDateUrl = "/app-api/sales/get-enable-sales-date";
+  static String salesDateUrl = "/sync-file/get-enable-sales-date";
   static String logInAssets = "/auth/login";
   static String updatePassword = "/app-api/ff-auth/change-password";
   static String syncAssets = "/sync-file";
