@@ -12,7 +12,7 @@ import '../service/olympic_tada_service.dart';
 
 class OlympicTaDaController {
   OlympicTaDaController({required this.context, required this.ref})
-      : alerts = Alerts(context: context);
+    : alerts = Alerts(context: context);
 
   final BuildContext context;
   final WidgetRef ref;
@@ -47,8 +47,7 @@ class OlympicTaDaController {
     required OlympicDaInfo? daInfo,
     required String remarks,
   }) async {
-    final validationMessage =
-        validateEntries(entries: entries, daInfo: daInfo);
+    final validationMessage = validateEntries(entries: entries, daInfo: daInfo);
     if (validationMessage != null) {
       alerts.customDialog(
         type: AlertType.warning,
@@ -74,8 +73,7 @@ class OlympicTaDaController {
     required OlympicDaInfo? daInfo,
     required String remarks,
   }) async {
-    final validationMessage =
-        validateEntries(entries: entries, daInfo: daInfo);
+    final validationMessage = validateEntries(entries: entries, daInfo: daInfo);
     if (validationMessage != null) {
       alerts.customDialog(
         type: AlertType.warning,
@@ -86,12 +84,11 @@ class OlympicTaDaController {
 
     alerts.floatingLoading();
 
-    final ReturnedDataModel returnedDataModel =
-        await leaveManagementAPI.sendOlympicTaDaData(
-      taEntries: entries.where((entry) => !entry.isEmpty).toList(),
-      daInfo: daInfo!,
-      remarks: remarks,
-    );
+    final ReturnedDataModel returnedDataModel = await leaveManagementAPI
+        .sendOlympicTaDaData(
+          taEntries: entries.where((entry) => !entry.isEmpty).toList(),
+          remarks: remarks,
+        );
 
     navigatorKey.currentState?.pop();
     if (returnedDataModel.status == ReturnedStatus.success) {

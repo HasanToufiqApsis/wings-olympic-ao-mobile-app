@@ -11,7 +11,6 @@ import '../models/returned_data_model.dart';
 import '../models/sr_info_model.dart';
 import '../screens/allowance_management/model/created_tada_model.dart';
 import '../screens/leave_management/model/selected_vehicle_with_tada.dart';
-import '../screens/olympic_tada/model/olympic_da_info.dart';
 import '../screens/olympic_tada/model/olympic_tada_entry.dart';
 import '../services/Image_service.dart';
 import '../services/connectivity_service.dart';
@@ -28,14 +27,15 @@ class LeaveManagementAPI {
     try {
       SrInfoModel sr = await syncReadService.getSrInfo();
       ReturnedDataModel returnedDataModel = await GlobalHttp(
-              uri: "${Links.baseUrl}/${Links.getLeaveDataUrl(ffId: sr.ffId??0)}",
-              httpType: HttpType.get,
-              accessToken: sr.accessToken,
-              refreshToken: sr.refreshToken)
-          .fetch();
+        uri: "${Links.baseUrl}/${Links.getLeaveDataUrl(ffId: sr.ffId ?? 0)}",
+        httpType: HttpType.get,
+        accessToken: sr.accessToken,
+        refreshToken: sr.refreshToken,
+      ).fetch();
       if (returnedDataModel.status == ReturnedStatus.success) {
-        LeaveManagementModel leaveModel =
-            LeaveManagementModel.fromJson(returnedDataModel.data["data"]);
+        LeaveManagementModel leaveModel = LeaveManagementModel.fromJson(
+          returnedDataModel.data["data"],
+        );
         return leaveModel;
       }
     } catch (e, s) {
@@ -48,14 +48,15 @@ class LeaveManagementAPI {
     try {
       SrInfoModel sr = await syncReadService.getSrInfo();
       ReturnedDataModel returnedDataModel = await GlobalHttp(
-              uri: "${Links.baseUrl}${Links.getMovementDataUrl}${sr.ffId}",
-              httpType: HttpType.get,
-              accessToken: sr.accessToken,
-              refreshToken: sr.refreshToken)
-          .fetch();
+        uri: "${Links.baseUrl}${Links.getMovementDataUrl}${sr.ffId}",
+        httpType: HttpType.get,
+        accessToken: sr.accessToken,
+        refreshToken: sr.refreshToken,
+      ).fetch();
       if (returnedDataModel.status == ReturnedStatus.success) {
-        LeaveManagementModel leaveModel =
-            LeaveManagementModel.fromJson(returnedDataModel.data["data"]);
+        LeaveManagementModel leaveModel = LeaveManagementModel.fromJson(
+          returnedDataModel.data["data"],
+        );
         return leaveModel;
       }
     } catch (e, s) {
@@ -69,17 +70,16 @@ class LeaveManagementAPI {
     try {
       SrInfoModel sr = await syncReadService.getSrInfo();
       ReturnedDataModel returnedDataModel = await GlobalHttp(
-              uri: "${Links.baseUrl}${Links.getTaDaDataUrl(sr.ffId, sr.userType)}",
-              httpType: HttpType.get,
-              accessToken: sr.accessToken,
-              refreshToken: sr.refreshToken)
-          .fetch();
+        uri: "${Links.baseUrl}${Links.getTaDaDataUrl(sr.ffId, sr.userType)}",
+        httpType: HttpType.get,
+        accessToken: sr.accessToken,
+        refreshToken: sr.refreshToken,
+      ).fetch();
       if (returnedDataModel.status == ReturnedStatus.success) {
-        for(var val in returnedDataModel.data["data"]) {
+        for (var val in returnedDataModel.data["data"]) {
           final taDaModel = CreatedTaDaModel.fromJson(val);
           finalList.add(taDaModel);
         }
-
       }
     } catch (e, s) {
       Helper.dPrint("inside LeaveManagementAPI getMovementData error $e $s");
@@ -87,12 +87,14 @@ class LeaveManagementAPI {
     return finalList;
   }
 
-  Future<ReturnedDataModel> sendLeaveData(
-      {required LeaveManagementTypes leaveManagementTypes,
-      required DateTimeRange dateTimeRange,
-      required String reason}) async {
-    ReturnedDataModel returnedDataModel =
-        ReturnedDataModel(status: ReturnedStatus.error);
+  Future<ReturnedDataModel> sendLeaveData({
+    required LeaveManagementTypes leaveManagementTypes,
+    required DateTimeRange dateTimeRange,
+    required String reason,
+  }) async {
+    ReturnedDataModel returnedDataModel = ReturnedDataModel(
+      status: ReturnedStatus.error,
+    );
     try {
       SrInfoModel sr = await syncReadService.getSrInfo();
       Map payload = {
@@ -103,29 +105,31 @@ class LeaveManagementAPI {
         "end_date": apiDateFormat.format(dateTimeRange.end),
         "total_days":
             dateTimeRange.end.difference(dateTimeRange.start).inDays + 1,
-        "reason": reason
+        "reason": reason,
       };
       returnedDataModel = await GlobalHttp(
-              uri: "${Links.baseUrl}${Links.setLeaveDataUrl}",
-              httpType: HttpType.post,
-              body: jsonEncode(payload),
-              accessToken: sr.accessToken,
-              refreshToken: sr.refreshToken)
-          .fetch();
+        uri: "${Links.baseUrl}${Links.setLeaveDataUrl}",
+        httpType: HttpType.post,
+        body: jsonEncode(payload),
+        accessToken: sr.accessToken,
+        refreshToken: sr.refreshToken,
+      ).fetch();
     } catch (e, s) {
       Helper.dPrint("inside LeaveManagementAPI sendLeaveData error $e $s");
     }
     return returnedDataModel;
   }
 
-  Future<ReturnedDataModel> sendMovementData(
-      {required LeaveManagementTypes leaveManagementTypes,
-      required DateTime dateTimeRange,
-      required String reason,
-      required String tada,
-      required String imagePath}) async {
-    ReturnedDataModel returnedDataModel =
-        ReturnedDataModel(status: ReturnedStatus.error);
+  Future<ReturnedDataModel> sendMovementData({
+    required LeaveManagementTypes leaveManagementTypes,
+    required DateTime dateTimeRange,
+    required String reason,
+    required String tada,
+    required String imagePath,
+  }) async {
+    ReturnedDataModel returnedDataModel = ReturnedDataModel(
+      status: ReturnedStatus.error,
+    );
     try {
       SrInfoModel sr = await syncReadService.getSrInfo();
       Map payload = {
@@ -136,7 +140,7 @@ class LeaveManagementAPI {
         "end_date": apiDateFormat.format(dateTimeRange),
         "ta_da": tada,
         "total_days": 1,
-        "reason": reason
+        "reason": reason,
       };
       if (sr.depId != null) {
         payload["dep_id"] = sr.depId;
@@ -157,34 +161,42 @@ class LeaveManagementAPI {
     return returnedDataModel;
   }
 
-  Future<ReturnedDataModel> sendTaDaData(
-      {
-        required String fromAddress,
-        required String toAddress,
-        required String contactPerson,
-        required String contactNumber,
-        required String reason,
-        required List<SelectedVehicleWithTaDa> vehicleTaDa,
-        required List<SelectedVehicleWithTaDa> otherTaDa,
-        required DateTime dateRange,
-        required List<String> images,
-      }) async {
-    ReturnedDataModel returnedDataModel =
-        ReturnedDataModel(status: ReturnedStatus.error);
+  Future<ReturnedDataModel> sendTaDaData({
+    required String fromAddress,
+    required String toAddress,
+    required String contactPerson,
+    required String contactNumber,
+    required String reason,
+    required List<SelectedVehicleWithTaDa> vehicleTaDa,
+    required List<SelectedVehicleWithTaDa> otherTaDa,
+    required DateTime dateRange,
+    required List<String> images,
+  }) async {
+    ReturnedDataModel returnedDataModel = ReturnedDataModel(
+      status: ReturnedStatus.error,
+    );
     try {
       SrInfoModel sr = await syncReadService.getSrInfo();
       List costList = [];
-      for(var vehicle in vehicleTaDa) {
-        costList.add({"cost_type" : "${vehicle.selectedTaDa?.id}", "cost": "${vehicle.textEditingController?.text}"});
+      for (var vehicle in vehicleTaDa) {
+        costList.add({
+          "cost_type": "${vehicle.selectedTaDa?.id}",
+          "cost": "${vehicle.textEditingController?.text}",
+        });
       }
-      for(var vehicle in otherTaDa) {
-        costList.add({"cost_type" : "${vehicle.selectedTaDa?.id}", "cost": "${vehicle.textEditingController?.text}"});
+      for (var vehicle in otherTaDa) {
+        costList.add({
+          "cost_type": "${vehicle.selectedTaDa?.id}",
+          "cost": "${vehicle.textEditingController?.text}",
+        });
       }
 
       List<String> imagesNames = [];
 
-      for(var imagePath in images) {
-        imagesNames.add("tada/${sr.userType}/${sr.ffId}/${imagePath.split("/").last}");
+      for (var imagePath in images) {
+        imagesNames.add(
+          "tada/${sr.userType}/${sr.ffId}/${imagePath.split("/").last}",
+        );
         await sendManualOverrideImageToServer(File(imagePath), sr);
       }
 
@@ -201,7 +213,7 @@ class LeaveManagementAPI {
         "contact_name": contactPerson,
         "contact_no": contactNumber,
         "ta_da_cost": costList,
-        "ta_da_image":imagesNames,
+        "ta_da_image": imagesNames,
       };
 
       log("payload :::: ${jsonEncode(payload)}");
@@ -221,38 +233,27 @@ class LeaveManagementAPI {
 
   Future<ReturnedDataModel> sendOlympicTaDaData({
     required List<OlympicTaDaEntry> taEntries,
-    required OlympicDaInfo daInfo,
     required String remarks,
   }) async {
-    ReturnedDataModel returnedDataModel =
-    ReturnedDataModel(status: ReturnedStatus.error);
+    ReturnedDataModel returnedDataModel = ReturnedDataModel(
+      status: ReturnedStatus.error,
+    );
     try {
       SrInfoModel sr = await syncReadService.getSrInfo();
-      List costList = [];
+      final List<Map<String, dynamic>> travelInfoList =
+          <Map<String, dynamic>>[];
       num total = 0;
       for (final entry in taEntries) {
         total += entry.amount;
-        costList.add(entry.toApiJson());
+        travelInfoList.add(entry.toTravelInfoJson());
       }
-
-      total += daInfo.amount;
-      costList.add({
-        "cost_type": "${daInfo.sectionId ?? daInfo.pointId}",
-        "cost": "${daInfo.amount.toStringAsFixed(0)}",
-        "entry_type": "DA",
-        "survey_type": daInfo.surveyType,
-        "point_id": daInfo.pointId,
-        "section_id": daInfo.sectionId,
-        "allowance_type": daInfo.allowanceType,
-      });
 
       Map payload = {
         "user_id": sr.ffId,
         "user_type_id": sr.userType,
-        "ta_da_cost": costList,
-        "remark": remarks,
         "total_cost": total,
-        "ta_da_image": <String>[],
+        "remark": remarks,
+        "ta_da_travel_info": travelInfoList,
       };
 
       log("payload :::: ${jsonEncode(payload)}");
@@ -273,12 +274,15 @@ class LeaveManagementAPI {
   Future<ReturnedDataModel> getMovementForThisData({
     required DateTime dateRange,
   }) async {
-    ReturnedDataModel returnedDataModel = ReturnedDataModel(status: ReturnedStatus.error);
+    ReturnedDataModel returnedDataModel = ReturnedDataModel(
+      status: ReturnedStatus.error,
+    );
     try {
       SrInfoModel sr = await syncReadService.getSrInfo();
 
       returnedDataModel = await GlobalHttp(
-        uri: "${Links.baseUrl}${Links.checkTodayMovementDataUrl(sr.ffId, sr.userType, apiDateFormat.format(dateRange))}",
+        uri:
+            "${Links.baseUrl}${Links.checkTodayMovementDataUrl(sr.ffId, sr.userType, apiDateFormat.format(dateRange))}",
         httpType: HttpType.get,
         // imagePath: imagePath,
         accessToken: sr.accessToken,
@@ -290,35 +294,43 @@ class LeaveManagementAPI {
     return returnedDataModel;
   }
 
-  Future<ReturnedDataModel> updateTaDaData(
-      {
-        required String fromAddress,
-        required String toAddress,
-        required String contactPerson,
-        required String contactNumber,
-        required String reason,
-        required List<SelectedVehicleWithTaDa> vehicleTaDa,
-        required List<SelectedVehicleWithTaDa> otherTaDa,
-        required DateTimeRange dateRange,
-        required List<String> images,
-        required CreatedTaDaModel? tada,
-      }) async {
-    ReturnedDataModel returnedDataModel =
-        ReturnedDataModel(status: ReturnedStatus.error);
+  Future<ReturnedDataModel> updateTaDaData({
+    required String fromAddress,
+    required String toAddress,
+    required String contactPerson,
+    required String contactNumber,
+    required String reason,
+    required List<SelectedVehicleWithTaDa> vehicleTaDa,
+    required List<SelectedVehicleWithTaDa> otherTaDa,
+    required DateTimeRange dateRange,
+    required List<String> images,
+    required CreatedTaDaModel? tada,
+  }) async {
+    ReturnedDataModel returnedDataModel = ReturnedDataModel(
+      status: ReturnedStatus.error,
+    );
     try {
       SrInfoModel sr = await syncReadService.getSrInfo();
       List costList = [];
-      for(var vehicle in vehicleTaDa) {
-        costList.add({"cost_type" : "${vehicle.selectedTaDa?.id}", "cost": "${vehicle.textEditingController?.text}"});
+      for (var vehicle in vehicleTaDa) {
+        costList.add({
+          "cost_type": "${vehicle.selectedTaDa?.id}",
+          "cost": "${vehicle.textEditingController?.text}",
+        });
       }
-      for(var vehicle in otherTaDa) {
-        costList.add({"cost_type" : "${vehicle.selectedTaDa?.id}", "cost": "${vehicle.textEditingController?.text}"});
+      for (var vehicle in otherTaDa) {
+        costList.add({
+          "cost_type": "${vehicle.selectedTaDa?.id}",
+          "cost": "${vehicle.textEditingController?.text}",
+        });
       }
 
       List<String> imagesNames = [];
 
-      for(var imagePath in images) {
-        imagesNames.add("tada/${sr.userType}/${sr.ffId}/${imagePath.split("/").last}");
+      for (var imagePath in images) {
+        imagesNames.add(
+          "tada/${sr.userType}/${sr.ffId}/${imagePath.split("/").last}",
+        );
         await sendManualOverrideImageToServer(File(imagePath), sr);
       }
 
@@ -340,7 +352,7 @@ class LeaveManagementAPI {
 
       log("payload :::: ${jsonEncode(payload)}");
       returnedDataModel = await GlobalHttp(
-        uri: "${Links.baseUrl}${Links.updateTaDaDataUrl(tada?.taDaId??0)}",
+        uri: "${Links.baseUrl}${Links.updateTaDaDataUrl(tada?.taDaId ?? 0)}",
         httpType: HttpType.patch,
         body: jsonEncode(payload),
         // imagePath: imagePath,
@@ -358,7 +370,8 @@ class LeaveManagementAPI {
     if (await ConnectivityService().checkInternet()) {
       String date = await FFServices().getSalesDate();
       DateTime saleDate = DateTime.parse(date);
-      String path = "tada/${sr?.userType}/${sr?.ffId}/${compressedImage.path.split("/").last}";
+      String path =
+          "tada/${sr?.userType}/${sr?.ffId}/${compressedImage.path.split("/").last}";
       bool done = await ImageService().sendImage(compressedImage.path, path);
       if (done) {
         if (await compressedImage.exists()) {
@@ -394,14 +407,13 @@ class LeaveManagementAPI {
     required int value,
     required LeaveManagementData movement,
   }) async {
-    ReturnedDataModel returnedDataModel =
-        ReturnedDataModel(status: ReturnedStatus.error);
+    ReturnedDataModel returnedDataModel = ReturnedDataModel(
+      status: ReturnedStatus.error,
+    );
 
     try {
       SrInfoModel sr = await syncReadService.getSrInfo();
-      Map payload = {
-        "ta_da": value,
-      };
+      Map payload = {"ta_da": value};
       returnedDataModel = await GlobalHttp(
         uri: "${Links.baseUrl}${Links.movementEditUrl}/${movement.id}",
         httpType: HttpType.patch,
@@ -416,7 +428,9 @@ class LeaveManagementAPI {
       debugPrint(stck.toString());
 
       return ReturnedDataModel(
-          status: ReturnedStatus.error, errorMessage: error.toString());
+        status: ReturnedStatus.error,
+        errorMessage: error.toString(),
+      );
     }
   }
 
@@ -428,8 +442,9 @@ class LeaveManagementAPI {
     required String imagePath,
     required LeaveManagementData movement,
   }) async {
-    ReturnedDataModel returnedDataModel =
-        ReturnedDataModel(status: ReturnedStatus.error);
+    ReturnedDataModel returnedDataModel = ReturnedDataModel(
+      status: ReturnedStatus.error,
+    );
 
     try {
       SrInfoModel sr = await syncReadService.getSrInfo();
@@ -440,7 +455,7 @@ class LeaveManagementAPI {
         "end_date": apiDateFormat.format(dateTimeRange),
         "ta_da": tada,
         "total_days": 1,
-        "reason": reason
+        "reason": reason,
       };
       returnedDataModel = await GlobalHttp(
         uri: "${Links.baseUrl}${Links.movementEditUrl}/${movement.id}",
@@ -456,7 +471,9 @@ class LeaveManagementAPI {
       debugPrint(stck.toString());
 
       return ReturnedDataModel(
-          status: ReturnedStatus.error, errorMessage: error.toString());
+        status: ReturnedStatus.error,
+        errorMessage: error.toString(),
+      );
     }
   }
 }

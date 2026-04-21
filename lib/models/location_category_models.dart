@@ -50,14 +50,16 @@ class PointModel {
   final int id;
   final String name;
   final int parentId;
+  final String type;
 
-  PointModel({required this.id, required this.name, this.parentId = 0});
+  PointModel({required this.id, required this.name, this.parentId = 0, required this.type});
 
   factory PointModel.fromJson(Map json) {
     return PointModel(
       id: json['id'],
       name: json['name'],
       parentId: json['parent_id'] ?? 0,
+      type: json['type'] ?? "HQ",
     );
   }
 }

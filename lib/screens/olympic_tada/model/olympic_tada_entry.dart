@@ -11,12 +11,12 @@ class OlympicTaDaEntry {
     TextEditingController? kmController,
     TextEditingController? amountController,
     TextEditingController? remarksController,
-  })  : identity = identity ?? DateTime.now().microsecondsSinceEpoch.toString(),
-        fromController = fromController ?? TextEditingController(),
-        toController = toController ?? TextEditingController(),
-        kmController = kmController ?? TextEditingController(),
-        amountController = amountController ?? TextEditingController(),
-        remarksController = remarksController ?? TextEditingController();
+  }) : identity = identity ?? DateTime.now().microsecondsSinceEpoch.toString(),
+       fromController = fromController ?? TextEditingController(),
+       toController = toController ?? TextEditingController(),
+       kmController = kmController ?? TextEditingController(),
+       amountController = amountController ?? TextEditingController(),
+       remarksController = remarksController ?? TextEditingController();
 
   final String identity;
   TaDaVehicleModel? selectedVehicle;
@@ -44,14 +44,17 @@ class OlympicTaDaEntry {
     return OlympicTaDaEntry(
       identity: json['identity']?.toString(),
       selectedVehicle: selectedVehicle,
-      fromController:
-          TextEditingController(text: json['from']?.toString() ?? ''),
+      fromController: TextEditingController(
+        text: json['from']?.toString() ?? '',
+      ),
       toController: TextEditingController(text: json['to']?.toString() ?? ''),
       kmController: TextEditingController(text: json['km']?.toString() ?? ''),
-      amountController:
-          TextEditingController(text: json['amount']?.toString() ?? ''),
-      remarksController:
-          TextEditingController(text: json['remarks']?.toString() ?? ''),
+      amountController: TextEditingController(
+        text: json['amount']?.toString() ?? '',
+      ),
+      remarksController: TextEditingController(
+        text: json['remarks']?.toString() ?? '',
+      ),
     );
   }
 
@@ -71,8 +74,7 @@ class OlympicTaDaEntry {
         amount > 0;
   }
 
-  double get amount =>
-      double.tryParse(amountController.text.trim()) ?? 0;
+  double get amount => double.tryParse(amountController.text.trim()) ?? 0;
 
   double? get km {
     final value = kmController.text.trim();
@@ -93,16 +95,13 @@ class OlympicTaDaEntry {
     };
   }
 
-  Map<String, dynamic> toApiJson() {
+  Map<String, dynamic> toTravelInfoJson() {
     return <String, dynamic>{
-      'cost_type': '${selectedVehicle?.id ?? 0}',
-      'cost': amountController.text.trim(),
-      'entry_type': 'TA',
-      'vehicle_id': selectedVehicle?.id,
-      'vehicle_slug': selectedVehicle?.slug,
       'from_location': fromController.text.trim(),
       'to_location': toController.text.trim(),
-      'km': kmController.text.trim(),
+      'km': km ?? 0,
+      'category': selectedVehicle?.id ?? 0,
+      'amount': amount,
       'remark': remarksController.text.trim(),
     };
   }
