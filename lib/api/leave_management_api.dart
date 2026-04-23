@@ -11,10 +11,10 @@ import '../models/returned_data_model.dart';
 import '../models/sr_info_model.dart';
 import '../screens/allowance_management/model/created_tada_model.dart';
 import '../screens/leave_management/model/selected_vehicle_with_tada.dart';
+import '../screens/olympic_tada/model/olympic_da_info.dart';
 import '../screens/olympic_tada/model/olympic_tada_entry.dart';
 import '../services/Image_service.dart';
 import '../services/connectivity_service.dart';
-import '../services/ff_services.dart';
 import '../services/helper.dart';
 import '../services/sync_read_service.dart';
 import 'global_http.dart';
@@ -27,7 +27,7 @@ class LeaveManagementAPI {
     try {
       SrInfoModel sr = await syncReadService.getSrInfo();
       ReturnedDataModel returnedDataModel = await GlobalHttp(
-        uri: "${Links.baseUrl}/${Links.getLeaveDataUrl(ffId: sr.ffId ?? 0)}",
+        uri: "${Links.baseUrl}/${Links.getLeaveDataUrl(ffId: sr.ffId)}",
         httpType: HttpType.get,
         accessToken: sr.accessToken,
         refreshToken: sr.refreshToken,
@@ -233,6 +233,7 @@ class LeaveManagementAPI {
 
   Future<ReturnedDataModel> sendOlympicTaDaData({
     required List<OlympicTaDaEntry> taEntries,
+    required OlympicDaInfo daInfo,
     required String remarks,
   }) async {
     ReturnedDataModel returnedDataModel = ReturnedDataModel(
@@ -242,11 +243,15 @@ class LeaveManagementAPI {
       SrInfoModel sr = await syncReadService.getSrInfo();
       final List<Map<String, dynamic>> travelInfoList =
           <Map<String, dynamic>>[];
-      num total = 0;
+      num total = daInfo.amount;
       for (final entry in taEntries) {
         total += entry.amount;
         travelInfoList.add(entry.toTravelInfoJson());
       }
+
+      final List<Map<String, dynamic>> daList = <Map<String, dynamic>>[
+        daInfo.toDaJson(),
+      ];
 
       Map payload = {
         "user_id": sr.ffId,
@@ -254,6 +259,7 @@ class LeaveManagementAPI {
         "total_cost": total,
         "remark": remarks,
         "ta_da_travel_info": travelInfoList,
+        "ta_da_da": daList,
       };
 
       log("payload :::: ${jsonEncode(payload)}");
@@ -365,13 +371,13 @@ class LeaveManagementAPI {
     return returnedDataModel;
   }
 
-  sendManualOverrideImageToServer(File compressedImage, SrInfoModel sr) async {
-    SrInfoModel? sr = await FFServices().getSrInfo();
+  Future<void> sendManualOverrideImageToServer(
+    File compressedImage,
+    SrInfoModel sr,
+  ) async {
     if (await ConnectivityService().checkInternet()) {
-      String date = await FFServices().getSalesDate();
-      DateTime saleDate = DateTime.parse(date);
       String path =
-          "tada/${sr?.userType}/${sr?.ffId}/${compressedImage.path.split("/").last}";
+          "tada/${sr.userType}/${sr.ffId}/${compressedImage.path.split("/").last}";
       bool done = await ImageService().sendImage(compressedImage.path, path);
       if (done) {
         if (await compressedImage.exists()) {

@@ -54,6 +54,8 @@ class _OlympicTaDaUiState extends ConsumerState<OlympicTaDaUi> {
     super.dispose();
   }
 
+  bool get _isTaLocked => _daInfo?.isHq == true;
+
   Future<void> _loadData() async {
     final oldEntries = _entries;
     final vehicleTypes = await _service.vehicleTypeList();
@@ -66,18 +68,29 @@ class _OlympicTaDaUiState extends ConsumerState<OlympicTaDaUi> {
       draft: draft,
       vehicles: vehicleTypes,
     );
+    final resolvedDaInfo = daResolution.daInfo ?? draft?.daInfo;
+    final lockTa = resolvedDaInfo?.isHq == true;
+    final daMessage = daResolution.daInfo != null
+        ? (lockTa
+            ? 'First survey point type is HQ, so only DA will be submitted.'
+            : null)
+        : (resolvedDaInfo != null
+            ? 'Showing DA from saved draft.'
+            : daResolution.message);
 
     setState(() {
       for (final entry in oldEntries) {
         entry.dispose();
       }
       _vehicleTypes = vehicleTypes;
-      _entries = loadedEntries.isEmpty ? <OlympicTaDaEntry>[OlympicTaDaEntry()] : loadedEntries;
+      _entries = lockTa
+          ? <OlympicTaDaEntry>[]
+          : (loadedEntries.isEmpty
+              ? <OlympicTaDaEntry>[OlympicTaDaEntry()]
+              : loadedEntries);
       _remarksController.text = draft?.remarks ?? '';
-      _daInfo = daResolution.daInfo ?? draft?.daInfo;
-      _daMessage = daResolution.daInfo != null
-          ? null
-          : (_daInfo != null ? 'Showing DA from saved draft.' : daResolution.message);
+      _daInfo = resolvedDaInfo;
+      _daMessage = daMessage;
       _loading = false;
     });
   }
@@ -127,6 +140,8 @@ class _OlympicTaDaUiState extends ConsumerState<OlympicTaDaUi> {
   }
 
   void _addRow() {
+    if (_isTaLocked) return;
+
     final lastEntry = _entries.isEmpty ? null : _entries.last;
     if (lastEntry != null && !lastEntry.isComplete) {
       ScaffoldMessenger.of(context).showSnackBar(
@@ -162,6 +177,7 @@ class _OlympicTaDaUiState extends ConsumerState<OlympicTaDaUi> {
   }
 
   double get _taTotal {
+    if (_isTaLocked) return 0;
     return _entries.fold<double>(0, (sum, entry) => sum + entry.amount);
   }
 
@@ -229,7 +245,7 @@ class _OlympicTaDaUiState extends ConsumerState<OlympicTaDaUi> {
         border: Border.all(color: const Color(0xFFE4D7CB)),
         boxShadow: [
           BoxShadow(
-            color: Colors.black.withOpacity(0.05),
+            color: Colors.black.withValues(alpha: 0.05),
             blurRadius: 16,
             offset: const Offset(0, 6),
           ),
@@ -303,6 +319,67 @@ class _OlympicTaDaUiState extends ConsumerState<OlympicTaDaUi> {
   }
 
   Widget _buildTaSection() {
+    if (_isTaLocked) {
+      return Container(
+        decoration: BoxDecoration(
+          color: Colors.white,
+          borderRadius: BorderRadius.circular(18),
+          border: Border.all(color: const Color(0xFFD0B8A2)),
+          boxShadow: [
+            BoxShadow(
+              color: Colors.black.withValues(alpha: 0.05),
+              blurRadius: 16,
+              offset: const Offset(0, 6),
+            ),
+          ],
+        ),
+        child: Column(
+          children: [
+            Container(
+              width: double.infinity,
+              padding: const EdgeInsets.symmetric(vertical: 14),
+              decoration: const BoxDecoration(
+                color: Color(0xFFF6D4BC),
+                borderRadius: BorderRadius.only(
+                  topLeft: Radius.circular(18),
+                  topRight: Radius.circular(18),
+                ),
+              ),
+              child: LangText(
+                'TA',
+                textAlign: TextAlign.center,
+                style: TextStyle(
+                  fontSize: 22,
+                  fontWeight: FontWeight.w800,
+                  color: Color(0xFF2D241D),
+                ),
+              ),
+            ),
+            Padding(
+              padding: const EdgeInsets.all(16),
+              child: Container(
+                width: double.infinity,
+                padding: const EdgeInsets.all(14),
+                decoration: BoxDecoration(
+                  color: const Color(0xFFFFF7E7),
+                  borderRadius: BorderRadius.circular(14),
+                  border: Border.all(color: const Color(0xFFF0D49D)),
+                ),
+                child: LangText(
+                  'TA is not applicable because the first completed survey point type is HQ.',
+                  style: TextStyle(
+                    fontSize: 14,
+                    fontWeight: FontWeight.w600,
+                    color: Color(0xFF7A5A1B),
+                  ),
+                ),
+              ),
+            ),
+          ],
+        ),
+      );
+    }
+
     return Container(
       decoration: BoxDecoration(
         color: Colors.white,
@@ -310,7 +387,7 @@ class _OlympicTaDaUiState extends ConsumerState<OlympicTaDaUi> {
         border: Border.all(color: const Color(0xFFD0B8A2)),
         boxShadow: [
           BoxShadow(
-            color: Colors.black.withOpacity(0.05),
+            color: Colors.black.withValues(alpha: 0.05),
             blurRadius: 16,
             offset: const Offset(0, 6),
           ),

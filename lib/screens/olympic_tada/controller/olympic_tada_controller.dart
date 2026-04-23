@@ -29,6 +29,13 @@ class OlympicTaDaController {
     }
 
     final filledEntries = entries.where((entry) => !entry.isEmpty).toList();
+    if (daInfo.isHq) {
+      if (filledEntries.isNotEmpty) {
+        return 'TA is not allowed when the first survey point type is HQ.';
+      }
+      return null;
+    }
+
     if (filledEntries.isEmpty) {
       return 'Add at least one TA row before saving or submitting.';
     }
@@ -82,11 +89,16 @@ class OlympicTaDaController {
       return;
     }
 
+    final resolvedDaInfo = daInfo!;
+
     alerts.floatingLoading();
 
     final ReturnedDataModel returnedDataModel = await leaveManagementAPI
         .sendOlympicTaDaData(
-          taEntries: entries.where((entry) => !entry.isEmpty).toList(),
+          taEntries: resolvedDaInfo.isHq
+              ? <OlympicTaDaEntry>[]
+              : entries.where((entry) => !entry.isEmpty).toList(),
+          daInfo: resolvedDaInfo,
           remarks: remarks,
         );
 

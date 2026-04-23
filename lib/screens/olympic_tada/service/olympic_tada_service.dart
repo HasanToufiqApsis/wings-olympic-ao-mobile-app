@@ -99,6 +99,7 @@ class OlympicTaDaService {
     try {
       await _syncService.checkSyncVariable();
       final salesDate = await _syncReadService.getSalesDate();
+      final daCategoryId = _getDaCategoryId();
 
       final rawConfigs = syncObj['tada_expense_configs'];
       if (rawConfigs is! Map) {
@@ -160,13 +161,18 @@ class OlympicTaDaService {
         final firstConfig = pointConfig.entries.first;
         final sectionId = int.tryParse(firstConfig.key.toString());
         final configData = Map<String, dynamic>.from(firstConfig.value as Map);
+        final pointType =
+            _getPointType(pointId) ??
+            configData['type']?.toString() ??
+            'DA';
 
         return OlympicDaResolution(
           daInfo: OlympicDaInfo(
             surveyType: 'audit',
             pointId: pointId,
             sectionId: sectionId,
-            allowanceType: configData['type']?.toString() ?? 'DA',
+            categoryId: daCategoryId,
+            allowanceType: pointType,
             amount: _parseAmount(configData['amount']),
             salesDate: salesDate,
           ),
@@ -202,12 +208,15 @@ class OlympicTaDaService {
         }
 
         final configMap = Map<String, dynamic>.from(configData);
+        final pointType =
+            _getPointType(depId) ?? configMap['type']?.toString() ?? 'DA';
         return OlympicDaResolution(
           daInfo: OlympicDaInfo(
             surveyType: 'outlet',
             pointId: depId,
             sectionId: sectionId,
-            allowanceType: configMap['type']?.toString() ?? 'DA',
+            categoryId: daCategoryId,
+            allowanceType: pointType,
             amount: _parseAmount(configMap['amount']),
             salesDate: salesDate,
           ),
@@ -293,5 +302,31 @@ class OlympicTaDaService {
 
   double _parseAmount(dynamic value) {
     return double.tryParse(value?.toString() ?? '0') ?? 0;
+  }
+
+  String? _getPointType(int pointId) {
+    final rawPoints = syncObj['locations']?['point'];
+    if (rawPoints is! Map) return null;
+
+    final pointData = rawPoints[pointId.toString()];
+    if (pointData is Map) {
+      return pointData['type']?.toString();
+    }
+
+    return null;
+  }
+
+  int _getDaCategoryId() {
+    final rawOtherCostTypes = syncObj['ta_da_config']?['other_cost_type_list'];
+    if (rawOtherCostTypes is! List) return 0;
+
+    for (final item in rawOtherCostTypes) {
+      if (item is Map &&
+          item['slug']?.toString().trim().toUpperCase() == 'DA') {
+        return int.tryParse(item['id']?.toString() ?? '') ?? 0;
+      }
+    }
+
+    return 0;
   }
 }

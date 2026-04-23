@@ -2,6 +2,7 @@ class OlympicDaInfo {
   final String surveyType;
   final int pointId;
   final int? sectionId;
+  final int categoryId;
   final String allowanceType;
   final double amount;
   final String salesDate;
@@ -10,16 +11,20 @@ class OlympicDaInfo {
     required this.surveyType,
     required this.pointId,
     required this.sectionId,
+    required this.categoryId,
     required this.allowanceType,
     required this.amount,
     required this.salesDate,
   });
+
+  bool get isHq => allowanceType.trim().toUpperCase() == 'HQ';
 
   factory OlympicDaInfo.fromJson(Map<String, dynamic> json) {
     return OlympicDaInfo(
       surveyType: json['survey_type']?.toString() ?? '',
       pointId: int.tryParse(json['point_id']?.toString() ?? '') ?? 0,
       sectionId: int.tryParse(json['section_id']?.toString() ?? ''),
+      categoryId: int.tryParse(json['category_id']?.toString() ?? '') ?? 0,
       allowanceType: json['allowance_type']?.toString() ?? '',
       amount: double.tryParse(json['amount']?.toString() ?? '0') ?? 0,
       salesDate: json['sales_date']?.toString() ?? '',
@@ -31,9 +36,20 @@ class OlympicDaInfo {
       'survey_type': surveyType,
       'point_id': pointId,
       'section_id': sectionId,
+      'category_id': categoryId,
       'allowance_type': allowanceType,
       'amount': amount,
       'sales_date': salesDate,
+    };
+  }
+
+  Map<String, dynamic> toDaJson() {
+    return <String, dynamic>{
+      'dep_id': pointId,
+      'section_id': sectionId ?? 0,
+      'category': categoryId,
+      'date': salesDate,
+      'amount': amount,
     };
   }
 }

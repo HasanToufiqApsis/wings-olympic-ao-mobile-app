@@ -15,17 +15,17 @@ Map currentStockData = {};
 //
 // String appVersion = '1.0.1';
 Map dummyData = {
-  "date": "2026-04-19",
+  "date": "2026-04-21",
   "logged_in": 1,
   "userData": {
-    "accessToken": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJuYW1lIjoiQWhtZWQgTGlua29uIiwiaWQiOjE3NjUsInVzZXJUeXBlSWQiOjY1LCJlbWFpbCI6ImxpbmtvbkBnbWFpbC5jb20iLCJzYnVfaWQiOls1NF0sImlhdCI6MTc3NjU4Nzg2MywiZXhwIjoxMDAxNzc2NTgwOTgzfQ.MljwHRXNmrbuOfE8a6ryn0bYmU9H0jQZ4O2jdC87Cck",
-    "refreshToken": "CX73qo3C42oFcWBL",
-    "date": "2026-04-19",
+    "accessToken": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJuYW1lIjoiQWhtZWQgTGlua29uIiwiaWQiOjE3NjUsInVzZXJUeXBlSWQiOjUzLCJlbWFpbCI6ImxpbmtvbkBnbWFpbC5jb20iLCJzYnVfaWQiOls1NF0sImlhdCI6MTc3Njc3MTkxOCwiZXhwIjoxMDAxNzc2NzY1MDM4fQ.-i_gCKes9RAigwKHRU8KslU7jGLW3FddTZTNk9DyT4A",
+    "refreshToken": "0l5fzUPIek0vXibj",
+    "date": "2026-04-21",
     "id": 1765,
     "sbu_id": [
       54
     ],
-    "user_type_id": 65,
+    "user_type_id": 53,
     "user_role_id": 1,
     "name": "Ahmed Linkon",
     "email": "linkon@gmail.com",
@@ -38,7 +38,7 @@ Map dummyData = {
     "created_by": null,
     "updated_by": null,
     "created_at": "2026-04-09T09:31:40.000Z",
-    "updated_at": "2026-04-09T09:33:56.000Z",
+    "updated_at": "2026-04-21T04:50:10.000Z",
     "user_type_slug": "AO",
     "dep_ids": [
       166,
@@ -112,9 +112,7 @@ Map dummyData = {
           "slug": "Blue"
         }
       },
-      "available_surveys": [
-        599
-      ]
+      "available_surveys": []
     },
     {
       "id": 151,
@@ -153,9 +151,7 @@ Map dummyData = {
           "slug": "Gold"
         }
       },
-      "available_surveys": [
-        599
-      ]
+      "available_surveys": []
     },
     {
       "id": 152,
@@ -194,9 +190,7 @@ Map dummyData = {
           "slug": "Gold"
         }
       },
-      "available_surveys": [
-        599
-      ]
+      "available_surveys": []
     },
     {
       "id": 153,
@@ -235,9 +229,7 @@ Map dummyData = {
           "slug": "Gold"
         }
       },
-      "available_surveys": [
-        599
-      ]
+      "available_surveys": []
     },
     {
       "id": 154,
@@ -276,9 +268,7 @@ Map dummyData = {
           "slug": "Gold"
         }
       },
-      "available_surveys": [
-        599
-      ]
+      "available_surveys": []
     },
     {
       "id": 155,
@@ -317,9 +307,7 @@ Map dummyData = {
           "slug": "Gold"
         }
       },
-      "available_surveys": [
-        599
-      ]
+      "available_surveys": []
     },
     {
       "id": 1438,
@@ -358,9 +346,7 @@ Map dummyData = {
           "slug": "Gold"
         }
       },
-      "available_surveys": [
-        599
-      ]
+      "available_surveys": []
     },
     {
       "id": 1439,
@@ -399,9 +385,7 @@ Map dummyData = {
           "slug": "Silver"
         }
       },
-      "available_surveys": [
-        599
-      ]
+      "available_surveys": []
     },
     {
       "id": 1440,
@@ -440,9 +424,7 @@ Map dummyData = {
           "slug": "Platinum"
         }
       },
-      "available_surveys": [
-        599
-      ]
+      "available_surveys": []
     },
     {
       "id": 1441,
@@ -481,9 +463,7 @@ Map dummyData = {
           "slug": "Silver"
         }
       },
-      "available_surveys": [
-        599
-      ]
+      "available_surveys": []
     },
     {
       "id": 1443,
@@ -522,9 +502,7 @@ Map dummyData = {
           "slug": "Silver"
         }
       },
-      "available_surveys": [
-        599
-      ]
+      "available_surveys": []
     },
     {
       "id": 1444,
@@ -563,9 +541,7 @@ Map dummyData = {
           "slug": "Silver"
         }
       },
-      "available_surveys": [
-        599
-      ]
+      "available_surveys": []
     },
     {
       "id": 1445,
@@ -609,9 +585,7 @@ Map dummyData = {
           "slug": "Platinum"
         }
       },
-      "available_surveys": [
-        599
-      ]
+      "available_surveys": []
     },
     {
       "id": 1447,
@@ -650,9 +624,7 @@ Map dummyData = {
           "slug": "Bronze"
         }
       },
-      "available_surveys": [
-        599
-      ]
+      "available_surveys": []
     },
     {
       "id": 1448,
@@ -691,9 +663,7 @@ Map dummyData = {
           "slug": "Gold"
         }
       },
-      "available_surveys": [
-        599
-      ]
+      "available_surveys": []
     },
     {
       "id": 1449,
@@ -736,9 +706,7 @@ Map dummyData = {
           "slug": "Gold"
         }
       },
-      "available_surveys": [
-        599
-      ]
+      "available_surveys": []
     },
     {
       "id": 1450,
@@ -781,9 +749,7 @@ Map dummyData = {
           "slug": "Gold"
         }
       },
-      "available_surveys": [
-        599
-      ]
+      "available_surveys": []
     },
     {
       "id": 1451,
@@ -826,9 +792,7 @@ Map dummyData = {
           "slug": "Platinum"
         }
       },
-      "available_surveys": [
-        599
-      ]
+      "available_surveys": []
     },
     {
       "id": 1452,
@@ -871,9 +835,7 @@ Map dummyData = {
           "slug": "Platinum"
         }
       },
-      "available_surveys": [
-        599
-      ]
+      "available_surveys": []
     },
     {
       "id": 1453,
@@ -916,9 +878,7 @@ Map dummyData = {
           "slug": "Gold"
         }
       },
-      "available_surveys": [
-        599
-      ]
+      "available_surveys": []
     },
     {
       "id": 1454,
@@ -961,9 +921,7 @@ Map dummyData = {
           "slug": "Platinum"
         }
       },
-      "available_surveys": [
-        599
-      ]
+      "available_surveys": []
     },
     {
       "id": 1455,
@@ -1006,9 +964,7 @@ Map dummyData = {
           "slug": "Gold"
         }
       },
-      "available_surveys": [
-        599
-      ]
+      "available_surveys": []
     },
     {
       "id": 1456,
@@ -1047,9 +1003,7 @@ Map dummyData = {
           "slug": "Gold"
         }
       },
-      "available_surveys": [
-        599
-      ]
+      "available_surveys": []
     },
     {
       "id": 1457,
@@ -1088,9 +1042,7 @@ Map dummyData = {
           "slug": "Gold"
         }
       },
-      "available_surveys": [
-        599
-      ]
+      "available_surveys": []
     },
     {
       "id": 1458,
@@ -1129,9 +1081,7 @@ Map dummyData = {
           "slug": "Gold"
         }
       },
-      "available_surveys": [
-        599
-      ]
+      "available_surveys": []
     },
     {
       "id": 1459,
@@ -1170,9 +1120,7 @@ Map dummyData = {
           "slug": "Gold"
         }
       },
-      "available_surveys": [
-        599
-      ]
+      "available_surveys": []
     },
     {
       "id": 1460,
@@ -1211,9 +1159,7 @@ Map dummyData = {
           "slug": "Silver"
         }
       },
-      "available_surveys": [
-        599
-      ]
+      "available_surveys": []
     },
     {
       "id": 1461,
@@ -1256,9 +1202,7 @@ Map dummyData = {
           "slug": "Gold"
         }
       },
-      "available_surveys": [
-        599
-      ]
+      "available_surveys": []
     },
     {
       "id": 1462,
@@ -1301,9 +1245,7 @@ Map dummyData = {
           "slug": "Gold"
         }
       },
-      "available_surveys": [
-        599
-      ]
+      "available_surveys": []
     },
     {
       "id": 1464,
@@ -1346,9 +1288,7 @@ Map dummyData = {
           "slug": "Gold"
         }
       },
-      "available_surveys": [
-        599
-      ]
+      "available_surveys": []
     },
     {
       "id": 1465,
@@ -1391,9 +1331,7 @@ Map dummyData = {
           "slug": "Gold"
         }
       },
-      "available_surveys": [
-        599
-      ]
+      "available_surveys": []
     },
     {
       "id": 1466,
@@ -1432,9 +1370,7 @@ Map dummyData = {
           "slug": "Gold"
         }
       },
-      "available_surveys": [
-        599
-      ]
+      "available_surveys": []
     },
     {
       "id": 1467,
@@ -1473,9 +1409,7 @@ Map dummyData = {
           "slug": "Gold"
         }
       },
-      "available_surveys": [
-        599
-      ]
+      "available_surveys": []
     },
     {
       "id": 1470,
@@ -1518,9 +1452,7 @@ Map dummyData = {
           "slug": "Gold"
         }
       },
-      "available_surveys": [
-        599
-      ]
+      "available_surveys": []
     },
     {
       "id": 1472,
@@ -1563,9 +1495,7 @@ Map dummyData = {
           "slug": "Gold"
         }
       },
-      "available_surveys": [
-        599
-      ]
+      "available_surveys": []
     },
     {
       "id": 1473,
@@ -1604,9 +1534,7 @@ Map dummyData = {
           "slug": "Gold"
         }
       },
-      "available_surveys": [
-        599
-      ]
+      "available_surveys": []
     },
     {
       "id": 1474,
@@ -1645,9 +1573,7 @@ Map dummyData = {
           "slug": "Gold"
         }
       },
-      "available_surveys": [
-        599
-      ]
+      "available_surveys": []
     },
     {
       "id": 1475,
@@ -1690,9 +1616,7 @@ Map dummyData = {
           "slug": "Gold"
         }
       },
-      "available_surveys": [
-        599
-      ]
+      "available_surveys": []
     },
     {
       "id": 1476,
@@ -1731,9 +1655,7 @@ Map dummyData = {
           "slug": "Bronze"
         }
       },
-      "available_surveys": [
-        599
-      ]
+      "available_surveys": []
     },
     {
       "id": 1478,
@@ -1772,9 +1694,7 @@ Map dummyData = {
           "slug": "Gold"
         }
       },
-      "available_surveys": [
-        599
-      ]
+      "available_surveys": []
     },
     {
       "id": 1481,
@@ -1817,9 +1737,7 @@ Map dummyData = {
           "slug": "Gold"
         }
       },
-      "available_surveys": [
-        599
-      ]
+      "available_surveys": []
     },
     {
       "id": 1483,
@@ -1858,9 +1776,7 @@ Map dummyData = {
           "slug": "Gold"
         }
       },
-      "available_surveys": [
-        599
-      ]
+      "available_surveys": []
     },
     {
       "id": 1484,
@@ -1899,9 +1815,7 @@ Map dummyData = {
           "slug": "Gold"
         }
       },
-      "available_surveys": [
-        599
-      ]
+      "available_surveys": []
     },
     {
       "id": 1485,
@@ -1940,9 +1854,7 @@ Map dummyData = {
           "slug": "Silver"
         }
       },
-      "available_surveys": [
-        599
-      ]
+      "available_surveys": []
     },
     {
       "id": 1486,
@@ -1981,9 +1893,7 @@ Map dummyData = {
           "slug": "Silver"
         }
       },
-      "available_surveys": [
-        599
-      ]
+      "available_surveys": []
     },
     {
       "id": 1488,
@@ -2022,9 +1932,7 @@ Map dummyData = {
           "slug": "Gold"
         }
       },
-      "available_surveys": [
-        599
-      ]
+      "available_surveys": []
     },
     {
       "id": 1490,
@@ -2063,9 +1971,7 @@ Map dummyData = {
           "slug": "Gold"
         }
       },
-      "available_surveys": [
-        599
-      ]
+      "available_surveys": []
     },
     {
       "id": 1492,
@@ -2104,9 +2010,7 @@ Map dummyData = {
           "slug": "Gold"
         }
       },
-      "available_surveys": [
-        599
-      ]
+      "available_surveys": []
     },
     {
       "id": 1493,
@@ -2145,9 +2049,7 @@ Map dummyData = {
           "slug": "Platinum"
         }
       },
-      "available_surveys": [
-        599
-      ]
+      "available_surveys": []
     },
     {
       "id": 1494,
@@ -2186,9 +2088,7 @@ Map dummyData = {
           "slug": "Gold"
         }
       },
-      "available_surveys": [
-        599
-      ]
+      "available_surveys": []
     },
     {
       "id": 1495,
@@ -2227,9 +2127,7 @@ Map dummyData = {
           "slug": "Platinum"
         }
       },
-      "available_surveys": [
-        599
-      ]
+      "available_surveys": []
     },
     {
       "id": 1502,
@@ -2268,9 +2166,7 @@ Map dummyData = {
           "slug": "Platinum"
         }
       },
-      "available_surveys": [
-        599
-      ]
+      "available_surveys": []
     },
     {
       "id": 1503,
@@ -2309,9 +2205,7 @@ Map dummyData = {
           "slug": "Gold"
         }
       },
-      "available_surveys": [
-        599
-      ]
+      "available_surveys": []
     },
     {
       "id": 1505,
@@ -2350,9 +2244,7 @@ Map dummyData = {
           "slug": "Gold"
         }
       },
-      "available_surveys": [
-        599
-      ]
+      "available_surveys": []
     },
     {
       "id": 1506,
@@ -2391,9 +2283,7 @@ Map dummyData = {
           "slug": "Gold"
         }
       },
-      "available_surveys": [
-        599
-      ]
+      "available_surveys": []
     },
     {
       "id": 1508,
@@ -2432,9 +2322,7 @@ Map dummyData = {
           "slug": "Platinum"
         }
       },
-      "available_surveys": [
-        599
-      ]
+      "available_surveys": []
     },
     {
       "id": 1437,
@@ -2473,9 +2361,7 @@ Map dummyData = {
           "slug": "Platinum"
         }
       },
-      "available_surveys": [
-        599
-      ]
+      "available_surveys": []
     },
     {
       "id": 1436,
@@ -2514,9 +2400,7 @@ Map dummyData = {
           "slug": "Silver"
         }
       },
-      "available_surveys": [
-        599
-      ]
+      "available_surveys": []
     },
     {
       "id": 1488,
@@ -2555,9 +2439,7 @@ Map dummyData = {
           "slug": "Gold"
         }
       },
-      "available_surveys": [
-        599
-      ]
+      "available_surveys": []
     },
     {
       "id": 1473,
@@ -2596,9 +2478,7 @@ Map dummyData = {
           "slug": "Gold"
         }
       },
-      "available_surveys": [
-        599
-      ]
+      "available_surveys": []
     },
     {
       "id": 1474,
@@ -2637,9 +2517,7 @@ Map dummyData = {
           "slug": "Gold"
         }
       },
-      "available_surveys": [
-        599
-      ]
+      "available_surveys": []
     },
     {
       "id": 1456,
@@ -2678,9 +2556,7 @@ Map dummyData = {
           "slug": "Gold"
         }
       },
-      "available_surveys": [
-        599
-      ]
+      "available_surveys": []
     },
     {
       "id": 154,
@@ -2719,9 +2595,7 @@ Map dummyData = {
           "slug": "Gold"
         }
       },
-      "available_surveys": [
-        599
-      ]
+      "available_surveys": []
     },
     {
       "id": 1493,
@@ -2760,9 +2634,7 @@ Map dummyData = {
           "slug": "Platinum"
         }
       },
-      "available_surveys": [
-        599
-      ]
+      "available_surveys": []
     },
     {
       "id": 1492,
@@ -2801,9 +2673,7 @@ Map dummyData = {
           "slug": "Gold"
         }
       },
-      "available_surveys": [
-        599
-      ]
+      "available_surveys": []
     },
     {
       "id": 1465,
@@ -2846,9 +2716,7 @@ Map dummyData = {
           "slug": "Gold"
         }
       },
-      "available_surveys": [
-        599
-      ]
+      "available_surveys": []
     },
     {
       "id": 1495,
@@ -2887,9 +2755,7 @@ Map dummyData = {
           "slug": "Platinum"
         }
       },
-      "available_surveys": [
-        599
-      ]
+      "available_surveys": []
     },
     {
       "id": 1511,
@@ -2928,9 +2794,7 @@ Map dummyData = {
           "slug": "Platinum"
         }
       },
-      "available_surveys": [
-        599
-      ]
+      "available_surveys": []
     },
     {
       "id": 1513,
@@ -2969,9 +2833,7 @@ Map dummyData = {
           "slug": "Gold"
         }
       },
-      "available_surveys": [
-        599
-      ]
+      "available_surveys": []
     }
   ],
   "transport_types": [],
@@ -3084,47 +2946,7 @@ Map dummyData = {
     "app_version": "1.0.0",
     "version_mandatory": 1
   },
-  "survey_details": {
-    "survey_info": [
-      {
-        "id": 599,
-        "name": "April Survey",
-        "dep_id": 167,
-        "mandatory": 0
-      }
-    ],
-    "questions": {
-      "599": [
-        {
-          "survey_id": 599,
-          "question_id": 1003,
-          "question_type": "yes_no",
-          "has_dependency": 1,
-          "question_name": "Abc",
-          "required": 0,
-          "options": [
-            {
-              "answer_id": 525,
-              "answer_name": "Yes",
-              "question_id": 1003,
-              "dependency_question_id": null,
-              "survey_id": 580,
-              "parent_id": 525
-            },
-            {
-              "answer_id": 526,
-              "answer_name": "No",
-              "question_id": 1003,
-              "dependency_question_id": null,
-              "survey_id": 580,
-              "parent_id": 526
-            }
-          ],
-          "dependent_questions": {}
-        }
-      ]
-    }
-  },
+  "survey_details": {},
   "ta_da_config": {
     "vehicle_list": [
       {
@@ -3177,7 +2999,7 @@ Map dummyData = {
       {
         "id": 204,
         "parent": 200,
-        "slug": "Hotel"
+        "slug": "DA"
       },
       {
         "id": 205,
@@ -3190,60 +3012,56 @@ Map dummyData = {
     "166": {
       "197": {
         "type": "HQ",
-        "amount": 650
+        "amount": 700
       }
     },
     "167": {
       "204": {
         "type": "HQ",
-        "amount": 800
+        "amount": 700
       },
       "213": {
         "type": "EX-HQ",
-        "amount": 700
+        "amount": 300
       },
       "214": {
-        "type": "EX-HQ",
-        "amount": 650
+        "type": "Outstation(OS)",
+        "amount": 300
       },
       "220": {
-        "type": "EX-HQ",
+        "type": "Outstation(OS)",
         "amount": 300
       },
       "221": {
-        "type": "OUTSTATION",
-        "amount": 500
+        "type": "Outstation(OS)",
+        "amount": 300
       },
       "222": {
-        "type": "OUTSTATION",
-        "amount": 800
-      },
-      "223": {
-        "type": "OUTSTATION",
+        "type": "Outstation(OS)",
         "amount": 300
       },
       "377": {
-        "type": "OUTSTATION",
-        "amount": 500
+        "type": "Outstation(OS)",
+        "amount": 300
       },
       "378": {
-        "type": "OUTSTATION",
+        "type": "Outstation(OS)",
         "amount": 300
       },
       "379": {
-        "type": "OUTSTATION",
+        "type": "Outstation(OS)",
         "amount": 300
       },
       "380": {
-        "type": "OUTSTATION",
-        "amount": 500
+        "type": "Outstation(OS)",
+        "amount": 300
       },
       "382": {
-        "type": "OUTSTATION",
-        "amount": 800
+        "type": "Outstation(OS)",
+        "amount": 300
       },
       "388": {
-        "type": "OUTSTATION",
+        "type": "Outstation(OS)",
         "amount": 300
       }
     }
@@ -3276,6 +3094,7 @@ Map dummyData = {
         "name": "SATKHIRA",
         "parent_id": 420,
         "location_type": 19,
+        "type": "EX-HQ",
         "available_surveys": []
       },
       "167": {
@@ -3283,9 +3102,8 @@ Map dummyData = {
         "name": "KOLAROA",
         "parent_id": 420,
         "location_type": 19,
-        "available_surveys": [
-          599
-        ]
+        "type": "HQ",
+        "available_surveys": []
       }
     }
   },
@@ -3308,990 +3126,22 @@ Map dummyData = {
   },
   "max_service_count": 2,
   "last_service_points": [],
-  "survey-data": {
-    "1440": {
-      "599": {
-        "1003": {
-          "questionType": "select",
-          "answer_id": 525,
-          "answer": "Yes"
-        }
-      }
-    }
-  },
-  "taDa-survey-events": [
-    {
-      "survey_type": "outlet",
-      "survey_id": 599,
-      "retailer_id": 1440,
-      "point_id": 167,
-      "dep_id": 167,
-      "section_id": 213,
-      "sales_date": "2026-04-19",
-      "created_at": "2026-04-19T14:38:06.071676"
-    }
-  ],
-  "checkout-data": {
-    "1440": [
-      {
-        "ff_id": 1765,
-        "sbu_id": "[54]",
-        "dep_id": null,
-        "section_id": null,
-        "outlet_id": 1440,
-        "outlet_code": "R-228228220126-002",
-        "date": "2026-04-19",
-        "checkout_datetime": "2026-04-19 14:38:07.988744"
-      }
-    ]
+  "attendance_configuration": {
+    "mandatory_attendance": 1,
+    "check_in": 1
   },
   "sr-tracking": [
     {
       "sbu_id": "[54]",
-      "date": "2026-04-19",
-      "pin_date_time": "2026-04-19 14:38:56.010934",
+      "date": "2026-04-21",
+      "pin_date_time": "2026-04-21 17:48:22.911744",
       "ff_id": 1765,
       "dep_id": null,
       "section_id": null,
-      "latitude": "23.7938097",
-      "longitude": "90.4044768",
-      "accuracy": 34.400001525878906,
-      "altitude": 29.5,
-      "altitudeAccuracy": "",
-      "heading": 273.8368225097656,
-      "speed": 0.9432469606399536,
-      "internet_speed": "",
-      "connection_type": ""
-    },
-    {
-      "sbu_id": "[54]",
-      "date": "2026-04-19",
-      "pin_date_time": "2026-04-19 14:40:50.066339",
-      "ff_id": 1765,
-      "dep_id": null,
-      "section_id": null,
-      "latitude": "23.7937626",
-      "longitude": "90.4045414",
-      "accuracy": 19.812000274658203,
-      "altitude": 29.400001525878906,
-      "altitudeAccuracy": "",
-      "heading": 218.24612426757812,
-      "speed": 0.4173867702484131,
-      "internet_speed": "",
-      "connection_type": ""
-    },
-    {
-      "sbu_id": "[54]",
-      "date": "2026-04-19",
-      "pin_date_time": "2026-04-19 14:41:57.483178",
-      "ff_id": 1765,
-      "dep_id": null,
-      "section_id": null,
-      "latitude": "23.7937587",
-      "longitude": "90.4045613",
-      "accuracy": 15.442999839782715,
-      "altitude": 29.400001525878906,
-      "altitudeAccuracy": "",
-      "heading": 65.80790710449219,
-      "speed": 0.15951423346996307,
-      "internet_speed": "",
-      "connection_type": ""
-    },
-    {
-      "sbu_id": "[54]",
-      "date": "2026-04-19",
-      "pin_date_time": "2026-04-19 14:43:53.675066",
-      "ff_id": 1765,
-      "dep_id": null,
-      "section_id": null,
-      "latitude": "23.7937747",
-      "longitude": "90.4045711",
-      "accuracy": 15.996000289916992,
-      "altitude": 29.400001525878906,
-      "altitudeAccuracy": "",
-      "heading": 20.415328979492188,
-      "speed": 0.5251979827880859,
-      "internet_speed": "",
-      "connection_type": ""
-    },
-    {
-      "sbu_id": "[54]",
-      "date": "2026-04-19",
-      "pin_date_time": "2026-04-19 14:45:00.765875",
-      "ff_id": 1765,
-      "dep_id": null,
-      "section_id": null,
-      "latitude": "23.7937667",
-      "longitude": "90.4045203",
-      "accuracy": 31.225000381469727,
-      "altitude": 28.600000381469727,
-      "altitudeAccuracy": "",
-      "heading": 224.4224090576172,
-      "speed": 0.6315683722496033,
-      "internet_speed": "",
-      "connection_type": ""
-    },
-    {
-      "sbu_id": "[54]",
-      "date": "2026-04-19",
-      "pin_date_time": "2026-04-19 14:46:56.737384",
-      "ff_id": 1765,
-      "dep_id": null,
-      "section_id": null,
-      "latitude": "23.793763",
-      "longitude": "90.404572",
-      "accuracy": 18.00200080871582,
-      "altitude": 29.400001525878906,
-      "altitudeAccuracy": "",
-      "heading": 130.48263549804688,
-      "speed": 0.6469206809997559,
-      "internet_speed": "",
-      "connection_type": ""
-    },
-    {
-      "sbu_id": "[54]",
-      "date": "2026-04-19",
-      "pin_date_time": "2026-04-19 14:48:03.869503",
-      "ff_id": 1765,
-      "dep_id": null,
-      "section_id": null,
-      "latitude": "23.7937771",
-      "longitude": "90.404482",
-      "accuracy": 25.006999969482422,
-      "altitude": 28.600000381469727,
-      "altitudeAccuracy": "",
-      "heading": 291.708984375,
-      "speed": 0.5740599036216736,
-      "internet_speed": "",
-      "connection_type": ""
-    },
-    {
-      "sbu_id": "[54]",
-      "date": "2026-04-19",
-      "pin_date_time": "2026-04-19 14:49:59.792497",
-      "ff_id": 1765,
-      "dep_id": null,
-      "section_id": null,
-      "latitude": "23.7937554",
-      "longitude": "90.4045244",
-      "accuracy": 25.065000534057617,
-      "altitude": 28.600000381469727,
-      "altitudeAccuracy": "",
-      "heading": 0.0,
-      "speed": 0.04018164053559303,
-      "internet_speed": "",
-      "connection_type": ""
-    },
-    {
-      "sbu_id": "[54]",
-      "date": "2026-04-19",
-      "pin_date_time": "2026-04-19 14:51:06.770583",
-      "ff_id": 1765,
-      "dep_id": null,
-      "section_id": null,
-      "latitude": "23.7937623",
-      "longitude": "90.4045462",
-      "accuracy": 13.855999946594238,
-      "altitude": 28.600000381469727,
-      "altitudeAccuracy": "",
-      "heading": 182.0541229248047,
-      "speed": 0.2672993540763855,
-      "internet_speed": "",
-      "connection_type": ""
-    },
-    {
-      "sbu_id": "[54]",
-      "date": "2026-04-19",
-      "pin_date_time": "2026-04-19 14:53:02.833518",
-      "ff_id": 1765,
-      "dep_id": null,
-      "section_id": null,
-      "latitude": "23.7937804",
-      "longitude": "90.4044725",
-      "accuracy": 30.023000717163086,
-      "altitude": 28.600000381469727,
-      "altitudeAccuracy": "",
-      "heading": 123.69442749023438,
-      "speed": 0.4204852879047394,
-      "internet_speed": "",
-      "connection_type": ""
-    },
-    {
-      "sbu_id": "[54]",
-      "date": "2026-04-19",
-      "pin_date_time": "2026-04-19 14:54:10.110125",
-      "ff_id": 1765,
-      "dep_id": null,
-      "section_id": null,
-      "latitude": "23.7937645",
-      "longitude": "90.4045771",
-      "accuracy": 13.779999732971191,
-      "altitude": 29.0,
-      "altitudeAccuracy": "",
-      "heading": 89.19033813476562,
-      "speed": 0.842764675617218,
-      "internet_speed": "",
-      "connection_type": ""
-    },
-    {
-      "sbu_id": "[54]",
-      "date": "2026-04-19",
-      "pin_date_time": "2026-04-19 14:56:06.064483",
-      "ff_id": 1765,
-      "dep_id": null,
-      "section_id": null,
-      "latitude": "23.793758",
-      "longitude": "90.4045312",
-      "accuracy": 12.899999618530273,
-      "altitude": 28.600000381469727,
-      "altitudeAccuracy": "",
-      "heading": 229.3285675048828,
-      "speed": 0.5233741998672485,
-      "internet_speed": "",
-      "connection_type": ""
-    },
-    {
-      "sbu_id": "[54]",
-      "date": "2026-04-19",
-      "pin_date_time": "2026-04-19 14:57:13.229264",
-      "ff_id": 1765,
-      "dep_id": null,
-      "section_id": null,
-      "latitude": "23.7937756",
-      "longitude": "90.4045015",
-      "accuracy": 14.829999923706055,
-      "altitude": 28.600000381469727,
-      "altitudeAccuracy": "",
-      "heading": 120.84637451171875,
-      "speed": 1.2439618110656738,
-      "internet_speed": "",
-      "connection_type": ""
-    },
-    {
-      "sbu_id": "[54]",
-      "date": "2026-04-19",
-      "pin_date_time": "2026-04-19 14:59:08.997876",
-      "ff_id": 1765,
-      "dep_id": null,
-      "section_id": null,
-      "latitude": "23.7937887",
-      "longitude": "90.4044306",
-      "accuracy": 32.73699951171875,
-      "altitude": 28.600000381469727,
-      "altitudeAccuracy": "",
-      "heading": 296.7905578613281,
-      "speed": 1.8192962408065796,
-      "internet_speed": "",
-      "connection_type": ""
-    },
-    {
-      "sbu_id": "[54]",
-      "date": "2026-04-19",
-      "pin_date_time": "2026-04-19 15:00:15.796812",
-      "ff_id": 1765,
-      "dep_id": null,
-      "section_id": null,
-      "latitude": "23.7938029",
-      "longitude": "90.4044551",
-      "accuracy": 27.64900016784668,
-      "altitude": 28.600000381469727,
-      "altitudeAccuracy": "",
-      "heading": 318.8730773925781,
-      "speed": 0.2406924068927765,
-      "internet_speed": "",
-      "connection_type": ""
-    },
-    {
-      "sbu_id": "[54]",
-      "date": "2026-04-19",
-      "pin_date_time": "2026-04-19 15:02:11.883028",
-      "ff_id": 1765,
-      "dep_id": null,
-      "section_id": null,
-      "latitude": "23.7937319",
-      "longitude": "90.4045487",
-      "accuracy": 17.94099998474121,
-      "altitude": 28.600000381469727,
-      "altitudeAccuracy": "",
-      "heading": 208.06845092773438,
-      "speed": 0.398750901222229,
-      "internet_speed": "",
-      "connection_type": ""
-    },
-    {
-      "sbu_id": "[54]",
-      "date": "2026-04-19",
-      "pin_date_time": "2026-04-19 15:03:18.897890",
-      "ff_id": 1765,
-      "dep_id": null,
-      "section_id": null,
-      "latitude": "23.7937798",
-      "longitude": "90.4044379",
-      "accuracy": 30.059999465942383,
-      "altitude": 28.600000381469727,
-      "altitudeAccuracy": "",
-      "heading": 300.3021545410156,
-      "speed": 3.0835840702056885,
-      "internet_speed": "",
-      "connection_type": ""
-    },
-    {
-      "sbu_id": "[54]",
-      "date": "2026-04-19",
-      "pin_date_time": "2026-04-19 15:05:15.057628",
-      "ff_id": 1765,
-      "dep_id": null,
-      "section_id": null,
-      "latitude": "23.7937555",
-      "longitude": "90.4045394",
-      "accuracy": 17.35300064086914,
-      "altitude": 28.5,
-      "altitudeAccuracy": "",
-      "heading": 82.69734191894531,
-      "speed": 0.21372801065444946,
-      "internet_speed": "",
-      "connection_type": ""
-    },
-    {
-      "sbu_id": "[54]",
-      "date": "2026-04-19",
-      "pin_date_time": "2026-04-19 15:06:22.323216",
-      "ff_id": 1765,
-      "dep_id": null,
-      "section_id": null,
-      "latitude": "23.7937465",
-      "longitude": "90.4045554",
-      "accuracy": 12.602999687194824,
-      "altitude": 29.400001525878906,
-      "altitudeAccuracy": "",
-      "heading": 124.69124603271484,
-      "speed": 0.4434601664543152,
-      "internet_speed": "",
-      "connection_type": ""
-    },
-    {
-      "sbu_id": "[54]",
-      "date": "2026-04-19",
-      "pin_date_time": "2026-04-19 15:08:18.721500",
-      "ff_id": 1765,
-      "dep_id": null,
-      "section_id": null,
-      "latitude": "23.7937901",
-      "longitude": "90.4044736",
-      "accuracy": 35.141998291015625,
-      "altitude": 28.600000381469727,
-      "altitudeAccuracy": "",
-      "heading": 301.23248291015625,
-      "speed": 1.2828409671783447,
-      "internet_speed": "",
-      "connection_type": ""
-    },
-    {
-      "sbu_id": "[54]",
-      "date": "2026-04-19",
-      "pin_date_time": "2026-04-19 15:09:26.335449",
-      "ff_id": 1765,
-      "dep_id": null,
-      "section_id": null,
-      "latitude": "23.7937286",
-      "longitude": "90.4045878",
-      "accuracy": 42.5,
-      "altitude": 24.600000381469727,
-      "altitudeAccuracy": "",
-      "heading": 138.72503662109375,
-      "speed": 1.0197111368179321,
-      "internet_speed": "",
-      "connection_type": ""
-    },
-    {
-      "sbu_id": "[54]",
-      "date": "2026-04-19",
-      "pin_date_time": "2026-04-19 15:11:22.600696",
-      "ff_id": 1765,
-      "dep_id": null,
-      "section_id": null,
-      "latitude": "23.7937506",
-      "longitude": "90.4045461",
-      "accuracy": 24.329999923706055,
-      "altitude": 28.5,
-      "altitudeAccuracy": "",
-      "heading": 0.0,
-      "speed": 0.07463232427835464,
-      "internet_speed": "",
-      "connection_type": ""
-    },
-    {
-      "sbu_id": "[54]",
-      "date": "2026-04-19",
-      "pin_date_time": "2026-04-19 15:12:30.108917",
-      "ff_id": 1765,
-      "dep_id": null,
-      "section_id": null,
-      "latitude": "23.7937321",
-      "longitude": "90.4045698",
-      "accuracy": 15.8100004196167,
-      "altitude": 28.5,
-      "altitudeAccuracy": "",
-      "heading": 110.16438293457031,
-      "speed": 2.338780403137207,
-      "internet_speed": "",
-      "connection_type": ""
-    },
-    {
-      "sbu_id": "[54]",
-      "date": "2026-04-19",
-      "pin_date_time": "2026-04-19 15:14:26.440754",
-      "ff_id": 1765,
-      "dep_id": null,
-      "section_id": null,
-      "latitude": "23.7937276",
-      "longitude": "90.4045821",
-      "accuracy": 12.13599967956543,
-      "altitude": 28.5,
-      "altitudeAccuracy": "",
-      "heading": 128.98109436035156,
-      "speed": 0.2890559434890747,
-      "internet_speed": "",
-      "connection_type": ""
-    },
-    {
-      "sbu_id": "[54]",
-      "date": "2026-04-19",
-      "pin_date_time": "2026-04-19 15:15:34.013414",
-      "ff_id": 1765,
-      "dep_id": null,
-      "section_id": null,
-      "latitude": "23.7937363",
-      "longitude": "90.4045629",
-      "accuracy": 20.858999252319336,
-      "altitude": 29.400001525878906,
-      "altitudeAccuracy": "",
-      "heading": 145.4242706298828,
-      "speed": 0.5385462641716003,
-      "internet_speed": "",
-      "connection_type": ""
-    },
-    {
-      "sbu_id": "[54]",
-      "date": "2026-04-19",
-      "pin_date_time": "2026-04-19 15:17:30.306874",
-      "ff_id": 1765,
-      "dep_id": null,
-      "section_id": null,
-      "latitude": "23.7937682",
-      "longitude": "90.4045562",
-      "accuracy": 15.89900016784668,
-      "altitude": 29.400001525878906,
-      "altitudeAccuracy": "",
-      "heading": 118.45274353027344,
-      "speed": 1.2129426002502441,
-      "internet_speed": "",
-      "connection_type": ""
-    },
-    {
-      "sbu_id": "[54]",
-      "date": "2026-04-19",
-      "pin_date_time": "2026-04-19 15:18:37.924806",
-      "ff_id": 1765,
-      "dep_id": null,
-      "section_id": null,
-      "latitude": "23.7937361",
-      "longitude": "90.4045676",
-      "accuracy": 20.12700080871582,
-      "altitude": 28.5,
-      "altitudeAccuracy": "",
-      "heading": 133.70689392089844,
-      "speed": 0.34310635924339294,
-      "internet_speed": "",
-      "connection_type": ""
-    },
-    {
-      "sbu_id": "[54]",
-      "date": "2026-04-19",
-      "pin_date_time": "2026-04-19 15:20:34.535091",
-      "ff_id": 1765,
-      "dep_id": null,
-      "section_id": null,
-      "latitude": "23.7937558",
-      "longitude": "90.4045315",
-      "accuracy": 22.187000274658203,
-      "altitude": 28.5,
-      "altitudeAccuracy": "",
-      "heading": 2.907447099685669,
-      "speed": 0.2362721711397171,
-      "internet_speed": "",
-      "connection_type": ""
-    },
-    {
-      "sbu_id": "[54]",
-      "date": "2026-04-19",
-      "pin_date_time": "2026-04-19 15:21:42.063775",
-      "ff_id": 1765,
-      "dep_id": null,
-      "section_id": null,
-      "latitude": "23.7937568",
-      "longitude": "90.4045372",
-      "accuracy": 17.757999420166016,
-      "altitude": 28.5,
-      "altitudeAccuracy": "",
-      "heading": 302.59881591796875,
-      "speed": 0.5364304780960083,
-      "internet_speed": "",
-      "connection_type": ""
-    },
-    {
-      "sbu_id": "[54]",
-      "date": "2026-04-19",
-      "pin_date_time": "2026-04-19 15:23:38.524767",
-      "ff_id": 1765,
-      "dep_id": null,
-      "section_id": null,
-      "latitude": "23.7937518",
-      "longitude": "90.4045335",
-      "accuracy": 28.98699951171875,
-      "altitude": 28.600000381469727,
-      "altitudeAccuracy": "",
-      "heading": 133.1545867919922,
-      "speed": 0.27916601300239563,
-      "internet_speed": "",
-      "connection_type": ""
-    },
-    {
-      "sbu_id": "[54]",
-      "date": "2026-04-19",
-      "pin_date_time": "2026-04-19 15:24:45.997394",
-      "ff_id": 1765,
-      "dep_id": null,
-      "section_id": null,
-      "latitude": "23.7937793",
-      "longitude": "90.4045336",
-      "accuracy": 12.21500015258789,
-      "altitude": 28.5,
-      "altitudeAccuracy": "",
-      "heading": 3.880509376525879,
-      "speed": 0.6473612785339355,
-      "internet_speed": "",
-      "connection_type": ""
-    },
-    {
-      "sbu_id": "[54]",
-      "date": "2026-04-19",
-      "pin_date_time": "2026-04-19 15:26:42.097929",
-      "ff_id": 1765,
-      "dep_id": null,
-      "section_id": null,
-      "latitude": "23.7937389",
-      "longitude": "90.4045598",
-      "accuracy": 26.697999954223633,
-      "altitude": 28.5,
-      "altitudeAccuracy": "",
-      "heading": 119.04127502441406,
-      "speed": 0.41916948556900024,
-      "internet_speed": "",
-      "connection_type": ""
-    },
-    {
-      "sbu_id": "[54]",
-      "date": "2026-04-19",
-      "pin_date_time": "2026-04-19 15:27:49.287507",
-      "ff_id": 1765,
-      "dep_id": null,
-      "section_id": null,
-      "latitude": "23.7937804",
-      "longitude": "90.4044485",
-      "accuracy": 32.14099884033203,
-      "altitude": 28.600000381469727,
-      "altitudeAccuracy": "",
-      "heading": 290.6420593261719,
-      "speed": 1.5735995769500732,
-      "internet_speed": "",
-      "connection_type": ""
-    },
-    {
-      "sbu_id": "[54]",
-      "date": "2026-04-19",
-      "pin_date_time": "2026-04-19 15:29:45.618020",
-      "ff_id": 1765,
-      "dep_id": null,
-      "section_id": null,
-      "latitude": "23.7937587",
-      "longitude": "90.4045269",
-      "accuracy": 29.976999282836914,
-      "altitude": 28.600000381469727,
-      "altitudeAccuracy": "",
-      "heading": 293.3172302246094,
-      "speed": 0.6716263294219971,
-      "internet_speed": "",
-      "connection_type": ""
-    },
-    {
-      "sbu_id": "[54]",
-      "date": "2026-04-19",
-      "pin_date_time": "2026-04-19 15:30:52.834902",
-      "ff_id": 1765,
-      "dep_id": null,
-      "section_id": null,
-      "latitude": "23.7937808",
-      "longitude": "90.4044764",
-      "accuracy": 32.034000396728516,
-      "altitude": 28.600000381469727,
-      "altitudeAccuracy": "",
-      "heading": 305.78387451171875,
-      "speed": 1.5912580490112305,
-      "internet_speed": "",
-      "connection_type": ""
-    },
-    {
-      "sbu_id": "[54]",
-      "date": "2026-04-19",
-      "pin_date_time": "2026-04-19 15:32:49.164922",
-      "ff_id": 1765,
-      "dep_id": null,
-      "section_id": null,
-      "latitude": "23.7937712",
-      "longitude": "90.4045498",
-      "accuracy": 17.231000900268555,
-      "altitude": 29.400001525878906,
-      "altitudeAccuracy": "",
-      "heading": 122.01617431640625,
-      "speed": 1.333457350730896,
-      "internet_speed": "",
-      "connection_type": ""
-    },
-    {
-      "sbu_id": "[54]",
-      "date": "2026-04-19",
-      "pin_date_time": "2026-04-19 15:33:56.264096",
-      "ff_id": 1765,
-      "dep_id": null,
-      "section_id": null,
-      "latitude": "23.7937945",
-      "longitude": "90.4045204",
-      "accuracy": 18.211999893188477,
-      "altitude": 29.400001525878906,
-      "altitudeAccuracy": "",
-      "heading": 323.7137145996094,
-      "speed": 0.8307191133499146,
-      "internet_speed": "",
-      "connection_type": ""
-    },
-    {
-      "sbu_id": "[54]",
-      "date": "2026-04-19",
-      "pin_date_time": "2026-04-19 15:35:52.371309",
-      "ff_id": 1765,
-      "dep_id": null,
-      "section_id": null,
-      "latitude": "23.7937808",
-      "longitude": "90.4045025",
-      "accuracy": 17.801000595092773,
-      "altitude": 29.400001525878906,
-      "altitudeAccuracy": "",
-      "heading": 306.1676025390625,
-      "speed": 1.2571641206741333,
-      "internet_speed": "",
-      "connection_type": ""
-    },
-    {
-      "sbu_id": "[54]",
-      "date": "2026-04-19",
-      "pin_date_time": "2026-04-19 15:36:59.699749",
-      "ff_id": 1765,
-      "dep_id": null,
-      "section_id": null,
-      "latitude": "23.793718",
-      "longitude": "90.4045497",
-      "accuracy": 26.92300033569336,
-      "altitude": 29.400001525878906,
-      "altitudeAccuracy": "",
-      "heading": 158.64781188964844,
-      "speed": 1.5376111268997192,
-      "internet_speed": "",
-      "connection_type": ""
-    },
-    {
-      "sbu_id": "[54]",
-      "date": "2026-04-19",
-      "pin_date_time": "2026-04-19 15:38:55.829079",
-      "ff_id": 1765,
-      "dep_id": null,
-      "section_id": null,
-      "latitude": "23.79374",
-      "longitude": "90.4045613",
-      "accuracy": 20.39299964904785,
-      "altitude": 28.600000381469727,
-      "altitudeAccuracy": "",
-      "heading": 310.39190673828125,
-      "speed": 0.39579981565475464,
-      "internet_speed": "",
-      "connection_type": ""
-    },
-    {
-      "sbu_id": "[54]",
-      "date": "2026-04-19",
-      "pin_date_time": "2026-04-19 15:40:03.137970",
-      "ff_id": 1765,
-      "dep_id": null,
-      "section_id": null,
-      "latitude": "23.7937756",
-      "longitude": "90.4045367",
-      "accuracy": 19.121000289916992,
-      "altitude": 29.400001525878906,
-      "altitudeAccuracy": "",
-      "heading": 347.2776184082031,
-      "speed": 0.20071427524089813,
-      "internet_speed": "",
-      "connection_type": ""
-    },
-    {
-      "sbu_id": "[54]",
-      "date": "2026-04-19",
-      "pin_date_time": "2026-04-19 15:41:59.443427",
-      "ff_id": 1765,
-      "dep_id": null,
-      "section_id": null,
-      "latitude": "23.793781",
-      "longitude": "90.4045283",
-      "accuracy": 15.333999633789062,
-      "altitude": 29.400001525878906,
-      "altitudeAccuracy": "",
-      "heading": 323.4021911621094,
-      "speed": 1.229228138923645,
-      "internet_speed": "",
-      "connection_type": ""
-    },
-    {
-      "sbu_id": "[54]",
-      "date": "2026-04-19",
-      "pin_date_time": "2026-04-19 15:43:06.984236",
-      "ff_id": 1765,
-      "dep_id": null,
-      "section_id": null,
-      "latitude": "23.7937412",
-      "longitude": "90.4045568",
-      "accuracy": 12.743000030517578,
-      "altitude": 28.5,
-      "altitudeAccuracy": "",
-      "heading": 267.88958740234375,
-      "speed": 0.2193380445241928,
-      "internet_speed": "",
-      "connection_type": ""
-    },
-    {
-      "sbu_id": "[54]",
-      "date": "2026-04-19",
-      "pin_date_time": "2026-04-19 15:45:03.492987",
-      "ff_id": 1765,
-      "dep_id": null,
-      "section_id": null,
-      "latitude": "23.7937619",
-      "longitude": "90.4045676",
-      "accuracy": 19.13599967956543,
-      "altitude": 29.400001525878906,
-      "altitudeAccuracy": "",
-      "heading": 355.0057678222656,
-      "speed": 1.1547250747680664,
-      "internet_speed": "",
-      "connection_type": ""
-    },
-    {
-      "sbu_id": "[54]",
-      "date": "2026-04-19",
-      "pin_date_time": "2026-04-19 15:46:10.794549",
-      "ff_id": 1765,
-      "dep_id": null,
-      "section_id": null,
-      "latitude": "23.7937423",
-      "longitude": "90.4045661",
-      "accuracy": 18.902999877929688,
-      "altitude": 29.400001525878906,
-      "altitudeAccuracy": "",
-      "heading": 139.84393310546875,
-      "speed": 0.28340837359428406,
-      "internet_speed": "",
-      "connection_type": ""
-    },
-    {
-      "sbu_id": "[54]",
-      "date": "2026-04-19",
-      "pin_date_time": "2026-04-19 15:48:07.406297",
-      "ff_id": 1765,
-      "dep_id": null,
-      "section_id": null,
-      "latitude": "23.7937789",
-      "longitude": "90.4045473",
-      "accuracy": 15.362000465393066,
-      "altitude": 28.5,
-      "altitudeAccuracy": "",
-      "heading": 334.5329284667969,
-      "speed": 1.3420085906982422,
-      "internet_speed": "",
-      "connection_type": ""
-    },
-    {
-      "sbu_id": "[54]",
-      "date": "2026-04-19",
-      "pin_date_time": "2026-04-19 15:49:14.814476",
-      "ff_id": 1765,
-      "dep_id": null,
-      "section_id": null,
-      "latitude": "23.7937765",
-      "longitude": "90.4045397",
-      "accuracy": 16.665000915527344,
-      "altitude": 29.400001525878906,
-      "altitudeAccuracy": "",
-      "heading": 344.58172607421875,
-      "speed": 0.42588940262794495,
-      "internet_speed": "",
-      "connection_type": ""
-    },
-    {
-      "sbu_id": "[54]",
-      "date": "2026-04-19",
-      "pin_date_time": "2026-04-19 15:51:11.104238",
-      "ff_id": 1765,
-      "dep_id": null,
-      "section_id": null,
-      "latitude": "23.7937347",
-      "longitude": "90.4045646",
-      "accuracy": 12.310999870300293,
-      "altitude": 28.5,
-      "altitudeAccuracy": "",
-      "heading": 145.34457397460938,
-      "speed": 0.922319769859314,
-      "internet_speed": "",
-      "connection_type": ""
-    },
-    {
-      "sbu_id": "[54]",
-      "date": "2026-04-19",
-      "pin_date_time": "2026-04-19 15:52:18.286567",
-      "ff_id": 1765,
-      "dep_id": null,
-      "section_id": null,
-      "latitude": "23.7937697",
-      "longitude": "90.4045457",
-      "accuracy": 16.76099967956543,
-      "altitude": 29.400001525878906,
-      "altitudeAccuracy": "",
-      "heading": 143.73614501953125,
-      "speed": 0.5725743770599365,
-      "internet_speed": "",
-      "connection_type": ""
-    },
-    {
-      "sbu_id": "[54]",
-      "date": "2026-04-19",
-      "pin_date_time": "2026-04-19 15:54:14.225253",
-      "ff_id": 1765,
-      "dep_id": null,
-      "section_id": null,
-      "latitude": "23.7937774",
-      "longitude": "90.4044792",
-      "accuracy": 26.09600067138672,
-      "altitude": 28.600000381469727,
-      "altitudeAccuracy": "",
-      "heading": 303.9300231933594,
-      "speed": 1.1412841081619263,
-      "internet_speed": "",
-      "connection_type": ""
-    },
-    {
-      "sbu_id": "[54]",
-      "date": "2026-04-19",
-      "pin_date_time": "2026-04-19 15:55:21.697112",
-      "ff_id": 1765,
-      "dep_id": null,
-      "section_id": null,
-      "latitude": "23.7937419",
-      "longitude": "90.4045844",
-      "accuracy": 15.234999656677246,
-      "altitude": 28.5,
-      "altitudeAccuracy": "",
-      "heading": 128.59933471679688,
-      "speed": 0.24525101482868195,
-      "internet_speed": "",
-      "connection_type": ""
-    },
-    {
-      "sbu_id": "[54]",
-      "date": "2026-04-19",
-      "pin_date_time": "2026-04-19 15:57:17.739251",
-      "ff_id": 1765,
-      "dep_id": null,
-      "section_id": null,
-      "latitude": "23.7937822",
-      "longitude": "90.4045511",
-      "accuracy": 12.95199966430664,
-      "altitude": 28.5,
-      "altitudeAccuracy": "",
-      "heading": 337.46392822265625,
-      "speed": 1.2416679859161377,
-      "internet_speed": "",
-      "connection_type": ""
-    },
-    {
-      "sbu_id": "[54]",
-      "date": "2026-04-19",
-      "pin_date_time": "2026-04-19 15:58:25.288087",
-      "ff_id": 1765,
-      "dep_id": null,
-      "section_id": null,
-      "latitude": "23.7937264",
-      "longitude": "90.4045693",
-      "accuracy": 13.642999649047852,
-      "altitude": 28.5,
-      "altitudeAccuracy": "",
-      "heading": 93.54219818115234,
-      "speed": 0.3529861867427826,
-      "internet_speed": "",
-      "connection_type": ""
-    },
-    {
-      "sbu_id": "[54]",
-      "date": "2026-04-19",
-      "pin_date_time": "2026-04-19 16:00:21.858735",
-      "ff_id": 1765,
-      "dep_id": null,
-      "section_id": null,
-      "latitude": "23.7937308",
-      "longitude": "90.404556",
-      "accuracy": 13.762999534606934,
-      "altitude": 28.5,
-      "altitudeAccuracy": "",
-      "heading": 338.4409484863281,
-      "speed": 0.6689454317092896,
-      "internet_speed": "",
-      "connection_type": ""
-    },
-    {
-      "sbu_id": "[54]",
-      "date": "2026-04-19",
-      "pin_date_time": "2026-04-19 16:01:29.493896",
-      "ff_id": 1765,
-      "dep_id": null,
-      "section_id": null,
-      "latitude": "23.7937402",
-      "longitude": "90.4045579",
-      "accuracy": 13.116000175476074,
-      "altitude": 28.600000381469727,
-      "altitudeAccuracy": "",
-      "heading": 153.874267578125,
-      "speed": 0.23371665179729462,
-      "internet_speed": "",
-      "connection_type": ""
-    },
-    {
-      "sbu_id": "[54]",
-      "date": "2026-04-19",
-      "pin_date_time": "2026-04-19 16:38:19.742511",
-      "ff_id": 1765,
-      "dep_id": null,
-      "section_id": null,
-      "latitude": "23.7937029",
-      "longitude": "90.4046125",
-      "accuracy": 100.0,
-      "altitude": 28.5,
+      "latitude": "23.7937011",
+      "longitude": "90.4046117",
+      "accuracy": 22.0310001373291,
+      "altitude": 30.5,
       "altitudeAccuracy": "",
       "heading": 0.0,
       "speed": 0.0,
@@ -4300,389 +3150,20 @@ Map dummyData = {
     },
     {
       "sbu_id": "[54]",
-      "date": "2026-04-19",
-      "pin_date_time": "2026-04-19 16:41:22.738727",
+      "date": "2026-04-21",
+      "pin_date_time": "2026-04-21 17:52:09.477180",
       "ff_id": 1765,
       "dep_id": null,
       "section_id": null,
-      "latitude": "23.793762",
-      "longitude": "90.4045356",
-      "accuracy": 27.361000061035156,
-      "altitude": 28.600000381469727,
+      "latitude": "23.7936929",
+      "longitude": "90.4046868",
+      "accuracy": 14.831999778747559,
+      "altitude": 30.5,
       "altitudeAccuracy": "",
-      "heading": 297.5794372558594,
-      "speed": 0.29418712854385376,
-      "internet_speed": "",
-      "connection_type": ""
-    },
-    {
-      "sbu_id": "[54]",
-      "date": "2026-04-19",
-      "pin_date_time": "2026-04-19 16:44:25.883642",
-      "ff_id": 1765,
-      "dep_id": null,
-      "section_id": null,
-      "latitude": "23.7937602",
-      "longitude": "90.4045787",
-      "accuracy": 18.615999221801758,
-      "altitude": 29.400001525878906,
-      "altitudeAccuracy": "",
-      "heading": 121.40380859375,
-      "speed": 0.3132609724998474,
-      "internet_speed": "",
-      "connection_type": ""
-    },
-    {
-      "sbu_id": "[54]",
-      "date": "2026-04-19",
-      "pin_date_time": "2026-04-19 16:47:28.577515",
-      "ff_id": 1765,
-      "dep_id": null,
-      "section_id": null,
-      "latitude": "23.7937866",
-      "longitude": "90.4045168",
-      "accuracy": 14.52400016784668,
-      "altitude": 29.400001525878906,
-      "altitudeAccuracy": "",
-      "heading": 130.44569396972656,
-      "speed": 0.6094775199890137,
-      "internet_speed": "",
-      "connection_type": ""
-    },
-    {
-      "sbu_id": "[54]",
-      "date": "2026-04-19",
-      "pin_date_time": "2026-04-19 16:50:31.840015",
-      "ff_id": 1765,
-      "dep_id": null,
-      "section_id": null,
-      "latitude": "23.7938044",
-      "longitude": "90.4044545",
-      "accuracy": 17.09000015258789,
-      "altitude": 29.400001525878906,
-      "altitudeAccuracy": "",
-      "heading": 278.8493347167969,
-      "speed": 0.5861616134643555,
-      "internet_speed": "",
-      "connection_type": ""
-    },
-    {
-      "sbu_id": "[54]",
-      "date": "2026-04-19",
-      "pin_date_time": "2026-04-19 16:53:35.380804",
-      "ff_id": 1765,
-      "dep_id": null,
-      "section_id": null,
-      "latitude": "23.7937977",
-      "longitude": "90.4045056",
-      "accuracy": 16.445999145507812,
-      "altitude": 29.400001525878906,
-      "altitudeAccuracy": "",
-      "heading": 67.68529510498047,
-      "speed": 0.4008368253707886,
-      "internet_speed": "",
-      "connection_type": ""
-    },
-    {
-      "sbu_id": "[54]",
-      "date": "2026-04-19",
-      "pin_date_time": "2026-04-19 16:56:38.732602",
-      "ff_id": 1765,
-      "dep_id": null,
-      "section_id": null,
-      "latitude": "23.7937747",
-      "longitude": "90.4045363",
-      "accuracy": 15.340999603271484,
-      "altitude": 29.400001525878906,
-      "altitudeAccuracy": "",
-      "heading": 123.12374877929688,
-      "speed": 0.8679903745651245,
-      "internet_speed": "",
-      "connection_type": ""
-    },
-    {
-      "sbu_id": "[54]",
-      "date": "2026-04-19",
-      "pin_date_time": "2026-04-19 16:59:42.031132",
-      "ff_id": 1765,
-      "dep_id": null,
-      "section_id": null,
-      "latitude": "23.7938098",
-      "longitude": "90.4044982",
-      "accuracy": 15.039999961853027,
-      "altitude": 29.400001525878906,
-      "altitudeAccuracy": "",
-      "heading": 321.5453186035156,
-      "speed": 2.036003589630127,
-      "internet_speed": "",
-      "connection_type": ""
-    },
-    {
-      "sbu_id": "[54]",
-      "date": "2026-04-19",
-      "pin_date_time": "2026-04-19 17:02:45.449808",
-      "ff_id": 1765,
-      "dep_id": null,
-      "section_id": null,
-      "latitude": "23.7937664",
-      "longitude": "90.4045271",
-      "accuracy": 23.176000595092773,
-      "altitude": 29.100000381469727,
-      "altitudeAccuracy": "",
-      "heading": 210.2021026611328,
-      "speed": 0.4601050913333893,
-      "internet_speed": "",
-      "connection_type": ""
-    },
-    {
-      "sbu_id": "[54]",
-      "date": "2026-04-19",
-      "pin_date_time": "2026-04-19 17:05:49.553262",
-      "ff_id": 1765,
-      "dep_id": null,
-      "section_id": null,
-      "latitude": "23.7937311",
-      "longitude": "90.4045699",
-      "accuracy": 20.398000717163086,
-      "altitude": 29.400001525878906,
-      "altitudeAccuracy": "",
-      "heading": 294.8773498535156,
-      "speed": 0.8090713620185852,
-      "internet_speed": "",
-      "connection_type": ""
-    },
-    {
-      "sbu_id": "[54]",
-      "date": "2026-04-19",
-      "pin_date_time": "2026-04-19 17:08:53.467140",
-      "ff_id": 1765,
-      "dep_id": null,
-      "section_id": null,
-      "latitude": "23.793808",
-      "longitude": "90.404453",
-      "accuracy": 19.47100067138672,
-      "altitude": 29.400001525878906,
-      "altitudeAccuracy": "",
-      "heading": 287.15191650390625,
-      "speed": 1.3285802602767944,
-      "internet_speed": "",
-      "connection_type": ""
-    },
-    {
-      "sbu_id": "[54]",
-      "date": "2026-04-19",
-      "pin_date_time": "2026-04-19 17:11:57.477964",
-      "ff_id": 1765,
-      "dep_id": null,
-      "section_id": null,
-      "latitude": "23.7937652",
-      "longitude": "90.4045704",
-      "accuracy": 16.349000930786133,
-      "altitude": 29.400001525878906,
-      "altitudeAccuracy": "",
-      "heading": 21.599349975585938,
-      "speed": 0.30587708950042725,
-      "internet_speed": "",
-      "connection_type": ""
-    },
-    {
-      "sbu_id": "[54]",
-      "date": "2026-04-19",
-      "pin_date_time": "2026-04-19 17:22:30.203691",
-      "ff_id": 1765,
-      "dep_id": null,
-      "section_id": null,
-      "latitude": "23.7937421",
-      "longitude": "90.4045789",
-      "accuracy": 100.0,
-      "altitude": 29.400001525878906,
-      "altitudeAccuracy": "",
-      "heading": 0.0,
-      "speed": 0.0,
-      "internet_speed": "",
-      "connection_type": ""
-    },
-    {
-      "sbu_id": "[54]",
-      "date": "2026-04-19",
-      "pin_date_time": "2026-04-19 17:25:34.610789",
-      "ff_id": 1765,
-      "dep_id": null,
-      "section_id": null,
-      "latitude": "23.7937821",
-      "longitude": "90.4045439",
-      "accuracy": 14.501999855041504,
-      "altitude": 29.0,
-      "altitudeAccuracy": "",
-      "heading": 291.6941833496094,
-      "speed": 0.5819262862205505,
-      "internet_speed": "",
-      "connection_type": ""
-    },
-    {
-      "sbu_id": "[54]",
-      "date": "2026-04-19",
-      "pin_date_time": "2026-04-19 17:31:01.611477",
-      "ff_id": 1765,
-      "dep_id": null,
-      "section_id": null,
-      "latitude": "23.7937492",
-      "longitude": "90.4045504",
-      "accuracy": 12.199000358581543,
-      "altitude": 28.5,
-      "altitudeAccuracy": "",
-      "heading": 353.690185546875,
-      "speed": 0.7888555526733398,
-      "internet_speed": "",
-      "connection_type": ""
-    },
-    {
-      "sbu_id": "[54]",
-      "date": "2026-04-19",
-      "pin_date_time": "2026-04-19 17:34:02.238155",
-      "ff_id": 1765,
-      "dep_id": null,
-      "section_id": null,
-      "latitude": "23.7937248",
-      "longitude": "90.4045519",
-      "accuracy": 28.731000900268555,
-      "altitude": 28.5,
-      "altitudeAccuracy": "",
-      "heading": 172.16244506835938,
-      "speed": 0.4372892677783966,
-      "internet_speed": "",
-      "connection_type": ""
-    },
-    {
-      "sbu_id": "[54]",
-      "date": "2026-04-19",
-      "pin_date_time": "2026-04-19 17:37:06.631750",
-      "ff_id": 1765,
-      "dep_id": null,
-      "section_id": null,
-      "latitude": "23.7937394",
-      "longitude": "90.4045415",
-      "accuracy": 29.43199920654297,
-      "altitude": 28.5,
-      "altitudeAccuracy": "",
-      "heading": 288.6180419921875,
-      "speed": 0.4957827925682068,
-      "internet_speed": "",
-      "connection_type": ""
-    },
-    {
-      "sbu_id": "[54]",
-      "date": "2026-04-19",
-      "pin_date_time": "2026-04-19 17:40:10.333831",
-      "ff_id": 1765,
-      "dep_id": null,
-      "section_id": null,
-      "latitude": "23.7937215",
-      "longitude": "90.4045544",
-      "accuracy": 19.200000762939453,
-      "altitude": 28.5,
-      "altitudeAccuracy": "",
-      "heading": 190.17059326171875,
-      "speed": 0.4182320237159729,
-      "internet_speed": "",
-      "connection_type": ""
-    },
-    {
-      "sbu_id": "[54]",
-      "date": "2026-04-19",
-      "pin_date_time": "2026-04-19 17:43:12.690375",
-      "ff_id": 1765,
-      "dep_id": null,
-      "section_id": null,
-      "latitude": "23.7937991",
-      "longitude": "90.4044947",
-      "accuracy": 17.819000244140625,
-      "altitude": 29.400001525878906,
-      "altitudeAccuracy": "",
-      "heading": 276.3432312011719,
-      "speed": 0.5715140104293823,
-      "internet_speed": "",
-      "connection_type": ""
-    },
-    {
-      "sbu_id": "[54]",
-      "date": "2026-04-19",
-      "pin_date_time": "2026-04-19 17:46:16.074395",
-      "ff_id": 1765,
-      "dep_id": null,
-      "section_id": null,
-      "latitude": "23.7937683",
-      "longitude": "90.404546",
-      "accuracy": 19.531999588012695,
-      "altitude": 29.600000381469727,
-      "altitudeAccuracy": "",
-      "heading": 145.44894409179688,
-      "speed": 0.4685799777507782,
-      "internet_speed": "",
-      "connection_type": ""
-    },
-    {
-      "sbu_id": "[54]",
-      "date": "2026-04-19",
-      "pin_date_time": "2026-04-19 17:49:19.795500",
-      "ff_id": 1765,
-      "dep_id": null,
-      "section_id": null,
-      "latitude": "23.7938234",
-      "longitude": "90.4044212",
-      "accuracy": 18.277000427246094,
-      "altitude": 29.400001525878906,
-      "altitudeAccuracy": "",
-      "heading": 298.7890625,
-      "speed": 2.12319278717041,
-      "internet_speed": "",
-      "connection_type": ""
-    },
-    {
-      "sbu_id": "[54]",
-      "date": "2026-04-19",
-      "pin_date_time": "2026-04-19 17:52:21.483401",
-      "ff_id": 1765,
-      "dep_id": null,
-      "section_id": null,
-      "latitude": "23.7937575",
-      "longitude": "90.4045431",
-      "accuracy": 17.481000900268555,
-      "altitude": 29.400001525878906,
-      "altitudeAccuracy": "",
-      "heading": 135.97396850585938,
-      "speed": 1.5727273225784302,
+      "heading": 94.21311950683594,
+      "speed": 0.985514760017395,
       "internet_speed": "",
       "connection_type": ""
     }
-  ],
-  "taDa-data": {
-    "remarks": "ggggh",
-    "submitted": false,
-    "sales_date": "2026-04-19",
-    "da_info": {
-      "survey_type": "outlet",
-      "point_id": 167,
-      "section_id": 213,
-      "allowance_type": "EX-HQ",
-      "amount": 700.0,
-      "sales_date": "2026-04-19"
-    },
-    "ta_rows": [
-      {
-        "identity": "1776587889987954",
-        "vehicle_id": 198,
-        "vehicle_slug": "CNG",
-        "from": "Banani",
-        "to": "Mirpur",
-        "km": "9",
-        "amount": "320",
-        "remarks": ""
-      }
-    ]
-  },
-  "attendance_configuration": {
-    "mandatory_attendance": 1,
-    "check_in": 0
-  }
+  ]
 };
