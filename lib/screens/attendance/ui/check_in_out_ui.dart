@@ -1,12 +1,10 @@
-import 'dart:async';
-import 'dart:developer';
 import 'dart:io';
 
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:geocoding/geocoding.dart';
-import 'package:google_maps_flutter/google_maps_flutter.dart';
 import 'package:sizer/sizer.dart';
+import 'package:wings_olympic_sr/utils/extensions/widget_extensions.dart';
 
 import '../../../constants/constant_variables.dart';
 import '../../../constants/enum.dart';
@@ -40,9 +38,7 @@ class CheckInOutUI extends ConsumerStatefulWidget {
 }
 
 class _CheckInOutUIState extends ConsumerState<CheckInOutUI> {
-  Completer<GoogleMapController> mapController = Completer();
   late AttendanceController attendanceController;
-
   late AttendanceProviderModel attendanceProviderModel;
 
   @override
@@ -59,31 +55,10 @@ class _CheckInOutUIState extends ConsumerState<CheckInOutUI> {
     attendanceController.disposeTimer();
   }
 
-  Map<MarkerId, Marker> markers = <MarkerId, Marker>{};
-
-  void _onMapCreated() {
-
-    if(widget.lat!=0 && widget.lng !=0) {
-      final marker = Marker(
-        markerId: const MarkerId('place_name'),
-        position: LatLng(widget.lat, widget.lng),
-        // icon: BitmapDescriptor.,
-        infoWindow: const InfoWindow(
-          title: 'title',
-          snippet: 'address',
-        ),
-      );
-
-      setState(() {
-        markers[MarkerId('place_name')] = marker;
-      });
-    }
-  }
-
-  //
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor: scaffoldBGColor,
       appBar: CustomAppBar(
           title: widget.type == AttendanceType.checkIn ? "Check In" : "Check Out",
           onLeadingIconPressed: () {
@@ -94,7 +69,7 @@ class _CheckInOutUIState extends ConsumerState<CheckInOutUI> {
         return asyncLocation.when(
             data: (locationData) {
               if (locationData == null) {
-                return Container();
+                return const SizedBox();
               }
               return Consumer(builder: (context, ref, _) {
                 final asyncDistance = ref.watch(getDistanceProvider(attendanceProviderModel));
@@ -112,179 +87,162 @@ class _CheckInOutUIState extends ConsumerState<CheckInOutUI> {
                         }
                       }
 
-                      return Column(
-                        children: [
-                          Container(
-                            width: 100.w,
-                            // height: 30.h,
-                            decoration: BoxDecoration(
-                              color: Colors.white,
-                              borderRadius: BorderRadius.only(bottomRight: Radius.circular(appBarRadius), bottomLeft: Radius.circular(appBarRadius)),
-                              boxShadow: [
-                                BoxShadow(
-                                  color: lightMediumGrey.withOpacity(0.5),
-                                  spreadRadius: 5,
-                                  blurRadius: 10,
-                                  offset: const Offset(0, 1), // changes position of shadow
-                                ),
-                              ],
-                            ),
-                            padding: EdgeInsets.symmetric(vertical: 2.h, horizontal: 3.w),
-                            child: Column(
-                              mainAxisSize: MainAxisSize.min,
-                              children: [
-                                Row(
-                                  mainAxisAlignment: MainAxisAlignment.spaceAround,
-                                  children: [
-                                    Row(
-                                      mainAxisSize: MainAxisSize.min,
-                                      children: [
-                                        const Icon(Icons.access_time),
-                                        Consumer(builder: (context, ref, _) {
-                                          DateTime time = ref.watch(attendanceDateTimeProvider);
-                                          return LangText(
-                                            uiTimeFormat.format(time),
-                                            isNumber: true,
-                                            isNum: false,
-                                          );
-                                        })
-                                      ],
-                                    ),
-                                    Row(
-                                      mainAxisSize: MainAxisSize.min,
-                                      children: [
-                                        const Icon(Icons.location_on_outlined),
-                                        LangText(
-                                          locationData.address?.street ?? "N/A",
-                                          isNumber: true,
-                                          isNum: false,
-                                        )
-                                      ],
-                                    )
-                                  ],
-                                ),
-                                SizedBox(
-                                  height: 2.h,
-                                ),
-                                Visibility(
-                                  visible: widget.lat==0 && widget.lng ==0,
-                                  child: GlobalWidgets().showInfo(message: "Point base location not found"),
-                                ),
-                                Visibility(
-                                  visible: widget.lat!=0 && widget.lng !=0,
-                                  child: GlobalWidgets().showInfo(message: hint),
-                                ),
-                                SizedBox(height: 14),
-                                // Row(
-                                //   mainAxisAlignment: MainAxisAlignment.spaceAround,
-                                //   children: [
-                                //     Row(
-                                //       mainAxisSize: MainAxisSize.min,
-                                //       children: [
-                                //         const Icon(Icons.access_time),
-                                //         LangText(
-                                //           "$distance",
-                                //           isNumber: true,
-                                //           isNum: false,
-                                //         )
-                                //       ],
-                                //     ),
-                                //   ],
-                                // ),
-                                Consumer(builder: (context, ref, _) {
-                                  String selfie = ref.watch(attendanceSelfiePathProvider);
-                                  if (selfie.isEmpty) {
-                                    return SizedBox(
-                                      height: 6.h,
-                                    );
-                                  }
-                                  return Image.file(
-                                    File(selfie),
-                                    height: 16.h,
-                                  );
-                                }),
-                                SizedBox(
-                                  height: 2.h,
-                                ),
-                                InkWell(
-                                  onTap: () {
-                                    attendanceController.takeSelfie(type: widget.type);
-                                  },
-                                  child: SizedBox(
-                                    width: 100.w,
-                                    child: Center(
-                                      child: Row(
-                                        mainAxisSize: MainAxisSize.min,
-                                        children: [
-                                          LangText("Take a photo"),
-                                          SizedBox(
-                                            width: 2.w,
-                                          ),
-                                          Container(
-                                            decoration: BoxDecoration(color: lightMediumGrey, borderRadius: BorderRadius.circular(50.sp)),
-                                            padding: EdgeInsets.all(5.sp),
-                                            child: const Center(
-                                              child: Icon(Icons.camera_alt),
-                                            ),
-                                          )
-                                        ],
-                                      ),
-                                    ),
-                                  ),
-                                ),
-                                SizedBox(
-                                  height: 3.h,
-                                ),
-                               /* Container(
-                                  width: 100.w,
-                                  height: 30.h,
-                                  decoration: BoxDecoration(borderRadius: BorderRadius.circular(appBarRadius)),
-                                  child: GoogleMap(
-                                    onMapCreated: (GoogleMapController controller) {
-                                      mapController.complete(controller);
-                                      _onMapCreated();
-                                    },
-                                    initialCameraPosition: CameraPosition(
-                                      // bearing: 180.8334901395799,
-                                      // target: LatLng(23.827060, 90.375589),
-                                      target: LatLng(locationData.lat, locationData.long),
-                                      // tilt: 180.440717697143555,
-                                      zoom: 14,
-                                    ),
-                                    markers: markers.values.toSet(),
-                                    myLocationEnabled: true,
-                                    zoomControlsEnabled: true,
-                                    zoomGesturesEnabled: true,
-                                    rotateGesturesEnabled: true,
-                                    scrollGesturesEnabled: true,
-                                  ),
-                                )*/
-                              ],
-                            ),
+                      return SingleChildScrollView(
+                        physics: const BouncingScrollPhysics(),
+                        child: Padding(
+                          padding: EdgeInsets.symmetric(vertical: 2.h, horizontal: 4.w),
+                          child: Column(
+                            crossAxisAlignment: CrossAxisAlignment.stretch,
+                            children: [
+                              _buildInfoCard(locationData, hint),
+                              4.h.verticalSpacing,
+                              SubmitButtonGroup(
+                                twoButtons: false,
+                                onButton1Pressed: () {
+                                  attendanceController.checkInOutProceed(widget.type, locationData, widget.id, lat: widget.lat, lng: widget.lng, depId: widget.depId);
+                                },
+                              )
+                            ],
                           ),
-                          SizedBox(
-                            height: 5.h,
-                          ),
-                          SubmitButtonGroup(
-                            twoButtons: false,
-                            onButton1Pressed: () {
-                              attendanceController.checkInOutProceed(widget.type, locationData, widget.id, lat: widget.lat, lng: widget.lng, depId: widget.depId);
-                            },
-                          )
-                        ],
+                        ),
                       );
                     },
-                    error: (error, _) => Container(),
+                    error: (error, _) => const SizedBox(),
                     loading: () => const Center(
                       child: CircularProgressIndicator(color: Colors.black,),
                     ));
               });
             },
-            error: (error, _) => Container(),
+            error: (error, _) => const SizedBox(),
             loading: () => const Center(
                   child: CircularProgressIndicator(),
                 ));
       }),
     );
   }
+
+  Widget _buildInfoCard(LocationAddressModel<Placemark?> locationData, String hint) {
+    return Container(
+      decoration: BoxDecoration(
+        color: Colors.white,
+        borderRadius: BorderRadius.circular(15),
+        boxShadow: [
+          BoxShadow(
+            color: Colors.black.withValues(alpha: 0.05),
+            spreadRadius: 2,
+            blurRadius: 10,
+            offset: const Offset(0, 4),
+          ),
+        ],
+      ),
+      padding: EdgeInsets.symmetric(vertical: 3.h, horizontal: 4.w),
+      child: Column(
+        mainAxisSize: MainAxisSize.min,
+        children: [
+          Row(
+            children: [
+              Expanded(
+                child: Row(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                    const Icon(Icons.access_time, color: primary),
+                    2.w.horizontalSpacing,
+                    Flexible(
+                      child: Consumer(builder: (context, ref, _) {
+                        DateTime time = ref.watch(attendanceDateTimeProvider);
+                        return LangText(
+                          uiTimeFormat.format(time),
+                          isNumber: true,
+                          isNum: false,
+                          style: TextStyle(fontSize: 12.sp, fontWeight: FontWeight.bold),
+                          overflow: TextOverflow.ellipsis,
+                        );
+                      }),
+                    ),
+                  ],
+                ),
+              ),
+              Expanded(
+                child: Row(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                    const Icon(Icons.location_on, color: primary),
+                    2.w.horizontalSpacing,
+                    Flexible(
+                      child: LangText(
+                        locationData.address?.street ?? "N/A",
+                        isNumber: true,
+                        isNum: false,
+                        style: TextStyle(fontSize: 12.sp, fontWeight: FontWeight.bold),
+                        overflow: TextOverflow.ellipsis,
+                      ),
+                    )
+                  ],
+                ),
+              )
+            ],
+          ),
+          3.h.verticalSpacing,
+          Visibility(
+            visible: widget.lat==0 && widget.lng ==0,
+            child: GlobalWidgets().showInfo(message: "Point base location not found"),
+          ),
+          Visibility(
+            visible: widget.lat!=0 && widget.lng !=0,
+            child: GlobalWidgets().showInfo(message: hint),
+          ),
+          2.h.verticalSpacing,
+          Consumer(builder: (context, ref, _) {
+            String selfie = ref.watch(attendanceSelfiePathProvider);
+            if (selfie.isEmpty) {
+              return const SizedBox();
+            }
+            return Padding(
+              padding: EdgeInsets.only(bottom: 2.h),
+              child: ClipRRect(
+                borderRadius: BorderRadius.circular(10),
+                child: Image.file(
+                  File(selfie),
+                  height: 16.h,
+                  fit: BoxFit.cover,
+                ),
+              ),
+            );
+          }),
+          InkWell(
+            onTap: () {
+              attendanceController.takeSelfie(type: widget.type);
+            },
+            borderRadius: BorderRadius.circular(10),
+            child: Container(
+              padding: EdgeInsets.symmetric(vertical: 1.5.h, horizontal: 4.w),
+              decoration: BoxDecoration(
+                color: lightMediumGrey.withValues(alpha: 0.2),
+                borderRadius: BorderRadius.circular(10),
+              ),
+              child: Row(
+                mainAxisSize: MainAxisSize.min,
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  LangText(
+                    "Take a photo",
+                    style: TextStyle(fontSize: 12.sp, fontWeight: FontWeight.w600, color: primaryBlack),
+                  ),
+                  3.w.horizontalSpacing,
+                  Container(
+                    decoration: BoxDecoration(color: primary, borderRadius: BorderRadius.circular(50.sp)),
+                    padding: EdgeInsets.all(5.sp),
+                    child: const Center(
+                      child: Icon(Icons.camera_alt, color: Colors.white, size: 20),
+                    ),
+                  )
+                ],
+              ),
+            ),
+          ),
+        ],
+      ),
+    );
+  }
 }
+

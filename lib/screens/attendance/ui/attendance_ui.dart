@@ -39,11 +39,11 @@ class _AttendanceUIState extends ConsumerState<AttendanceUI> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: CustomAppBar(
-          title: _appBarTitle,
-          titleImage: "attendance.png",
-          onLeadingIconPressed: () {
-            Navigator.pop(context);
-          },
+        title: _appBarTitle,
+        titleImage: "attendance.png",
+        onLeadingIconPressed: () {
+          Navigator.pop(context);
+        },
         heroTagTitle: _appBarTitle,
         heroTagImg: DashboardBtnNames.getImageHeroTag(_appBarTitle),
       ),
@@ -113,7 +113,7 @@ class _AttendanceUIState extends ConsumerState<AttendanceUI> {
                                     padding: EdgeInsets.only(bottom: 30.0),
                                     child: Center(
                                       child: Text(
-                                        'Loading\nlocation data...',
+                                        'Loading location data...',
                                         textAlign: TextAlign.center,
                                       ),
                                     ),
@@ -148,11 +148,7 @@ class _AttendanceUIState extends ConsumerState<AttendanceUI> {
                                         // attendanceController.tryToCheckIn(location: locationData);
 
                                         SrInfoModel sr = await SyncReadService().getSrInfo();
-                                        if(sr.userType==12) {
-                                          attendanceController.gotoCheckInTsm(attendanceModel, locationData);
-                                        } else {
-                                          attendanceController.gotoCheckIn(attendanceModel, locationData);
-                                        }
+                                        attendanceController.gotoCheckIn(attendanceModel, locationData);
                                       },
                                     );
                                   },
@@ -209,11 +205,7 @@ class _AttendanceUIState extends ConsumerState<AttendanceUI> {
                                       onTap: () async {
                                         // attendanceController.tryToCheckIn(location: locationData, checkOut: true);
                                         SrInfoModel sr = await SyncReadService().getSrInfo();
-                                        if(sr.userType==12) {
-                                          attendanceController.gotoCheckOutTsm(attendanceModel, locationData);
-                                        } else {
-                                          attendanceController.gotoCheckOut(attendanceModel, locationData);
-                                        }
+                                        attendanceController.gotoCheckOut(attendanceModel, locationData);
                                       },
                                     );
                                   },

@@ -1,6 +1,7 @@
 import 'dart:developer';
 import 'dart:io';
 
+import 'package:camera/camera.dart';
 import 'package:flutter/material.dart';
 import 'package:wings_olympic_sr/screens/resignation/ui/resignation_ui.dart';
 import 'package:wings_olympic_sr/screens/stock_check/ui/stock_check_ui.dart';
@@ -180,7 +181,11 @@ class RouteGenerator {
                   depId: data['depId'],
                 ));
       case CameraScreen.routeName:
-        return MaterialPageRoute(builder: (_) => const CameraScreen());
+        CameraLensDirection? cameraType;
+        if (settings.arguments != null) {
+          cameraType = settings.arguments as CameraLensDirection;
+        }
+        return MaterialPageRoute(builder: (_) => CameraScreen(cameraType: cameraType));
       case TargetTabViewUI.routeName:
         Map arg = settings.arguments as Map;
         Module data = arg["data"];

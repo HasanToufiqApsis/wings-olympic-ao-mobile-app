@@ -8,7 +8,9 @@ import '../../services/helper.dart';
 class CameraScreen extends StatefulWidget {
   static const routeName = '/camera';
 
-  const CameraScreen({Key? key}) : super(key: key);
+  final CameraLensDirection? cameraType;
+
+  const CameraScreen({Key? key, required this.cameraType}) : super(key: key);
 
   @override
   _CameraScreenState createState() => _CameraScreenState();
@@ -16,7 +18,7 @@ class CameraScreen extends StatefulWidget {
 
 class _CameraScreenState extends State<CameraScreen> {
   CameraController? _cameraController;
-  CameraDescription? backCamera, frontCamera;
+  CameraDescription? backCamera, frontCamera, initialCamera;
 
   @override
   void initState() {
@@ -44,9 +46,14 @@ class _CameraScreenState extends State<CameraScreen> {
     }
     backCamera ??= cameras.first;
     frontCamera ??= cameras.last;
+    initialCamera = backCamera;
+
+    if(widget.cameraType != null && widget.cameraType == CameraLensDirection.front) {
+      initialCamera = frontCamera;
+    }
 
     _cameraController = CameraController(
-      backCamera!,
+      initialCamera!,
       ResolutionPreset.medium,
       enableAudio: false,
     );

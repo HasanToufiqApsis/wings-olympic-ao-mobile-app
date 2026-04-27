@@ -87,7 +87,7 @@ class _HomeDashboardState extends ConsumerState<HomeDashboard> {
     LocationService(context).initialize();
     _outletController = OutletController(context: context, ref: ref);
     WidgetsBinding.instance.addPostFrameCallback((val) async {
-      await _syncAttendanceRestrictionForHome();
+      // await _syncAttendanceRestrictionForHome();
       final viewComplexityStr = await LocalStorageHelper.read(viewComplexityKey);
       if (viewComplexityStr != null) {
         final viewComplexity = ViewComplexity.fromString(viewComplexityStr.toString());
@@ -124,314 +124,322 @@ class _HomeDashboardState extends ConsumerState<HomeDashboard> {
   @override
   Widget build(BuildContext context) {
     AsyncValue<SrInfoModel?> asyncSrInfo = ref.watch(userDataProvider);
-    final attendanceLocked = ref.watch(homeDashboardAttendanceLockedProvider);
-    return asyncSrInfo.when(
-      data: (srInfo) {
-        return Scaffold(
-          // backgroundColor: Colors.white,
-          appBar: CustomAppBar(
-            title: srInfo != null ? " ${srInfo.fullname}" : "",
-            subTitle: _getSrRouteSubTitle(srInfo),
-            titleImage: "person.png",
-            showLeading: false,
-            centerTitle: false,
-            actions: [
-              Consumer(
-                builder: (context, ref, child) {
-                  AsyncValue<List<NotificationModel>> asyncnotificationData = ref.watch(
-                    notificationProvider,
-                  );
-                  return asyncnotificationData.when(
-                    // skipLoadingOnRefresh: false,
-                    data: (notifications) {
-                      final count = notifications.where((e) => !(e.read ?? false)).toList().length;
-                      return Stack(
-                        alignment: Alignment.topRight,
-                        children: [
-                          if (count > 0)
-                            Badge(
-                              backgroundColor: Colors.yellow,
-                              textColor: primary,
-                              label: Text(count.toString()),
-                            ),
-                          IconButton(
-                            onPressed: () {
-                              Navigator.pushNamed(context, NotificationScreen.routeName);
-                            },
+    final attendanceLockedProvider = ref.watch(homeDashboardAttendanceLockedProvider);
+
+    return attendanceLockedProvider.when(
+      data: (attendanceLocked) {
+        return asyncSrInfo.when(
+          data: (srInfo) {
+            return Scaffold(
+              // backgroundColor: Colors.white,
+              appBar: CustomAppBar(
+                title: srInfo != null ? " ${srInfo.fullname}" : "",
+                subTitle: _getSrRouteSubTitle(srInfo),
+                titleImage: "person.png",
+                showLeading: false,
+                centerTitle: false,
+                actions: [
+                  Consumer(
+                    builder: (context, ref, child) {
+                      AsyncValue<List<NotificationModel>> asyncnotificationData = ref.watch(
+                        notificationProvider,
+                      );
+                      return asyncnotificationData.when(
+                        // skipLoadingOnRefresh: false,
+                        data: (notifications) {
+                          final count = notifications.where((e) => !(e.read ?? false)).toList().length;
+                          return Stack(
+                            alignment: Alignment.topRight,
+                            children: [
+                              if (count > 0)
+                                Badge(
+                                  backgroundColor: Colors.yellow,
+                                  textColor: primary,
+                                  label: Text(count.toString()),
+                                ),
+                              IconButton(
+                                onPressed: () {
+                                  Navigator.pushNamed(context, NotificationScreen.routeName);
+                                },
+                                icon: const Icon(Icons.notifications_none, color: Colors.white),
+                              ),
+                            ],
+                          );
+                        },
+                        error: (error, t) {
+                          return SizedBox();
+                        },
+                        loading: () {
+                          return IconButton(
+                            onPressed: null,
                             icon: const Icon(Icons.notifications_none, color: Colors.white),
+                          );
+                        },
+                      );
+                    },
+                  ),
+                  IconButton(
+                    onPressed: () {
+                      Navigator.pushNamed(context, SettingsUI.routeName);
+                    },
+                    icon: const Icon(Icons.settings, color: Colors.white),
+                  ),
+                  SizedBox(width: 12),
+                ],
+              ),
+              body: RefreshIndicator(
+                onRefresh: () async {
+                  ref.refresh(visitedAndNoOrderOutletDataProvider);
+                  ref.refresh(totalAndTargetOutletDataProvider);
+                  ref.refresh(targetVsAchievementDataProvider);
+                  ref.refresh(cprRadtCpcDataProvider);
+                  ref.refresh(radtProvider);
+                  ref.refresh(mandatoryFocussedDataProvider);
+                },
+                child: ListView(
+                  children: [
+                    Container(
+                      width: 100.w,
+                      padding: EdgeInsets.only(top: 1.5.h, bottom: 0.5.h, left: 3.w, right: 3.w),
+                      decoration: BoxDecoration(
+                        color: Colors.white,
+                        borderRadius: BorderRadius.only(
+                          bottomLeft: Radius.circular(appBarRadius),
+                          bottomRight: Radius.circular(appBarRadius),
+                        ),
+                      ),
+                      child: Wrap(
+                        // mainAxisSize: MainAxisSize.min,
+                        // runSpacing: 10,
+                        children: [
+                          getDashboardButton(
+                            assetName: "attendance",
+                            name: DashboardBtnNames.attendance,
+                            extraPadding: 0.1.h,
+                            onPressed: () {
+                              Navigator.pushNamed(context, AttendanceUI.routeName);
+                            },
+                          ),
+                          // getDashboardButton(
+                          //   assetName: "outlet",
+                          //   name: DashboardBtnNames.outlets,
+                          //   extraPadding: 0.2.h,
+                          //   onPressed: () {
+                          //     Navigator.pushNamed(context, OutletListUI.routeName);
+                          //   },
+                          // ),
+                          getDashboardButton(
+                            assetName: "outlet",
+                            name: DashboardBtnNames.preorder,
+                            isAttendanceRestricted: attendanceLocked,
+                            onPressed: () {
+                              ref.refresh(couponDiscountProvider);
+                              ref.refresh(selectedRetailerProvider);
+                              _outletController.handlePreorderRedirection();
+                            },
+                          ),
+                          getDashboardButton(
+                            assetName: "audit",
+                            name: DashboardBtnNames.audit,
+                            isAttendanceRestricted: attendanceLocked,
+                            onPressed: () {
+                              Navigator.pushNamed(context, AuditUI.routeName);
+                            },
+                          ),
+                          getDashboardButton(
+                            assetName: "stock_verification",
+                            name: DashboardBtnNames.stockVerification,
+                            isAttendanceRestricted: attendanceLocked,
+                            onPressed: () {
+                              Navigator.pushNamed(context, StockValidationUI.routeName);
+                            },
+                          ),
+                          getDashboardButton(
+                            assetName: "sync",
+                            name: DashboardBtnNames.salesSubmit,
+                            isAttendanceRestricted: attendanceLocked,
+                            onPressed: () {
+                              Navigator.pushNamed(context, SaleSubmitUI.routeName);
+                            },
+                          ),
+                          // getDashboardButton(
+                          //   assetName: "memo",
+                          //   name: DashboardBtnNames.memo,
+                          //   onPressed: () {
+                          //     ref.refresh(couponDiscountProvider);
+                          //     ref.refresh(selectedRetailerProvider);
+                          //     Navigator.pushNamed(context, MemoUI.routeName);
+                          //   },
+                          // ),
+                          // getDashboardButton(
+                          //   assetName: "stock",
+                          //   name: DashboardBtnNames.stock,
+                          //   extraPadding: 0.1.h,
+                          //   onPressed: () {
+                          //     Navigator.pushNamed(context, StockUI.routeName);
+                          //   },
+                          // ),
+                          // getDashboardButton(
+                          //   assetName: "summary",
+                          //   name: DashboardBtnNames.summary,
+                          //   extraPadding: 0.2.h,
+                          //   onPressed: () {
+                          //     Navigator.pushNamed(context, SalesSummaryUI.routeName);
+                          //   },
+                          // ),
+                          // getDashboardButton(
+                          //   assetName: "promotion",
+                          //   name: DashboardBtnNames.promotions,
+                          //   extraPadding: 0.2.h,
+                          //   onPressed: () {
+                          //     Navigator.pushNamed(context, PromotionsListScreen.routeName);
+                          //   },
+                          // ),
+                          // Consumer(
+                          //   builder: (context, ref, _) {
+                          //     AsyncValue<bool> asyncEnabled = ref.watch(
+                          //       checkIfChangeRouteEnabledProvider,
+                          //     );
+                          //
+                          //     return asyncEnabled.when(
+                          //       data: (enable) {
+                          //         if (enable) {
+                          //           return getDashboardButton(
+                          //             assetName: "route_change",
+                          //             name: DashboardBtnNames.changeRoute,
+                          //             extraPadding: 0.3.h,
+                          //             onPressed: () {
+                          //               Navigator.pushNamed(context, ChangeRouteUI.routeName);
+                          //             },
+                          //           );
+                          //         }
+                          //         return const SizedBox(width: 0, height: 0);
+                          //       },
+                          //       error: (error, _) => const SizedBox(width: 0, height: 0),
+                          //       loading: () => const SizedBox(width: 0, height: 0),
+                          //     );
+                          //   },
+                          // ),
+                          // getDashboardButton(
+                          //   assetName: "sync",
+                          //   name: DashboardBtnNames.salesSubmit,
+                          //   onPressed: () {
+                          //     Navigator.pushNamed(context, SaleSubmitUI.routeName);
+                          //   },
+                          // ),
+                          // getDashboardButton(
+                          //   assetName: "leave_management",
+                          //   name: DashboardBtnNames.leaveManagement,
+                          //   onPressed: () {
+                          //     Navigator.pushNamed(context, LeaveManagementUI.routeName);
+                          //   },
+                          // ),
+                          // getDashboardButton(
+                          //   assetName: "tsm",
+                          //   name: DashboardBtnNames.approval,
+                          //   onPressed: () {
+                          //     Navigator.pushNamed(context, ApprovalDashboardScreen.routeName);
+                          //   },
+                          // ),
+                          // getDashboardButton(
+                          //   assetName: "resignation",
+                          //   name: DashboardBtnNames.resignation,
+                          //   extraPadding: 0.3.h,
+                          //   onPressed: () {
+                          //     Navigator.pushNamed(context, ResignationUI.routeName);
+                          //   },
+                          // ),
+                          // getDashboardButton(
+                          //   assetName: "digital_learning",
+                          //   name: DashboardBtnNames.transferBill,
+                          //   extraPadding: 0.3.h,
+                          //   onPressed: () {
+                          //     Navigator.pushNamed(context, TransferBillListUI.routeName);
+                          //   },
+                          // ),
+                          getDashboardButton(
+                            assetName: "taDa",
+                            name: DashboardBtnNames.taDa,
+                            extraPadding: 0.3.h,
+                            isAttendanceRestricted: attendanceLocked,
+                            onPressed: () {
+                              Navigator.pushNamed(context, OlympicTaDaUi.routeName, arguments: false);
+                            },
                           ),
                         ],
-                      );
-                    },
-                    error: (error, t) {
-                      return SizedBox();
-                    },
-                    loading: () {
-                      return IconButton(
-                        onPressed: null,
-                        icon: const Icon(Icons.notifications_none, color: Colors.white),
-                      );
-                    },
-                  );
-                },
-              ),
-              IconButton(
-                onPressed: () {
-                  Navigator.pushNamed(context, SettingsUI.routeName);
-                },
-                icon: const Icon(Icons.settings, color: Colors.white),
-              ),
-              SizedBox(width: 12),
-            ],
-          ),
-          body: RefreshIndicator(
-            onRefresh: () async {
-              ref.refresh(visitedAndNoOrderOutletDataProvider);
-              ref.refresh(totalAndTargetOutletDataProvider);
-              ref.refresh(targetVsAchievementDataProvider);
-              ref.refresh(cprRadtCpcDataProvider);
-              ref.refresh(radtProvider);
-              ref.refresh(mandatoryFocussedDataProvider);
-            },
-            child: ListView(
-              children: [
-                Container(
-                  width: 100.w,
-                  padding: EdgeInsets.only(top: 1.5.h, bottom: 0.5.h, left: 3.w, right: 3.w),
-                  decoration: BoxDecoration(
-                    color: Colors.white,
-                    borderRadius: BorderRadius.only(
-                      bottomLeft: Radius.circular(appBarRadius),
-                      bottomRight: Radius.circular(appBarRadius),
+                      ),
                     ),
-                  ),
-                  child: Wrap(
-                    // mainAxisSize: MainAxisSize.min,
-                    // runSpacing: 10,
-                    children: [
-                      getDashboardButton(
-                        assetName: "attendance",
-                        name: DashboardBtnNames.attendance,
-                        extraPadding: 0.1.h,
-                        onPressed: () {
-                          Navigator.pushNamed(context, AttendanceUI.routeName);
-                        },
+                    if (attendanceLocked)
+                      Padding(
+                        padding: EdgeInsets.fromLTRB(3.w, 1.5.h, 3.w, 0),
+                        child: _buildAttendanceLockBanner(),
                       ),
-                      // getDashboardButton(
-                      //   assetName: "outlet",
-                      //   name: DashboardBtnNames.outlets,
-                      //   extraPadding: 0.2.h,
-                      //   onPressed: () {
-                      //     Navigator.pushNamed(context, OutletListUI.routeName);
-                      //   },
-                      // ),
-                      getDashboardButton(
-                        assetName: "outlet",
-                        name: DashboardBtnNames.preorder,
-                        isAttendanceRestricted: attendanceLocked,
-                        onPressed: () {
-                          ref.refresh(couponDiscountProvider);
-                          ref.refresh(selectedRetailerProvider);
-                          _outletController.handlePreorderRedirection();
-                        },
-                      ),
-                      getDashboardButton(
-                        assetName: "audit",
-                        name: DashboardBtnNames.audit,
-                        isAttendanceRestricted: attendanceLocked,
-                        onPressed: () {
-                          Navigator.pushNamed(context, AuditUI.routeName);
-                        },
-                      ),
-                      getDashboardButton(
-                        assetName: "stock_verification",
-                        name: DashboardBtnNames.stockVerification,
-                        isAttendanceRestricted: attendanceLocked,
-                        onPressed: () {
-                          Navigator.pushNamed(context, StockValidationUI.routeName);
-                        },
-                      ),
-                      getDashboardButton(
-                        assetName: "sync",
-                        name: DashboardBtnNames.salesSubmit,
-                        isAttendanceRestricted: attendanceLocked,
-                        onPressed: () {
-                          Navigator.pushNamed(context, SaleSubmitUI.routeName);
-                        },
-                      ),
-                      // getDashboardButton(
-                      //   assetName: "memo",
-                      //   name: DashboardBtnNames.memo,
-                      //   onPressed: () {
-                      //     ref.refresh(couponDiscountProvider);
-                      //     ref.refresh(selectedRetailerProvider);
-                      //     Navigator.pushNamed(context, MemoUI.routeName);
-                      //   },
-                      // ),
-                      // getDashboardButton(
-                      //   assetName: "stock",
-                      //   name: DashboardBtnNames.stock,
-                      //   extraPadding: 0.1.h,
-                      //   onPressed: () {
-                      //     Navigator.pushNamed(context, StockUI.routeName);
-                      //   },
-                      // ),
-                      // getDashboardButton(
-                      //   assetName: "summary",
-                      //   name: DashboardBtnNames.summary,
-                      //   extraPadding: 0.2.h,
-                      //   onPressed: () {
-                      //     Navigator.pushNamed(context, SalesSummaryUI.routeName);
-                      //   },
-                      // ),
-                      // getDashboardButton(
-                      //   assetName: "promotion",
-                      //   name: DashboardBtnNames.promotions,
-                      //   extraPadding: 0.2.h,
-                      //   onPressed: () {
-                      //     Navigator.pushNamed(context, PromotionsListScreen.routeName);
-                      //   },
-                      // ),
-                      // Consumer(
-                      //   builder: (context, ref, _) {
-                      //     AsyncValue<bool> asyncEnabled = ref.watch(
-                      //       checkIfChangeRouteEnabledProvider,
-                      //     );
-                      //
-                      //     return asyncEnabled.when(
-                      //       data: (enable) {
-                      //         if (enable) {
-                      //           return getDashboardButton(
-                      //             assetName: "route_change",
-                      //             name: DashboardBtnNames.changeRoute,
-                      //             extraPadding: 0.3.h,
-                      //             onPressed: () {
-                      //               Navigator.pushNamed(context, ChangeRouteUI.routeName);
-                      //             },
-                      //           );
-                      //         }
-                      //         return const SizedBox(width: 0, height: 0);
-                      //       },
-                      //       error: (error, _) => const SizedBox(width: 0, height: 0),
-                      //       loading: () => const SizedBox(width: 0, height: 0),
-                      //     );
-                      //   },
-                      // ),
-                      // getDashboardButton(
-                      //   assetName: "sync",
-                      //   name: DashboardBtnNames.salesSubmit,
-                      //   onPressed: () {
-                      //     Navigator.pushNamed(context, SaleSubmitUI.routeName);
-                      //   },
-                      // ),
-                      // getDashboardButton(
-                      //   assetName: "leave_management",
-                      //   name: DashboardBtnNames.leaveManagement,
-                      //   onPressed: () {
-                      //     Navigator.pushNamed(context, LeaveManagementUI.routeName);
-                      //   },
-                      // ),
-                      // getDashboardButton(
-                      //   assetName: "tsm",
-                      //   name: DashboardBtnNames.approval,
-                      //   onPressed: () {
-                      //     Navigator.pushNamed(context, ApprovalDashboardScreen.routeName);
-                      //   },
-                      // ),
-                      // getDashboardButton(
-                      //   assetName: "resignation",
-                      //   name: DashboardBtnNames.resignation,
-                      //   extraPadding: 0.3.h,
-                      //   onPressed: () {
-                      //     Navigator.pushNamed(context, ResignationUI.routeName);
-                      //   },
-                      // ),
-                      // getDashboardButton(
-                      //   assetName: "digital_learning",
-                      //   name: DashboardBtnNames.transferBill,
-                      //   extraPadding: 0.3.h,
-                      //   onPressed: () {
-                      //     Navigator.pushNamed(context, TransferBillListUI.routeName);
-                      //   },
-                      // ),
-                      getDashboardButton(
-                        assetName: "taDa",
-                        name: DashboardBtnNames.taDa,
-                        extraPadding: 0.3.h,
-                        isAttendanceRestricted: attendanceLocked,
-                        onPressed: () {
-                          Navigator.pushNamed(context, OlympicTaDaUi.routeName, arguments: false);
-                        },
-                      ),
-                    ],
-                  ),
+                    // Padding(
+                    //   padding: EdgeInsets.only(top: 16, bottom: 16, right: 3.w, left: 3.w),
+                    //   child: Consumer(
+                    //     builder: (context, ref, _) {
+                    //       AsyncValue<List<Module>> asyncModule = ref.watch(enabledModuleListProvider);
+                    //       return asyncModule.when(
+                    //         data: (moduleList) {
+                    //           return ListView.builder(
+                    //             itemCount: moduleList.length,
+                    //             shrinkWrap: true,
+                    //             physics: const NeverScrollableScrollPhysics(),
+                    //             itemBuilder: (context, index) {
+                    //               return TargetNAchievementUI(
+                    //                 color: const {
+                    //                   'main': primaryBlue,
+                    //                   'color-1': red3,
+                    //                   'color-2': primaryBlue,
+                    //                 },
+                    //                 module: moduleList[index],
+                    //               );
+                    //             },
+                    //           );
+                    //         },
+                    //         error: (error, _) => Container(),
+                    //         loading: () => Container(),
+                    //       );
+                    //     },
+                    //   ),
+                    // ),
+                    // Consumer(
+                    //   builder: (BuildContext context, WidgetRef ref, Widget? child) {
+                    //     SrInfoModel? profile = ref.watch(userDataProvider).value;
+                    //     final dashSaleType = ref.watch(dashBoardSaleTypeProvider);
+                    //     if (profile != null && profile.userType == 41) {
+                    //       return Column(
+                    //         children: [
+                    //           Padding(
+                    //             padding: EdgeInsets.symmetric(horizontal: 3.w),
+                    //             child: StrikeRateWidget(saleType: dashSaleType),
+                    //           ),
+                    //           Padding(
+                    //             padding: EdgeInsets.symmetric(horizontal: 3.w),
+                    //             child: StatisticsWidget(saleType: dashSaleType),
+                    //           ),
+                    //         ],
+                    //       );
+                    //     }
+                    //     return const SizedBox();
+                    //   },
+                    // ),
+                  ],
                 ),
-                if (attendanceLocked)
-                  Padding(
-                    padding: EdgeInsets.fromLTRB(3.w, 1.5.h, 3.w, 0),
-                    child: _buildAttendanceLockBanner(),
-                  ),
-                // Padding(
-                //   padding: EdgeInsets.only(top: 16, bottom: 16, right: 3.w, left: 3.w),
-                //   child: Consumer(
-                //     builder: (context, ref, _) {
-                //       AsyncValue<List<Module>> asyncModule = ref.watch(enabledModuleListProvider);
-                //       return asyncModule.when(
-                //         data: (moduleList) {
-                //           return ListView.builder(
-                //             itemCount: moduleList.length,
-                //             shrinkWrap: true,
-                //             physics: const NeverScrollableScrollPhysics(),
-                //             itemBuilder: (context, index) {
-                //               return TargetNAchievementUI(
-                //                 color: const {
-                //                   'main': primaryBlue,
-                //                   'color-1': red3,
-                //                   'color-2': primaryBlue,
-                //                 },
-                //                 module: moduleList[index],
-                //               );
-                //             },
-                //           );
-                //         },
-                //         error: (error, _) => Container(),
-                //         loading: () => Container(),
-                //       );
-                //     },
-                //   ),
-                // ),
-                // Consumer(
-                //   builder: (BuildContext context, WidgetRef ref, Widget? child) {
-                //     SrInfoModel? profile = ref.watch(userDataProvider).value;
-                //     final dashSaleType = ref.watch(dashBoardSaleTypeProvider);
-                //     if (profile != null && profile.userType == 41) {
-                //       return Column(
-                //         children: [
-                //           Padding(
-                //             padding: EdgeInsets.symmetric(horizontal: 3.w),
-                //             child: StrikeRateWidget(saleType: dashSaleType),
-                //           ),
-                //           Padding(
-                //             padding: EdgeInsets.symmetric(horizontal: 3.w),
-                //             child: StatisticsWidget(saleType: dashSaleType),
-                //           ),
-                //         ],
-                //       );
-                //     }
-                //     return const SizedBox();
-                //   },
-                // ),
-              ],
-            ),
-          ),
+              ),
+            );
+          },
+          error: (error, _) {
+            print(error);
+            return Container();
+          },
+          loading: () => const Center(child: CircularProgressIndicator()),
         );
-      },
-      error: (error, _) {
-        print(error);
-        return Container();
-      },
-      loading: () => const Center(child: CircularProgressIndicator()),
-    );
+      }, error: (error, _) {
+      print(error);
+      return Container();
+    },
+      loading: () => const Center(child: CircularProgressIndicator()),);
   }
 
   Widget getDashboardButton({
@@ -546,32 +554,32 @@ class _HomeDashboardState extends ConsumerState<HomeDashboard> {
     );
   }
 
-  Future<void> _syncAttendanceRestrictionForHome() async {
-    await SyncService().checkSyncVariable();
-    final syncService = SyncService();
-    ref.read(homeDashboardAttendanceLockedProvider.notifier).state =
-        await syncService.shouldLockHomeMenusForAttendance();
-
-    if (!await ConnectivityService().checkInternet()) {
-      return;
-    }
-
-    final attendanceModel = await AttendanceAPI().getAttendanceStatus(DateTime.now());
-    final bool? checkedIn;
-    if (attendanceModel.status == AttendanceStatus.noAttendance) {
-      checkedIn = false;
-    } else if (attendanceModel.id != -1 &&
-        (attendanceModel.status == AttendanceStatus.checkInDone ||
-            attendanceModel.status == AttendanceStatus.attendanceDone)) {
-      checkedIn = true;
-    } else {
-      return;
-    }
-
-    await syncService.updateAttendanceCheckInStatus(checkedIn: checkedIn);
-    ref.read(homeDashboardAttendanceLockedProvider.notifier).state =
-        await syncService.shouldLockHomeMenusForAttendance();
-  }
+  // Future<void> _syncAttendanceRestrictionForHome() async {
+  //   await SyncService().checkSyncVariable();
+  //   final syncService = SyncService();
+  //   ref.read(homeDashboardAttendanceLockedProvider.notifier).state =
+  //       await syncService.shouldLockHomeMenusForAttendance();
+  //
+  //   if (!await ConnectivityService().checkInternet()) {
+  //     return;
+  //   }
+  //
+  //   final attendanceModel = await AttendanceAPI().getAttendanceStatus(DateTime.now());
+  //   final bool? checkedIn;
+  //   if (attendanceModel.status == AttendanceStatus.noAttendance) {
+  //     checkedIn = false;
+  //   } else if (attendanceModel.id != -1 &&
+  //       (attendanceModel.status == AttendanceStatus.checkInDone ||
+  //           attendanceModel.status == AttendanceStatus.attendanceDone)) {
+  //     checkedIn = true;
+  //   } else {
+  //     return;
+  //   }
+  //
+  //   await syncService.updateAttendanceCheckInStatus(checkedIn: checkedIn);
+  //   ref.read(homeDashboardAttendanceLockedProvider.notifier).state =
+  //       await syncService.shouldLockHomeMenusForAttendance();
+  // }
 
   void _showAttendanceRequiredMessage() {
     ScaffoldMessenger.of(context)

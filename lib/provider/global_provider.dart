@@ -105,6 +105,7 @@ import '../services/settings_service.dart';
 import '../services/sr_target_services.dart';
 import '../services/stock_service.dart';
 import '../services/sync_read_service.dart';
+import '../services/sync_service.dart';
 import '../services/team_performance_service.dart';
 import '../services/trade_promotion_services.dart';
 import '../services/try_before_buy_service.dart';
@@ -798,9 +799,11 @@ final attendanceStatusCheckProvider =
       }
       return AttendanceModel(id: -1, status: AttendanceStatus.attendanceDone);
     });
-final homeDashboardAttendanceLockedProvider = StateProvider<bool>(
-  (ref) => false,
+
+final homeDashboardAttendanceLockedProvider = FutureProvider.autoDispose<bool>(
+      (ref) => SyncService().shouldLockHomeMenusForAttendance(),
 );
+
 // ============================ change route ==========================================
 final selectedDateChangeRouteProvider = StateProvider.autoDispose<DateTime>(
   (ref) => DateTime.now(),
